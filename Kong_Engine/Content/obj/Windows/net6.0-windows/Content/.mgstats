@@ -1,2 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/user/Source/Repos/kong-engine/Kong_Engine/Content/donkeyKong.png","C:/Users/user/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/donkeyKong.xnb","TextureProcessor","Texture2DContent",261906,696085,0.3084173
+"C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/DKJunglejpg.xnb","TextureProcessor","Texture2DContent",158169,3981685,0.221982
+"C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/donkeyKong.png","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/donkeyKong.xnb","TextureProcessor","Texture2DContent",261906,696085,0.1323575
+"C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/fallbackTexture.png","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/fallbackTexture.xnb","TextureProcessor","Texture2DContent",126021,1048661,0.0242915
+"C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/gorillaScreen.xnb","TextureProcessor","Texture2DContent",13938,808885,0.0191793
+"C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/splashScreen.xnb","TextureProcessor","Texture2DContent",184118,3686485,0.2070106

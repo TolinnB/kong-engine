@@ -20,15 +20,14 @@ namespace Kong_Engine
         private RenderTarget2D _renderTarget;
         private Rectangle _renderScaleRectangle;
 
-        private const int DESIGNED_RESOLUTION_WIDTH = 640;
-        private const int DESIGNED_RESOLUTION_HEIGHT = 480;
+        private const int DESIGNED_RESOLUTION_WIDTH = 1280;
+        private const int DESIGNED_RESOLUTION_HEIGHT = 720;
 
         private const float DESIGNED_RESOLUTION_ASPECT_RATIO = DESIGNED_RESOLUTION_WIDTH / (float)DESIGNED_RESOLUTION_HEIGHT;
 
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
-
             Content.RootDirectory = "Content";
         }
 
@@ -40,8 +39,8 @@ namespace Kong_Engine
         /// </summary>
         protected override void Initialize()
         {
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = DESIGNED_RESOLUTION_WIDTH;
+            graphics.PreferredBackBufferHeight = DESIGNED_RESOLUTION_HEIGHT;
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
 
@@ -49,6 +48,7 @@ namespace Kong_Engine
                 SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
             _renderScaleRectangle = GetScaleRectangle();
+
 
             base.Initialize();
         }
@@ -105,12 +105,14 @@ namespace Kong_Engine
             {
                 _currentGameState.OnStateSwitched -= CurrentGameState_OnStateSwitched;
                 _currentGameState.OnEventNotification -= _currentGameState_OnEventNotification;
-                _currentGameState.UnloadContent(Content);
+                _currentGameState.UnloadContent();
             }
 
             _currentGameState = gameState;
 
-            _currentGameState.LoadContent(Content);
+            _currentGameState.Initialize(Content);
+
+            _currentGameState.LoadContent();
 
             _currentGameState.OnStateSwitched += CurrentGameState_OnStateSwitched;
             _currentGameState.OnEventNotification += _currentGameState_OnEventNotification;
@@ -132,7 +134,7 @@ namespace Kong_Engine
         /// </summary>
         protected override void UnloadContent()
         {
-            _currentGameState?.UnloadContent(Content);
+            _currentGameState?.UnloadContent();
         }
 
         /// <summary>
