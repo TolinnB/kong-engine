@@ -4,6 +4,7 @@ using System.Linq;
 
 using Kong_Engine.Enum;
 using Kong_Engine.Objects.Base;
+using Kong_Engine.Input;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -14,40 +15,37 @@ namespace Kong_Engine.States.Base
     public abstract class BaseGameState
     {
         private const string FallbackTexture = "fallbackTexture";
-
         private ContentManager _contentManager;
-
         private readonly List<BaseGameObject> _gameObjects = new List<BaseGameObject>();
 
         public void Initialize(ContentManager contentManager)
         {
             _contentManager = contentManager;
+            SetInputManager(); // Ensure InputManager is set during initialization
         }
 
         public abstract void LoadContent();
-
         public void UnloadContent()
         {
             _contentManager.Unload();
         }
 
         public abstract void HandleInput();
-
         public event EventHandler<BaseGameState> OnStateSwitched;
-
         public event EventHandler<Events> OnEventNotification;
+        protected InputManager InputManager { get; set; }
+
+        protected abstract void SetInputManager();
 
         protected Texture2D LoadTexture(string textureName)
         {
             var texture = _contentManager.Load<Texture2D>(textureName);
-
             return texture ?? _contentManager.Load<Texture2D>(FallbackTexture);
         }
 
         protected void NotifyEvent(Events eventType, object argument = null)
         {
             OnEventNotification?.Invoke(this, eventType);
-
             foreach (var gameObject in _gameObjects)
             {
                 gameObject.OnNotify(eventType);

@@ -3,33 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\gameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\gameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\objects\\base\\basegameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\objects\\base\\basegameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\MainGame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\base\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\base\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\Base\\BaseGameState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\gameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\gameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\splashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\splashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\input\\gameplayinputmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\input\\gameplayinputmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\GameplayState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\input\\base\\baseinputmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\input\\base\\baseinputmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\input\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\input\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\input\\gameplayinputcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\input\\gameplayinputcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\objects\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\objects\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\objects\\base\\basegameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\objects\\base\\basegameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,22 +42,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GameplayState.cs",
-              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\GameplayState.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\States\\GameplayState.cs",
-              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\GameplayState.cs",
-              "RelativeToolTip": "Kong_Engine\\States\\GameplayState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:32:04.99Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -65,87 +54,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BaseGameObject.cs",
-              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "RelativeToolTip": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:33:59.572Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainGame.cs",
-              "DocumentMoniker": "C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\MainGame.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\MainGame.cs",
-              "ToolTip": "C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\MainGame.cs",
-              "RelativeToolTip": "..\\..\\..\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\MainGame.cs",
-              "ViewState": "AQIAAKIAAAAAAAAAAAAAALYAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:33:41.859Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainGame.cs",
-              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\MainGame.cs",
-              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
-              "RelativeToolTip": "Kong_Engine\\MainGame.cs",
-              "ViewState": "AQIAACwAAAAAAAAAAAAcwEYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:33:34.965Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BaseGameState.cs",
-              "DocumentMoniker": "C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\Base\\BaseGameState.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\Base\\BaseGameState.cs",
-              "ToolTip": "C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\Base\\BaseGameState.cs",
-              "RelativeToolTip": "..\\..\\..\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\Base\\BaseGameState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:33:04.246Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "BaseGameState.cs",
               "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Base\\BaseGameState.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\Base\\BaseGameState.cs",
               "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Base\\BaseGameState.cs",
               "RelativeToolTip": "Kong_Engine\\States\\Base\\BaseGameState.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAiwBMAAAAhAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAA1wD0AAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:32:51.774Z"
+              "WhenOpened": "2024-07-01T16:30:51.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GameplayInputCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\GameplayInputCommand.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Input\\GameplayInputCommand.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\GameplayInputCommand.cs",
+              "RelativeToolTip": "Kong_Engine\\Input\\GameplayInputCommand.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T15:59:22.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Input\\InputManager.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
+              "RelativeToolTip": "Kong_Engine\\Input\\InputManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T15:54:05.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameplayState.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\GameplayState.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\States\\GameplayState.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\GameplayState.cs",
+              "RelativeToolTip": "Kong_Engine\\States\\GameplayState.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAA0wCcAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T15:52:10.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GameplayInputMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\GameplayInputMapper.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Input\\GameplayInputMapper.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\GameplayInputMapper.cs",
+              "RelativeToolTip": "Kong_Engine\\Input\\GameplayInputMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T15:59:56.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BaseInputMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\Base\\BaseInputMapper.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Input\\Base\\BaseInputMapper.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\Base\\BaseInputMapper.cs",
+              "RelativeToolTip": "Kong_Engine\\Input\\Base\\BaseInputMapper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T16:26:29.467Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "SplashState.cs",
-              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\States\\SplashState.cs",
-              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
-              "RelativeToolTip": "Kong_Engine\\States\\SplashState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAJAAAA",
+              "Title": "PlayerSprite.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\PlayerSprite.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Objects\\PlayerSprite.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\PlayerSprite.cs",
+              "RelativeToolTip": "Kong_Engine\\Objects\\PlayerSprite.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAA7wCYAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:32:38.759Z"
+              "WhenOpened": "2024-07-01T16:03:36.752Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "GameplayState.cs",
-              "DocumentMoniker": "C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\GameplayState.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\GameplayState.cs",
-              "ToolTip": "C:\\Users\\Sheps\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\GameplayState.cs",
-              "RelativeToolTip": "..\\..\\..\\Documents\\sstuff\\monogame-mastery-main\\chapter-05\\end\\States\\GameplayState.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAB4AAAABAAAA",
+              "Title": "BaseGameObject.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
+              "RelativeToolTip": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T18:32:03.579Z"
+              "WhenOpened": "2024-07-01T16:05:50.344Z"
             }
           ]
         }
