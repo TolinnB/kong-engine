@@ -21,7 +21,7 @@ namespace Kong_Engine.States
 
             if (state.IsKeyDown(Keys.Enter))
             {
-                SwitchState(new GameplayState());
+                SwitchState(new MainMenuState());
             }
         }
 

@@ -40,12 +40,20 @@ namespace Kong_Engine.States
                 throw new InvalidOperationException("InputManager is not initialized.");
             }
 
+            var state = Keyboard.GetState();
+
+            if (state.IsKeyDown(Keys.Enter))
+            {
+                SwitchState(new EndLevelSummary());
+            }
+
             InputManager.GetCommands(cmd =>
             {
                 if (cmd is GameplayInputCommand.GameExit)
                 {
-                    NotifyEvent(Events.GAME_QUIT);
+                    //NotifyEvent(Events.GAME_QUIT);
                 }
+
                 else if (cmd is GameplayInputCommand.PlayerMoveLeft)
                 {
                     _playerSprite.MoveLeft();
@@ -54,6 +62,7 @@ namespace Kong_Engine.States
                 {
                     _playerSprite.MoveRight();
                 }
+                
             });
         }
     }
