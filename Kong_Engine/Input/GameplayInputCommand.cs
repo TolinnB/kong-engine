@@ -12,6 +12,7 @@ namespace Kong_Engine.Input
         public class GameExit : BaseInputCommand { }
         public class PlayerMoveLeft : BaseInputCommand { }
         public class PlayerMoveRight : BaseInputCommand { }
-        public class PlayerShoots : BaseInputCommand { }
+        public class PlayerMoveDown : BaseInputCommand { }
+        public class PlayerMoveUp : BaseInputCommand { }
     }
 }

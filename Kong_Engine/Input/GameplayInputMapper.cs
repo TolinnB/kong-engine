@@ -23,9 +23,41 @@ namespace Kong_Engine.Input
             {
                 commands.Add(new GameplayInputCommand.PlayerMoveRight());
             }
-            if (state.IsKeyDown(Keys.Space))
+            if (state.IsKeyDown(Keys.Down))
             {
-                commands.Add(new GameplayInputCommand.PlayerShoots());
+                commands.Add(new GameplayInputCommand.PlayerMoveDown());
+            }
+            if (state.IsKeyDown(Keys.Up))
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveUp());
+            }
+
+            return commands;
+        }
+
+        public override IEnumerable<BaseInputCommand> GetGamePadState(GamePadState state)
+        {
+            var commands = new List<BaseInputCommand>();
+
+            if (state.IsButtonDown(Buttons.Back))
+            {
+                commands.Add(new GameplayInputCommand.GameExit());
+            }
+            if (state.ThumbSticks.Left.X < -0.5f || state.DPad.Left == ButtonState.Pressed)
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveLeft());
+            }
+            if (state.ThumbSticks.Left.X > 0.5f || state.DPad.Right == ButtonState.Pressed)
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveRight());
+            }
+            if (state.ThumbSticks.Left.Y < -0.5f || state.DPad.Down == ButtonState.Pressed)
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveDown());
+            }
+            if (state.ThumbSticks.Left.Y > 0.5f || state.DPad.Up == ButtonState.Pressed)
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveUp());
             }
 
             return commands;

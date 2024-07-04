@@ -29,6 +29,18 @@ namespace Kong_Engine.Objects
             Position = new Vector2(Position.X + 5, Position.Y); // Adjust the value 5 as needed
         }
 
+        public void MoveDown()
+        {
+            // Adjust the X coordinate to move right
+            Position = new Vector2(Position.X, Position.Y + 5); // Adjust the value 5 as needed
+        }
+
+        public void MoveUp()
+        {
+            // Adjust the X coordinate to move right
+            Position = new Vector2(Position.X, Position.Y - 5); // Adjust the value 5 as needed
+        }
+
         // Override the Update method to include custom behavior if needed
         public override void Update(GameTime gameTime)
         {

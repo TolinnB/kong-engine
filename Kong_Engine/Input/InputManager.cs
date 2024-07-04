@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Kong_Engine.Input.Base;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.Input
@@ -20,9 +18,17 @@ namespace Kong_Engine.Input
         public void GetCommands(Action<BaseInputCommand> handleCommand)
         {
             var keyboardState = Keyboard.GetState();
-            var commands = _inputMapper.GetKeyboardState(keyboardState);
+            var gamePadState = GamePad.GetState(PlayerIndex.One);
 
-            foreach (var command in commands)
+            var keyboardCommands = _inputMapper.GetKeyboardState(keyboardState);
+            var gamePadCommands = _inputMapper.GetGamePadState(gamePadState);
+
+            foreach (var command in keyboardCommands)
+            {
+                handleCommand(command);
+            }
+
+            foreach (var command in gamePadCommands)
             {
                 handleCommand(command);
             }
