@@ -9,6 +9,7 @@ using Kong_Engine.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.States.Base
 {
@@ -18,10 +19,13 @@ namespace Kong_Engine.States.Base
         private ContentManager _contentManager;
         private readonly List<BaseGameObject> _gameObjects = new List<BaseGameObject>();
 
+        protected KeyboardState PreviousKeyboardState { get; set; }
+
         public void Initialize(ContentManager contentManager)
         {
             _contentManager = contentManager;
             SetInputManager(); // Ensure InputManager is set during initialization
+            PreviousKeyboardState = Keyboard.GetState(); // Initialize the previous keyboard state
         }
 
         public abstract void LoadContent();

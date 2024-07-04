@@ -13,6 +13,7 @@ namespace Kong_Engine.States
     public class EndLevelSummary : BaseGameState
     {
         private bool _enterPressed;
+
         public override void LoadContent()
         {
             AddGameObject(new SplashImage(LoadTexture("endLevelSummary")));
@@ -20,20 +21,24 @@ namespace Kong_Engine.States
 
         public override void HandleInput()
         {
-            var state = Keyboard.GetState();
+            var currentKeyboardState = Keyboard.GetState();
 
-            if (state.IsKeyDown(Keys.Right))
+            if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
             {
                 if (!_enterPressed)
                 {
                     NotifyEvent(Events.GAME_QUIT);
+                    _enterPressed = true;
                 }
             }
+
+            PreviousKeyboardState = currentKeyboardState; // Update the previous state
         }
 
         protected override void SetInputManager()
         {
-            // No input manager needed for splash screen
+            // No input manager needed for end level summary
         }
     }
+
 }

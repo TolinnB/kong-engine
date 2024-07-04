@@ -14,16 +14,11 @@ namespace Kong_Engine.States
     {
         private const string Player = "donkeyKong";
         private const string BackgroundTexture = "DKJunglejpg";
-
-        // Declare the _playerSprite field
         private PlayerSprite _playerSprite;
 
         public override void LoadContent()
         {
-            // Load and add the background image
             AddGameObject(new SplashImage(LoadTexture(BackgroundTexture)));
-
-            // Load and add the player sprite, and assign it to _playerSprite
             _playerSprite = new PlayerSprite(LoadTexture(Player));
             AddGameObject(_playerSprite);
         }
@@ -35,17 +30,19 @@ namespace Kong_Engine.States
 
         public override void HandleInput()
         {
+            var currentKeyboardState = Keyboard.GetState();
+
             if (InputManager == null)
             {
                 throw new InvalidOperationException("InputManager is not initialized.");
             }
 
-            var state = Keyboard.GetState();
-
-            if (state.IsKeyDown(Keys.Enter))
+            if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
             {
                 SwitchState(new EndLevelSummary());
             }
+
+            PreviousKeyboardState = currentKeyboardState; // Update the previous state
 
             InputManager.GetCommands(cmd =>
             {
@@ -53,7 +50,6 @@ namespace Kong_Engine.States
                 {
                     //NotifyEvent(Events.GAME_QUIT);
                 }
-
                 else if (cmd is GameplayInputCommand.PlayerMoveLeft)
                 {
                     _playerSprite.MoveLeft();
@@ -62,7 +58,6 @@ namespace Kong_Engine.States
                 {
                     _playerSprite.MoveRight();
                 }
-                
             });
         }
     }

@@ -17,12 +17,14 @@ namespace Kong_Engine.States
 
         public override void HandleInput()
         {
-            var state = Keyboard.GetState();
+            var currentKeyboardState = Keyboard.GetState();
 
-            if (state.IsKeyDown(Keys.Enter))
+            if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
             {
                 SwitchState(new MainMenuState());
             }
+
+            PreviousKeyboardState = currentKeyboardState; // Update the previous state
         }
 
         protected override void SetInputManager()
@@ -30,4 +32,5 @@ namespace Kong_Engine.States
             // No input manager needed for splash screen
         }
     }
+
 }

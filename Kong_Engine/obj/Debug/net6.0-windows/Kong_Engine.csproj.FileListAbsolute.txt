@@ -120,3 +120,9 @@ C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\splashScreen.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\endLevelSummary.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mainMenu.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\DKJunglejpg.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\endLevelSummary.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\fallbackTexture.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\gorillaScreen.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mainMenu.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\splashScreen.xnb
