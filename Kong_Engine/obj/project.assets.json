@@ -476,6 +476,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Scellecs.Morpeh/2023.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Scellecs.Morpeh.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Scellecs.Morpeh.dll": {}
+        }
+      },
       "SharpDX/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -2988,6 +2997,24 @@
         "lib/netstandard1.0/_._",
         "runtime.native.system.security.cryptography.4.0.1.nupkg.sha512",
         "runtime.native.system.security.cryptography.nuspec"
+      ]
+    },
+    "Scellecs.Morpeh/2023.1.0": {
+      "sha512": "MmQJVwvTtNGmG5W+95sA8EqjWS07MMCjIkp6wKn8cyWLkHn/2P/qAXyqyBLtpXp7k98tUbfYFsRx1kd8bmEhlw==",
+      "type": "package",
+      "path": "scellecs.morpeh/2023.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CHANGELOG.md",
+        "LICENSE.md",
+        "MIGRATION.md",
+        "MIGRATION_RU.md",
+        "README_NUGET.md",
+        "lib/netstandard2.1/Scellecs.Morpeh.dll",
+        "logo.png",
+        "scellecs.morpeh.2023.1.0.nupkg.sha512",
+        "scellecs.morpeh.nuspec"
       ]
     },
     "SharpDX/4.0.1": {
@@ -7520,28 +7547,24 @@
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
-      "MonoGame.Framework.WindowsDX >= 3.8.1.303"
+      "MonoGame.Framework.WindowsDX >= 3.8.1.303",
+      "Scellecs.Morpeh >= 2023.1.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\breto\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\source\\repos\\Kong_Engine\\Kong_Engine\\Kong_Engine.csproj",
+      "projectUniqueName": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
       "projectName": "Kong_Engine",
-      "projectPath": "C:\\Users\\user\\source\\repos\\Kong_Engine\\Kong_Engine\\Kong_Engine.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\source\\repos\\Kong_Engine\\Kong_Engine\\obj\\",
+      "projectPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+      "packagesPath": "C:\\Users\\breto\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\breto\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7549,7 +7572,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7562,11 +7584,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -7580,6 +7597,10 @@
           "MonoGame.Framework.WindowsDX": {
             "target": "Package",
             "version": "[3.8.1.303, )"
+          },
+          "Scellecs.Morpeh": {
+            "target": "Package",
+            "version": "[2023.1.0, )"
           }
         },
         "imports": [
@@ -7601,7 +7622,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

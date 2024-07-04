@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5De0V9LNshw4oZurXSvCbabXfoFTs5MLlUx4VbJZt7fbLnw76Em7+8EvXmHemIUU2D1XNyFZjD1LWQ5uPy7tQg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Entities\\Entities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\breto\\.nuget\\packages\\scellecs.morpeh\\2023.1.0\\scellecs.morpeh.2023.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
