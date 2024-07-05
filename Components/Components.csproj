@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="C:\Users\breto\source\repos\kong-engine\Kong_Engine\Components\InputMovableComponent.cs" Link="InputMovableComponent.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Scellecs.Morpeh" Version="2023.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj" />
+  </ItemGroup>
+
+</Project>
