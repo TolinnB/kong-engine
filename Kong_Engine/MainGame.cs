@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Kong_Engine.Enum;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kong_Engine
 {
-    // Main Game Loop
 
+    //Main Game Loop
     public class MainGame : Game
     {
         private BaseGameState _currentGameState;
