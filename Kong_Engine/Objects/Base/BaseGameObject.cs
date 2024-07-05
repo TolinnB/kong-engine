@@ -19,9 +19,5 @@ namespace Kong_Engine.Objects.Base
         public virtual void OnNotify(Events eventType) { }
 
         public void Render(SpriteBatch spriteBatch)
-        {
-            // TODO: Drawing call here
-            spriteBatch.Draw(_texture, Position, Color.White);
-        }
     }
 }

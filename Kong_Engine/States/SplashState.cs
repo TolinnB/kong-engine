@@ -1,4 +1,4 @@
-﻿using Kong_Engine.Objects;
+using Kong_Engine.Objects;
 using Kong_Engine.States.Base;
 
 using Microsoft.Xna.Framework;
