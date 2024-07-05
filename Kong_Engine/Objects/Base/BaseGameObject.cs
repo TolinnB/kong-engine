@@ -1,4 +1,4 @@
-﻿using Kong_Engine.Enum;
+using Kong_Engine.Enum;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -13,13 +13,11 @@ namespace Kong_Engine.Objects.Base
 
         public virtual void Update(GameTime gameTime)
         {
+           //Implement later
         }
 
         public virtual void OnNotify(Events eventType) { }
 
         public void Render(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(_texture, Position, Color.White);
-        }
     }
 }
