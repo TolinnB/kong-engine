@@ -32,7 +32,7 @@ namespace Kong_Engine
 
         /// Initialises any components that need to be called before the program runs. 
         /// Tries to load any required components
-        protected override void Initialise()
+        protected override void Initialize()
         {
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
@@ -46,9 +46,7 @@ namespace Kong_Engine
 
             base.Initialize();
         }
-        /// Uses the current window size compared to the design resolution
-        /// </summary>
-        /// <returns>Scaled Rectangle</returns>
+      
         private Rectangle GetScaleRectangle()
         {
             var variance = 0.5;
@@ -74,13 +72,9 @@ namespace Kong_Engine
             return scaleRectangle;
         }
 
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
+            
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             SwitchGameState(new SplashState());
@@ -117,21 +111,12 @@ namespace Kong_Engine
                     break;
             }
         }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
         protected override void UnloadContent()
         {
             _currentGameState?.UnloadContent(Content);
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// Main loop for updating the game's logic or sprites
         protected override void Update(GameTime gameTime)
         {
             _currentGameState.HandleInput();
@@ -139,16 +124,12 @@ namespace Kong_Engine
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             // Render to the Render Target
             GraphicsDevice.SetRenderTarget(_renderTarget);
 
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.CornflowerBlue); 
 
             spriteBatch.Begin();
 
