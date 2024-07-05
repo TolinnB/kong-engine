@@ -12,7 +12,6 @@ namespace Kong_Engine.States
     {
         public override void LoadContent(ContentManager contentManager)
         {
-            // TODO: Add Content Loading
 
             AddGameObject(new SplashImage(contentManager.Load<Texture2D>("donkeyKong")));
         }
