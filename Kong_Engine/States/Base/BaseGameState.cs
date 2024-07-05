@@ -24,8 +24,8 @@ namespace Kong_Engine.States.Base
         public void Initialize(ContentManager contentManager)
         {
             _contentManager = contentManager;
-            SetInputManager(); // Ensure InputManager is set during initialization
-            PreviousKeyboardState = Keyboard.GetState(); // Initialize the previous keyboard state
+            SetInputManager();
+            PreviousKeyboardState = Keyboard.GetState(); // Stops it from going through all menus in one input
         }
 
         public abstract void LoadContent();

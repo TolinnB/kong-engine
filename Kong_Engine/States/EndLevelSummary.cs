@@ -32,12 +32,12 @@ namespace Kong_Engine.States
                 }
             }
 
-            PreviousKeyboardState = currentKeyboardState; // Update the previous state
+            PreviousKeyboardState = currentKeyboardState;
         }
 
         protected override void SetInputManager()
         {
-            // No input manager needed for end level summary
+            // Implement Later
         }
     }
 

@@ -13,7 +13,7 @@ namespace Kong_Engine.Objects.Base
 
         public virtual void Update(GameTime gameTime)
         {
-            // Default implementation (if needed)
+           //Implement later
         }
 
         public virtual void OnNotify(Events eventType) { }
@@ -21,7 +21,7 @@ namespace Kong_Engine.Objects.Base
         public void Render(SpriteBatch spriteBatch)
         {
             // TODO: Drawing call here
-            spriteBatch.Draw(_texture, Position, Color.White); // Use Position property
+            spriteBatch.Draw(_texture, Position, Color.White);
         }
     }
 }

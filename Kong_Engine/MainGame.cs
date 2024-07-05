@@ -7,9 +7,8 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kong_Engine
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
+    //Main Game Loop
+
     public class MainGame : Game
     {
         private BaseGameState _currentGameState;

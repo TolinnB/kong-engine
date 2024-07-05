@@ -24,12 +24,12 @@ namespace Kong_Engine.States
                 SwitchState(new MainMenuState());
             }
 
-            PreviousKeyboardState = currentKeyboardState; // Update the previous state
+            PreviousKeyboardState = currentKeyboardState;
         }
 
         protected override void SetInputManager()
         {
-            // No input manager needed for splash screen
+            // Implement later
         }
     }
 

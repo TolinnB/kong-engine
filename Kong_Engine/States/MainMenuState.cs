@@ -29,12 +29,12 @@ namespace Kong_Engine.States
                 SwitchState(new GameplayState());
             }
 
-            PreviousKeyboardState = currentKeyboardState; // Update the previous state
+            PreviousKeyboardState = currentKeyboardState;
         }
 
         protected override void SetInputManager()
         {
-            // No input manager needed for main menu
+            // Implement later
         }
     }
 

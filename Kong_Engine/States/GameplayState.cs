@@ -42,7 +42,7 @@ namespace Kong_Engine.States
                 SwitchState(new EndLevelSummary());
             }
 
-            PreviousKeyboardState = currentKeyboardState; // Update the previous state
+            PreviousKeyboardState = currentKeyboardState;
 
             InputManager.GetCommands(cmd =>
             {
