@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Kong_Engine.Input;
-using Kong_Engine.Input.Base;  // Ensure this using directive is included
+using Kong_Engine.Input.Base;
 
 namespace Kong_Engine.Input
 {

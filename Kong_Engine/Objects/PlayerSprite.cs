@@ -18,21 +18,16 @@ namespace Kong_Engine.Objects
 
         public void MoveLeft()
         {
-            // Adjust the X coordinate to move left
-            Position = new Vector2(Position.X - 5, Position.Y); // Adjust the value 5 as needed
+            Position = new Vector2(Position.X - 5, Position.Y);
         }
 
-        // Method to move the player right
         public void MoveRight()
         {
-            // Adjust the X coordinate to move right
-            Position = new Vector2(Position.X + 5, Position.Y); // Adjust the value 5 as needed
+            Position = new Vector2(Position.X + 5, Position.Y);
         }
 
-        // Override the Update method to include custom behavior if needed
         public override void Update(GameTime gameTime)
         {
-            // Custom update logic
             base.Update(gameTime);
         }
     }

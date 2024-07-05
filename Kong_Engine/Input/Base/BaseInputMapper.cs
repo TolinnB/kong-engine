@@ -10,6 +10,6 @@ namespace Kong_Engine.Input.Base
     public abstract class BaseInputMapper
     {
         public abstract IEnumerable<BaseInputCommand> GetKeyboardState(KeyboardState state);
-        // Add methods for mouse and gamepad input if needed
+        // Gamepad support will go here
     }
 }
