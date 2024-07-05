@@ -19,5 +19,8 @@ namespace Kong_Engine.Objects.Base
         public virtual void OnNotify(Events eventType) { }
 
         public void Render(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(_texture, Position, Color.White);
+        }
     }
 }

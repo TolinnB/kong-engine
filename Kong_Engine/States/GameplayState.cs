@@ -58,6 +58,14 @@ namespace Kong_Engine.States
                 {
                     _playerSprite.MoveRight();
                 }
+                else if (cmd is GameplayInputCommand.PlayerMoveDown)
+                {
+                    _playerSprite.MoveDown();
+                }
+                else if (cmd is GameplayInputCommand.PlayerMoveUp)
+                {
+                    _playerSprite.MoveUp();
+                }
             });
         }
     }

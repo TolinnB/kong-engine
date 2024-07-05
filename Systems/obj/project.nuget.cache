@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "u7TzUqwZhik=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Source\\Repos\\kong-engine\\Systems\\Systems.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\scellecs.morpeh\\2023.1.0\\scellecs.morpeh.2023.1.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.19\\microsoft.windowsdesktop.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.19\\microsoft.netcore.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.19\\microsoft.aspnetcore.app.ref.7.0.19.nupkg.sha512"
+  ],
+  "logs": []
+}
