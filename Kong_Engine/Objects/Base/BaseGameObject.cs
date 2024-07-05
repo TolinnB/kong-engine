@@ -16,7 +16,6 @@ namespace Kong_Engine.Objects.Base
 
         public void Render(SpriteBatch spriteBatch)
         {
-            // TODO: Drawing call here
             spriteBatch.Draw(_texture, Vector2.One, Color.White);
         }
     }
