@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Kong_Engine.ECS.Components
 {
+
+    /// <summary>
+    /// This is just a placeholder for a component
+    /// </summary>
     internal class TestComponent
     {
     }

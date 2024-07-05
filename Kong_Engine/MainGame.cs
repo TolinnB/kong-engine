@@ -7,9 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kong_Engine
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
+    /// Game Loop
     public class MainGame : Game
     {
         private BaseGameState _currentGameState;
@@ -32,13 +30,9 @@ namespace Kong_Engine
             Content.RootDirectory = "Content";
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
+        /// Initialises any components that need to be called before the program runs. 
+        /// Tries to load any required components
+        protected override void Initialise()
         {
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
@@ -52,8 +46,6 @@ namespace Kong_Engine
 
             base.Initialize();
         }
-
-        /// <summary>
         /// Uses the current window size compared to the design resolution
         /// </summary>
         /// <returns>Scaled Rectangle</returns>
