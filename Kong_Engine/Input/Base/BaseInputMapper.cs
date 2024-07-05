@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,6 @@ namespace Kong_Engine.Input.Base
     public abstract class BaseInputMapper
     {
         public abstract IEnumerable<BaseInputCommand> GetKeyboardState(KeyboardState state);
-        // Gamepad support will go here
+        public abstract IEnumerable<BaseInputCommand> GetGamePadState(GamePadState state);
     }
 }
