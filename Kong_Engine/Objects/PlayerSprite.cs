@@ -1,4 +1,4 @@
-﻿using Kong_Engine.Objects.Base;
+using Kong_Engine.Objects.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +18,23 @@ namespace Kong_Engine.Objects
 
         public void MoveLeft()
         {
+            
             Position = new Vector2(Position.X - 5, Position.Y);
         }
 
         public void MoveRight()
         {
             Position = new Vector2(Position.X + 5, Position.Y);
+        }
+
+        public void MoveDown()
+        {
+            Position = new Vector2(Position.X, Position.Y + 5);
+        }
+
+        public void MoveUp()
+        {
+            Position = new Vector2(Position.X, Position.Y - 5);
         }
 
         public override void Update(GameTime gameTime)
