@@ -14,11 +14,15 @@ namespace Kong_Engine.States
     {
         private const string Player = "donkeyKong";
         private const string BackgroundTexture = "DKJunglejpg";
+
         private PlayerSprite _playerSprite;
+        private TerrainBackground _background;
 
         public override void LoadContent()
         {
-            AddGameObject(new SplashImage(LoadTexture(BackgroundTexture)));
+            var backgroundTexture = LoadTexture(BackgroundTexture);
+            _background = new TerrainBackground(backgroundTexture);
+
             _playerSprite = new PlayerSprite(LoadTexture(Player));
             AddGameObject(_playerSprite);
         }
@@ -48,7 +52,7 @@ namespace Kong_Engine.States
             {
                 if (cmd is GameplayInputCommand.GameExit)
                 {
-                    //NotifyEvent(Events.GAME_QUIT);
+                    NotifyEvent(Events.GAME_QUIT);
                 }
                 else if (cmd is GameplayInputCommand.PlayerMoveLeft)
                 {
@@ -59,6 +63,20 @@ namespace Kong_Engine.States
                     _playerSprite.MoveRight();
                 }
             });
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            _background.Update(gameTime);
+        }
+
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            _background.Render(spriteBatch);
+
+            base.Render(spriteBatch);
         }
     }
 }

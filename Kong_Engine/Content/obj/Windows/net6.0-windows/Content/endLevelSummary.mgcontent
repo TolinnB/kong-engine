@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/user/source/repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</SourceFile>
-  <SourceTime>2024-07-04T10:39:53.4562092+01:00</SourceTime>
-  <DestFile>C:/Users/user/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/endLevelSummary.xnb</DestFile>
-  <DestTime>2024-07-04T11:06:17.7061508+01:00</DestTime>
+  <SourceFile>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</SourceFile>
+  <SourceTime>2024-07-07T18:47:33.9934469+01:00</SourceTime>
+  <DestFile>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/endLevelSummary.xnb</DestFile>
+  <DestTime>2024-07-07T18:50:10.3757652+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

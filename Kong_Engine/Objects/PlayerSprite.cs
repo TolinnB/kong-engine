@@ -25,10 +25,5 @@ namespace Kong_Engine.Objects
         {
             Position = new Vector2(Position.X + 5, Position.Y);
         }
-
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
     }
 }
