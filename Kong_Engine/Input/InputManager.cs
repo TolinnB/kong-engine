@@ -19,9 +19,11 @@ namespace Kong_Engine.Input
         {
             var keyboardState = Keyboard.GetState();
             var gamePadState = GamePad.GetState(PlayerIndex.One);
+            var mouseState = Mouse.GetState();
 
             var keyboardCommands = _inputMapper.GetKeyboardState(keyboardState);
             var gamePadCommands = _inputMapper.GetGamePadState(gamePadState);
+            var mouseCommands = _inputMapper.GetMouseState(mouseState);
 
             foreach (var command in keyboardCommands)
             {
@@ -29,6 +31,11 @@ namespace Kong_Engine.Input
             }
 
             foreach (var command in gamePadCommands)
+            {
+                handleCommand(command);
+            }
+
+            foreach (var command in mouseCommands)
             {
                 handleCommand(command);
             }

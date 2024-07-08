@@ -62,5 +62,25 @@ namespace Kong_Engine.Input
 
             return commands;
         }
+
+        public override IEnumerable<BaseInputCommand> GetMouseState(MouseState state)
+        {
+            var commands = new List<BaseInputCommand>();
+
+            if (state.LeftButton == ButtonState.Pressed)
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveLeft());
+            }
+            if (state.RightButton == ButtonState.Pressed)
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveRight());
+            }
+            if (state.MiddleButton == ButtonState.Pressed)
+            {
+                commands.Add(new GameplayInputCommand.GameExit());
+            }
+
+            return commands;
+        }
     }
 }

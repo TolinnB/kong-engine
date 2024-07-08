@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j++wFgd3WIg=",
+  "dgSpecHash": "D4i6ZISoL50=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+  "projectFilePath": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sheps\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Users\\Sheps\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",

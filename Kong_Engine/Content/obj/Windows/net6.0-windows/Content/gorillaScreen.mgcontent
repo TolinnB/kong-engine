@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</SourceFile>
+  <SourceFile>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</SourceFile>
   <SourceTime>2024-07-07T18:47:33.9945323+01:00</SourceTime>
-  <DestFile>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/gorillaScreen.xnb</DestFile>
-  <DestTime>2024-07-07T21:04:04.4191237+01:00</DestTime>
+  <DestFile>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/gorillaScreen.xnb</DestFile>
+  <DestTime>2024-07-08T20:16:00.0571627+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

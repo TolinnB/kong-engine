@@ -11,5 +11,6 @@ namespace Kong_Engine.Input.Base
     {
         public abstract IEnumerable<BaseInputCommand> GetKeyboardState(KeyboardState state);
         public abstract IEnumerable<BaseInputCommand> GetGamePadState(GamePadState state);
+        public abstract IEnumerable<BaseInputCommand> GetMouseState(MouseState state);
     }
 }

@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
+    "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
+    "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "projectUniqueName": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "projectName": "Kong_Engine",
-        "projectPath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "projectPath": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "packagesPath": "C:\\Users\\Sheps\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
         "projectStyle": "PackageReference",
