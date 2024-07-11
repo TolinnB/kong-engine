@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Kong_Engine.Enum;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kong_Engine
 {
-    /// Game Loop
+    /// Main Game Loop
     public class MainGame : Game
     {
         private BaseGameState _currentGameState;
@@ -30,6 +30,7 @@ namespace Kong_Engine
             Content.RootDirectory = "Content";
         }
 
+
         /// Initialises any components that need to be called before the program runs. 
         /// Tries to load any required components
         protected override void Initialize()
@@ -46,7 +47,7 @@ namespace Kong_Engine
 
             base.Initialize();
         }
-      
+        
         private Rectangle GetScaleRectangle()
         {
             var variance = 0.5;
@@ -74,7 +75,7 @@ namespace Kong_Engine
 
         protected override void LoadContent()
         {
-            
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             SwitchGameState(new SplashState());
@@ -111,12 +112,14 @@ namespace Kong_Engine
                     break;
             }
         }
+
         protected override void UnloadContent()
         {
             _currentGameState?.UnloadContent(Content);
         }
 
         /// Main loop for updating the game's logic or sprites
+
         protected override void Update(GameTime gameTime)
         {
             _currentGameState.HandleInput();
@@ -126,7 +129,6 @@ namespace Kong_Engine
 
         protected override void Draw(GameTime gameTime)
         {
-            // Render to the Render Target
             GraphicsDevice.SetRenderTarget(_renderTarget);
 
             GraphicsDevice.Clear(Color.CornflowerBlue); 
@@ -137,7 +139,6 @@ namespace Kong_Engine
 
             spriteBatch.End();
 
-            // Now render the scaled content
             graphics.GraphicsDevice.SetRenderTarget(null);
 
             graphics.GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 1.0f, 0);
