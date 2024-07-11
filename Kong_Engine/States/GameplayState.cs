@@ -7,6 +7,10 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Kong_Engine.ECS.Component;
+using Kong_Engine.ECS.System;
+using System.Collections.Generic;
+using Kong_Engine.ECS.Entity;
 
 namespace Kong_Engine.States
 {
@@ -14,13 +18,62 @@ namespace Kong_Engine.States
     {
         private const string Player = "donkeyKong";
         private const string BackgroundTexture = "DKJunglejpg";
-        private PlayerSprite _playerSprite;
+
+        private List<BaseEntity> _entities;
+        private MovementSystem _movementSystem;
+        private BaseEntity _playerEntity;
 
         public override void LoadContent()
         {
             AddGameObject(new SplashImage(LoadTexture(BackgroundTexture)));
-            _playerSprite = new PlayerSprite(LoadTexture(Player));
-            AddGameObject(_playerSprite);
+
+            _playerEntity = new PlayerSprite(LoadTexture(Player));
+            _entities = new List<BaseEntity> { _playerEntity };
+
+            // Load enemy texture
+            var enemyTexture = LoadTexture("kingKRool"); // Replace with your actual enemy texture path
+
+            // Create and add enemy entity
+            var enemyEntity = new EnemySprite(enemyTexture);
+            _entities.Add(enemyEntity);
+
+            _movementSystem = new MovementSystem();
+
+            // Wrap the entities with the adapter
+            AddGameObject(new EntityGameObjectAdapter(_playerEntity));
+            AddGameObject(new EntityGameObjectAdapter(enemyEntity));
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            // Update the movement system with all entities
+            _movementSystem.Update(_entities);
+
+            // Example of enemy movement logic (simple follow behavior)
+            foreach (var entity in _entities)
+            {
+                if (entity is EnemySprite enemy)
+                {
+                    enemy.MoveTowardsPlayer(_playerEntity.GetComponent<PositionComponent>().Position);
+                }
+            }
+
+            base.Update(gameTime);
+        }
+
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            foreach (var entity in _entities)
+            {
+                if (entity.HasComponent<TextureComponent>())
+                {
+                    var textureComponent = entity.GetComponent<TextureComponent>();
+                    var positionComponent = entity.GetComponent<PositionComponent>();
+                    spriteBatch.Draw(textureComponent.Texture, positionComponent.Position, Color.White);
+                }
+            }
+
+            base.Render(spriteBatch);
         }
 
         protected override void SetInputManager()
@@ -52,19 +105,19 @@ namespace Kong_Engine.States
                 }
                 else if (cmd is GameplayInputCommand.PlayerMoveLeft)
                 {
-                    _playerSprite.MoveLeft();
+                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(-5, 0);
                 }
                 else if (cmd is GameplayInputCommand.PlayerMoveRight)
                 {
-                    _playerSprite.MoveRight();
+                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(5, 0);
                 }
                 else if (cmd is GameplayInputCommand.PlayerMoveDown)
                 {
-                    _playerSprite.MoveDown();
+                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, 5);
                 }
                 else if (cmd is GameplayInputCommand.PlayerMoveUp)
                 {
-                    _playerSprite.MoveUp();
+                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, -5);
                 }
             });
         }

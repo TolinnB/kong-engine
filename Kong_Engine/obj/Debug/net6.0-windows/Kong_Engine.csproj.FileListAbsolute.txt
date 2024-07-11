@@ -126,3 +126,4 @@ C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Cont
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\gorillaScreen.xnb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mainMenu.xnb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\splashScreen.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\kingKRool.xnb
