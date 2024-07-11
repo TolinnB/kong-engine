@@ -1,4 +1,3 @@
-using System;
 using Kong_Engine.Enum;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
@@ -7,8 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Kong_Engine
 {
-
-    //Main Game Loop
     public class MainGame : Game
     {
         private BaseGameState _currentGameState;
@@ -74,6 +71,7 @@ namespace Kong_Engine
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // Start with SplashState
             SwitchGameState(new SplashState());
         }
 
@@ -119,6 +117,7 @@ namespace Kong_Engine
         protected override void Update(GameTime gameTime)
         {
             _currentGameState.HandleInput();
+            _currentGameState.Update(gameTime);
 
             base.Update(gameTime);
         }

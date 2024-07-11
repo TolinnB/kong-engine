@@ -7,20 +7,27 @@ namespace Kong_Engine.Objects.Base
     public class BaseGameObject
     {
         protected Texture2D _texture;
-        public Vector2 Position { get; set; }
+        protected Vector2 _position = Vector2.One;
 
-        public virtual int zIndex { get; set; }
+        public int zIndex;
+
+        public int Width { get { return _texture.Width; } }
+        public int Height { get { return _texture.Height; } }
+        public Vector2 Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
+
+        public virtual void OnNotify(Events eventType, object argument = null) { }
+
+        public virtual void Render(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(_texture, _position, Color.White);
+        }
 
         public virtual void Update(GameTime gameTime)
         {
-           //Implement later
-        }
-
-        public virtual void OnNotify(Events eventType) { }
-
-        public void Render(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Draw(_texture, Position, Color.White);
         }
     }
 }

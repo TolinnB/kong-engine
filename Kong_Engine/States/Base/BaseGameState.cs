@@ -66,12 +66,16 @@ namespace Kong_Engine.States.Base
             _gameObjects.Add(gameObject);
         }
 
-        public void Render(SpriteBatch spriteBatch)
+        public virtual void Render(SpriteBatch spriteBatch)
         {
             foreach (var gameObject in _gameObjects.OrderBy(a => a.zIndex))
             {
                 gameObject.Render(spriteBatch);
             }
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
         }
     }
 }
