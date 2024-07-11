@@ -12,7 +12,7 @@ namespace Kong_Engine
     {
         private static Dictionary<Events, List<Action<object>>> eventListeners = new Dictionary<Events, List<Action<object>>>();
 
-        /// Allows a listener to subscribe to a particular event
+        /// Allows a listener to subscribe to a particular event, adding them to a list
         public static void Subscribe(Events eventType, Action<object> listener)
         {
             if (!eventListeners.ContainsKey(eventType))
@@ -22,7 +22,7 @@ namespace Kong_Engine
             eventListeners[eventType].Add(listener);
         }
 
-        /// Allows a listener to unsubscribe to an event
+        /// Allows a listener to unsubscribe to an event, removing them from a list
         public static void Unsubscribe(Events eventType, Action<object> listener)
         {
             if (eventListeners.ContainsKey(eventType))
@@ -35,7 +35,7 @@ namespace Kong_Engine
             }
         }
 
-        /// Even trigger, and then tells each listener the event has taken place
+        /// This triggers an event and then tells anything in the subscribe list that it has happened
         public static void TriggerEvent(Events eventType, object argument = null)
         {
             if (eventListeners.ContainsKey(eventType))

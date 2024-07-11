@@ -16,7 +16,7 @@ namespace Kong_Engine
         SpriteBatch spriteBatch;
 
         private RenderTarget2D _renderTarget;
-        private Rectangle _renderScaleRectangle;
+        private Rectangle _renderScaleRectangle ;
 
         private const int DESIGNED_RESOLUTION_WIDTH = 640;
         private const int DESIGNED_RESOLUTION_HEIGHT = 480;

@@ -75,3 +75,12 @@ C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\refi
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.pdb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.genruntimeconfig.cache
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref\Kong_Engine.dll
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.csproj.AssemblyReference.cache
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.AssemblyInfoInputs.cache
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.AssemblyInfo.cs
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.csproj.CoreCompileInputs.cache
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.dll
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\refint\Kong_Engine.dll
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.pdb
+C:\Users\breto\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.sourcelink.json

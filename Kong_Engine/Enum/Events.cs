@@ -6,19 +6,24 @@ using System.Threading.Tasks;
 
 namespace Kong_Engine.Enum
 {
+    /// <summary>
+    /// This is just a list of starter events we think the engine will need.
+    /// 
+    /// TODO - Integrate into each state
+    /// </summary>
     public enum Events
     {
-        // Game Lifecycle Events
+        // Game events that start, end or restart a game
         GAME_START,
+        GAME_QUIT,
         GAME_PAUSE,
         GAME_RESUME,
         GAME_OVER,
-        GAME_QUIT,
         GAME_SAVE,
         GAME_LOAD,
         GAME_RESET,
 
-        // Level/Scene Events
+        // Level events that start, or end, or restart a level
         LEVEL_START,
         LEVEL_COMPLETE,
         LEVEL_FAIL,
@@ -26,38 +31,24 @@ namespace Kong_Engine.Enum
         SCENE_LOAD,
         SCENE_UNLOAD,
 
-        // Player Actions
+        // Placeholder actions for the player
         PLAYER_MOVE,
         PLAYER_JUMP,
         PLAYER_ATTACK,
         PLAYER_DIE,
         PLAYER_RESPAWN,
         PLAYER_DAMAGE,
-        PLAYER_HEAL,
-        PLAYER_LEVEL_UP,
-        PLAYER_INTERACT,
 
-        // Enemy Actions
-        ENEMY_SPAWN,
+        // Placeholder actions for the player
         ENEMY_MOVE,
         ENEMY_ATTACK,
         ENEMY_DIE,
         ENEMY_TAKE_DAMAGE,
 
-        // Item Events
-        ITEM_SPAWN,
-        ITEM_PICKUP,
-        ITEM_USE,
-        ITEM_DESTROY,
-        ITEM_DROP,
-        ITEM_EXPIRE,
-
-        // Environmental Events
+        // Placeholder actions for the environment
         TRIGGER_ENTER,
         TRIGGER_EXIT,
         PLATFORM_MOVE,
-        DOOR_OPEN,
-        DOOR_CLOSE,
         CHECKPOINT_REACHED,
 
         // UI Events
@@ -66,6 +57,7 @@ namespace Kong_Engine.Enum
         UI_HIDE,
         UI_UPDATE,
 
+        // TODO- Alex do we need more of these?
         // Input Events
         INPUT_KEY_DOWN,
         INPUT_KEY_UP,

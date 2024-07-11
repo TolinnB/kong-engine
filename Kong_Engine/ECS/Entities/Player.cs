@@ -13,20 +13,8 @@ namespace Kong_Engine.ECS.Entities
         {
             public PlayerEntity()
             {
-                EventManager.Subscribe(Events.PLAYER_JUMP, OnPlayerJump);
-                EventManager.Subscribe(Events.PLAYER_DAMAGE, OnPlayerHit);
+                EventManager.Subscribe(Events.PLAYER_DAMAGE, OnPlayerMove);
             }
-
-            private void OnPlayerJump(object arg)
-            {
-                Console.WriteLine("Player jumped!");
-                
-            }
-
-            private void OnPlayerHit(object arg)
-            {
-                Console.WriteLine("Player hit!");
-                
             }
         }
     }
