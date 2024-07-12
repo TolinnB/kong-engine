@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.ECS.System
 {
@@ -14,13 +18,35 @@ namespace Kong_Engine.ECS.System
         {
             foreach (var entity in entities)
             {
-                if (entity.HasComponent<PositionComponent>())
+                if (entity.HasComponent<PositionComponent>() && entity.HasComponent<MovementComponent>())
                 {
-                    var position = entity.GetComponent<PositionComponent>();
-                    // Update position logic
-                    position.Position += new Microsoft.Xna.Framework.Vector2(1, 0); // Example logic
+                    var positionComponent = entity.GetComponent<PositionComponent>();
+                    var movementComponent = entity.GetComponent<MovementComponent>();
+
+                    // Check boundaries and reverse direction if necessary
+                    if (movementComponent.MovingRight)
+                    {
+                        positionComponent.Position += movementComponent.Velocity;
+
+                        if (positionComponent.Position.X > movementComponent.RightBoundary)
+                        {
+                            movementComponent.MovingRight = false;
+                            positionComponent.Position = new Vector2(movementComponent.RightBoundary, positionComponent.Position.Y);
+                        }
+                    }
+                    else
+                    {
+                        positionComponent.Position -= movementComponent.Velocity;
+
+                        if (positionComponent.Position.X < movementComponent.LeftBoundary)
+                        {
+                            movementComponent.MovingRight = true;
+                            positionComponent.Position = new Vector2(movementComponent.LeftBoundary, positionComponent.Position.Y);
+                        }
+                    }
                 }
             }
         }
     }
 }
+

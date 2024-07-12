@@ -1,0 +1,5 @@
+12/07/2024 19:18:28: Loading content in GameplayState
+12/07/2024 19:18:28: Player entity created and added to entities list
+12/07/2024 19:18:28: Creating EnemySprite
+12/07/2024 19:18:28: EnemySprite created with initial position: {X:1000 Y:100}
+12/07/2024 19:18:28: Enemy entity created and added to entities list

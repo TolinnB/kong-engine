@@ -1,4 +1,5 @@
 ﻿using Kong_Engine.ECS.Component;
+using Kong_Engine.ECS.System;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using Kong_Engine.ECS.System;
 
 namespace Kong_Engine.ECS.Entity
 {
@@ -17,13 +19,13 @@ namespace Kong_Engine.ECS.Entity
         {
             AddComponent(new PositionComponent { Position = new Vector2(1000, 100) }); // Initial position
             AddComponent(new TextureComponent { Texture = texture });
-        }
-
-        public void MoveTowardsPlayer(Vector2 playerPosition)
-        {
-            var position = GetComponent<PositionComponent>();
-            Vector2 direction = Vector2.Normalize(playerPosition - position.Position);
-            position.Position += direction * 2; // Move speed
+            AddComponent(new MovementComponent
+            {
+                Velocity = new Vector2(2, 0), // Example velocity
+                LeftBoundary = 800,
+                RightBoundary = 1200,
+                MovingRight = true
+            });
         }
     }
 }

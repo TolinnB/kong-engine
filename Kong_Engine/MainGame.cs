@@ -119,9 +119,11 @@ namespace Kong_Engine
         protected override void Update(GameTime gameTime)
         {
             _currentGameState.HandleInput();
+            _currentGameState.Update(gameTime); // Ensure this is being called
 
             base.Update(gameTime);
         }
+
 
         protected override void Draw(GameTime gameTime)
         {

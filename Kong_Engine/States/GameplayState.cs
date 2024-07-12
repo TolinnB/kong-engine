@@ -49,15 +49,6 @@ namespace Kong_Engine.States
             // Update the movement system with all entities
             _movementSystem.Update(_entities);
 
-            // Example of enemy movement logic (simple follow behavior)
-            foreach (var entity in _entities)
-            {
-                if (entity is EnemySprite enemy)
-                {
-                    enemy.MoveTowardsPlayer(_playerEntity.GetComponent<PositionComponent>().Position);
-                }
-            }
-
             base.Update(gameTime);
         }
 
@@ -69,6 +60,7 @@ namespace Kong_Engine.States
                 {
                     var textureComponent = entity.GetComponent<TextureComponent>();
                     var positionComponent = entity.GetComponent<PositionComponent>();
+
                     spriteBatch.Draw(textureComponent.Texture, positionComponent.Position, Color.White);
                 }
             }
