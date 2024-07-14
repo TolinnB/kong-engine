@@ -73,7 +73,6 @@ namespace Kong_Engine
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             SwitchGameState(new SplashState());
         }
 
@@ -123,7 +122,6 @@ namespace Kong_Engine
 
             base.Update(gameTime);
         }
-
 
         protected override void Draw(GameTime gameTime)
         {

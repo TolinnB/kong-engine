@@ -13,12 +13,12 @@ namespace Kong_Engine.States.Base
 {
     public abstract class BaseGameState
     {
-        private const string FallbackTexture = "fallbackTexture";
         private ContentManager _contentManager;
         private readonly List<BaseGameObject> _gameObjects = new List<BaseGameObject>();
 
         protected KeyboardState PreviousKeyboardState { get; set; }
         protected InputManager InputManager { get; set; }
+        protected ContentManager Content => _contentManager;
 
         public void Initialize(ContentManager contentManager)
         {
@@ -38,7 +38,7 @@ namespace Kong_Engine.States.Base
         protected Texture2D LoadTexture(string textureName)
         {
             var texture = _contentManager.Load<Texture2D>(textureName);
-            return texture ?? _contentManager.Load<Texture2D>(FallbackTexture);
+            return texture ?? _contentManager.Load<Texture2D>("fallbackTexture");
         }
 
         protected void NotifyEvent(Events eventType, object argument = null)

@@ -11,6 +11,7 @@ using Kong_Engine.ECS.Component;
 using Kong_Engine.ECS.System;
 using System.Collections.Generic;
 using Kong_Engine.ECS.Entity;
+using System.Reflection.Metadata;
 
 namespace Kong_Engine.States
 {
@@ -20,10 +21,14 @@ namespace Kong_Engine.States
         private MovementSystem _movementSystem;
         private CollisionSystem _collisionSystem;
         private BaseEntity _playerEntity;
+        private AudioManager _audioManager;
 
         public override void LoadContent()
         {
             AddGameObject(new SplashImage(LoadTexture("DKJunglejpg")));
+
+            _audioManager = new AudioManager(Content);
+            _audioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
 
             _playerEntity = new PlayerSprite(LoadTexture("donkeyKong"));
             _entities = new List<BaseEntity> { _playerEntity };
@@ -33,7 +38,7 @@ namespace Kong_Engine.States
             _entities.Add(enemyEntity);
 
             _movementSystem = new MovementSystem();
-            _collisionSystem = new CollisionSystem();
+            _collisionSystem = new CollisionSystem(_audioManager);
 
             AddGameObject(new EntityGameObjectAdapter(_playerEntity));
             AddGameObject(new EntityGameObjectAdapter(enemyEntity));
@@ -49,7 +54,6 @@ namespace Kong_Engine.States
 
             base.Update(gameTime);
         }
-
 
         public override void Render(SpriteBatch spriteBatch)
         {
@@ -102,13 +106,13 @@ namespace Kong_Engine.States
                 {
                     _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(5, 0);
                 }
-                else if (cmd is GameplayInputCommand.PlayerMoveDown)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, 5);
-                }
                 else if (cmd is GameplayInputCommand.PlayerMoveUp)
                 {
                     _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, -5);
+                }
+                else if (cmd is GameplayInputCommand.PlayerMoveDown)
+                {
+                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, 5);
                 }
             });
         }

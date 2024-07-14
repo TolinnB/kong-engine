@@ -12,6 +12,13 @@ namespace Kong_Engine.ECS.System
 {
     public class CollisionSystem
     {
+        private readonly AudioManager _audioManager;
+
+        public CollisionSystem(AudioManager audioManager)
+        {
+            _audioManager = audioManager;
+        }
+
         public void Update(IEnumerable<BaseEntity> entities)
         {
             var entitiesList = entities.ToList();
@@ -57,6 +64,7 @@ namespace Kong_Engine.ECS.System
                 else
                 {
                     Console.WriteLine("Player hit! Lives remaining: " + playerLife.Lives);
+                    _audioManager.PlaySound("donkeyKongHurt");
 
                     // Apply knockback
                     var playerPosition = player.GetComponent<PositionComponent>();
