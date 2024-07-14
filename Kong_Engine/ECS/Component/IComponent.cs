@@ -32,4 +32,14 @@ namespace Kong_Engine.ECS.Component
         public float RightBoundary { get; set; }
         public bool MovingRight { get; set; }
     }
+
+    public class CollisionComponent : IComponent
+    {
+        public Rectangle BoundingBox { get; set; }
+    }
+
+    public class LifeComponent : IComponent
+    {
+        public int Lives { get; set; }
+    }
 }

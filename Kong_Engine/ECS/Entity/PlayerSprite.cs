@@ -13,10 +13,38 @@ namespace Kong_Engine.Objects
 {
     public class PlayerSprite : BaseEntity
     {
+        public Vector2 Knockback { get; set; }
+
         public PlayerSprite(Texture2D texture)
         {
             AddComponent(new PositionComponent { Position = Vector2.Zero });
             AddComponent(new TextureComponent { Texture = texture });
+            AddComponent(new CollisionComponent
+            {
+                BoundingBox = new Rectangle(0, 0, texture.Width, texture.Height)
+            });
+            AddComponent(new LifeComponent { Lives = 10 });
+            Knockback = Vector2.Zero;
+        }
+
+        public void Update()
+        {
+            ApplyKnockback();
+        }
+
+        private void ApplyKnockback()
+        {
+            if (Knockback != Vector2.Zero)
+            {
+                var position = GetComponent<PositionComponent>();
+                position.Position += Knockback;
+                Knockback *= 0.9f; // Decay the knockback over time
+
+                if (Knockback.LengthSquared() < 0.01f)
+                {
+                    Knockback = Vector2.Zero;
+                }
+            }
         }
 
         public void MoveLeft()

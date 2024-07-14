@@ -16,41 +16,40 @@ namespace Kong_Engine.States
 {
     public class GameplayState : BaseGameState
     {
-        private const string Player = "donkeyKong";
-        private const string BackgroundTexture = "DKJunglejpg";
-
         private List<BaseEntity> _entities;
         private MovementSystem _movementSystem;
+        private CollisionSystem _collisionSystem;
         private BaseEntity _playerEntity;
 
         public override void LoadContent()
         {
-            AddGameObject(new SplashImage(LoadTexture(BackgroundTexture)));
+            AddGameObject(new SplashImage(LoadTexture("DKJunglejpg")));
 
-            _playerEntity = new PlayerSprite(LoadTexture(Player));
+            _playerEntity = new PlayerSprite(LoadTexture("donkeyKong"));
             _entities = new List<BaseEntity> { _playerEntity };
 
-            // Load enemy texture
-            var enemyTexture = LoadTexture("kingKRool"); // Replace with your actual enemy texture path
-
-            // Create and add enemy entity
+            var enemyTexture = LoadTexture("kingKRool");
             var enemyEntity = new EnemySprite(enemyTexture);
             _entities.Add(enemyEntity);
 
             _movementSystem = new MovementSystem();
+            _collisionSystem = new CollisionSystem();
 
-            // Wrap the entities with the adapter
             AddGameObject(new EntityGameObjectAdapter(_playerEntity));
             AddGameObject(new EntityGameObjectAdapter(enemyEntity));
         }
 
         public override void Update(GameTime gameTime)
         {
-            // Update the movement system with all entities
             _movementSystem.Update(_entities);
+            _collisionSystem.Update(_entities);
+
+            // Ensure player-specific update logic is called
+            (_playerEntity as PlayerSprite)?.Update();
 
             base.Update(gameTime);
         }
+
 
         public override void Render(SpriteBatch spriteBatch)
         {

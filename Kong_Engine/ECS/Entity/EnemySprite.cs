@@ -17,14 +17,18 @@ namespace Kong_Engine.ECS.Entity
     {
         public EnemySprite(Texture2D texture)
         {
-            AddComponent(new PositionComponent { Position = new Vector2(1000, 100) }); // Initial position
+            AddComponent(new PositionComponent { Position = new Vector2(1000, 100) });
             AddComponent(new TextureComponent { Texture = texture });
             AddComponent(new MovementComponent
             {
-                Velocity = new Vector2(2, 0), // Example velocity
+                Velocity = new Vector2(2, 0),
                 LeftBoundary = 800,
                 RightBoundary = 1200,
                 MovingRight = true
+            });
+            AddComponent(new CollisionComponent
+            {
+                BoundingBox = new Rectangle(1000, 100, texture.Width, texture.Height)
             });
         }
     }
