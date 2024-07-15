@@ -79,6 +79,12 @@
 /processorParam:TextureFormat=Color
 /build:gorillaScreen.jpg
 
+#begin jungle-hijynx.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:jungle-hijynx.mp3
+
 #begin kingKRool.png
 /importer:TextureImporter
 /processor:TextureProcessor

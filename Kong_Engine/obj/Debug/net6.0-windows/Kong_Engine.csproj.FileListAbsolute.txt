@@ -130,3 +130,7 @@ C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Cont
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\kingKRool.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.wma
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.wma
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.xnb
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.wma
+C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.xnb

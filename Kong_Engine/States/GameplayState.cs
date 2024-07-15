@@ -29,6 +29,10 @@ namespace Kong_Engine.States
 
             _audioManager = new AudioManager(Content);
             _audioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
+            _audioManager.LoadSong("jungleHijynx", "jungle-hijynx");
+
+            // Play the song when the gameplay state is loaded
+            _audioManager.PlaySong("jungleHijynx", true);
 
             _playerEntity = new PlayerSprite(LoadTexture("donkeyKong"));
             _entities = new List<BaseEntity> { _playerEntity };
