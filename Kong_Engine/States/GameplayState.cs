@@ -69,7 +69,7 @@ namespace Kong_Engine.States
         {
             base.Update(gameTime);
 
-            _background.Update(gameTime);
+            _background.UpdateBackgroundPosition(_playerSprite.Position);
         }
 
         public override void Render(SpriteBatch spriteBatch)

@@ -6,8 +6,6 @@ namespace Kong_Engine.Objects
 {
     public class TerrainBackground : BaseGameObject
     {
-        private const float SCROLLING_SPEED = 2.0f;
-
         public TerrainBackground(Texture2D texture)
         {
             _texture = texture;
@@ -37,9 +35,9 @@ namespace Kong_Engine.Objects
             }
         }
 
-        public override void Update(GameTime gameTime)
+        public void UpdateBackgroundPosition(Vector2 playerPosition)
         {
-            _position.X -= SCROLLING_SPEED;
+            _position.X = -playerPosition.X;
 
             if (_position.X <= -_texture.Width)
             {
