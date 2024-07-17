@@ -4,6 +4,9 @@ using Kong_Engine.States;
 using Kong_Engine.States.Base;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Box2DX.Collision;
+using Box2DX.Common;
+using Box2DX.Dynamics;
 
 namespace Kong_Engine
 {
@@ -18,6 +21,8 @@ namespace Kong_Engine
 
         private RenderTarget2D _renderTarget;
         private Rectangle _renderScaleRectangle;
+
+        public System.Drawing.Color BackgroundColour = System.Drawing.Color.Blue;
 
         private const int DESIGNED_RESOLUTION_WIDTH = 1280;
         private const int DESIGNED_RESOLUTION_HEIGHT = 720;
@@ -127,7 +132,7 @@ namespace Kong_Engine
         {
             GraphicsDevice.SetRenderTarget(_renderTarget);
 
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(System.Drawing.Color.CornflowerBlue);
 
             spriteBatch.Begin();
 
@@ -146,6 +151,16 @@ namespace Kong_Engine
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+        private Microsoft.Xna.Framework.Color ConvertFromHex(string s)
+        {
+            if (s.Length != 7)
+                return Microsoft.Xna.Framework.Color.Gray;
+
+            int r = Convert.ToInt32(s.Substring(1, 2), 16);
+            int g = Convert.ToInt32(s.Substring(3, 2), 16);
+            int b = Convert.ToInt32(s.Substring(5, 2), 16);
+            return new Microsoft.Xna.Framework.Color(r, g, b);
         }
     }
 }
