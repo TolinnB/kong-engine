@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</SourceFile>
+<<<<<<< HEAD
   <SourceTime>2024-07-17T10:32:22.5655322+01:00</SourceTime>
   <DestFile>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/DKJunglejpg.xnb</DestFile>
   <DestTime>2024-07-17T11:10:16.2730903+01:00</DestTime>
+=======
+  <SourceTime>2024-07-15T12:31:24.8769352+01:00</SourceTime>
+  <DestFile>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/DKJunglejpg.xnb</DestFile>
+  <DestTime>2024-07-15T12:32:17.3381208+01:00</DestTime>
+>>>>>>> 870f25425d70e75e21846a9158e933a469019b98
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

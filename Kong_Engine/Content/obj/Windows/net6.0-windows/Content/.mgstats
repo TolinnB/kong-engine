@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+<<<<<<< HEAD
 "C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/DKJunglejpg.xnb","TextureProcessor","Texture2DContent",158169,3981685,0.1678136
 "C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/donkey-kong-hurt.mp3","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/donkey-kong-hurt.xnb","SoundEffectProcessor","SoundEffectContent",12597,11719,0.1748984
 "C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/donkeyKong.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/donkeyKong.xnb","TextureProcessor","Texture2DContent",261906,696085,0.0143143
@@ -8,3 +9,14 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/kingKRool.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/kingKRool.xnb","TextureProcessor","Texture2DContent",46836,239085,0.0054676
 "C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/mainMenu.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/mainMenu.xnb","TextureProcessor","Texture2DContent",25668,3686485,0.0633093
 "C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/splashScreen.xnb","TextureProcessor","Texture2DContent",184118,3686485,0.0558157
+=======
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/DKJunglejpg.xnb","TextureProcessor","Texture2DContent",158169,3981685,0.3853072
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/donkey-kong-hurt.mp3","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/donkey-kong-hurt.xnb","SoundEffectProcessor","SoundEffectContent",12597,11719,0.7426321
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/donkeyKong.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/donkeyKong.xnb","TextureProcessor","Texture2DContent",261906,696085,0.0604893
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/endLevelSummary.xnb","TextureProcessor","Texture2DContent",130042,4469845,0.1564882
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/fallbackTexture.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/fallbackTexture.xnb","TextureProcessor","Texture2DContent",126021,1048661,0.0378218
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/gorillaScreen.xnb","TextureProcessor","Texture2DContent",13938,808885,0.0269918
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/kingKRool.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/kingKRool.xnb","TextureProcessor","Texture2DContent",46836,239085,0.0113092
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/mainMenu.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/mainMenu.xnb","TextureProcessor","Texture2DContent",25668,3686485,0.1490355
+"C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png","C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/splashScreen.xnb","TextureProcessor","Texture2DContent",184118,3686485,0.1362829
+>>>>>>> 870f25425d70e75e21846a9158e933a469019b98

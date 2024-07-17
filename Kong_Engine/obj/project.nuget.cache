@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "GUHy7MLnfjE=",
+=======
+  "dgSpecHash": "PcCr9WectFM=",
+>>>>>>> 870f25425d70e75e21846a9158e933a469019b98
   "success": true,
   "projectFilePath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
   "expectedPackageFiles": [
