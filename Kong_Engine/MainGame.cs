@@ -2,7 +2,12 @@ using Kong_Engine.Enum;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Color;
 using Microsoft.Xna.Framework.Graphics;
+using Box2DX.Collision;
+using Box2DX.Common;
+using Box2DX.Dynamics;
+
 
 namespace Kong_Engine
 {
@@ -146,5 +151,9 @@ namespace Kong_Engine
 
             base.Draw(gameTime);
         }
+        public static Microsoft.Xna.Framework.Graphics.Color XNAColorConversion(System.Drawing.Color color)
+        {
+            return new Microsoft.Xna.Framework.Graphics.Color(color.R, color.G, color.B, color.A);
+}
     }
 }
