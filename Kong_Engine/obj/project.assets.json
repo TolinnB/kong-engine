@@ -7524,12 +7524,8 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\breto\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
-=======
-    "C:\\Users\\breto\\.nuget\\packages\\": {}
->>>>>>> 870f25425d70e75e21846a9158e933a469019b98
   },
   "project": {
     "version": "1.0.0",
@@ -7540,12 +7536,12 @@
       "packagesPath": "C:\\Users\\breto\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\breto\\AppData\\Roaming\\NuGet\\NuGet.Config",
-<<<<<<< HEAD
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-=======
->>>>>>> 870f25425d70e75e21846a9158e933a469019b98
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7553,6 +7549,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
