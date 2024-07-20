@@ -2,6 +2,42 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
+      "Aether.Physics2D.Diagnostics.MG/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Aether.Physics2D.MG": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Aether.Physics2D.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Aether.Physics2D.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/netstandard2.0/Content/DiagnosticsFont.xnb": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "Aether.Physics2D.MG/2.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Aether.Physics2D.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Aether.Physics2D.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Libuv/1.9.1": {
         "type": "package",
         "dependencies": {
@@ -336,6 +372,52 @@
         "build": {
           "build/MonoGame.Content.Builder.Task.props": {},
           "build/MonoGame.Content.Builder.Task.targets": {}
+        }
+      },
+      "MonoGame.Framework.DesktopGL/3.8.1.303": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/MonoGame.Framework.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/MonoGame.Framework.dll": {}
+        },
+        "build": {
+          "build/MonoGame.Framework.DesktopGL.targets": {}
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libSDL2-2.0.so.0": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x64/native/libopenal.so.1": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libSDL2.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/osx/native/libopenal.1.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/SDL2.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/soft_oal.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/SDL2.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/soft_oal.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
         }
       },
       "MonoGame.Framework.WindowsDX/3.8.1.303": {
@@ -2489,6 +2571,38 @@
     }
   },
   "libraries": {
+    "Aether.Physics2D.Diagnostics.MG/2.1.1": {
+      "sha512": "+5HGu979DbamRbxdzHjJ/iR9zttXbobXJ0xAarHNpumiJA/euH2BcQzBZQ2JM2Q7AFVZcFk/Z2/57Mxhudm8fg==",
+      "type": "package",
+      "path": "aether.physics2d.diagnostics.mg/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "aether.physics2d.diagnostics.mg.2.1.1.nupkg.sha512",
+        "aether.physics2d.diagnostics.mg.nuspec",
+        "content/Content/DiagnosticsFont.xnb",
+        "contentFiles/any/netstandard2.0/Content/DiagnosticsFont.xnb",
+        "icon.png",
+        "lib/netstandard2.0/Aether.Physics2D.Diagnostics.dll",
+        "lib/netstandard2.0/Aether.Physics2D.Diagnostics.xml"
+      ]
+    },
+    "Aether.Physics2D.MG/2.1.1": {
+      "sha512": "6qJjI27B7gQ4BMoF+uL+cxH9GRhZKVAlI5A0vC0kwUKQ40quvMl5WAZVFH0lNK7ZCMeu4RrcJ48aq4oY9cK3XA==",
+      "type": "package",
+      "path": "aether.physics2d.mg/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "aether.physics2d.mg.2.1.1.nupkg.sha512",
+        "aether.physics2d.mg.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Aether.Physics2D.dll",
+        "lib/netstandard2.0/Aether.Physics2D.xml"
+      ]
+    },
     "Libuv/1.9.1": {
       "sha512": "uqX2Frwf9PW8MaY7PRNY6HM5BpW1D8oj1EdqzrmbEFD5nH63Yat3aEjN/tws6Tw6Fk7LwmLBvtUh32tTeTaHiA==",
       "type": "package",
@@ -2894,6 +3008,28 @@
         "build/MonoGame.Content.Builder.Task.targets",
         "monogame.content.builder.task.3.8.1.303.nupkg.sha512",
         "monogame.content.builder.task.nuspec"
+      ]
+    },
+    "MonoGame.Framework.DesktopGL/3.8.1.303": {
+      "sha512": "eGYhqn0n1olk8MNYeE9EuBmoNNECN1T18rPMaQpkzsEQ0H3nVyFPXC+uCo78v5pi5juQpJ3PSFnSkjzZJ1U58A==",
+      "type": "package",
+      "path": "monogame.framework.desktopgl/3.8.1.303",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/MonoGame.Framework.DesktopGL.targets",
+        "lib/net6.0/MonoGame.Framework.dll",
+        "monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+        "monogame.framework.desktopgl.nuspec",
+        "runtimes/linux-x64/native/libSDL2-2.0.so.0",
+        "runtimes/linux-x64/native/libopenal.so.1",
+        "runtimes/osx/native/libSDL2.dylib",
+        "runtimes/osx/native/libopenal.1.dylib",
+        "runtimes/win-x64/native/SDL2.dll",
+        "runtimes/win-x64/native/soft_oal.dll",
+        "runtimes/win-x86/native/SDL2.dll",
+        "runtimes/win-x86/native/soft_oal.dll"
       ]
     },
     "MonoGame.Framework.WindowsDX/3.8.1.303": {
@@ -7519,7 +7655,10 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "Aether.Physics2D.Diagnostics.MG >= 2.1.1",
+      "Aether.Physics2D.MG >= 2.1.1",
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
+      "MonoGame.Framework.DesktopGL >= 3.8.1.303",
       "MonoGame.Framework.WindowsDX >= 3.8.1.303"
     ]
   },
@@ -7573,7 +7712,19 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "Aether.Physics2D.Diagnostics.MG": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
+          "Aether.Physics2D.MG": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
           "MonoGame.Content.Builder.Task": {
+            "target": "Package",
+            "version": "[3.8.1.303, )"
+          },
+          "MonoGame.Framework.DesktopGL": {
             "target": "Package",
             "version": "[3.8.1.303, )"
           },
