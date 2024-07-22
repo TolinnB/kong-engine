@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/CircleSprite.png</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/donkeyKong.png</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/RectangleSprite.png</File>
+    <File>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
