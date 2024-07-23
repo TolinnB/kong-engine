@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\gameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\user\\source\\repos\\kong-engine\\kong_engine\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\user\\source\\repos\\kong-engine\\kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AudioManager.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\kong-engine\\Kong_Engine\\AudioManager.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\AudioManager.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\kong-engine\\Kong_Engine\\AudioManager.cs",
+              "RelativeToolTip": "Kong_Engine\\AudioManager.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAmwDIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T11:56:17.092Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -36,27 +53,27 @@
               "RelativeDocumentMoniker": "Kong_Engine\\States\\GameplayState.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\kong-engine\\Kong_Engine\\States\\GameplayState.cs",
               "RelativeToolTip": "Kong_Engine\\States\\GameplayState.cs",
-              "ViewState": "AQIAACgAAACAmZmZmZkrwEcAAAABAAAA",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAAAHwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-05T14:09:05.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainGame.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\MainGame.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
               "RelativeToolTip": "Kong_Engine\\MainGame.cs",
-              "ViewState": "AQIAAAsAAABAMjMzMzMbwAAAAAAAAAAA",
+              "ViewState": "AQIAAIUAAAAAAAAAAAAmwI0AAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-05T14:08:55.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BaseGameObject.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
@@ -64,8 +81,7 @@
               "RelativeToolTip": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAIA5wBcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T14:07:45.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-05T14:07:45.629Z"
             }
           ]
         }

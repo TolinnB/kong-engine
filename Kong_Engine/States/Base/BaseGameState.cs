@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Kong_Engine.Enum;
-using Kong_Engine.Objects.Base;
 using Kong_Engine.Input;
-
+using Kong_Engine.Objects.Base;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,11 +13,12 @@ namespace Kong_Engine.States.Base
 {
     public abstract class BaseGameState
     {
-        private const string FallbackTexture = "fallbackTexture";
         private ContentManager _contentManager;
         private readonly List<BaseGameObject> _gameObjects = new List<BaseGameObject>();
 
         protected KeyboardState PreviousKeyboardState { get; set; }
+        protected InputManager InputManager { get; set; }
+        protected ContentManager Content => _contentManager;
 
         public void Initialize(ContentManager contentManager)
         {
@@ -29,31 +28,22 @@ namespace Kong_Engine.States.Base
         }
 
         public abstract void LoadContent();
-        public void UnloadContent()
-        {
-            _contentManager.Unload();
-        }
-
+        public void UnloadContent() => _contentManager.Unload();
         public abstract void HandleInput();
+        protected abstract void SetInputManager();
+
         public event EventHandler<BaseGameState> OnStateSwitched;
         public event EventHandler<Events> OnEventNotification;
-        protected InputManager InputManager { get; set; }
-
-        protected abstract void SetInputManager();
 
         protected Texture2D LoadTexture(string textureName)
         {
             var texture = _contentManager.Load<Texture2D>(textureName);
-            return texture ?? _contentManager.Load<Texture2D>(FallbackTexture);
+            return texture ?? _contentManager.Load<Texture2D>("fallbackTexture");
         }
 
         protected void NotifyEvent(Events eventType, object argument = null)
         {
             OnEventNotification?.Invoke(this, eventType);
-            foreach (var gameObject in _gameObjects)
-            {
-                gameObject.OnNotify(eventType);
-            }
         }
 
         protected void SwitchState(BaseGameState gameState)
@@ -61,12 +51,17 @@ namespace Kong_Engine.States.Base
             OnStateSwitched?.Invoke(this, gameState);
         }
 
-        protected void AddGameObject(BaseGameObject gameObject)
+        protected void AddGameObject(BaseGameObject gameObject) => _gameObjects.Add(gameObject);
+
+        public virtual void Update(GameTime gameTime)
         {
-            _gameObjects.Add(gameObject);
+            foreach (var gameObject in _gameObjects)
+            {
+                gameObject.Update(gameTime);
+            }
         }
 
-        public void Render(SpriteBatch spriteBatch)
+        public virtual void Render(SpriteBatch spriteBatch)
         {
             foreach (var gameObject in _gameObjects.OrderBy(a => a.zIndex))
             {

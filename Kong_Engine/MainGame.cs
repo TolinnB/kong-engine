@@ -73,7 +73,6 @@ namespace Kong_Engine
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             SwitchGameState(new SplashState());
         }
 
@@ -119,6 +118,7 @@ namespace Kong_Engine
         protected override void Update(GameTime gameTime)
         {
             _currentGameState.HandleInput();
+            _currentGameState.Update(gameTime); // Ensure this is being called
 
             base.Update(gameTime);
         }
