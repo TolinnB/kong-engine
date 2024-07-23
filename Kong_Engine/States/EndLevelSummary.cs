@@ -1,10 +1,5 @@
 ﻿using Kong_Engine.Objects;
 using Kong_Engine.States.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 using Kong_Engine.Enum;
 
@@ -39,5 +34,4 @@ namespace Kong_Engine.States
         {
         }
     }
-
 }
