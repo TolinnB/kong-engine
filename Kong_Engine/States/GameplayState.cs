@@ -12,20 +12,26 @@ using Kong_Engine.ECS.System;
 using System.Collections.Generic;
 using Kong_Engine.ECS.Entity;
 using System.Reflection.Metadata;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Kong_Engine.States
 {
     public class GameplayState : BaseGameState
     {
+        private const string BackgroundTexture = "DKJunglejpg";
+
         private List<BaseEntity> _entities;
         private MovementSystem _movementSystem;
         private CollisionSystem _collisionSystem;
         private BaseEntity _playerEntity;
         private AudioManager _audioManager;
+        private TerrainBackground _background;
 
         public override void LoadContent()
         {
-            AddGameObject(new SplashImage(LoadTexture("DKJunglejpg")));
+            // Ensure the LoadTexture method loads textures correctly
+            var backgroundTexture = LoadTexture(BackgroundTexture);
+            _background = new TerrainBackground(backgroundTexture);
 
             _audioManager = new AudioManager(Content);
             _audioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
@@ -56,11 +62,18 @@ namespace Kong_Engine.States
             // Ensure player-specific update logic is called
             (_playerEntity as PlayerSprite)?.Update();
 
+            // Update background position based on player's position
+            _background.UpdateBackgroundPosition(_playerEntity.GetComponent<PositionComponent>().Position);
+
             base.Update(gameTime);
         }
 
         public override void Render(SpriteBatch spriteBatch)
         {
+            // Render the background
+            _background.Render(spriteBatch);
+
+            // Render entities
             foreach (var entity in _entities)
             {
                 if (entity.HasComponent<TextureComponent>())

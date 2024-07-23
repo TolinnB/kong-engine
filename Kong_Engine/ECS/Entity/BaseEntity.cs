@@ -4,12 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kong_Engine.ECS.Component;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Kong_Engine.ECS.Entity
 {
     public class BaseEntity
     {
         private readonly Dictionary<Type, IComponent> components = new Dictionary<Type, IComponent>();
+
+        protected Texture2D _texture;
+        protected Vector2 _position = Vector2.One;
+
+        public int zIndex;
+
+        public int Width { get { return _texture.Width; } }
+        public int Height { get { return _texture.Height; } }
+        public Vector2 Position
+        {
+            get { return _position; }
+            set { _position = value; }
+        }
 
         public void AddComponent<T>(T component) where T : IComponent
         {
