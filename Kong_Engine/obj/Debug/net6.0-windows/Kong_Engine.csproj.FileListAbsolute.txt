@@ -136,3 +136,7 @@ C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Cont
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.wma
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.xnb
+C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\env.png
+C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\map.tmx
+C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\TiledSharp.dll
+C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\env.xnb

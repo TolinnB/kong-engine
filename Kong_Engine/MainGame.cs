@@ -12,6 +12,7 @@ using Kong_Engine.States.Base;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TiledSharp;
 
 namespace Kong_Engine
 {
@@ -46,6 +47,9 @@ namespace Kong_Engine
         private Texture2D _mainMenuBackground;
         private Texture2D _splashScreen;
         private Texture2D _endLevelSummaryBackground;
+
+        // Tiled map variables
+        private TileMapManager _tileMapManager;
 
         public MainGame()
         {
@@ -97,6 +101,17 @@ namespace Kong_Engine
             _mainMenuBackground = Content.Load<Texture2D>("mainMenu");
             _splashScreen = Content.Load<Texture2D>("splashScreen");
             _endLevelSummaryBackground = Content.Load<Texture2D>("endLevelSummary");
+
+            // Load the tileset texture
+            var tilesetTexture = Content.Load<Texture2D>("env");
+
+            // Load the tiled map
+            var map = new TmxMap("Content/map.tmx");
+            int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
+            int tileWidth = map.Tilesets[0].TileWidth;
+            int tileHeight = map.Tilesets[0].TileHeight;
+
+            _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight);
 
             // Load additional content for gameplay here if needed
         }
@@ -159,7 +174,14 @@ namespace Kong_Engine
                     break;
 
                 case GameState.Gameplay:
-                    RenderGameplay(_spriteBatch);
+                    // Drawing tile map
+                    var transformMatrix = Matrix.CreateScale(1); // Adjust scale if needed
+                    _spriteBatch.End(); // End current Begin
+                    _tileMapManager.Draw(transformMatrix); // Draw the tile map with its own Begin and End
+                    _spriteBatch.Begin(); // Begin again for subsequent drawings
+
+                    // Add any additional drawing calls here
+
                     break;
 
                 case GameState.EndLevelSummary:

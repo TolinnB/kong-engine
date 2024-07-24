@@ -2485,6 +2485,15 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "TiledSharp/1.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/TiledSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/TiledSharp.dll": {}
+        }
       }
     }
   },
@@ -7515,32 +7524,45 @@
         "system.xml.xpath.xdocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "TiledSharp/1.0.1": {
+      "sha512": "nY88Ux4Yj4aQ1QEP54KZwQ/QMrXSplGpqOxhab6SgkRminHv0PCrwZ9XBfFj0XSgy9omVFIeFrkig9ldXPKp3g==",
+      "type": "package",
+      "path": "tiledsharp/1.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/TiledSharp.dll",
+        "tiledsharp.1.0.1.nupkg.sha512",
+        "tiledsharp.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
-      "MonoGame.Framework.WindowsDX >= 3.8.1.303"
+      "MonoGame.Framework.WindowsDX >= 3.8.1.303",
+      "TiledSharp >= 1.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sheps\\.nuget\\packages\\": {},
+    "C:\\Users\\Sheps\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+      "projectUniqueName": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
       "projectName": "Kong_Engine",
-      "projectPath": "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
-      "packagesPath": "C:\\Users\\sheps\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
+      "projectPath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+      "packagesPath": "C:\\Users\\Sheps\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\sheps\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sheps\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7580,6 +7602,10 @@
           "MonoGame.Framework.WindowsDX": {
             "target": "Package",
             "version": "[3.8.1.303, )"
+          },
+          "TiledSharp": {
+            "target": "Package",
+            "version": "[1.0.1, )"
           }
         },
         "imports": [
@@ -7593,6 +7619,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.31, 6.0.31]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.31, 6.0.31]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.31, 6.0.31]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.31, 6.0.31]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -7601,7 +7645,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
