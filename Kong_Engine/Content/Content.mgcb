@@ -109,7 +109,7 @@
 /processorParam:TextureFormat=Color
 /build:mainMenu.png
 
-#begin splashScreen.png
+#begin splashScreen2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,5 +119,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:splashScreen.png
+/build:splashScreen2.png
 

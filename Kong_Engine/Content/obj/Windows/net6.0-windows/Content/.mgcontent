@@ -4,16 +4,16 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/donkey-kong-hurt.mp3</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/donkeyKong.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/donkey-kong-hurt.mp3</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/donkeyKong.png</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
+    <File>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen2.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
