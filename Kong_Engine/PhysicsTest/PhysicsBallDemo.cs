@@ -53,7 +53,10 @@ namespace Kong_Engine.PhysicsTest
                     random.Next(radius, DESIGNED_RESOLUTION_WIDTH - radius),
                     random.Next(radius, DESIGNED_RESOLUTION_HEIGHT - radius)
                     );
-                var body = World.CreateCircle(radius, 1, position, BodyType.Dynamic);
+                var body = ballLand.CreateCircle(radius, 1, position, BodyType.Dynamic);
+                body.LinearVelocity = new Vector2(
+                    random.Next(-10, 10),
+                    random.Next(-10, 10));
                 body.SetRestitution(1); // Restitution denotes objects ricocheting off of one another
                 balls.Add(new BallSprite(radius, body));
             }
@@ -77,6 +80,7 @@ namespace Kong_Engine.PhysicsTest
 
             // TODO: Add your update logic here
             foreach (var ball in balls) ball.Update(gameTime);
+            ballLand.Step((float)gameTime.ElapsedGameTime.TotalSeconds);
 
             base.Update(gameTime);
         }
