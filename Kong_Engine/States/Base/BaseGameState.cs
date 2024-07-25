@@ -19,10 +19,12 @@ namespace Kong_Engine.States.Base
         protected KeyboardState PreviousKeyboardState { get; set; }
         protected InputManager InputManager { get; set; }
         protected ContentManager Content => _contentManager;
+        protected MainGame Game { get; private set; }
 
-        public void Initialize(ContentManager contentManager)
+        public void Initialize(ContentManager contentManager, MainGame game)
         {
             _contentManager = contentManager;
+            Game = game;
             SetInputManager();
             PreviousKeyboardState = Keyboard.GetState(); // Stops it from going through all menus in one input
         }
@@ -51,7 +53,7 @@ namespace Kong_Engine.States.Base
             OnStateSwitched?.Invoke(this, gameState);
         }
 
-        protected void AddGameObject(BaseGameObject gameObject) => _gameObjects.Add(gameObject);
+        public void AddGameObject(BaseGameObject gameObject) => _gameObjects.Add(gameObject);
 
         public virtual void Update(GameTime gameTime)
         {

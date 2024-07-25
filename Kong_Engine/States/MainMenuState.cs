@@ -1,13 +1,7 @@
-﻿using Kong_Engine.Objects;
+﻿using System;
+using Kong_Engine.Objects.Base;
 using Kong_Engine.States.Base;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -15,9 +9,11 @@ namespace Kong_Engine.States
 {
     public class MainMenuState : BaseGameState
     {
+        private Texture2D _mainMenuBackground;
+
         public override void LoadContent()
         {
-            AddGameObject(new SplashImage(LoadTexture("mainMenu")));
+            _mainMenuBackground = Content.Load<Texture2D>("mainMenu");
         }
 
         public override void HandleInput()
@@ -26,7 +22,7 @@ namespace Kong_Engine.States
 
             if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
             {
-                SwitchState(new GameplayState());
+                ((MainGame)Game).InitializeGameplay(); // Ensure this cast to MainGame
             }
 
             PreviousKeyboardState = currentKeyboardState;
@@ -35,6 +31,10 @@ namespace Kong_Engine.States
         protected override void SetInputManager()
         {
         }
-    }
 
+        public override void Render(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(_mainMenuBackground, new Vector2(0, 0), Color.White);
+        }
+    }
 }
