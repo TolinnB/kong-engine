@@ -39,9 +39,8 @@ namespace Kong_Engine
         private List<BaseEntity> _entities;
         private MovementSystem _movementSystem;
         private CollisionSystem _collisionSystem;
-        private BaseEntity _playerEntity;
+        private PlayerSprite _playerEntity;
         private AudioManager _audioManager;
-        private TerrainBackground _background;
         private KeyboardState _previousKeyboardState;
         private InputManager _inputManager;
         private Texture2D _mainMenuBackground;
@@ -113,7 +112,30 @@ namespace Kong_Engine
 
             _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight);
 
-            // Load additional content for gameplay here if needed
+            // Load player textures
+            Texture2D[] idleTextures = new Texture2D[]
+            {
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
+            };
+
+            Texture2D[] walkTextures = new Texture2D[]
+            {
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
+            };
+
+            _playerEntity = new PlayerSprite(idleTextures, walkTextures);
+            _entities = new List<BaseEntity> { _playerEntity };
+
+            _movementSystem = new MovementSystem();
+            _collisionSystem = new CollisionSystem(_audioManager);
+
+            _inputManager = new InputManager(new GameplayInputMapper());
         }
 
         protected override void Update(GameTime gameTime)
@@ -178,6 +200,10 @@ namespace Kong_Engine
                     var transformMatrix = Matrix.CreateScale(1); // Adjust scale if needed
                     _spriteBatch.End(); // End current Begin
                     _tileMapManager.Draw(transformMatrix); // Draw the tile map with its own Begin and End
+
+                    // Draw player
+                    _playerEntity.Draw(_spriteBatch, transformMatrix);
+
                     _spriteBatch.Begin(); // Begin again for subsequent drawings
 
                     // Add any additional drawing calls here
@@ -208,25 +234,17 @@ namespace Kong_Engine
                 throw new InvalidOperationException("InputManager is not initialized.");
             }
 
-            _inputManager.GetCommands(cmd =>
-            {
-                if (cmd is GameplayInputCommand.PlayerMoveLeft)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(-5, 0);
-                }
-                else if (cmd is GameplayInputCommand.PlayerMoveRight)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(5, 0);
-                }
-                else if (cmd is GameplayInputCommand.PlayerMoveUp)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, -5);
-                }
-                else if (cmd is GameplayInputCommand.PlayerMoveDown)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, 5);
-                }
-            });
+            Vector2 movement = Vector2.Zero;
+            if (currentKeyboardState.IsKeyDown(Keys.A))
+                movement.X -= 5;
+            if (currentKeyboardState.IsKeyDown(Keys.D))
+                movement.X += 5;
+            if (currentKeyboardState.IsKeyDown(Keys.W))
+                movement.Y -= 5;
+            if (currentKeyboardState.IsKeyDown(Keys.S))
+                movement.Y += 5;
+
+            _playerEntity.Move(movement);
         }
 
         private void HandleEndLevelSummaryInput(KeyboardState currentKeyboardState)
@@ -239,68 +257,46 @@ namespace Kong_Engine
 
         public void InitializeGameplay()
         {
-            var backgroundTexture = LoadTexture("DKJunglejpg");
-            _background = new TerrainBackground(backgroundTexture);
-
             _audioManager = new AudioManager(Content);
             _audioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
             _audioManager.LoadSong("jungleHijynx", "jungle-hijynx");
             _audioManager.PlaySong("jungleHijynx", true);
 
-            _playerEntity = new PlayerSprite(LoadTexture("donkeyKong"));
-            _entities = new List<BaseEntity> { _playerEntity };
+            // Ensure to update the player textures here
+            Texture2D[] idleTextures = new Texture2D[]
+            {
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
+            };
 
-            var enemyTexture = LoadTexture("kingKRool");
-            var enemyEntity = new EnemySprite(enemyTexture);
-            _entities.Add(enemyEntity);
+            Texture2D[] walkTextures = new Texture2D[]
+            {
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
+                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
+            };
+
+            _playerEntity = new PlayerSprite(idleTextures, walkTextures);
+            _entities = new List<BaseEntity> { _playerEntity };
 
             _movementSystem = new MovementSystem();
             _collisionSystem = new CollisionSystem(_audioManager);
 
-            AddGameObject(new EntityGameObjectAdapter(_playerEntity));
-            AddGameObject(new EntityGameObjectAdapter(enemyEntity));
-
             _inputManager = new InputManager(new GameplayInputMapper());
-            _previousKeyboardState = Keyboard.GetState();
         }
 
         private void UpdateGameplay(GameTime gameTime)
         {
             _movementSystem.Update(_entities);
             _collisionSystem.Update(_entities);
-            (_playerEntity as PlayerSprite)?.Update();
-            _background.UpdateBackgroundPosition(_playerEntity.GetComponent<PositionComponent>().Position);
-        }
-
-        private void RenderGameplay(SpriteBatch spriteBatch)
-        {
-            _background.Render(spriteBatch);
-            foreach (var entity in _entities)
-            {
-                if (entity.HasComponent<TextureComponent>())
-                {
-                    var textureComponent = entity.GetComponent<TextureComponent>();
-                    var positionComponent = entity.GetComponent<PositionComponent>();
-                    spriteBatch.Draw(textureComponent.Texture, positionComponent.Position, Color.White);
-                }
-            }
-        }
-
-        private Texture2D LoadTexture(string textureName)
-        {
-            var texture = Content.Load<Texture2D>(textureName);
-            return texture ?? Content.Load<Texture2D>("fallbackTexture");
-        }
-
-        private void AddGameObject(BaseGameObject gameObject)
-        {
-            // Add logic for adding game objects to the MainGame's collection
+            _playerEntity.Update(gameTime);
         }
 
         private bool IsLevelCompleted()
         {
-            // Implement your logic to determine if the level is completed
-            // This is a placeholder implementation
             return _playerEntity.GetComponent<PositionComponent>().Position.X > 1000;
         }
     }

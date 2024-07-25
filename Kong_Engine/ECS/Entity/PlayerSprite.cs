@@ -1,35 +1,58 @@
 using Kong_Engine.Objects.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Component;
 using Kong_Engine.ECS.Entity;
+using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.Objects
 {
     public class PlayerSprite : BaseEntity
     {
         public Vector2 Knockback { get; set; }
+        private Texture2D[] idleTextures;
+        private Texture2D[] walkTextures;
+        private float moveSpeed = 1.5f;
+        private Rectangle playerBounds; // For collisions
+        private bool isIdle = false;
+        private int currentFrame;
+        private double frameTime;
+        private double timeSinceLastFrame;
 
-        public PlayerSprite(Texture2D texture)
+        public PlayerSprite(Texture2D[] idleTextures, Texture2D[] walkTextures)
         {
+            this.idleTextures = idleTextures;
+            this.walkTextures = walkTextures;
+
             AddComponent(new PositionComponent { Position = Vector2.Zero });
-            AddComponent(new TextureComponent { Texture = texture });
             AddComponent(new CollisionComponent
             {
-                BoundingBox = new Rectangle(0, 0, texture.Width, texture.Height)
+                BoundingBox = new Rectangle(0, 0, idleTextures[0].Width, idleTextures[0].Height)
             });
             AddComponent(new LifeComponent { Lives = 10 });
             Knockback = Vector2.Zero;
+
+            playerBounds = new Rectangle((int)Position.X - 8, (int)Position.Y - 8, idleTextures[0].Width, idleTextures[0].Height);
+
+            currentFrame = 0;
+            frameTime = 0.1; // Change frame every 0.1 seconds
+            timeSinceLastFrame = 0;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             ApplyKnockback();
+            HandleInput(gameTime);
+            timeSinceLastFrame += gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (timeSinceLastFrame >= frameTime)
+            {
+                currentFrame = (currentFrame + 1) % (isIdle ? idleTextures.Length : walkTextures.Length);
+                timeSinceLastFrame = 0;
+            }
+
+            playerBounds.X = (int)Position.X - 8;
+            playerBounds.Y = (int)Position.Y - 8;
         }
 
         private void ApplyKnockback()
@@ -47,28 +70,51 @@ namespace Kong_Engine.Objects
             }
         }
 
-        public void MoveLeft()
+        private void HandleInput(GameTime gameTime)
         {
+            var keyboardState = Keyboard.GetState();
+            isIdle = true;
+
+            Vector2 movement = Vector2.Zero;
+            if (keyboardState.IsKeyDown(Keys.A))
+            {
+                movement.X -= moveSpeed;
+                isIdle = false;
+            }
+            if (keyboardState.IsKeyDown(Keys.D))
+            {
+                movement.X += moveSpeed;
+                isIdle = false;
+            }
+            if (keyboardState.IsKeyDown(Keys.W))
+            {
+                movement.Y -= moveSpeed;
+                isIdle = false;
+            }
+            if (keyboardState.IsKeyDown(Keys.S))
+            {
+                movement.Y += moveSpeed;
+                isIdle = false;
+            }
+
             var position = GetComponent<PositionComponent>();
-            position.Position = new Vector2(position.Position.X - 5, position.Position.Y);
+            position.Position += movement;
         }
 
-        public void MoveRight()
+        public void Move(Vector2 direction)
         {
             var position = GetComponent<PositionComponent>();
-            position.Position = new Vector2(position.Position.X + 5, position.Position.Y);
+            position.Position += direction;
         }
 
-        public void MoveDown()
+        public void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
-            var position = GetComponent<PositionComponent>();
-            position.Position = new Vector2(position.Position.X, position.Position.Y + 5);
-        }
+            spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: matrix);
 
-        public void MoveUp()
-        {
-            var position = GetComponent<PositionComponent>();
-            position.Position = new Vector2(position.Position.X, position.Position.Y - 5);
+            Texture2D currentTexture = isIdle ? idleTextures[currentFrame] : walkTextures[currentFrame];
+            spriteBatch.Draw(currentTexture, Position, Color.White);
+
+            spriteBatch.End();
         }
     }
 }
