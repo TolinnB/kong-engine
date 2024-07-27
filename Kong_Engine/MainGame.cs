@@ -40,6 +40,7 @@ namespace Kong_Engine
         private MovementSystem _movementSystem;
         private CollisionSystem _collisionSystem;
         private PlayerSprite _playerEntity;
+        private EnemySprite _enemyEntity;
         private AudioManager _audioManager;
         private KeyboardState _previousKeyboardState;
         private InputManager _inputManager;
@@ -113,13 +114,17 @@ namespace Kong_Engine
             _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight);
 
             // Load player sprite sheet
-            var spriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
+            var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
+
+            // Load enemy sprite sheet
+            var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik");
 
             // Ensure the player entity is not created multiple times
             if (_playerEntity == null)
             {
-                _playerEntity = new PlayerSprite(spriteSheet);
-                _entities = new List<BaseEntity> { _playerEntity };
+                _playerEntity = new PlayerSprite(playerSpriteSheet);
+                _enemyEntity = new EnemySprite(enemySpriteSheet);
+                _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
             }
 
             _movementSystem = new MovementSystem();
@@ -193,6 +198,7 @@ namespace Kong_Engine
 
                     // Draw player
                     _playerEntity.Draw(_spriteBatch, transformMatrix);
+                    _enemyEntity.Draw(_spriteBatch, transformMatrix);
 
                     _spriteBatch.Begin(); // Begin again for subsequent drawings
 
@@ -250,9 +256,11 @@ namespace Kong_Engine
             if (_playerEntity == null)
             {
                 // Load player sprite sheet
-                var spriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
-                _playerEntity = new PlayerSprite(spriteSheet);
-                _entities = new List<BaseEntity> { _playerEntity };
+                var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
+                _playerEntity = new PlayerSprite(playerSpriteSheet);
+                var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik-7");
+                _enemyEntity = new EnemySprite(enemySpriteSheet);
+                _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
             }
 
             _audioManager = new AudioManager(Content);
@@ -271,6 +279,7 @@ namespace Kong_Engine
             _movementSystem.Update(_entities);
             _collisionSystem.Update(_entities);
             _playerEntity.Update(gameTime);
+            _enemyEntity.Update(gameTime);
         }
 
         private bool IsLevelCompleted()
