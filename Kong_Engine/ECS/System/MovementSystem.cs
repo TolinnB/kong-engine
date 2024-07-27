@@ -49,4 +49,3 @@ namespace Kong_Engine.ECS.System
         }
     }
 }
-
