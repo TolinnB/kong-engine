@@ -76,22 +76,22 @@ namespace Kong_Engine.Objects
             isIdle = true;
 
             Vector2 movement = Vector2.Zero;
-            if (keyboardState.IsKeyDown(Keys.A))
+            if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
                 movement.X -= moveSpeed;
                 isIdle = false;
             }
-            if (keyboardState.IsKeyDown(Keys.D))
+            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
                 movement.X += moveSpeed;
                 isIdle = false;
             }
-            if (keyboardState.IsKeyDown(Keys.W))
+            if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
             {
                 movement.Y -= moveSpeed;
                 isIdle = false;
             }
-            if (keyboardState.IsKeyDown(Keys.S))
+            if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
             {
                 movement.Y += moveSpeed;
                 isIdle = false;
