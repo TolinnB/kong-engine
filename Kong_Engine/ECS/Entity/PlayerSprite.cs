@@ -19,6 +19,7 @@ namespace Kong_Engine.Objects
         private bool isMoving = false;
         private int currentFrame;
         private double frameTime;
+        private double idleFrameTime; // Frame time for idle animation
         private double timeSinceLastFrame;
         private int frameWidth = 30; // Width of each frame
         private int frameHeight = 40; // Height of each frame
@@ -30,7 +31,7 @@ namespace Kong_Engine.Objects
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
-                new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
+                new Rectangle(5, 0, frameWidth, frameHeight),   // Idle Frame 1
                 new Rectangle(32, 0, frameWidth, frameHeight),  // Idle Frame 2
                 new Rectangle(64, 0, frameWidth, frameHeight),  // Idle Frame 3
                 new Rectangle(96, 0, frameWidth, frameHeight)   // Idle Frame 4
@@ -57,7 +58,8 @@ namespace Kong_Engine.Objects
             playerBounds = new Rectangle((int)Position.X - 8, (int)Position.Y - 8, frameWidth, frameHeight);
 
             currentFrame = 0;
-            frameTime = 0.1; // Change frame every 0.1 seconds
+            frameTime = 0.1; // Change frame every 0.1 seconds for walking animation
+            idleFrameTime = 0.5; // Change frame every 0.5 seconds for idle animation
             timeSinceLastFrame = 0;
         }
 
@@ -67,7 +69,7 @@ namespace Kong_Engine.Objects
             HandleInput(gameTime);
             timeSinceLastFrame += gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (timeSinceLastFrame >= frameTime)
+            if (timeSinceLastFrame >= (isMoving ? frameTime : idleFrameTime))
             {
                 if (isMoving)
                 {
