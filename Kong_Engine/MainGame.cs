@@ -115,22 +115,26 @@ namespace Kong_Engine
             // Load player textures
             Texture2D[] idleTextures = new Texture2D[]
             {
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
             };
 
             Texture2D[] walkTextures = new Texture2D[]
             {
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
             };
 
-            _playerEntity = new PlayerSprite(idleTextures, walkTextures);
-            _entities = new List<BaseEntity> { _playerEntity };
+            // Ensure the player entity is not created multiple times
+            if (_playerEntity == null)
+            {
+                _playerEntity = new PlayerSprite(idleTextures, walkTextures);
+                _entities = new List<BaseEntity> { _playerEntity };
+            }
 
             _movementSystem = new MovementSystem();
             _collisionSystem = new CollisionSystem(_audioManager);
@@ -177,6 +181,7 @@ namespace Kong_Engine
 
             base.Update(gameTime);
         }
+
 
         protected override void Draw(GameTime gameTime)
         {
@@ -227,6 +232,7 @@ namespace Kong_Engine
             base.Draw(gameTime);
         }
 
+
         private void HandleGameplayInput(KeyboardState currentKeyboardState)
         {
             if (_inputManager == null)
@@ -265,28 +271,33 @@ namespace Kong_Engine
             // Ensure to update the player textures here
             Texture2D[] idleTextures = new Texture2D[]
             {
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
             };
 
             Texture2D[] walkTextures = new Texture2D[]
             {
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
-                Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
+        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
             };
 
-            _playerEntity = new PlayerSprite(idleTextures, walkTextures);
-            _entities = new List<BaseEntity> { _playerEntity };
+            // Ensure the player entity is not re-created
+            if (_playerEntity == null)
+            {
+                _playerEntity = new PlayerSprite(idleTextures, walkTextures);
+                _entities = new List<BaseEntity> { _playerEntity };
+            }
 
             _movementSystem = new MovementSystem();
             _collisionSystem = new CollisionSystem(_audioManager);
 
             _inputManager = new InputManager(new GameplayInputMapper());
         }
+
 
         private void UpdateGameplay(GameTime gameTime)
         {

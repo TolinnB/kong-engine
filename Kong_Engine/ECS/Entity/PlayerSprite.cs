@@ -1,8 +1,8 @@
 using Kong_Engine.Objects.Base;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Kong_Engine.ECS.Component;
 using Kong_Engine.ECS.Entity;
+using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.Objects
@@ -14,7 +14,7 @@ namespace Kong_Engine.Objects
         private Texture2D[] walkTextures;
         private float moveSpeed = 1.5f;
         private Rectangle playerBounds; // For collisions
-        private bool isIdle = false;
+        private bool isIdle = true;
         private int currentFrame;
         private double frameTime;
         private double timeSinceLastFrame;
@@ -24,7 +24,7 @@ namespace Kong_Engine.Objects
             this.idleTextures = idleTextures;
             this.walkTextures = walkTextures;
 
-            AddComponent(new PositionComponent { Position = Vector2.Zero });
+            AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
             AddComponent(new CollisionComponent
             {
                 BoundingBox = new Rectangle(0, 0, idleTextures[0].Width, idleTextures[0].Height)
@@ -111,8 +111,9 @@ namespace Kong_Engine.Objects
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: matrix);
 
-            Texture2D currentTexture = isIdle ? idleTextures[currentFrame] : walkTextures[currentFrame];
-            spriteBatch.Draw(currentTexture, Position, Color.White);
+            Texture2D currentTexture = isIdle ? idleTextures[0] : walkTextures[currentFrame];
+            var position = GetComponent<PositionComponent>().Position;
+            spriteBatch.Draw(currentTexture, position, Color.White);
 
             spriteBatch.End();
         }
