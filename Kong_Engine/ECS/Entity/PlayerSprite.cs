@@ -17,6 +17,7 @@ namespace Kong_Engine.Objects
         private Rectangle playerBounds; // For collisions
         private bool isIdle = true;
         private bool isMoving = false;
+        private bool isFacingRight = true; // Flag to check direction
         private int currentFrame;
         private double frameTime;
         private double idleFrameTime; // Frame time for idle animation
@@ -31,7 +32,7 @@ namespace Kong_Engine.Objects
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
-                new Rectangle(5, 0, frameWidth, frameHeight),   // Idle Frame 1
+                new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
                 new Rectangle(32, 0, frameWidth, frameHeight),  // Idle Frame 2
                 new Rectangle(64, 0, frameWidth, frameHeight),  // Idle Frame 3
                 new Rectangle(96, 0, frameWidth, frameHeight)   // Idle Frame 4
@@ -114,12 +115,14 @@ namespace Kong_Engine.Objects
                 movement.X -= moveSpeed;
                 isIdle = false;
                 isMoving = true;
+                isFacingRight = false; // Update direction flag
             }
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
                 movement.X += moveSpeed;
                 isIdle = false;
                 isMoving = true;
+                isFacingRight = true; // Update direction flag
             }
             if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
             {
@@ -153,7 +156,11 @@ namespace Kong_Engine.Objects
 
             Rectangle currentFrameRect = isMoving ? walkFrames[currentFrame % walkFrames.Length] : idleFrames[currentFrame % idleFrames.Length];
             var position = GetComponent<PositionComponent>().Position;
-            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White);
+
+            // Flip the sprite if facing left
+            SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, 1f, spriteEffects, 0f);
 
             spriteBatch.End();
         }
