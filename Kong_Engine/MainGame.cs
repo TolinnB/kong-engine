@@ -112,27 +112,13 @@ namespace Kong_Engine
 
             _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight);
 
-            // Load player textures
-            Texture2D[] idleTextures = new Texture2D[]
-            {
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
-            };
-
-            Texture2D[] walkTextures = new Texture2D[]
-            {
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
-            };
+            // Load player sprite sheet
+            var spriteSheet = Content.Load<Texture2D>("mario"); // Assuming the sprite sheet is named 'mario.png'
 
             // Ensure the player entity is not created multiple times
             if (_playerEntity == null)
             {
-                _playerEntity = new PlayerSprite(idleTextures, walkTextures);
+                _playerEntity = new PlayerSprite(spriteSheet);
                 _entities = new List<BaseEntity> { _playerEntity };
             }
 
@@ -181,7 +167,6 @@ namespace Kong_Engine
 
             base.Update(gameTime);
         }
-
 
         protected override void Draw(GameTime gameTime)
         {
@@ -232,7 +217,6 @@ namespace Kong_Engine
             base.Draw(gameTime);
         }
 
-
         private void HandleGameplayInput(KeyboardState currentKeyboardState)
         {
             if (_inputManager == null)
@@ -263,41 +247,24 @@ namespace Kong_Engine
 
         public void InitializeGameplay()
         {
+            if (_playerEntity == null)
+            {
+                // Load player sprite sheet
+                var spriteSheet = Content.Load<Texture2D>("mario"); // Assuming the sprite sheet is named 'mario.png'
+                _playerEntity = new PlayerSprite(spriteSheet);
+                _entities = new List<BaseEntity> { _playerEntity };
+            }
+
             _audioManager = new AudioManager(Content);
             _audioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
             _audioManager.LoadSong("jungleHijynx", "jungle-hijynx");
             _audioManager.PlaySong("jungleHijynx", true);
-
-            // Ensure to update the player textures here
-            Texture2D[] idleTextures = new Texture2D[]
-            {
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_down"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_left"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_right"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Idle/Char_idle_up")
-            };
-
-            Texture2D[] walkTextures = new Texture2D[]
-            {
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_down"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_left"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_right"),
-        Content.Load<Texture2D>("Tiny Adventure Pack/Character/Char_one/Walk/Char_walk_up")
-            };
-
-            // Ensure the player entity is not re-created
-            if (_playerEntity == null)
-            {
-                _playerEntity = new PlayerSprite(idleTextures, walkTextures);
-                _entities = new List<BaseEntity> { _playerEntity };
-            }
 
             _movementSystem = new MovementSystem();
             _collisionSystem = new CollisionSystem(_audioManager);
 
             _inputManager = new InputManager(new GameplayInputMapper());
         }
-
 
         private void UpdateGameplay(GameTime gameTime)
         {

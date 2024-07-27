@@ -10,29 +10,48 @@ namespace Kong_Engine.Objects
     public class PlayerSprite : BaseEntity
     {
         public Vector2 Knockback { get; set; }
-        private Texture2D[] idleTextures;
-        private Texture2D[] walkTextures;
+        private Texture2D spriteSheet;
+        private Rectangle[] idleFrames;
+        private Rectangle[] walkFrames;
         private float moveSpeed = 1.5f;
         private Rectangle playerBounds; // For collisions
         private bool isIdle = true;
         private int currentFrame;
         private double frameTime;
         private double timeSinceLastFrame;
+        private int frameWidth = 16; // Width of each frame
+        private int frameHeight = 32; // Height of each frame
 
-        public PlayerSprite(Texture2D[] idleTextures, Texture2D[] walkTextures)
+        public PlayerSprite(Texture2D spriteSheet)
         {
-            this.idleTextures = idleTextures;
-            this.walkTextures = walkTextures;
+            this.spriteSheet = spriteSheet;
+
+            // Define the source rectangles for each frame
+            idleFrames = new Rectangle[]
+            {
+                new Rectangle(0, 0, frameWidth, frameHeight),
+                new Rectangle(frameWidth, 0, frameWidth, frameHeight),
+                new Rectangle(2 * frameWidth, 0, frameWidth, frameHeight),
+                new Rectangle(3 * frameWidth, 0, frameWidth, frameHeight)
+            };
+
+            walkFrames = new Rectangle[]
+            {
+                new Rectangle(0, frameHeight, frameWidth, frameHeight),
+                new Rectangle(frameWidth, frameHeight, frameWidth, frameHeight),
+                new Rectangle(2 * frameWidth, frameHeight, frameWidth, frameHeight),
+                new Rectangle(3 * frameWidth, frameHeight, frameWidth, frameHeight)
+            };
 
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
             AddComponent(new CollisionComponent
             {
-                BoundingBox = new Rectangle(0, 0, idleTextures[0].Width, idleTextures[0].Height)
+                BoundingBox = new Rectangle(0, 0, frameWidth, frameHeight)
             });
             AddComponent(new LifeComponent { Lives = 10 });
             Knockback = Vector2.Zero;
 
-            playerBounds = new Rectangle((int)Position.X - 8, (int)Position.Y - 8, idleTextures[0].Width, idleTextures[0].Height);
+            playerBounds = new Rectangle((int)Position.X - 8, (int)Position.Y - 8, frameWidth, frameHeight);
 
             currentFrame = 0;
             frameTime = 0.1; // Change frame every 0.1 seconds
@@ -47,12 +66,13 @@ namespace Kong_Engine.Objects
 
             if (timeSinceLastFrame >= frameTime)
             {
-                currentFrame = (currentFrame + 1) % (isIdle ? idleTextures.Length : walkTextures.Length);
+                currentFrame = (currentFrame + 1) % (isIdle ? idleFrames.Length : walkFrames.Length);
                 timeSinceLastFrame = 0;
             }
 
-            playerBounds.X = (int)Position.X - 8;
-            playerBounds.Y = (int)Position.Y - 8;
+            var position = GetComponent<PositionComponent>().Position;
+            playerBounds.X = (int)position.X - 8;
+            playerBounds.Y = (int)position.Y - 8;
         }
 
         private void ApplyKnockback()
@@ -111,9 +131,9 @@ namespace Kong_Engine.Objects
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: matrix);
 
-            Texture2D currentTexture = isIdle ? idleTextures[0] : walkTextures[currentFrame];
+            Rectangle currentFrameRect = isIdle ? idleFrames[currentFrame] : walkFrames[currentFrame];
             var position = GetComponent<PositionComponent>().Position;
-            spriteBatch.Draw(currentTexture, position, Color.White);
+            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White);
 
             spriteBatch.End();
         }
