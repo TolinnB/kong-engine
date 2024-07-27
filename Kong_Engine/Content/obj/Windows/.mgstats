@@ -11,4 +11,5 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/mainMenu.png","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/mainMenu.xnb","TextureProcessor","Texture2DContent",25668,3686485,0.1244024
 "C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/map.tmx","C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\Content\bin\Windows\map.tmx","CopyItem","File",2446,2446,0.0009915
 "C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/mario.png","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/mario.xnb","TextureProcessor","Texture2DContent",2206,161109,0.0060343
+"C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/sonic.png","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/sonic.xnb","TextureProcessor","Texture2DContent",15562,201461,0.1133923
 "C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png","C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/splashScreen.xnb","TextureProcessor","Texture2DContent",184118,3686485,0.1291882

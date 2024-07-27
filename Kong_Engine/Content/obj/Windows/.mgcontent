@@ -15,9 +15,11 @@
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/kingKRool.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/mario.png</File>
+    <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/sonic.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

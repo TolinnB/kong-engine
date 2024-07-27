@@ -11,16 +11,17 @@ namespace Kong_Engine.Objects
     {
         public Vector2 Knockback { get; set; }
         private Texture2D spriteSheet;
-        private Rectangle[] idleFrames;
         private Rectangle[] walkFrames;
+        private Rectangle[] idleFrames;
         private float moveSpeed = 1.5f;
         private Rectangle playerBounds; // For collisions
         private bool isIdle = true;
+        private bool isMoving = false;
         private int currentFrame;
         private double frameTime;
         private double timeSinceLastFrame;
-        private int frameWidth = 16; // Width of each frame
-        private int frameHeight = 32; // Height of each frame
+        private int frameWidth = 30; // Width of each frame
+        private int frameHeight = 40; // Height of each frame
 
         public PlayerSprite(Texture2D spriteSheet)
         {
@@ -29,18 +30,20 @@ namespace Kong_Engine.Objects
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
-                new Rectangle(0, 0, frameWidth, frameHeight),
-                new Rectangle(frameWidth, 0, frameWidth, frameHeight),
-                new Rectangle(2 * frameWidth, 0, frameWidth, frameHeight),
-                new Rectangle(3 * frameWidth, 0, frameWidth, frameHeight)
+                new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
+                new Rectangle(32, 0, frameWidth, frameHeight),  // Idle Frame 2
+                new Rectangle(64, 0, frameWidth, frameHeight),  // Idle Frame 3
+                new Rectangle(96, 0, frameWidth, frameHeight)   // Idle Frame 4
             };
 
             walkFrames = new Rectangle[]
             {
-                new Rectangle(0, frameHeight, frameWidth, frameHeight),
-                new Rectangle(frameWidth, frameHeight, frameWidth, frameHeight),
-                new Rectangle(2 * frameWidth, frameHeight, frameWidth, frameHeight),
-                new Rectangle(3 * frameWidth, frameHeight, frameWidth, frameHeight)
+                new Rectangle(5, 40, frameWidth, frameHeight),   // Walk Frame 1
+                new Rectangle(38, 40, frameWidth, frameHeight),  // Walk Frame 2
+                new Rectangle(74, 40, frameWidth, frameHeight),  // Walk Frame 3
+                new Rectangle(109, 40, frameWidth, frameHeight),  // Walk Frame 4
+                new Rectangle(139, 40, frameWidth, frameHeight), // Walk Frame 5
+                new Rectangle(175, 40, frameWidth, frameHeight)  // Walk Frame 6
             };
 
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
@@ -66,7 +69,14 @@ namespace Kong_Engine.Objects
 
             if (timeSinceLastFrame >= frameTime)
             {
-                currentFrame = (currentFrame + 1) % (isIdle ? idleFrames.Length : walkFrames.Length);
+                if (isMoving)
+                {
+                    currentFrame = (currentFrame + 1) % walkFrames.Length;
+                }
+                else
+                {
+                    currentFrame = (currentFrame + 1) % idleFrames.Length; // Cycle through idle frames
+                }
                 timeSinceLastFrame = 0;
             }
 
@@ -77,7 +87,7 @@ namespace Kong_Engine.Objects
 
         private void ApplyKnockback()
         {
-            if (Knockback != Vector2.Zero)
+            if (Knockback != Vector2.Zero && isMoving)
             {
                 var position = GetComponent<PositionComponent>();
                 position.Position += Knockback;
@@ -94,31 +104,39 @@ namespace Kong_Engine.Objects
         {
             var keyboardState = Keyboard.GetState();
             isIdle = true;
+            isMoving = false;
 
             Vector2 movement = Vector2.Zero;
             if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
                 movement.X -= moveSpeed;
                 isIdle = false;
+                isMoving = true;
             }
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
                 movement.X += moveSpeed;
                 isIdle = false;
+                isMoving = true;
             }
             if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
             {
                 movement.Y -= moveSpeed;
                 isIdle = false;
+                isMoving = true;
             }
             if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
             {
                 movement.Y += moveSpeed;
                 isIdle = false;
+                isMoving = true;
             }
 
-            var position = GetComponent<PositionComponent>();
-            position.Position += movement;
+            if (isMoving)
+            {
+                var position = GetComponent<PositionComponent>();
+                position.Position += movement;
+            }
         }
 
         public void Move(Vector2 direction)
@@ -131,7 +149,7 @@ namespace Kong_Engine.Objects
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: matrix);
 
-            Rectangle currentFrameRect = isIdle ? idleFrames[currentFrame] : walkFrames[currentFrame];
+            Rectangle currentFrameRect = isMoving ? walkFrames[currentFrame % walkFrames.Length] : idleFrames[currentFrame % idleFrames.Length];
             var position = GetComponent<PositionComponent>().Position;
             spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White);
 

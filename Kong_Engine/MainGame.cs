@@ -113,7 +113,7 @@ namespace Kong_Engine
             _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight);
 
             // Load player sprite sheet
-            var spriteSheet = Content.Load<Texture2D>("mario"); // Assuming the sprite sheet is named 'mario.png'
+            var spriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
 
             // Ensure the player entity is not created multiple times
             if (_playerEntity == null)
@@ -250,7 +250,7 @@ namespace Kong_Engine
             if (_playerEntity == null)
             {
                 // Load player sprite sheet
-                var spriteSheet = Content.Load<Texture2D>("mario"); // Assuming the sprite sheet is named 'mario.png'
+                var spriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
                 _playerEntity = new PlayerSprite(spriteSheet);
                 _entities = new List<BaseEntity> { _playerEntity };
             }
