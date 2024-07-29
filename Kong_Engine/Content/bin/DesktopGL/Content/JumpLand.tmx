@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="20" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="11">
+ <tileset firstgid="1" source="SimpleTileset2_Kong_Engine.tsx"/>
+ <imagelayer id="6" name="Image Layer 3" repeatx="1">
+  <image source="PlatformSimpleTileset16x16/Backgrounds/Background3.png" width="128" height="128"/>
+ </imagelayer>
+ <imagelayer id="4" name="Image Layer 1" repeatx="1">
+  <image source="PlatformSimpleTileset16x16/Backgrounds/Background1.png" width="128" height="128"/>
+ </imagelayer>
+ <imagelayer id="5" name="Image Layer 2" repeatx="1">
+  <image source="PlatformSimpleTileset16x16/Backgrounds/Background2.png" width="128" height="128"/>
+ </imagelayer>
+ <layer id="1" name="Tile Layer 1" width="20" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,85,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,49,50,51,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,82,83,0,0,0,
+0,1,2,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,17,18,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,17,18,19,0,60,0,0,0,0,0,0,0,0,69,87,87,70,0,0,
+49,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,51,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67
+</data>
+ </layer>
+ <layer id="2" name="Tile Layer 2" width="20" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,41,42,43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,57,58,59,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,73,74,75,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,89,90,91,0,0,0,0,0,0,0,41,42,43,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,57,58,59,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,52,0,73,74,75,0,76,0,0,0,0,
+0,0,0,0,0,0,0,52,0,68,0,89,90,91,0,0,0,0,0,0,
+0,0,0,0,0,0,0,68,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="Object Layer 1">
+  <object id="2" x="0" y="128" width="320" height="32"/>
+  <object id="3" x="112" y="112" width="16" height="16"/>
+  <object id="4" x="144" y="96" width="16" height="32"/>
+  <object id="5" x="160" y="32" width="16" height="16"/>
+  <object id="6" x="224" y="48" width="48" height="32"/>
+  <object id="7" x="16" y="80" width="48" height="16"/>
+  <object id="8" x="240" y="112" width="32" height="16"/>
+  <object id="9" x="224" y="128">
+   <polygon points="0,0 16,-16 16,0"/>
+  </object>
+  <object id="10" x="272" y="112">
+   <polygon points="0,0 0,16 16,16"/>
+  </object>
+ </objectgroup>
+</map>
