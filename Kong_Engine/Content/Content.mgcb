@@ -127,6 +127,13 @@
 /processorParam:TextureFormat=Color
 /build:fallbackTexture.png
 
+#begin GameOverFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:GameOverFont.spritefont
+
 #begin gorillaScreen.jpg
 /importer:TextureImporter
 /processor:TextureProcessor

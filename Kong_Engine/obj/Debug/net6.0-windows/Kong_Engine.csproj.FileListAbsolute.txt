@@ -152,3 +152,4 @@ C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\SimpleTileset2.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\SimpleTileset2_Kong_Engine.tsx
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\splashScreen2.xnb
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\GameOverFont.xnb
