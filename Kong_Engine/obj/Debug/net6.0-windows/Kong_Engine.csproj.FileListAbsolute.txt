@@ -145,3 +145,9 @@ C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mario.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\sonic.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\dr-robotnik.xnb
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Background1.xnb
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Background2.xnb
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Background3.xnb
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand.tmx
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\SimpleTileset2.xnb
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\SimpleTileset2_Kong_Engine.tsx

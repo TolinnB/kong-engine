@@ -103,10 +103,10 @@ namespace Kong_Engine
             _endLevelSummaryBackground = Content.Load<Texture2D>("endLevelSummary");
 
             // Load the tileset texture
-            var tilesetTexture = Content.Load<Texture2D>("env");
+            var tilesetTexture = Content.Load<Texture2D>("SimpleTileset2");
 
             // Load the tiled map
-            var map = new TmxMap("Content/map.tmx");
+            var map = new TmxMap("Content/JumpLand.tmx");
             int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
