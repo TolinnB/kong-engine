@@ -21,7 +21,8 @@ namespace Kong_Engine
         SplashScreen,
         MainMenu,
         Gameplay,
-        EndLevelSummary
+        EndLevelSummary,
+        GameOver
     }
 
     public class MainGame : Game
@@ -47,6 +48,7 @@ namespace Kong_Engine
         private Texture2D _mainMenuBackground;
         private Texture2D _splashScreen;
         private Texture2D _endLevelSummaryBackground;
+        private SpriteFont _gameOverFont;
 
         // Tiled map variables
         private TileMapManager _tileMapManager;
@@ -101,6 +103,7 @@ namespace Kong_Engine
             _mainMenuBackground = Content.Load<Texture2D>("mainMenu");
             _splashScreen = Content.Load<Texture2D>("splashScreen2");
             _endLevelSummaryBackground = Content.Load<Texture2D>("endLevelSummary");
+            _gameOverFont = Content.Load<SpriteFont>("GameOverFont");
 
             // Load the tileset texture
             var tilesetTexture = Content.Load<Texture2D>("SimpleTileset2");
@@ -129,7 +132,8 @@ namespace Kong_Engine
             }
 
             _movementSystem = new MovementSystem();
-            _collisionSystem = new CollisionSystem(_audioManager);
+            _audioManager = new AudioManager(Content); // Initialize _audioManager
+            _collisionSystem = new CollisionSystem(_audioManager, this); // Pass the MainGame instance
 
             _inputManager = new InputManager(new GameplayInputMapper());
         }
@@ -167,6 +171,13 @@ namespace Kong_Engine
                 case GameState.EndLevelSummary:
                     HandleEndLevelSummaryInput(currentKeyboardState);
                     break;
+
+                case GameState.GameOver:
+                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
+                    {
+                        Exit(); // Exit the game or reset the game
+                    }
+                    break;
             }
 
             _previousKeyboardState = currentKeyboardState;
@@ -192,6 +203,8 @@ namespace Kong_Engine
                     break;
 
                 case GameState.Gameplay:
+                    // Existing drawing code for gameplay...
+
                     // Drawing tile map
                     var transformMatrix = Matrix.CreateScale(1); // No additional scaling here
                     _spriteBatch.End(); // End current Begin
@@ -209,6 +222,13 @@ namespace Kong_Engine
 
                 case GameState.EndLevelSummary:
                     _spriteBatch.Draw(_endLevelSummaryBackground, new Vector2(0, 0), Color.White);
+                    break;
+
+                case GameState.GameOver:
+                    var gameOverText = "Game Over";
+                    var textSize = _gameOverFont.MeasureString(gameOverText);
+                    var position = new Vector2((DesignedResolutionWidth - textSize.X) / 2, (DesignedResolutionHeight - textSize.Y) / 2);
+                    _spriteBatch.DrawString(_gameOverFont, gameOverText, position, Color.Red);
                     break;
             }
 
@@ -270,7 +290,7 @@ namespace Kong_Engine
             _audioManager.PlaySong("jungleHijynx", true);
 
             _movementSystem = new MovementSystem();
-            _collisionSystem = new CollisionSystem(_audioManager);
+            _collisionSystem = new CollisionSystem(_audioManager, this);
 
             _inputManager = new InputManager(new GameplayInputMapper());
         }
@@ -286,6 +306,28 @@ namespace Kong_Engine
         private bool IsLevelCompleted()
         {
             return _playerEntity.GetComponent<PositionComponent>().Position.X > 1000;
+        }
+
+        public void SwitchState(BaseGameState newState)
+        {
+            newState.Initialize(Content, this);
+            newState.OnStateSwitched += OnStateSwitchedHandler;
+            newState.OnEventNotification += OnEventNotificationHandler;
+            newState.LoadContent();
+            _currentGameState = GameState.GameOver;
+        }
+
+        private void OnStateSwitchedHandler(object sender, BaseGameState newState)
+        {
+            SwitchState(newState);
+        }
+
+        private void OnEventNotificationHandler(object sender, Events e)
+        {
+            if (e == Events.GAME_QUIT)
+            {
+                Exit();
+            }
         }
     }
 }

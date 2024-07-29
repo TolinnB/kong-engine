@@ -68,7 +68,7 @@ namespace Kong_Engine.Objects
             {
                 BoundingBox = new Rectangle(0, 0, frameWidth, frameHeight)
             });
-            AddComponent(new LifeComponent { Lives = 10 });
+            AddComponent(new LifeComponent { Lives = 3 });
             Knockback = Vector2.Zero;
 
             playerBounds = new Rectangle((int)Position.X - 8, (int)Position.Y - 8, frameWidth, frameHeight);
