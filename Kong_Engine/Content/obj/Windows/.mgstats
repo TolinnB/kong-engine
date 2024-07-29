@@ -1,16 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-<<<<<<< HEAD
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/DKJunglejpg.xnb","TextureProcessor","Texture2DContent",158169,3981685,0.4556088
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/donkey-kong-hurt.mp3","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/donkey-kong-hurt.xnb","SoundEffectProcessor","SoundEffectContent",12597,11719,0.280875
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/donkeyKong.png","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/donkeyKong.xnb","TextureProcessor","Texture2DContent",261906,696085,0.0316694
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/endLevelSummary.xnb","TextureProcessor","Texture2DContent",130042,4469845,0.1635491
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/fallbackTexture.xnb","TextureProcessor","Texture2DContent",126021,1048661,0.0329348
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/gorillaScreen.xnb","TextureProcessor","Texture2DContent",13938,808885,0.0392266
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/jungle-hijynx.xnb","SongProcessor","SongContent",2748636,131,1.3125159
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/kingKRool.xnb","TextureProcessor","Texture2DContent",46836,239085,0.0151274
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/mainMenu.png","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/mainMenu.xnb","TextureProcessor","Texture2DContent",25668,3686485,0.1439563
-"C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/splashScreen2.png","C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/splashScreen2.xnb","TextureProcessor","Texture2DContent",289836,3686485,0.0837722
-=======
 "C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/Background1.png","C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Background1.xnb","TextureProcessor","Texture2DContent",1118,65621,0.1261654
 "C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/Background2.png","C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Background2.xnb","TextureProcessor","Texture2DContent",685,65621,0.0051307
 "C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/Background3.png","C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Background3.xnb","TextureProcessor","Texture2DContent",597,65621,0.003399
@@ -31,4 +19,3 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/SimpleTileset2.png","C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/SimpleTileset2.xnb","TextureProcessor","Texture2DContent",7820,98389,0.0050966
 "C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/sonic.png","C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/sonic.xnb","TextureProcessor","Texture2DContent",63421,201461,0.0101502
 "C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png","C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/splashScreen.xnb","TextureProcessor","Texture2DContent",184118,3686485,0.1014059
->>>>>>> origin/enemy-animation

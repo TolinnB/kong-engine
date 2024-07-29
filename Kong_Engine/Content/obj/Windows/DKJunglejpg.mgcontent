@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<<<<<<< HEAD
-  <SourceFile>C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</SourceFile>
-  <SourceTime>2024-07-25T15:34:51.8542869+01:00</SourceTime>
-  <DestFile>C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/DKJunglejpg.xnb</DestFile>
-  <DestTime>2024-07-25T15:37:54.8334226+01:00</DestTime>
-=======
   <SourceFile>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</SourceFile>
   <SourceTime>2024-07-29T13:42:39.0401159+01:00</SourceTime>
   <DestFile>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/DKJunglejpg.xnb</DestFile>
   <DestTime>2024-07-29T14:10:38.0397148+01:00</DestTime>
->>>>>>> origin/enemy-animation
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

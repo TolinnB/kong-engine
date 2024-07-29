@@ -172,9 +172,6 @@
 /processorParam:TextureFormat=Color
 /build:mainMenu.png
 
-<<<<<<< HEAD
-#begin splashScreen2.png
-=======
 #begin map.tmx
 /copy:map.tmx
 
@@ -218,7 +215,6 @@
 /build:sonic.png
 
 #begin splashScreen.png
->>>>>>> origin/enemy-animation
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -228,5 +224,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:splashScreen2.png
+/build:splashScreen.png
 

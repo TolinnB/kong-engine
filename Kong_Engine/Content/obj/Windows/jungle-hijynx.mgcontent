@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<<<<<<< HEAD
-  <SourceFile>C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</SourceFile>
-  <SourceTime>2024-07-25T15:34:52.3636937+01:00</SourceTime>
-  <DestFile>C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/jungle-hijynx.xnb</DestFile>
-  <DestTime>2024-07-25T15:37:56.7060463+01:00</DestTime>
-=======
   <SourceFile>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</SourceFile>
   <SourceTime>2024-07-29T13:42:39.5483248+01:00</SourceTime>
   <DestFile>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/jungle-hijynx.xnb</DestFile>
   <DestTime>2024-07-29T14:10:39.5643857+01:00</DestTime>
->>>>>>> origin/enemy-animation
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -22,10 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-<<<<<<< HEAD
-    <string>C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/jungle-hijynx.wma</string>
-=======
     <string>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/jungle-hijynx.wma</string>
->>>>>>> origin/enemy-animation
   </BuildOutput>
 </PipelineBuildEvent>
