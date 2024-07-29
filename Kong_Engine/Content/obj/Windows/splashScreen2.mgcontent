@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< HEAD:Kong_Engine/Content/obj/Windows/splashScreen2.mgcontent
   <SourceFile>C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/splashScreen2.png</SourceFile>
   <SourceTime>2024-07-25T13:56:09.5453845+01:00</SourceTime>
   <DestFile>C:/Users/breto/source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/splashScreen2.xnb</DestFile>
   <DestTime>2024-07-25T15:37:56.9541206+01:00</DestTime>
+=======
+  <SourceFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen.png</SourceFile>
+  <SourceTime>2024-07-29T13:43:02.4114153+01:00</SourceTime>
+  <DestFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/splashScreen.xnb</DestFile>
+  <DestTime>2024-07-29T14:11:00.9285209+01:00</DestTime>
+>>>>>>> origin/enemy-animation:Kong_Engine/Content/obj/Windows/net6.0-windows/Content/splashScreen.mgcontent
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

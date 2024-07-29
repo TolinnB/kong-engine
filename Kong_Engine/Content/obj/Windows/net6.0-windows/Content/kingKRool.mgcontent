@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< HEAD
   <SourceFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png</SourceFile>
   <SourceTime>2024-07-25T15:34:52.3647245+01:00</SourceTime>
   <DestFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/kingKRool.xnb</DestFile>
   <DestTime>2024-07-25T15:35:40.4317989+01:00</DestTime>
+=======
+  <SourceFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png</SourceFile>
+  <SourceTime>2024-07-29T13:42:39.5493219+01:00</SourceTime>
+  <DestFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/kingKRool.xnb</DestFile>
+  <DestTime>2024-07-29T14:11:00.4681244+01:00</DestTime>
+>>>>>>> origin/enemy-animation
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

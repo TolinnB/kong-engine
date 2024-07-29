@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<<<<<<< HEAD
   <SourceFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</SourceFile>
   <SourceTime>2024-07-25T15:34:52.3342947+01:00</SourceTime>
   <DestFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/fallbackTexture.xnb</DestFile>
   <DestTime>2024-07-25T15:35:39.1636704+01:00</DestTime>
+=======
+  <SourceFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</SourceFile>
+  <SourceTime>2024-07-29T13:42:39.5139061+01:00</SourceTime>
+  <DestFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/fallbackTexture.xnb</DestFile>
+  <DestTime>2024-07-29T14:10:59.1768256+01:00</DestTime>
+>>>>>>> origin/enemy-animation
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

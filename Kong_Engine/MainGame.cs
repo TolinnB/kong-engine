@@ -12,6 +12,7 @@ using Kong_Engine.States.Base;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TiledSharp;
 
 namespace Kong_Engine
 {
@@ -38,14 +39,17 @@ namespace Kong_Engine
         private List<BaseEntity> _entities;
         private MovementSystem _movementSystem;
         private CollisionSystem _collisionSystem;
-        private BaseEntity _playerEntity;
+        private PlayerSprite _playerEntity;
+        private EnemySprite _enemyEntity;
         private AudioManager _audioManager;
-        private TerrainBackground _background;
         private KeyboardState _previousKeyboardState;
         private InputManager _inputManager;
         private Texture2D _mainMenuBackground;
         private Texture2D _splashScreen;
         private Texture2D _endLevelSummaryBackground;
+
+        // Tiled map variables
+        private TileMapManager _tileMapManager;
 
         public MainGame()
         {
@@ -98,7 +102,36 @@ namespace Kong_Engine
             _splashScreen = Content.Load<Texture2D>("splashScreen2");
             _endLevelSummaryBackground = Content.Load<Texture2D>("endLevelSummary");
 
-            // Load additional content for gameplay here if needed
+            // Load the tileset texture
+            var tilesetTexture = Content.Load<Texture2D>("SimpleTileset2");
+
+            // Load the tiled map
+            var map = new TmxMap("Content/JumpLand.tmx");
+            int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
+            int tileWidth = map.Tilesets[0].TileWidth;
+            int tileHeight = map.Tilesets[0].TileHeight;
+
+            float scale = 2.0f; // Adjust the scale factor as needed
+            _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
+
+            // Load player sprite sheet
+            var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
+
+            // Load enemy sprite sheet
+            var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik");
+
+            // Ensure the player entity is not created multiple times
+            if (_playerEntity == null)
+            {
+                _playerEntity = new PlayerSprite(playerSpriteSheet);
+                _enemyEntity = new EnemySprite(enemySpriteSheet);
+                _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
+            }
+
+            _movementSystem = new MovementSystem();
+            _collisionSystem = new CollisionSystem(_audioManager);
+
+            _inputManager = new InputManager(new GameplayInputMapper());
         }
 
         protected override void Update(GameTime gameTime)
@@ -159,7 +192,19 @@ namespace Kong_Engine
                     break;
 
                 case GameState.Gameplay:
-                    RenderGameplay(_spriteBatch);
+                    // Drawing tile map
+                    var transformMatrix = Matrix.CreateScale(1); // No additional scaling here
+                    _spriteBatch.End(); // End current Begin
+                    _tileMapManager.Draw(transformMatrix); // Draw the tile map with its own Begin and End
+
+                    // Draw player and enemy entities with the same scaling factor
+                    _playerEntity.Draw(_spriteBatch, transformMatrix);
+                    _enemyEntity.Draw(_spriteBatch, transformMatrix);
+
+                    _spriteBatch.Begin(); // Begin again for subsequent drawings
+
+                    // Add any additional drawing calls here
+
                     break;
 
                 case GameState.EndLevelSummary:
@@ -186,25 +231,17 @@ namespace Kong_Engine
                 throw new InvalidOperationException("InputManager is not initialized.");
             }
 
-            _inputManager.GetCommands(cmd =>
-            {
-                if (cmd is GameplayInputCommand.PlayerMoveLeft)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(-5, 0);
-                }
-                else if (cmd is GameplayInputCommand.PlayerMoveRight)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(5, 0);
-                }
-                else if (cmd is GameplayInputCommand.PlayerMoveUp)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, -5);
-                }
-                else if (cmd is GameplayInputCommand.PlayerMoveDown)
-                {
-                    _playerEntity.GetComponent<PositionComponent>().Position += new Vector2(0, 5);
-                }
-            });
+            Vector2 movement = Vector2.Zero;
+            if (currentKeyboardState.IsKeyDown(Keys.A))
+                movement.X -= 5;
+            if (currentKeyboardState.IsKeyDown(Keys.D))
+                movement.X += 5;
+            if (currentKeyboardState.IsKeyDown(Keys.W))
+                movement.Y -= 5;
+            if (currentKeyboardState.IsKeyDown(Keys.S))
+                movement.Y += 5;
+
+            _playerEntity.Move(movement);
         }
 
         private void HandleEndLevelSummaryInput(KeyboardState currentKeyboardState)
@@ -217,68 +254,37 @@ namespace Kong_Engine
 
         public void InitializeGameplay()
         {
-            var backgroundTexture = LoadTexture("DKJunglejpg");
-            _background = new TerrainBackground(backgroundTexture);
+            if (_playerEntity == null)
+            {
+                // Load player sprite sheet
+                var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
+                _playerEntity = new PlayerSprite(playerSpriteSheet);
+                var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik-7");
+                _enemyEntity = new EnemySprite(enemySpriteSheet);
+                _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
+            }
 
             _audioManager = new AudioManager(Content);
             _audioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
             _audioManager.LoadSong("jungleHijynx", "jungle-hijynx");
             _audioManager.PlaySong("jungleHijynx", true);
 
-            _playerEntity = new PlayerSprite(LoadTexture("donkeyKong"));
-            _entities = new List<BaseEntity> { _playerEntity };
-
-            var enemyTexture = LoadTexture("kingKRool");
-            var enemyEntity = new EnemySprite(enemyTexture);
-            _entities.Add(enemyEntity);
-
             _movementSystem = new MovementSystem();
             _collisionSystem = new CollisionSystem(_audioManager);
 
-            AddGameObject(new EntityGameObjectAdapter(_playerEntity));
-            AddGameObject(new EntityGameObjectAdapter(enemyEntity));
-
             _inputManager = new InputManager(new GameplayInputMapper());
-            _previousKeyboardState = Keyboard.GetState();
         }
 
         private void UpdateGameplay(GameTime gameTime)
         {
             _movementSystem.Update(_entities);
             _collisionSystem.Update(_entities);
-            (_playerEntity as PlayerSprite)?.Update();
-            _background.UpdateBackgroundPosition(_playerEntity.GetComponent<PositionComponent>().Position);
-        }
-
-        private void RenderGameplay(SpriteBatch spriteBatch)
-        {
-            _background.Render(spriteBatch);
-            foreach (var entity in _entities)
-            {
-                if (entity.HasComponent<TextureComponent>())
-                {
-                    var textureComponent = entity.GetComponent<TextureComponent>();
-                    var positionComponent = entity.GetComponent<PositionComponent>();
-                    spriteBatch.Draw(textureComponent.Texture, positionComponent.Position, Color.White);
-                }
-            }
-        }
-
-        private Texture2D LoadTexture(string textureName)
-        {
-            var texture = Content.Load<Texture2D>(textureName);
-            return texture ?? Content.Load<Texture2D>("fallbackTexture");
-        }
-
-        private void AddGameObject(BaseGameObject gameObject)
-        {
-            // Add logic for adding game objects to the MainGame's collection
+            _playerEntity.Update(gameTime);
+            _enemyEntity.Update(gameTime);
         }
 
         private bool IsLevelCompleted()
         {
-            // Implement your logic to determine if the level is completed
-            // This is a placeholder implementation
             return _playerEntity.GetComponent<PositionComponent>().Position.X > 1000;
         }
     }
