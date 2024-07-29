@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\tilemapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\tilemapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -58,9 +62,9 @@
               "Title": "MainGame.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\MainGame.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
-              "RelativeToolTip": "Kong_Engine\\MainGame.cs",
-              "ViewState": "AQIAAGEAAADAMjMzMzMwwGwAAAAMAAAA",
+              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs*",
+              "RelativeToolTip": "Kong_Engine\\MainGame.cs*",
+              "ViewState": "AQIAALEAAAAAKTMzMzMRwMMAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-29T13:07:18.858Z",
               "EditorCaption": ""
@@ -68,6 +72,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "TileMapManager.cs",
+              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\TileMapManager.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\TileMapManager.cs",
+              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\TileMapManager.cs",
+              "RelativeToolTip": "Kong_Engine\\TileMapManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC0AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T13:13:39.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainMenuState.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\MainMenuState.cs",
@@ -80,7 +97,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EndLevelSummary.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\EndLevelSummary.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\EndLevelSummary.cs",
@@ -92,7 +109,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BaseGameState.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Base\\BaseGameState.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\Base\\BaseGameState.cs",
@@ -104,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "TerrainBackground.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\TerrainBackground.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Objects\\TerrainBackground.cs",
@@ -116,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "PlayerSprite.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
@@ -128,7 +145,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\BaseEntity.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\BaseEntity.cs",
@@ -140,7 +157,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "BaseGameObject.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
@@ -159,6 +176,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

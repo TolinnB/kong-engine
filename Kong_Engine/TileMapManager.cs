@@ -8,13 +8,14 @@ namespace Kong_Engine
     public class TileMapManager
     {
         private SpriteBatch spriteBatch;
-        TmxMap map;
-        Texture2D tileset;
-        int tilesetTilesWide;
-        int tileWidth;
-        int tileHeight;
+        private TmxMap map;
+        private Texture2D tileset;
+        private int tilesetTilesWide;
+        private int tileWidth;
+        private int tileHeight;
+        private float scale;
 
-        public TileMapManager(SpriteBatch _spriteBatch, TmxMap _map, Texture2D _tileset, int _tilesetTilesWide, int _tileWidth, int _tileHeight)
+        public TileMapManager(SpriteBatch _spriteBatch, TmxMap _map, Texture2D _tileset, int _tilesetTilesWide, int _tileWidth, int _tileHeight, float _scale = 1.0f)
         {
             spriteBatch = _spriteBatch;
             map = _map;
@@ -22,6 +23,7 @@ namespace Kong_Engine
             tilesetTilesWide = _tilesetTilesWide;
             tileWidth = _tileWidth;
             tileHeight = _tileHeight;
+            scale = _scale;
         }
 
         public void Draw(Matrix matrix)
@@ -45,10 +47,10 @@ namespace Kong_Engine
                         int tileFrame = gid - 1;
                         int column = tileFrame % tilesetTilesWide;
                         int row = tileFrame / tilesetTilesWide;
-                        float x = (j % map.Width) * map.TileWidth;
-                        float y = (float)Math.Floor(j / (double)map.Width) * map.TileHeight;
+                        float x = (j % map.Width) * map.TileWidth * scale;
+                        float y = (float)Math.Floor(j / (double)map.Width) * map.TileHeight * scale;
                         Rectangle tilesetRec = new Rectangle(tileWidth * column, tileHeight * row, tileWidth, tileHeight);
-                        spriteBatch.Draw(tileset, new Rectangle((int)x, (int)y, tileWidth, tileHeight), tilesetRec, Color.White);
+                        spriteBatch.Draw(tileset, new Rectangle((int)x, (int)y, (int)(tileWidth * scale), (int)(tileHeight * scale)), tilesetRec, Color.White);
                     }
                 }
             }
@@ -56,5 +58,9 @@ namespace Kong_Engine
             spriteBatch.End();
         }
 
+        public void SetScale(float newScale)
+        {
+            scale = newScale;
+        }
     }
 }

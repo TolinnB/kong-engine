@@ -111,7 +111,8 @@ namespace Kong_Engine
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
 
-            _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight);
+            float scale = 2.0f; // Adjust the scale factor as needed
+            _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
 
             // Load player sprite sheet
             var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
@@ -192,11 +193,11 @@ namespace Kong_Engine
 
                 case GameState.Gameplay:
                     // Drawing tile map
-                    var transformMatrix = Matrix.CreateScale(1); // Adjust scale if needed
+                    var transformMatrix = Matrix.CreateScale(1); // No additional scaling here
                     _spriteBatch.End(); // End current Begin
                     _tileMapManager.Draw(transformMatrix); // Draw the tile map with its own Begin and End
 
-                    // Draw player
+                    // Draw player and enemy entities with the same scaling factor
                     _playerEntity.Draw(_spriteBatch, transformMatrix);
                     _enemyEntity.Draw(_spriteBatch, transformMatrix);
 
