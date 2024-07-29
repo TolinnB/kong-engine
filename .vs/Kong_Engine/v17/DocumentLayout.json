@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\breto\\source\\Repos\\kong-engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\physicstest\\physicsballdemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\physicstest\\physicsballdemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\kong_engine.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\kong_engine.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\states\\gameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\gameplaystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\objects\\base\\basegameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\objects\\base\\basegameobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\physicstest\\physicsballdemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\physicstest\\physicsballdemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,64 +31,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PhysicsBallDemo.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs*",
-              "RelativeToolTip": "Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs*",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAQwDoAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-22T14:26:05.158Z",
+              "Title": "Kong_Engine",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+              "RelativeDocumentMoniker": "Kong_Engine\\Kong_Engine.csproj",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+              "RelativeToolTip": "Kong_Engine\\Kong_Engine.csproj",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAABSAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-29T13:06:32.529Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Kong_Engine.csproj",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
-              "RelativeDocumentMoniker": "Kong_Engine\\Kong_Engine.csproj",
-              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
-              "RelativeToolTip": "Kong_Engine\\Kong_Engine.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-07-22T14:27:48.709Z",
+              "Title": "PhysicsBallDemo.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs",
+              "RelativeToolTip": "Kong_Engine\\PhysicsTest\\PhysicsBallDemo.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAmwDwAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T12:28:43.365Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GameplayState.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\GameplayState.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\States\\GameplayState.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\GameplayState.cs",
-              "RelativeToolTip": "Kong_Engine\\States\\GameplayState.cs",
-              "ViewState": "AQIAACwAAACAmZmZmZkrwFIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T14:09:05.153Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainGame.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\MainGame.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\MainGame.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\MainGame.cs",
-              "RelativeToolTip": "Kong_Engine\\MainGame.cs",
-              "ViewState": "AQIAAAsAAABAMjMzMzMbwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T14:08:55.104Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BaseGameObject.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "RelativeToolTip": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAIA5wBcAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-05T14:07:45.629Z"
             }
           ]
         }

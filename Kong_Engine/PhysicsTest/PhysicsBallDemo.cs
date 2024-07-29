@@ -44,6 +44,24 @@ namespace Kong_Engine.PhysicsTest
             ballLand = new World(); //maintains world, applies effects
             ballLand.Gravity = Vector2.Zero;
 
+            //Syntax for initialising edge collision so things don't float off the edge
+            var top = 0;
+            var bottom = DESIGNED_RESOLUTION_HEIGHT;
+            var left = 0;
+            var right  = DESIGNED_RESOLUTION_WIDTH;
+            var edges = new Body[] {
+
+            ballLand.CreateEdge(new Vector2(left, top), new Vector2(right, top)),
+            ballLand.CreateEdge(new Vector2(left, top), new Vector2(left, bottom)),
+            ballLand.CreateEdge(new Vector2(left, bottom), new Vector2(right, bottom)),
+            ballLand.CreateEdge(new Vector2(right, top), new Vector2(right, bottom))
+            };
+
+            foreach (var edge in edges)
+            {
+                edge.BodyType = BodyType.Static;
+                edge.SetRestitution(1.0f);
+            }
             System.Random random = new System.Random();
             balls = new List<BallSprite>();
             for (int i = 0; i < 20; i++)
@@ -55,9 +73,10 @@ namespace Kong_Engine.PhysicsTest
                     );
                 var body = ballLand.CreateCircle(radius, 1, position, BodyType.Dynamic);
                 body.LinearVelocity = new Vector2(
-                    random.Next(-10, 10),
-                    random.Next(-10, 10));
+                    random.Next(-50, 50),
+                    random.Next(-50, 50));
                 body.SetRestitution(1); // Restitution denotes objects ricocheting off of one another
+                body.AngularVelocity = (float)random.NextDouble() * MathHelper.Pi - MathHelper.PiOver2;
                 balls.Add(new BallSprite(radius, body));
             }
 

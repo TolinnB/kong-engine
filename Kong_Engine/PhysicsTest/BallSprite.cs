@@ -5,6 +5,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using nkast.Aether.Physics2D.Dynamics;
+using nkast.Aether.Physics2D.Dynamics.Contacts;
+
 
 namespace Kong_Engine.PhysicsTest
 {
@@ -31,7 +33,8 @@ namespace Kong_Engine.PhysicsTest
             this.body = body;
             this.radius = radius;
             scale = radius / 49;
-            origin = new Vector2(49, 49);         
+            origin = new Vector2(49, 49);
+            this.body.OnCollision += CollisionHandler;
         }
 
         /// <summary>
@@ -62,7 +65,13 @@ namespace Kong_Engine.PhysicsTest
         {
             // Use Green for visual collision indication
             Color color = (Colliding) ? Color.Green : Color.White;
-            spriteBatch.Draw(texture, body.Position, color);
+            spriteBatch.Draw(texture, body.Position, null, color, body.Rotation, origin, scale, SpriteEffects.None, 0);
+        }
+
+        bool CollisionHandler(Fixture fixture, Fixture other, Contact contact)
+        {
+            Colliding = true;
+            return true;
         }
 
     }
