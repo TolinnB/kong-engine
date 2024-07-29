@@ -99,7 +99,7 @@ namespace Kong_Engine
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _mainMenuBackground = Content.Load<Texture2D>("mainMenu");
-            _splashScreen = Content.Load<Texture2D>("splashScreen");
+            _splashScreen = Content.Load<Texture2D>("splashScreen2");
             _endLevelSummaryBackground = Content.Load<Texture2D>("endLevelSummary");
 
             // Load the tileset texture
