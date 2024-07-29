@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
+    "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
+    "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "projectUniqueName": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "projectName": "Kong_Engine",
-        "projectPath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
-        "packagesPath": "C:\\Users\\Sheps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
+        "projectPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "packagesPath": "C:\\Users\\breto\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Sheps\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\breto\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,17 +45,25 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "Aether.Physics2D.Diagnostics.MG": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Aether.Physics2D.MG": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
             "MonoGame.Content.Builder.Task": {
+              "target": "Package",
+              "version": "[3.8.1.303, )"
+            },
+            "MonoGame.Framework.DesktopGL": {
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
             "MonoGame.Framework.WindowsDX": {
               "target": "Package",
               "version": "[3.8.1.303, )"
-            },
-            "TiledSharp": {
-              "target": "Package",
-              "version": "[1.0.1, )"
             }
           },
           "imports": [
@@ -74,24 +77,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.31, 6.0.31]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.31, 6.0.31]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.31, 6.0.31]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.31, 6.0.31]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -100,7 +85,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     }
