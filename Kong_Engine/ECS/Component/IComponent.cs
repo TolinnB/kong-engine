@@ -42,4 +42,11 @@ namespace Kong_Engine.ECS.Component
     {
         public int Lives { get; set; }
     }
+
+    public class PhysicsComponent : IComponent
+    {
+        public Vector2 Velocity { get; set; }
+        public float Mass { get; set; }
+        public bool IsGrounded { get; set; }
+    }
 }

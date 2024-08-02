@@ -6,6 +6,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Kong_Engine.Objects;
 using Kong_Engine.States;
+using nkast.Aether.Physics2D.Dynamics;
 
 namespace Kong_Engine.ECS.System
 {
@@ -22,65 +23,38 @@ namespace Kong_Engine.ECS.System
 
         public void Update(IEnumerable<BaseEntity> entities)
         {
-            var entitiesList = entities.ToList();
-
-            for (int i = 0; i < entitiesList.Count; i++)
+            foreach (var entity in entities)
             {
-                for (int j = i + 1; j < entitiesList.Count; j++)
+                if (entity is PlayerSprite player)
                 {
-                    var entityA = entitiesList[i];
-                    var entityB = entitiesList[j];
+                    CheckPlayerCollisions(player);
+                }
+            }
+        }
 
-                    if (entityA.HasComponent<CollisionComponent>() && entityB.HasComponent<CollisionComponent>())
+        private void CheckPlayerCollisions(PlayerSprite player)
+        {
+            foreach (var contactEdge in player.PlayerBody.ContactList)
+            {
+                if (contactEdge.Contact.IsTouching)
+                {
+                    var otherBody = contactEdge.Other;
+                    if (otherBody.UserData != null && otherBody.UserData is string userData)
                     {
-                        var collisionA = entityA.GetComponent<CollisionComponent>();
-                        var collisionB = entityB.GetComponent<CollisionComponent>();
-                        var positionA = entityA.GetComponent<PositionComponent>();
-                        var positionB = entityB.GetComponent<PositionComponent>();
-
-                        collisionA.BoundingBox = new Rectangle((int)positionA.Position.X, (int)positionA.Position.Y, collisionA.BoundingBox.Width, collisionA.BoundingBox.Height);
-                        collisionB.BoundingBox = new Rectangle((int)positionB.Position.X, (int)positionB.Position.Y, collisionB.BoundingBox.Width, collisionB.BoundingBox.Height);
-
-                        if (collisionA.BoundingBox.Intersects(collisionB.BoundingBox))
+                        if (userData == "collisionObject")
                         {
-                            HandleCollision(entityA, entityB);
+                            HandleCollisionWithEnvironment(player);
                         }
                     }
                 }
             }
         }
 
-        private void HandleCollision(BaseEntity entityA, BaseEntity entityB)
+        private void HandleCollisionWithEnvironment(PlayerSprite player)
         {
-            if (entityA is PlayerSprite player && entityB is EnemySprite)
-            {
-                var playerLife = player.GetComponent<LifeComponent>();
-                playerLife.Lives--;
-
-                if (playerLife.Lives <= 0)
-                {
-                    Console.WriteLine("Player is dead!");
-                    _game.SwitchState(new GameOverState()); // Switch to GameOverState
-                }
-                else
-                {
-                    Console.WriteLine("Player hit! Lives remaining: " + playerLife.Lives);
-                    _audioManager.PlaySound("donkeyKongHurt");
-
-                    // Apply knockback
-                    var playerPosition = player.GetComponent<PositionComponent>();
-                    var enemyPosition = entityB.GetComponent<PositionComponent>();
-
-                    var knockbackDirection = Vector2.Normalize(playerPosition.Position - enemyPosition.Position);
-                    player.Knockback = knockbackDirection * 50f; // Adjust the knockback strength
-
-                    playerPosition.Position += player.Knockback;
-                }
-            }
-            else if (entityA is EnemySprite && entityB is PlayerSprite)
-            {
-                HandleCollision(entityB, entityA); // Ensure both cases are handled
-            }
+            // Handle the collision with the environment
+            Console.WriteLine("Player collided with the environment!");
+            // Add your collision handling logic here, such as stopping the player's movement
         }
     }
 }

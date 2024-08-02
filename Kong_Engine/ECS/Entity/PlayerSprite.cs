@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
+using nkast.Aether.Physics2D.Dynamics;
 
 namespace Kong_Engine.Objects
 {
@@ -30,8 +31,9 @@ namespace Kong_Engine.Objects
         private int frameWidth = 30; // Width of each frame
         private int frameHeight = 37; // Height of each frame
         private float verticalSpeed = 0f; // Speed for jumping
+        private Body playerBody; // Physics body
 
-        public PlayerSprite(Texture2D spriteSheet)
+        public PlayerSprite(Texture2D spriteSheet, World world)
         {
             this.spriteSheet = spriteSheet;
 
@@ -78,7 +80,36 @@ namespace Kong_Engine.Objects
             idleFrameTime = 0.5; // Change frame every 0.5 seconds for idle animation
             jumpFrameTime = 0.05; // Change frame every 0.05 seconds for jump animation
             timeSinceLastFrame = 0;
+
+            // Create player physics body
+            playerBody = world.CreateRectangle(
+                ConvertUnits.ToSimUnits(frameWidth),
+                ConvertUnits.ToSimUnits(frameHeight),
+                1f,
+                ConvertUnits.ToSimUnits(new Vector2(100, 100))
+            );
+            playerBody.BodyType = BodyType.Dynamic;
+            playerBody.FixedRotation = true;
+            playerBody.UserData = "player";
         }
+
+        public Vector2 Position
+        {
+            get => ConvertUnits.ToDisplayUnits(playerBody.Position);
+            set
+            {
+                playerBody.Position = ConvertUnits.ToSimUnits(value);
+                var positionComponent = GetComponent<PositionComponent>();
+                positionComponent.Position = value;
+                playerBounds.X = (int)value.X - 8;
+                playerBounds.Y = (int)value.Y - 8;
+            }
+        }
+
+        public float MoveSpeed => moveSpeed;
+        public float JumpSpeed => jumpSpeed;
+        public int FrameWidth => frameWidth;
+        public int FrameHeight => frameHeight;
 
         public void Update(GameTime gameTime)
         {
@@ -88,7 +119,7 @@ namespace Kong_Engine.Objects
             if (isJumping)
             {
                 verticalSpeed -= gravity;
-                var currentPosition = GetComponent<PositionComponent>().Position;
+                var currentPosition = Position;
                 currentPosition.Y -= verticalSpeed;
 
                 // Check if player has landed
@@ -99,7 +130,7 @@ namespace Kong_Engine.Objects
                     verticalSpeed = 0f;
                 }
 
-                GetComponent<PositionComponent>().Position = currentPosition;
+                Position = currentPosition;
             }
 
             timeSinceLastFrame += gameTime.ElapsedGameTime.TotalSeconds;
@@ -121,7 +152,7 @@ namespace Kong_Engine.Objects
                 timeSinceLastFrame = 0;
             }
 
-            var position = GetComponent<PositionComponent>().Position;
+            var position = Position;
             playerBounds.X = (int)position.X - 8;
             playerBounds.Y = (int)position.Y - 8;
         }
@@ -130,7 +161,7 @@ namespace Kong_Engine.Objects
         {
             if (Knockback != Vector2.Zero && isMoving)
             {
-                var currentPosition = GetComponent<PositionComponent>().Position;
+                var currentPosition = Position;
                 currentPosition += Knockback;
                 Knockback *= 0.9f; // Decay the knockback over time
 
@@ -139,7 +170,7 @@ namespace Kong_Engine.Objects
                     Knockback = Vector2.Zero;
                 }
 
-                GetComponent<PositionComponent>().Position = currentPosition;
+                Position = currentPosition;
             }
         }
 
@@ -172,17 +203,17 @@ namespace Kong_Engine.Objects
 
             if (isMoving && !isJumping)
             {
-                var currentPosition = GetComponent<PositionComponent>().Position;
+                var currentPosition = Position;
                 currentPosition += movement;
-                GetComponent<PositionComponent>().Position = currentPosition;
+                Position = currentPosition;
             }
         }
 
         public void Move(Vector2 direction)
         {
-            var currentPosition = GetComponent<PositionComponent>().Position;
+            var currentPosition = Position;
             currentPosition += direction;
-            GetComponent<PositionComponent>().Position = currentPosition;
+            Position = currentPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
@@ -203,7 +234,7 @@ namespace Kong_Engine.Objects
                 currentFrameRect = idleFrames[currentFrame % idleFrames.Length];
             }
 
-            var position = GetComponent<PositionComponent>().Position;
+            var position = Position;
 
             // Flip the sprite if facing left
             SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;

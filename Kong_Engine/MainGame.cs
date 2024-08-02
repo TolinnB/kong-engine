@@ -13,6 +13,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TiledSharp;
+using nkast.Aether.Physics2D.Common;
+using nkast.Aether.Physics2D.Dynamics;
 
 namespace Kong_Engine
 {
@@ -54,9 +56,20 @@ namespace Kong_Engine
 
         // Tiled map variables
         private TileMapManager _tileMapManager;
+        private List<Rectangle> collisionRectangles;
+
+        // Physics variables
+        private World physicsWorld;
+        private Body playerBody;
 
         // PhysicsBallState variables
         private PhysicsBallState _physicsBallState;
+
+        // New Physics Systems
+        private GravitySystem _gravitySystem;
+        private JumpingSystem _jumpingSystem;
+        private BuoyancySystem _buoyancySystem;
+        private FrictionAndDragSystem _frictionAndDragSystem;
 
         public MainGame()
         {
@@ -78,6 +91,15 @@ namespace Kong_Engine
             _renderScaleRectangle = GetScaleRectangle();
 
             base.Initialize();
+
+            // Create a new physics world
+            physicsWorld = new World(new Vector2(0, 9.8f)); // Gravity pointing down
+
+            // Initialize physics systems
+            _gravitySystem = new GravitySystem(new Vector2(0, 9.8f));
+            _jumpingSystem = new JumpingSystem(10f, 9.8f);
+            _buoyancySystem = new BuoyancySystem(200, 1f); // Example values
+            _frictionAndDragSystem = new FrictionAndDragSystem(0.1f, 0.02f); // Example values
         }
 
         private Rectangle GetScaleRectangle()
@@ -131,7 +153,7 @@ namespace Kong_Engine
             // Ensure the player entity is not created multiple times
             if (_playerEntity == null)
             {
-                _playerEntity = new PlayerSprite(playerSpriteSheet);
+                _playerEntity = new PlayerSprite(playerSpriteSheet, physicsWorld);
                 _enemyEntity = new EnemySprite(enemySpriteSheet);
                 _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
             }
@@ -146,6 +168,31 @@ namespace Kong_Engine
             _physicsBallState = new PhysicsBallState();
             _physicsBallState.Initialize(Content, this);
             _physicsBallState.LoadContent();
+
+            // Load collision objects from the Tiled map
+            LoadCollisionObjects(map);
+        }
+
+        private void LoadCollisionObjects(TmxMap map)
+        {
+            collisionRectangles = new List<Rectangle>();
+            foreach (var obj in map.ObjectGroups["Object Layer 1"].Objects)
+            {
+                if (obj.Width > 0 && obj.Height > 0)
+                {
+                    var rectangle = new Rectangle((int)obj.X, (int)obj.Y, (int)obj.Width, (int)obj.Height);
+                    collisionRectangles.Add(rectangle);
+
+                    var body = physicsWorld.CreateRectangle(
+                        ConvertUnits.ToSimUnits((float)obj.Width),
+                        ConvertUnits.ToSimUnits((float)obj.Height),
+                        1f,
+                        ConvertUnits.ToSimUnits(new Vector2((float)(obj.X + obj.Width / 2f), (float)(obj.Y + obj.Height / 2f)))
+                    );
+                    body.BodyType = BodyType.Static;
+                    body.UserData = "collisionObject"; // Set user data for collision handling
+                }
+            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -278,12 +325,10 @@ namespace Kong_Engine
                 movement.X -= 5;
             if (currentKeyboardState.IsKeyDown(Keys.D))
                 movement.X += 5;
-            if (currentKeyboardState.IsKeyDown(Keys.W))
-                movement.Y -= 5;
-            if (currentKeyboardState.IsKeyDown(Keys.S))
-                movement.Y += 5;
+            if (currentKeyboardState.IsKeyDown(Keys.Space) && playerBody.LinearVelocity.Y == 0)
+                movement.Y = -_playerEntity.JumpSpeed;
 
-            _playerEntity.Move(movement);
+            playerBody.ApplyLinearImpulse(movement);
         }
 
         private void HandleEndLevelSummaryInput(KeyboardState currentKeyboardState)
@@ -300,7 +345,7 @@ namespace Kong_Engine
             {
                 // Load player sprite sheet
                 var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
-                _playerEntity = new PlayerSprite(playerSpriteSheet);
+                _playerEntity = new PlayerSprite(playerSpriteSheet, physicsWorld);
                 var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik-7");
                 _enemyEntity = new EnemySprite(enemySpriteSheet);
                 _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
@@ -315,10 +360,24 @@ namespace Kong_Engine
             _collisionSystem = new CollisionSystem(_audioManager, this);
 
             _inputManager = new InputManager(new GameplayInputMapper());
+
+            Console.WriteLine("Luigi is hot"); // This line was added as requested
         }
 
         private void UpdateGameplay(GameTime gameTime)
         {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            physicsWorld.Step(deltaTime);
+
+            // Update player position based on physics body
+            var playerPosition = ConvertUnits.ToDisplayUnits(playerBody.Position);
+            _playerEntity.Position = playerPosition;
+
+            // Update systems
+            _gravitySystem.Update(_entities, deltaTime);
+            _jumpingSystem.Update(_entities, deltaTime);
+            _buoyancySystem.Update(_entities, deltaTime);
+            _frictionAndDragSystem.Update(_entities, deltaTime);
             _movementSystem.Update(_entities);
             _collisionSystem.Update(_entities);
             _playerEntity.Update(gameTime);
