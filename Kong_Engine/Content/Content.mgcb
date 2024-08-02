@@ -139,6 +139,12 @@
 /processorParam:TextureFormat=Color
 /build:gorillaScreen.jpg
 
+#begin hurtSound.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:hurtSound.mp3
+
 #begin JumpLand.tmx
 /copy:JumpLand.tmx
 
@@ -186,6 +192,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:mario.png
+
+#begin music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music.mp3
 
 #begin SimpleTileset2_Kong_Engine.tsx
 /copy:SimpleTileset2_Kong_Engine.tsx

@@ -42,9 +42,9 @@ namespace Kong_Engine.States.Levels
         public override void LoadContent()
         {
             base.LoadContent();
-            AudioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
-            AudioManager.LoadSong("jungleHijynx", "jungle-hijynx");
-            AudioManager.PlaySong("jungleHijynx", true);
+            AudioManager.LoadSound("hurtSound", "hurtSound");
+            AudioManager.LoadSong("music", "music");
+            AudioManager.PlaySong("music", true);
         }
 
         protected override bool IsLevelCompleted()

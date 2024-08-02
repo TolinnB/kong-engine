@@ -64,7 +64,7 @@ namespace Kong_Engine.ECS.System
                 else
                 {
                     Console.WriteLine("Player hit! Lives remaining: " + playerLife.Lives);
-                    _audioManager.PlaySound("donkeyKongHurt");
+                    _audioManager.PlaySound("hurtSound");
 
                     // Apply knockback
                     var playerPosition = player.GetComponent<PositionComponent>();
