@@ -19,6 +19,7 @@ namespace Kong_Engine
         private const float DesignedResolutionAspectRatio = DesignedResolutionWidth / (float)DesignedResolutionHeight;
         private BaseGameState _currentState;
         private AudioManager _audioManager;
+        private float _scaleFactor = 1f;
 
         public MainGame()
         {
@@ -37,11 +38,14 @@ namespace Kong_Engine
                 SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
             _renderScaleRectangle = GetScaleRectangle();
+            _scaleFactor = (float)Window.ClientBounds.Width / DesignedResolutionWidth;
 
             base.Initialize();
             _audioManager = new AudioManager(Content);
             SwitchState(new SplashState());
         }
+
+        public float ScaleFactor => _scaleFactor;
 
         private Rectangle GetScaleRectangle()
         {

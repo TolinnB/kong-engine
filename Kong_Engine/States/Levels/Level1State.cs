@@ -17,7 +17,7 @@ namespace Kong_Engine.States.Levels
             int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
-            float scale = 2.0f;
+            float scale = 4.0f;
 
             TileMapManager = new TileMapManager(SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
         }

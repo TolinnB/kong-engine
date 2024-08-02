@@ -79,7 +79,7 @@ namespace Kong_Engine.States.Base
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            var transformMatrix = Matrix.CreateScale(1);
+            var transformMatrix = Matrix.CreateScale(Game.ScaleFactor); // Scale according to the actual screen size
             TileMapManager?.Draw(transformMatrix);
             PlayerEntity?.Draw(spriteBatch, transformMatrix);
             EnemyEntity?.Draw(spriteBatch, transformMatrix);
