@@ -1,4 +1,5 @@
-﻿using Kong_Engine.Input;
+﻿using Kong_Engine.ECS.Component;
+using Kong_Engine.Input;
 using Kong_Engine.Objects;
 using Kong_Engine.States.Base;
 using Microsoft.Xna.Framework;
@@ -36,6 +37,21 @@ namespace Kong_Engine.States.Levels
         protected override void SetInputManager()
         {
             InputManager = new InputManager(new GameplayInputMapper());
+        }
+
+        public override void LoadContent()
+        {
+            base.LoadContent();
+            AudioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
+            AudioManager.LoadSong("jungleHijynx", "jungle-hijynx");
+            AudioManager.PlaySong("jungleHijynx", true);
+        }
+
+        protected override bool IsLevelCompleted()
+        {
+            // Add your level completion logic here
+            // For example, return true if player reaches a certain position
+            return PlayerEntity.GetComponent<PositionComponent>().Position.X > 1000;
         }
     }
 }

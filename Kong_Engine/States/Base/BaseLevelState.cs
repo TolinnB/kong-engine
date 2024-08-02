@@ -66,8 +66,16 @@ namespace Kong_Engine.States.Base
             CollisionSystem.Update(Entities);
             PlayerEntity?.Update(gameTime);
             EnemyEntity?.Update(gameTime);
+
+            if (IsLevelCompleted())
+            {
+                SwitchState(new EndLevelSummaryState());
+            }
+
             base.Update(gameTime);
         }
+
+        protected abstract bool IsLevelCompleted();
 
         public override void Render(SpriteBatch spriteBatch)
         {

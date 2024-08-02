@@ -18,6 +18,7 @@ namespace Kong_Engine
         private const int DesignedResolutionHeight = 720;
         private const float DesignedResolutionAspectRatio = DesignedResolutionWidth / (float)DesignedResolutionHeight;
         private BaseGameState _currentState;
+        private AudioManager _audioManager;
 
         public MainGame()
         {
@@ -38,6 +39,7 @@ namespace Kong_Engine
             _renderScaleRectangle = GetScaleRectangle();
 
             base.Initialize();
+            _audioManager = new AudioManager(Content);
             SwitchState(new SplashState());
         }
 
