@@ -1,32 +1,15 @@
-using System;
-using System.Collections.Generic;
-using Kong_Engine.ECS.Component;
-using Kong_Engine.ECS.Entity;
-using Kong_Engine.ECS.System;
 using Kong_Engine.Enum;
-using Kong_Engine.Input;
-using Kong_Engine.Objects;
-using Kong_Engine.Objects.Base;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
+using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using TiledSharp;
 
 namespace Kong_Engine
 {
-    public enum GameState
-    {
-        SplashScreen,
-        MainMenu,
-        Gameplay,
-        EndLevelSummary
-    }
-
     public class MainGame : Game
     {
-        private GameState _currentGameState;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private RenderTarget2D _renderTarget;
@@ -34,28 +17,12 @@ namespace Kong_Engine
         private const int DesignedResolutionWidth = 1280;
         private const int DesignedResolutionHeight = 720;
         private const float DesignedResolutionAspectRatio = DesignedResolutionWidth / (float)DesignedResolutionHeight;
-
-        // Gameplay variables
-        private List<BaseEntity> _entities;
-        private MovementSystem _movementSystem;
-        private CollisionSystem _collisionSystem;
-        private PlayerSprite _playerEntity;
-        private EnemySprite _enemyEntity;
-        private AudioManager _audioManager;
-        private KeyboardState _previousKeyboardState;
-        private InputManager _inputManager;
-        private Texture2D _mainMenuBackground;
-        private Texture2D _splashScreen;
-        private Texture2D _endLevelSummaryBackground;
-
-        // Tiled map variables
-        private TileMapManager _tileMapManager;
+        private BaseGameState _currentState;
 
         public MainGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            _currentGameState = GameState.SplashScreen;
         }
 
         protected override void Initialize()
@@ -71,6 +38,7 @@ namespace Kong_Engine
             _renderScaleRectangle = GetScaleRectangle();
 
             base.Initialize();
+            SwitchState(new SplashState());
         }
 
         private Rectangle GetScaleRectangle()
@@ -98,79 +66,13 @@ namespace Kong_Engine
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _mainMenuBackground = Content.Load<Texture2D>("mainMenu");
-            _splashScreen = Content.Load<Texture2D>("splashScreen2");
-            _endLevelSummaryBackground = Content.Load<Texture2D>("endLevelSummary");
-
-            // Load the tileset texture
-            var tilesetTexture = Content.Load<Texture2D>("SimpleTileset2");
-
-            // Load the tiled map
-            var map = new TmxMap("Content/JumpLand.tmx");
-            int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
-            int tileWidth = map.Tilesets[0].TileWidth;
-            int tileHeight = map.Tilesets[0].TileHeight;
-
-            float scale = 2.0f; // Adjust the scale factor as needed
-            _tileMapManager = new TileMapManager(_spriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
-
-            // Load player sprite sheet
-            var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
-
-            // Load enemy sprite sheet
-            var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik");
-
-            // Ensure the player entity is not created multiple times
-            if (_playerEntity == null)
-            {
-                _playerEntity = new PlayerSprite(playerSpriteSheet);
-                _enemyEntity = new EnemySprite(enemySpriteSheet);
-                _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
-            }
-
-            _movementSystem = new MovementSystem();
-            _collisionSystem = new CollisionSystem(_audioManager);
-
-            _inputManager = new InputManager(new GameplayInputMapper());
+            // Load common content if necessary
         }
 
         protected override void Update(GameTime gameTime)
         {
-            var currentKeyboardState = Keyboard.GetState();
-
-            switch (_currentGameState)
-            {
-                case GameState.SplashScreen:
-                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
-                    {
-                        _currentGameState = GameState.MainMenu;
-                    }
-                    break;
-
-                case GameState.MainMenu:
-                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
-                    {
-                        InitializeGameplay();
-                        _currentGameState = GameState.Gameplay;
-                    }
-                    break;
-
-                case GameState.Gameplay:
-                    HandleGameplayInput(currentKeyboardState);
-                    UpdateGameplay(gameTime);
-                    if (IsLevelCompleted())
-                    {
-                        _currentGameState = GameState.EndLevelSummary;
-                    }
-                    break;
-
-                case GameState.EndLevelSummary:
-                    HandleEndLevelSummaryInput(currentKeyboardState);
-                    break;
-            }
-
-            _previousKeyboardState = currentKeyboardState;
-
+            _currentState?.Update(gameTime);
+            _currentState?.HandleInput();
             base.Update(gameTime);
         }
 
@@ -180,38 +82,7 @@ namespace Kong_Engine
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-
-            switch (_currentGameState)
-            {
-                case GameState.SplashScreen:
-                    _spriteBatch.Draw(_splashScreen, new Vector2(0, 0), Color.White);
-                    break;
-
-                case GameState.MainMenu:
-                    _spriteBatch.Draw(_mainMenuBackground, new Vector2(0, 0), Color.White);
-                    break;
-
-                case GameState.Gameplay:
-                    // Drawing tile map
-                    var transformMatrix = Matrix.CreateScale(1); // No additional scaling here
-                    _spriteBatch.End(); // End current Begin
-                    _tileMapManager.Draw(transformMatrix); // Draw the tile map with its own Begin and End
-
-                    // Draw player and enemy entities with the same scaling factor
-                    _playerEntity.Draw(_spriteBatch, transformMatrix);
-                    _enemyEntity.Draw(_spriteBatch, transformMatrix);
-
-                    _spriteBatch.Begin(); // Begin again for subsequent drawings
-
-                    // Add any additional drawing calls here
-
-                    break;
-
-                case GameState.EndLevelSummary:
-                    _spriteBatch.Draw(_endLevelSummaryBackground, new Vector2(0, 0), Color.White);
-                    break;
-            }
-
+            _currentState?.Render(_spriteBatch);
             _spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);
@@ -224,68 +95,27 @@ namespace Kong_Engine
             base.Draw(gameTime);
         }
 
-        private void HandleGameplayInput(KeyboardState currentKeyboardState)
+        public void SwitchState(BaseGameState newState)
         {
-            if (_inputManager == null)
-            {
-                throw new InvalidOperationException("InputManager is not initialized.");
-            }
-
-            Vector2 movement = Vector2.Zero;
-            if (currentKeyboardState.IsKeyDown(Keys.A))
-                movement.X -= 5;
-            if (currentKeyboardState.IsKeyDown(Keys.D))
-                movement.X += 5;
-            if (currentKeyboardState.IsKeyDown(Keys.W))
-                movement.Y -= 5;
-            if (currentKeyboardState.IsKeyDown(Keys.S))
-                movement.Y += 5;
-
-            _playerEntity.Move(movement);
+            _currentState?.UnloadContent();
+            _currentState = newState;
+            _currentState.Initialize(Content, this);
+            _currentState.LoadContent();
+            _currentState.OnStateSwitched += HandleStateSwitched;
+            _currentState.OnEventNotification += HandleEventNotification;
         }
 
-        private void HandleEndLevelSummaryInput(KeyboardState currentKeyboardState)
+        private void HandleStateSwitched(object sender, BaseGameState newState)
         {
-            if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
+            SwitchState(newState);
+        }
+
+        private void HandleEventNotification(object sender, Events e)
+        {
+            if (e == Events.GAME_QUIT)
             {
                 Exit();
             }
-        }
-
-        public void InitializeGameplay()
-        {
-            if (_playerEntity == null)
-            {
-                // Load player sprite sheet
-                var playerSpriteSheet = Content.Load<Texture2D>("sonic"); // Assuming the sprite sheet is named 'sonic.png'
-                _playerEntity = new PlayerSprite(playerSpriteSheet);
-                var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik-7");
-                _enemyEntity = new EnemySprite(enemySpriteSheet);
-                _entities = new List<BaseEntity> { _playerEntity, _enemyEntity };
-            }
-
-            _audioManager = new AudioManager(Content);
-            _audioManager.LoadSound("donkeyKongHurt", "donkey-kong-hurt");
-            _audioManager.LoadSong("jungleHijynx", "jungle-hijynx");
-            _audioManager.PlaySong("jungleHijynx", true);
-
-            _movementSystem = new MovementSystem();
-            _collisionSystem = new CollisionSystem(_audioManager);
-
-            _inputManager = new InputManager(new GameplayInputMapper());
-        }
-
-        private void UpdateGameplay(GameTime gameTime)
-        {
-            _movementSystem.Update(_entities);
-            _collisionSystem.Update(_entities);
-            _playerEntity.Update(gameTime);
-            _enemyEntity.Update(gameTime);
-        }
-
-        private bool IsLevelCompleted()
-        {
-            return _playerEntity.GetComponent<PositionComponent>().Position.X > 1000;
         }
     }
 }

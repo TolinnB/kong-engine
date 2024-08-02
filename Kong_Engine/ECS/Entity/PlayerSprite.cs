@@ -187,8 +187,6 @@ namespace Kong_Engine.Objects
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
-            spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: matrix);
-
             Rectangle currentFrameRect;
             if (isJumping)
             {
@@ -209,8 +207,6 @@ namespace Kong_Engine.Objects
             SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
             spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, 1f, spriteEffects, 0f);
-
-            spriteBatch.End();
         }
     }
 }
