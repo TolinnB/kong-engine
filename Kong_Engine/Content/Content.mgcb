@@ -49,6 +49,18 @@
 /processorParam:TextureFormat=Color
 /build:Background3.png
 
+#begin CircleSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:CircleSprite.png
+
 #begin DKJunglejpg.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -193,6 +205,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:mario.png
+
+#begin RectangleSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:RectangleSprite.png
 
 #begin SimpleTileset2_Kong_Engine.tsx
 /copy:SimpleTileset2_Kong_Engine.tsx

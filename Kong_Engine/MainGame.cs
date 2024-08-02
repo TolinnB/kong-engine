@@ -22,7 +22,8 @@ namespace Kong_Engine
         MainMenu,
         Gameplay,
         EndLevelSummary,
-        GameOver
+        GameOver,
+        PhysicsBalls // Add PhysicsBalls to the GameState enum
     }
 
     public class MainGame : Game
@@ -49,9 +50,13 @@ namespace Kong_Engine
         private Texture2D _splashScreen;
         private Texture2D _endLevelSummaryBackground;
         private SpriteFont _gameOverFont;
+        private Texture2D _BallSprite;
 
         // Tiled map variables
         private TileMapManager _tileMapManager;
+
+        // PhysicsBallState variables
+        private PhysicsBallState _physicsBallState;
 
         public MainGame()
         {
@@ -136,6 +141,11 @@ namespace Kong_Engine
             _collisionSystem = new CollisionSystem(_audioManager, this); // Pass the MainGame instance
 
             _inputManager = new InputManager(new GameplayInputMapper());
+
+            // Initialize and load content for PhysicsBallState
+            _physicsBallState = new PhysicsBallState();
+            _physicsBallState.Initialize(Content, this);
+            _physicsBallState.LoadContent();
         }
 
         protected override void Update(GameTime gameTime)
@@ -175,7 +185,15 @@ namespace Kong_Engine
                 case GameState.GameOver:
                     if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
                     {
-                        Exit(); // Exit the game or reset the game
+                        _currentGameState = GameState.PhysicsBalls;
+                    }
+                    break;
+
+                case GameState.PhysicsBalls:
+                    _physicsBallState.Update(gameTime);
+                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
+                    {
+                        _currentGameState = GameState.MainMenu;
                     }
                     break;
             }
@@ -229,6 +247,10 @@ namespace Kong_Engine
                     var textSize = _gameOverFont.MeasureString(gameOverText);
                     var position = new Vector2((DesignedResolutionWidth - textSize.X) / 2, (DesignedResolutionHeight - textSize.Y) / 2);
                     _spriteBatch.DrawString(_gameOverFont, gameOverText, position, Color.Red);
+                    break;
+
+                case GameState.PhysicsBalls:
+                    _physicsBallState.Render(gameTime, _spriteBatch);
                     break;
             }
 
