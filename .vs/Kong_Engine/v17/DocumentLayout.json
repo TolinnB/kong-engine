@@ -1,78 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\breto\\source\\Repos\\kong-engine\\",
+  "WorkspaceRootPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\tilemapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\tilemapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\ecs\\system\\collisionsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\system\\collisionsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\enemysprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\enemysprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\ecs\\system\\movementsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\system\\movementsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\convertunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\convertunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\tilemapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\tilemapmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\states\\base\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\base\\basegamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\states\\splashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\splashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\content\\map.tmx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\content\\map.tmx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\content\\jumpland.tmx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\content\\jumpland.tmx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\enum\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\enum\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\states\\physicsballstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\physicsballstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\ballsprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\ballsprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\states\\gameoverstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\gameoverstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\breto\\source\\repos\\kong-engine\\kong_engine\\input\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,16 +62,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -105,247 +73,169 @@
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TileMapManager.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\TileMapManager.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\TileMapManager.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\TileMapManager.cs",
-              "RelativeToolTip": "Kong_Engine\\TileMapManager.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T15:10:42.79Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\BaseEntity.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\BaseEntity.cs",
-              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\BaseEntity.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAmwBsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T14:55:43.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MovementSystem.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\System\\MovementSystem.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\System\\MovementSystem.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\System\\MovementSystem.cs",
-              "RelativeToolTip": "Kong_Engine\\ECS\\System\\MovementSystem.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAYwDMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T14:55:36.165Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "CollisionSystem.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\System\\CollisionSystem.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\System\\CollisionSystem.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\ECS\\System\\CollisionSystem.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\System\\CollisionSystem.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\System\\CollisionSystem.cs",
               "RelativeToolTip": "Kong_Engine\\ECS\\System\\CollisionSystem.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAkwEIAAAAAAAAA",
+              "ViewState": "AQIAADsAAAAAAAAAAAAswEcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T14:55:30.775Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T16:36:32.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MovementSystem.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\System\\MovementSystem.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\System\\MovementSystem.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\System\\MovementSystem.cs",
+              "RelativeToolTip": "Kong_Engine\\ECS\\System\\MovementSystem.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwDUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T16:30:09.398Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "ConvertUnits.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ConvertUnits.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\ConvertUnits.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ConvertUnits.cs",
-              "RelativeToolTip": "Kong_Engine\\ConvertUnits.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAA+AAAA",
+              "Title": "BaseGameState.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\States\\Base\\BaseGameState.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\States\\Base\\BaseGameState.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\States\\Base\\BaseGameState.cs",
+              "RelativeToolTip": "Kong_Engine\\States\\Base\\BaseGameState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T13:44:47.906Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T16:19:56.328Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "EnemySprite.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAAAwFUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T15:38:59.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "PlayerSprite.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite.cs*",
-              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\PlayerSprite.cs*",
-              "ViewState": "AQIAALwAAAAAAAAAAAAkwO4AAAAAAAAA",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
+              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAswE8AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T11:35:53.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainGame.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\MainGame.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\MainGame.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\MainGame.cs*",
-              "RelativeToolTip": "Kong_Engine\\MainGame.cs*",
-              "ViewState": "AQIAAFkBAAAAAAAAAAAkwIsBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:31:03.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Program.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\Program.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Program.cs",
-              "RelativeToolTip": "Kong_Engine\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T13:46:20.448Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "JumpLand.tmx",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Content\\JumpLand.tmx",
-              "RelativeDocumentMoniker": "Kong_Engine\\Content\\JumpLand.tmx",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Content\\JumpLand.tmx",
-              "RelativeToolTip": "Kong_Engine\\Content\\JumpLand.tmx",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAIwA8AAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-02T12:04:24.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "map.tmx",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Content\\map.tmx",
-              "RelativeDocumentMoniker": "Kong_Engine\\Content\\map.tmx",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Content\\map.tmx",
-              "RelativeToolTip": "Kong_Engine\\Content\\map.tmx",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-02T12:04:13.621Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Logger.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Logger.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\Logger.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Logger.cs",
-              "RelativeToolTip": "Kong_Engine\\Logger.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:40:01.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Events.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\Enum\\Events.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
-              "RelativeToolTip": "Kong_Engine\\Enum\\Events.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:39:48.583Z",
+              "WhenOpened": "2024-08-03T14:09:20.296Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "Logger.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Logger.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Logger.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Logger.cs",
+              "RelativeToolTip": "Kong_Engine\\Logger.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T20:40:01.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainMenuState.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\States\\MainMenuState.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
+              "RelativeToolTip": "Kong_Engine\\States\\MainMenuState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T20:28:23.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TileMapManager.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\TileMapManager.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\TileMapManager.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\TileMapManager.cs",
+              "RelativeToolTip": "Kong_Engine\\TileMapManager.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAwEIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T16:31:19.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Events.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\Enum\\Events.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
+              "RelativeToolTip": "Kong_Engine\\Enum\\Events.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T20:39:48.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "EventManager.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Enum\\EventManager.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
               "RelativeToolTip": "Kong_Engine\\Enum\\EventManager.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:39:44.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T20:39:44.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainGame.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\MainGame.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
+              "RelativeToolTip": "Kong_Engine\\MainGame.cs",
+              "ViewState": "AQIAAGMAAAAAAAAAAAAiwH8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T20:31:03.958Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "SplashState.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\SplashState.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
               "RelativeToolTip": "Kong_Engine\\States\\SplashState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:30:58.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T20:30:58.771Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MainMenuState.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\States\\MainMenuState.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
-              "RelativeToolTip": "Kong_Engine\\States\\MainMenuState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:28:23.114Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "GameOverState.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\GameOverState.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\States\\GameOverState.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\GameOverState.cs",
-              "RelativeToolTip": "Kong_Engine\\States\\GameOverState.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:28:17.986Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 12,
               "Title": "InputManager.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Input\\InputManager.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
+              "ToolTip": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
               "RelativeToolTip": "Kong_Engine\\Input\\InputManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-29T20:28:07.54Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "BallSprite.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\BallSprite.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\BallSprite.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\BallSprite.cs",
-              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\BallSprite.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAcwE4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:21:16.369Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "PhysicsBallState.cs",
-              "DocumentMoniker": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\PhysicsBallState.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\States\\PhysicsBallState.cs",
-              "ToolTip": "C:\\Users\\breto\\source\\Repos\\kong-engine\\Kong_Engine\\States\\PhysicsBallState.cs",
-              "RelativeToolTip": "Kong_Engine\\States\\PhysicsBallState.cs",
-              "ViewState": "AQIAAEkAAAAAAAAAAAAcwGgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:08:14.124Z"
             }
           ]
         },
