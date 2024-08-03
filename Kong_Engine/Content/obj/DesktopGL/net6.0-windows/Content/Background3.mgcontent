@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<<<<<<< HEAD:Kong_Engine/Content/obj/DesktopGL/net6.0-windows/Content/mario.mgcontent
-  <SourceFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/mario.png</SourceFile>
-  <SourceTime>2024-08-02T12:35:35.9645992+01:00</SourceTime>
-  <DestFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/bin/DesktopGL/Content/mario.xnb</DestFile>
-  <DestTime>2024-08-02T15:34:49.0256233+01:00</DestTime>
-=======
-  <SourceFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/player.png</SourceFile>
-  <SourceTime>2024-08-03T17:11:53.3290173+01:00</SourceTime>
-  <DestFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/player.xnb</DestFile>
-  <DestTime>2024-08-03T17:12:25.520054+01:00</DestTime>
->>>>>>> main:Kong_Engine/Content/obj/Windows/net6.0-windows/Content/player.mgcontent
+  <SourceFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/Background3.png</SourceFile>
+  <SourceTime>2024-08-02T12:35:35.5139127+01:00</SourceTime>
+  <DestFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/bin/DesktopGL/Content/Background3.xnb</DestFile>
+  <DestTime>2024-08-02T15:34:44.3667877+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

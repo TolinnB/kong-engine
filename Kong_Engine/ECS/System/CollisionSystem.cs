@@ -7,6 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Kong_Engine.Objects;
+<<<<<<< HEAD
+using Kong_Engine.States;
+using nkast.Aether.Physics2D.Dynamics;
+=======
+>>>>>>> main
 
 namespace Kong_Engine.ECS.System
 {
@@ -21,36 +26,42 @@ namespace Kong_Engine.ECS.System
 
         public void Update(IEnumerable<BaseEntity> entities)
         {
-            var entitiesList = entities.ToList();
-
-            for (int i = 0; i < entitiesList.Count; i++)
+            foreach (var entity in entities)
             {
-                for (int j = i + 1; j < entitiesList.Count; j++)
+                if (entity is PlayerSprite player)
                 {
-                    var entityA = entitiesList[i];
-                    var entityB = entitiesList[j];
-
-                    if (entityA.HasComponent<CollisionComponent>() && entityB.HasComponent<CollisionComponent>())
-                    {
-                        var collisionA = entityA.GetComponent<CollisionComponent>();
-                        var collisionB = entityB.GetComponent<CollisionComponent>();
-                        var positionA = entityA.GetComponent<PositionComponent>();
-                        var positionB = entityB.GetComponent<PositionComponent>();
-
-                        collisionA.BoundingBox = new Rectangle((int)positionA.Position.X, (int)positionA.Position.Y, collisionA.BoundingBox.Width, collisionA.BoundingBox.Height);
-                        collisionB.BoundingBox = new Rectangle((int)positionB.Position.X, (int)positionB.Position.Y, collisionB.BoundingBox.Width, collisionB.BoundingBox.Height);
-
-                        if (collisionA.BoundingBox.Intersects(collisionB.BoundingBox))
-                        {
-                            HandleCollision(entityA, entityB);
-                        }
-                    }
+                    CheckPlayerCollisions(player);
                 }
             }
         }
 
-        private void HandleCollision(BaseEntity entityA, BaseEntity entityB)
+        private void CheckPlayerCollisions(PlayerSprite player)
         {
+            var contactEdge = player.PlayerBody.ContactList;
+            while (contactEdge != null)
+            {
+                if (contactEdge.Contact.IsTouching)
+                {
+                    var otherBody = contactEdge.Other;
+                    if (otherBody.Tag != null && otherBody.Tag is string tag)
+                    {
+                        if (tag == "collisionObject")
+                        {
+                            HandleCollisionWithEnvironment(player);
+                        }
+                    }
+                }
+                contactEdge = contactEdge.Next;
+            }
+        }
+
+        private void HandleCollisionWithEnvironment(PlayerSprite player)
+        {
+<<<<<<< HEAD
+            // Handle the collision with the environment
+            Console.WriteLine("Player collided with the environment!");
+            // Add your collision handling logic here, such as stopping the player's movement
+=======
             if (entityA is PlayerSprite player && entityB is EnemySprite)
             {
                 var playerLife = player.GetComponent<LifeComponent>();
@@ -80,6 +91,7 @@ namespace Kong_Engine.ECS.System
             {
                 HandleCollision(entityB, entityA); // Ensure both cases are handled
             }
+>>>>>>> main
         }
     }
 }

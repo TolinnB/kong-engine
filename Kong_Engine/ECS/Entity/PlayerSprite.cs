@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
+using nkast.Aether.Physics2D.Dynamics;
 
 namespace Kong_Engine.Objects
 {
@@ -30,9 +31,15 @@ namespace Kong_Engine.Objects
         private int frameWidth = 28; // Width of each frame
         private int frameHeight = 37; // Height of each frame
         private float verticalSpeed = 0f; // Speed for jumping
+<<<<<<< HEAD
+        private Body playerBody; // Physics body
+
+        public PlayerSprite(Texture2D spriteSheet, World world)
+=======
         private float scale; // Scale factor
 
         public PlayerSprite(Texture2D spriteSheet, float scale)
+>>>>>>> main
         {
             this.spriteSheet = spriteSheet;
             this.scale = scale;
@@ -40,26 +47,50 @@ namespace Kong_Engine.Objects
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
+<<<<<<< HEAD
+        new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
+        new Rectangle(32, 0, frameWidth, frameHeight),  // Idle Frame 2
+        new Rectangle(64, 0, frameWidth, frameHeight),  // Idle Frame 3
+        new Rectangle(96, 0, frameWidth, frameHeight)   // Idle Frame 4
+=======
                 new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
                 new Rectangle(22, 0, frameWidth, frameHeight),  // Idle Frame 2
                 new Rectangle(47, 0, frameWidth, frameHeight),  // Idle Frame 3
+>>>>>>> main
             };
 
             walkFrames = new Rectangle[]
             {
+<<<<<<< HEAD
+        new Rectangle(5, 40, frameWidth, frameHeight),   // Walk Frame 1
+        new Rectangle(38, 40, frameWidth, frameHeight),  // Walk Frame 2
+        new Rectangle(74, 40, frameWidth, frameHeight),  // Walk Frame 3
+        new Rectangle(109, 40, frameWidth, frameHeight),  // Walk Frame 4
+        new Rectangle(139, 40, frameWidth, frameHeight), // Walk Frame 5
+        new Rectangle(175, 40, frameWidth, frameHeight)  // Walk Frame 6
+=======
                 new Rectangle(71, 0, frameWidth, frameHeight),   // Walk Frame 1
                 new Rectangle(94, 0, frameWidth, frameHeight),  // Walk Frame 2
                 new Rectangle(119, 0, frameWidth, frameHeight),  // Walk Frame 3
                 new Rectangle(143, 0, frameWidth, frameHeight),  // Walk Frame 4
                 new Rectangle(166, 0, frameWidth, frameHeight), // Walk Frame 5
                 new Rectangle(191, 0, frameWidth, frameHeight)  // Walk Frame 6
+>>>>>>> main
             };
 
             jumpFrames = new Rectangle[]
             {
+<<<<<<< HEAD
+        new Rectangle(0, 116, frameWidth, frameHeight),  // Jump Frame 1
+        new Rectangle(37, 116, frameWidth, frameHeight), // Jump Frame 2
+        new Rectangle(73, 116, frameWidth, frameHeight), // Jump Frame 3
+        new Rectangle(104, 115, frameWidth, frameHeight),  // Jump Frame 4
+        new Rectangle(140, 115, frameWidth, frameHeight)  // Jump Frame 5
+=======
                 new Rectangle(0, 0, frameWidth, frameHeight),  // Jump Frame 1
                 new Rectangle(263, 0, frameWidth, frameHeight), // Jump Frame 2
                 new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame 3
+>>>>>>> main
             };
 
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) * scale }); // Start position set here
@@ -77,8 +108,22 @@ namespace Kong_Engine.Objects
             idleFrameTime = 1; // Change frame every 0.5 seconds for idle animation
             jumpFrameTime = 0.05; // Change frame every 0.05 seconds for jump animation
             timeSinceLastFrame = 0;
+
+            // Create player physics body
+            playerBody = world.CreateRectangle(
+                ConvertUnits.ToSimUnits(frameWidth),
+                ConvertUnits.ToSimUnits(frameHeight),
+                1f,
+                ConvertUnits.ToSimUnits(new Vector2(100, 100))
+            );
+            playerBody.BodyType = BodyType.Dynamic;
+            playerBody.FixedRotation = true;
+            playerBody.Tag = "player"; // Use Tag property instead of UserData
         }
 
+<<<<<<< HEAD
+        public Body PlayerBody => playerBody; // Public property to access playerBody
+=======
         public void Update(GameTime gameTime)
         {
             ApplyKnockback();
@@ -207,5 +252,6 @@ namespace Kong_Engine.Objects
 
             spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, scale, spriteEffects, 0f);
         }
+>>>>>>> main
     }
 }
