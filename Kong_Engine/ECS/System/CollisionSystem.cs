@@ -34,19 +34,21 @@ namespace Kong_Engine.ECS.System
 
         private void CheckPlayerCollisions(PlayerSprite player)
         {
-            foreach (var contactEdge in player.PlayerBody.ContactList)
+            var contactEdge = player.PlayerBody.ContactList;
+            while (contactEdge != null)
             {
                 if (contactEdge.Contact.IsTouching)
                 {
                     var otherBody = contactEdge.Other;
-                    if (otherBody.UserData != null && otherBody.UserData is string userData)
+                    if (otherBody.Tag != null && otherBody.Tag is string tag)
                     {
-                        if (userData == "collisionObject")
+                        if (tag == "collisionObject")
                         {
                             HandleCollisionWithEnvironment(player);
                         }
                     }
                 }
+                contactEdge = contactEdge.Next;
             }
         }
 

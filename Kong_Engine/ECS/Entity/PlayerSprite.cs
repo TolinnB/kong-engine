@@ -40,29 +40,29 @@ namespace Kong_Engine.Objects
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
-                new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
-                new Rectangle(32, 0, frameWidth, frameHeight),  // Idle Frame 2
-                new Rectangle(64, 0, frameWidth, frameHeight),  // Idle Frame 3
-                new Rectangle(96, 0, frameWidth, frameHeight)   // Idle Frame 4
+        new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
+        new Rectangle(32, 0, frameWidth, frameHeight),  // Idle Frame 2
+        new Rectangle(64, 0, frameWidth, frameHeight),  // Idle Frame 3
+        new Rectangle(96, 0, frameWidth, frameHeight)   // Idle Frame 4
             };
 
             walkFrames = new Rectangle[]
             {
-                new Rectangle(5, 40, frameWidth, frameHeight),   // Walk Frame 1
-                new Rectangle(38, 40, frameWidth, frameHeight),  // Walk Frame 2
-                new Rectangle(74, 40, frameWidth, frameHeight),  // Walk Frame 3
-                new Rectangle(109, 40, frameWidth, frameHeight),  // Walk Frame 4
-                new Rectangle(139, 40, frameWidth, frameHeight), // Walk Frame 5
-                new Rectangle(175, 40, frameWidth, frameHeight)  // Walk Frame 6
+        new Rectangle(5, 40, frameWidth, frameHeight),   // Walk Frame 1
+        new Rectangle(38, 40, frameWidth, frameHeight),  // Walk Frame 2
+        new Rectangle(74, 40, frameWidth, frameHeight),  // Walk Frame 3
+        new Rectangle(109, 40, frameWidth, frameHeight),  // Walk Frame 4
+        new Rectangle(139, 40, frameWidth, frameHeight), // Walk Frame 5
+        new Rectangle(175, 40, frameWidth, frameHeight)  // Walk Frame 6
             };
 
             jumpFrames = new Rectangle[]
             {
-                new Rectangle(0, 116, frameWidth, frameHeight),  // Jump Frame 1
-                new Rectangle(37, 116, frameWidth, frameHeight), // Jump Frame 2
-                new Rectangle(73, 116, frameWidth, frameHeight), // Jump Frame 3
-                new Rectangle(104, 115, frameWidth, frameHeight),  // Jump Frame 4
-                new Rectangle(140, 115, frameWidth, frameHeight)  // Jump Frame 5
+        new Rectangle(0, 116, frameWidth, frameHeight),  // Jump Frame 1
+        new Rectangle(37, 116, frameWidth, frameHeight), // Jump Frame 2
+        new Rectangle(73, 116, frameWidth, frameHeight), // Jump Frame 3
+        new Rectangle(104, 115, frameWidth, frameHeight),  // Jump Frame 4
+        new Rectangle(140, 115, frameWidth, frameHeight)  // Jump Frame 5
             };
 
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
@@ -90,158 +90,9 @@ namespace Kong_Engine.Objects
             );
             playerBody.BodyType = BodyType.Dynamic;
             playerBody.FixedRotation = true;
-            playerBody.UserData = "player";
+            playerBody.Tag = "player"; // Use Tag property instead of UserData
         }
 
-        public Vector2 Position
-        {
-            get => ConvertUnits.ToDisplayUnits(playerBody.Position);
-            set
-            {
-                playerBody.Position = ConvertUnits.ToSimUnits(value);
-                var positionComponent = GetComponent<PositionComponent>();
-                positionComponent.Position = value;
-                playerBounds.X = (int)value.X - 8;
-                playerBounds.Y = (int)value.Y - 8;
-            }
-        }
-
-        public float MoveSpeed => moveSpeed;
-        public float JumpSpeed => jumpSpeed;
-        public int FrameWidth => frameWidth;
-        public int FrameHeight => frameHeight;
-
-        public void Update(GameTime gameTime)
-        {
-            ApplyKnockback();
-            HandleInput(gameTime);
-
-            if (isJumping)
-            {
-                verticalSpeed -= gravity;
-                var currentPosition = Position;
-                currentPosition.Y -= verticalSpeed;
-
-                // Check if player has landed
-                if (currentPosition.Y >= 100) // Assuming ground level is y=100
-                {
-                    currentPosition.Y = 100;
-                    isJumping = false;
-                    verticalSpeed = 0f;
-                }
-
-                Position = currentPosition;
-            }
-
-            timeSinceLastFrame += gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (timeSinceLastFrame >= (isJumping ? jumpFrameTime : isMoving ? frameTime : idleFrameTime))
-            {
-                if (isJumping)
-                {
-                    currentFrame = (currentFrame + 1) % jumpFrames.Length;
-                }
-                else if (isMoving)
-                {
-                    currentFrame = (currentFrame + 1) % walkFrames.Length;
-                }
-                else
-                {
-                    currentFrame = (currentFrame + 1) % idleFrames.Length; // Cycle through idle frames
-                }
-                timeSinceLastFrame = 0;
-            }
-
-            var position = Position;
-            playerBounds.X = (int)position.X - 8;
-            playerBounds.Y = (int)position.Y - 8;
-        }
-
-        private void ApplyKnockback()
-        {
-            if (Knockback != Vector2.Zero && isMoving)
-            {
-                var currentPosition = Position;
-                currentPosition += Knockback;
-                Knockback *= 0.9f; // Decay the knockback over time
-
-                if (Knockback.LengthSquared() < 0.01f)
-                {
-                    Knockback = Vector2.Zero;
-                }
-
-                Position = currentPosition;
-            }
-        }
-
-        private void HandleInput(GameTime gameTime)
-        {
-            var keyboardState = Keyboard.GetState();
-            isIdle = true;
-            isMoving = false;
-
-            Vector2 movement = Vector2.Zero;
-            if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
-            {
-                movement.X -= moveSpeed;
-                isIdle = false;
-                isMoving = true;
-                isFacingRight = false; // Update direction flag
-            }
-            if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
-            {
-                movement.X += moveSpeed;
-                isIdle = false;
-                isMoving = true;
-                isFacingRight = true; // Update direction flag
-            }
-            if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
-            {
-                isJumping = true;
-                verticalSpeed = jumpSpeed; // Initiate jump
-            }
-
-            if (isMoving && !isJumping)
-            {
-                var currentPosition = Position;
-                currentPosition += movement;
-                Position = currentPosition;
-            }
-        }
-
-        public void Move(Vector2 direction)
-        {
-            var currentPosition = Position;
-            currentPosition += direction;
-            Position = currentPosition;
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Matrix matrix)
-        {
-            spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: matrix);
-
-            Rectangle currentFrameRect;
-            if (isJumping)
-            {
-                currentFrameRect = jumpFrames[currentFrame % jumpFrames.Length];
-            }
-            else if (isMoving)
-            {
-                currentFrameRect = walkFrames[currentFrame % walkFrames.Length];
-            }
-            else
-            {
-                currentFrameRect = idleFrames[currentFrame % idleFrames.Length];
-            }
-
-            var position = Position;
-
-            // Flip the sprite if facing left
-            SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-
-            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, 1f, spriteEffects, 0f);
-
-            spriteBatch.End();
-        }
+        public Body PlayerBody => playerBody; // Public property to access playerBody
     }
 }

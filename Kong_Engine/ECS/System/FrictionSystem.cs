@@ -5,12 +5,12 @@ using Kong_Engine.ECS.Component;
 
 namespace Kong_Engine.ECS.System
 {
-    public class FrictionAndDragSystem
+    public class FrictionSystem
     {
         private readonly float _frictionCoefficient;
         private readonly float _dragCoefficient;
 
-        public FrictionAndDragSystem(float frictionCoefficient, float dragCoefficient)
+        public FrictionSystem(float frictionCoefficient, float dragCoefficient)
         {
             _frictionCoefficient = frictionCoefficient;
             _dragCoefficient = dragCoefficient;
@@ -23,15 +23,18 @@ namespace Kong_Engine.ECS.System
                 if (entity.HasComponent<PhysicsComponent>())
                 {
                     var physicsComponent = entity.GetComponent<PhysicsComponent>();
+                    var velocity = physicsComponent.Velocity;
 
                     if (physicsComponent.IsGrounded)
                     {
-                        physicsComponent.Velocity.X *= (1 - _frictionCoefficient * deltaTime);
+                        velocity.X *= (1 - _frictionCoefficient * deltaTime);
                     }
                     else
                     {
-                        physicsComponent.Velocity *= (1 - _dragCoefficient * deltaTime);
+                        velocity *= (1 - _dragCoefficient * deltaTime);
                     }
+
+                    physicsComponent.Velocity = velocity;
                 }
             }
         }

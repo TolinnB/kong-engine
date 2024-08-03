@@ -27,27 +27,33 @@ namespace Kong_Engine.ECS.System
                 if (entity.HasComponent<PhysicsComponent>())
                 {
                     var physicsComponent = entity.GetComponent<PhysicsComponent>();
+                    var velocity = physicsComponent.Velocity;
+                    var positionComponent = entity.GetComponent<PositionComponent>();
+                    var position = positionComponent.Position;
 
                     if (keyboardState.IsKeyDown(Keys.Space) && physicsComponent.IsGrounded)
                     {
-                        physicsComponent.Velocity.Y = -_jumpSpeed;
+                        velocity.Y = -_jumpSpeed;
                         physicsComponent.IsGrounded = false;
                     }
 
                     if (!physicsComponent.IsGrounded)
                     {
-                        physicsComponent.Velocity.Y += _gravity * deltaTime;
-                        var positionComponent = entity.GetComponent<PositionComponent>();
-                        positionComponent.Position += physicsComponent.Velocity * deltaTime;
+                        velocity.Y += _gravity * deltaTime;
+                        position += velocity * deltaTime;
 
                         // Check if the entity has landed
-                        if (positionComponent.Position.Y >= 100) // Assuming ground level is y=100
+                        if (position.Y >= 100) // Assuming ground level is y=100
                         {
-                            positionComponent.Position.Y = 100;
+                            position.Y = 100;
                             physicsComponent.IsGrounded = true;
-                            physicsComponent.Velocity.Y = 0f;
+                            velocity.Y = 0f;
                         }
                     }
+
+                    // Assign the modified values back to the components
+                    physicsComponent.Velocity = velocity;
+                    positionComponent.Position = position;
                 }
             }
         }
