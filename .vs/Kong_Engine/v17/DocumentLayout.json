@@ -1,42 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\sheps\\source\\repos\\kong-engine\\",
+  "WorkspaceRootPath": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\ecs\\system\\collisionsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\system\\collisionsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\enemysprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\enemysprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\playersprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\levels\\level1state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\levels\\level1state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\maingame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\enum\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\enum\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\enum\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\enum\\events.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\enum\\eventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\splashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\splashstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\mainmenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\input\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,8 +50,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -71,49 +75,49 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CollisionSystem.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\System\\CollisionSystem.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\System\\CollisionSystem.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\System\\CollisionSystem.cs",
-              "RelativeToolTip": "Kong_Engine\\ECS\\System\\CollisionSystem.cs",
-              "ViewState": "AQIAADoAAACAlJmZmZkkwEIAAAA2AAAA",
+              "Title": "EnemySprite.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\EnemySprite.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA6wB0AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T14:31:09.186Z",
+              "WhenOpened": "2024-08-03T15:38:59.859Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AudioManager.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\AudioManager.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\AudioManager.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\AudioManager.cs",
-              "RelativeToolTip": "Kong_Engine\\AudioManager.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAxwDIAAAAAAAAA",
+              "Title": "Level1State.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Levels\\Level1State.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\States\\Levels\\Level1State.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Levels\\Level1State.cs",
+              "RelativeToolTip": "Kong_Engine\\States\\Levels\\Level1State.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAIwBsAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T14:26:36.665Z",
+              "WhenOpened": "2024-08-03T14:10:28.631Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Level1State.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Levels\\Level1State.cs",
-              "RelativeDocumentMoniker": "Kong_Engine\\States\\Levels\\Level1State.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Levels\\Level1State.cs",
-              "RelativeToolTip": "Kong_Engine\\States\\Levels\\Level1State.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAwDkAAAAAAAAA",
+              "Title": "PlayerSprite.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
+              "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
+              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAA6wD0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-02T14:25:55.141Z",
+              "WhenOpened": "2024-08-03T14:09:20.296Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Logger.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Logger.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Logger.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Logger.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Logger.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Logger.cs",
               "RelativeToolTip": "Kong_Engine\\Logger.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -121,50 +125,48 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Events.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Enum\\Events.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\Events.cs",
               "RelativeToolTip": "Kong_Engine\\Enum\\Events.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:39:48.583Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T20:39:48.583Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "EventManager.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Enum\\EventManager.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Enum\\EventManager.cs",
               "RelativeToolTip": "Kong_Engine\\Enum\\EventManager.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAAIwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:39:44.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T20:39:44.943Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "MainGame.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\MainGame.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\MainGame.cs",
               "RelativeToolTip": "Kong_Engine\\MainGame.cs",
-              "ViewState": "AQIAAAQAAACAzMzMzMwtwH8AAAAAAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAYwH8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-29T20:31:03.958Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "SplashState.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\SplashState.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\SplashState.cs",
               "RelativeToolTip": "Kong_Engine\\States\\SplashState.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -172,24 +174,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "MainMenuState.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\MainMenuState.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\MainMenuState.cs",
               "RelativeToolTip": "Kong_Engine\\States\\MainMenuState.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:28:23.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T20:28:23.114Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "InputManager.cs",
-              "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\Input\\InputManager.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
+              "ToolTip": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Input\\InputManager.cs",
               "RelativeToolTip": "Kong_Engine\\Input\\InputManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

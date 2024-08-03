@@ -155,3 +155,5 @@ C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\hurtSound.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\music.wma
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\music.xnb
+C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\player.xnb
+C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\slime.xnb

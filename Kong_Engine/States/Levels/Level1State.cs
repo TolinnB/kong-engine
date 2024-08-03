@@ -24,8 +24,8 @@ namespace Kong_Engine.States.Levels
 
         protected override void InitializeEntities()
         {
-            var playerSpriteSheet = Content.Load<Texture2D>("sonic");
-            var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik");
+            var playerSpriteSheet = Content.Load<Texture2D>("player");
+            var enemySpriteSheet = Content.Load<Texture2D>("slime");
 
             PlayerEntity = new PlayerSprite(playerSpriteSheet);
             EnemyEntity = new EnemySprite(enemySpriteSheet);

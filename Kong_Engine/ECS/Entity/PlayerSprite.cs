@@ -39,28 +39,25 @@ namespace Kong_Engine.Objects
             idleFrames = new Rectangle[]
             {
                 new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
-                new Rectangle(32, 0, frameWidth, frameHeight),  // Idle Frame 2
-                new Rectangle(64, 0, frameWidth, frameHeight),  // Idle Frame 3
-                new Rectangle(96, 0, frameWidth, frameHeight)   // Idle Frame 4
+                new Rectangle(24, 0, frameWidth, frameHeight),  // Idle Frame 2
+                new Rectangle(47, 0, frameWidth, frameHeight),  // Idle Frame 3
             };
 
             walkFrames = new Rectangle[]
             {
-                new Rectangle(5, 40, frameWidth, frameHeight),   // Walk Frame 1
-                new Rectangle(38, 40, frameWidth, frameHeight),  // Walk Frame 2
-                new Rectangle(74, 40, frameWidth, frameHeight),  // Walk Frame 3
-                new Rectangle(109, 40, frameWidth, frameHeight),  // Walk Frame 4
-                new Rectangle(139, 40, frameWidth, frameHeight), // Walk Frame 5
-                new Rectangle(175, 40, frameWidth, frameHeight)  // Walk Frame 6
+                new Rectangle(71, 0, frameWidth, frameHeight),   // Walk Frame 1
+                new Rectangle(94, 0, frameWidth, frameHeight),  // Walk Frame 2
+                new Rectangle(119, 0, frameWidth, frameHeight),  // Walk Frame 3
+                new Rectangle(143, 0, frameWidth, frameHeight),  // Walk Frame 4
+                new Rectangle(166, 0, frameWidth, frameHeight), // Walk Frame 5
+                new Rectangle(191, 0, frameWidth, frameHeight)  // Walk Frame 6
             };
 
             jumpFrames = new Rectangle[]
             {
-                new Rectangle(0, 116, frameWidth, frameHeight),  // Jump Frame 1
-                new Rectangle(37, 116, frameWidth, frameHeight), // Jump Frame 2
-                new Rectangle(73, 116, frameWidth, frameHeight), // Jump Frame 3
-                new Rectangle(104, 115, frameWidth, frameHeight),  // Jump Frame 4
-                new Rectangle(140, 115, frameWidth, frameHeight)  // Jump Frame 5
+                new Rectangle(0, 0, frameWidth, frameHeight),  // Jump Frame 1
+                new Rectangle(263, 0, frameWidth, frameHeight), // Jump Frame 2
+                new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame 3
             };
 
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here

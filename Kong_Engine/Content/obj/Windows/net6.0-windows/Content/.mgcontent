@@ -4,29 +4,33 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/Background1.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/Background2.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/Background3.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/donkey-kong-hurt.mp3</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/donkeyKong.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/dr-robotnik.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/env.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/hurtSound.mp3</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/mario.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/music.mp3</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/SimpleTileset2.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/sonic.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
-    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen2.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/Background1.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/Background2.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/Background3.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/DKJunglejpg.jpg</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/donkey-kong-hurt.mp3</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/donkeyKong.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/dr-robotnik.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/env.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/hurtSound.mp3</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/mario.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/music.mp3</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/player.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/SimpleTileset2.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/slime.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/sonic.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
+    <File>C:/Users/Sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen2.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
