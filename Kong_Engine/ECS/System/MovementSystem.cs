@@ -1,19 +1,19 @@
 ﻿using Kong_Engine.ECS.Component;
 using Kong_Engine.ECS.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Kong_Engine.ECS.System
 {
     public class MovementSystem
     {
+        private int screenWidth;
+
+        public MovementSystem(int screenWidth)
+        {
+            this.screenWidth = screenWidth;
+        }
+
         public void Update(IEnumerable<BaseEntity> entities)
         {
             foreach (var entity in entities)
@@ -28,7 +28,8 @@ namespace Kong_Engine.ECS.System
                     {
                         positionComponent.Position += movementComponent.Velocity;
 
-                        if (positionComponent.Position.X > movementComponent.RightBoundary)
+                        if (positionComponent.Position.X > movementComponent.RightBoundary ||
+                            positionComponent.Position.X + movementComponent.Velocity.X > screenWidth)
                         {
                             movementComponent.MovingRight = false;
                             positionComponent.Position = new Vector2(movementComponent.RightBoundary, positionComponent.Position.Y);
@@ -38,7 +39,8 @@ namespace Kong_Engine.ECS.System
                     {
                         positionComponent.Position -= movementComponent.Velocity;
 
-                        if (positionComponent.Position.X < movementComponent.LeftBoundary)
+                        if (positionComponent.Position.X < movementComponent.LeftBoundary ||
+                            positionComponent.Position.X - movementComponent.Velocity.X < 0)
                         {
                             movementComponent.MovingRight = true;
                             positionComponent.Position = new Vector2(movementComponent.LeftBoundary, positionComponent.Position.Y);

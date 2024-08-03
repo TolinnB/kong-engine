@@ -15,10 +15,12 @@ namespace Kong_Engine.Objects
         private bool isMovingRight = true;
         private int frameWidth = 49; // Width of each frame
         private int frameHeight = 50; // Height of each frame
+        private float scale; // Scale factor
 
-        public EnemySprite(Texture2D spriteSheet)
+        public EnemySprite(Texture2D spriteSheet, float scale)
         {
             this.spriteSheet = spriteSheet;
+            this.scale = scale;
 
             // Define the source rectangles for each frame
             walkFrames = new Rectangle[]
@@ -28,24 +30,19 @@ namespace Kong_Engine.Objects
                 new Rectangle(270, 0, frameWidth, frameHeight), // Walk Frame 3
                 new Rectangle(405, 0, frameWidth, frameHeight), // Walk Frame 4
                 new Rectangle(530, 0, frameWidth, frameHeight), // Walk Frame 5
-                //new Rectangle(675, 0, frameWidth, frameHeight), // Walk Frame 6
-                //new Rectangle(810, 0, frameWidth, frameHeight), // Walk Frame 7
-                //new Rectangle(945, 0, frameWidth, frameHeight), // Walk Frame 8
-                //new Rectangle(1080, 0, frameWidth, frameHeight), // Walk Frame 9
-                //new Rectangle(1215, 0, frameWidth, frameHeight), // Walk Frame 10
             };
 
-            AddComponent(new PositionComponent { Position = new Vector2(1000, 100) });
+            AddComponent(new PositionComponent { Position = new Vector2(200, 100) * scale });
             AddComponent(new MovementComponent
             {
-                Velocity = new Vector2(2, 0),
-                LeftBoundary = 800,
-                RightBoundary = 1200,
+                Velocity = new Vector2(2, 0) * scale,
+                LeftBoundary = 200 * scale,
+                RightBoundary = 300 * scale,
                 MovingRight = true
             });
             AddComponent(new CollisionComponent
             {
-                BoundingBox = new Rectangle(1000, 100, frameWidth, frameHeight)
+                BoundingBox = new Rectangle((int)(200 * scale), (int)(100 * scale), (int)(frameWidth * scale), (int)(frameHeight * scale))
             });
 
             currentFrame = 0;
@@ -63,26 +60,15 @@ namespace Kong_Engine.Objects
                 timeSinceLastFrame = 0;
             }
 
-            var movementComponent = GetComponent<MovementComponent>();
+            // Update bounding box position
             var positionComponent = GetComponent<PositionComponent>();
-
-            // Move the enemy
-            if (movementComponent.MovingRight)
-            {
-                positionComponent.Position += movementComponent.Velocity;
-                if (positionComponent.Position.X >= movementComponent.RightBoundary)
-                {
-                    movementComponent.MovingRight = false;
-                }
-            }
-            else
-            {
-                positionComponent.Position -= movementComponent.Velocity;
-                if (positionComponent.Position.X <= movementComponent.LeftBoundary)
-                {
-                    movementComponent.MovingRight = true;
-                }
-            }
+            var collisionComponent = GetComponent<CollisionComponent>();
+            collisionComponent.BoundingBox = new Rectangle(
+                (int)positionComponent.Position.X,
+                (int)positionComponent.Position.Y,
+                (int)(frameWidth * scale),
+                (int)(frameHeight * scale)
+            );
         }
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
@@ -93,7 +79,7 @@ namespace Kong_Engine.Objects
             // Flip the sprite if moving left
             SpriteEffects spriteEffects = GetComponent<MovementComponent>().MovingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, 1f, spriteEffects, 0f);
+            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, scale, spriteEffects, 0f);
         }
     }
 }

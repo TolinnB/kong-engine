@@ -1,4 +1,5 @@
-﻿using Kong_Engine.ECS.Component;
+﻿/*
+using Kong_Engine.ECS.Component;
 using Kong_Engine.Input;
 using Kong_Engine.Objects;
 using Kong_Engine.States.Base;
@@ -55,3 +56,4 @@ namespace Kong_Engine.States.Levels
         }
     }
 }
+*/

@@ -27,19 +27,21 @@ namespace Kong_Engine.Objects
         private double idleFrameTime; // Frame time for idle animation
         private double jumpFrameTime; // Frame time for jump animation
         private double timeSinceLastFrame;
-        private int frameWidth = 30; // Width of each frame
+        private int frameWidth = 28; // Width of each frame
         private int frameHeight = 37; // Height of each frame
         private float verticalSpeed = 0f; // Speed for jumping
+        private float scale; // Scale factor
 
-        public PlayerSprite(Texture2D spriteSheet)
+        public PlayerSprite(Texture2D spriteSheet, float scale)
         {
             this.spriteSheet = spriteSheet;
+            this.scale = scale;
 
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
                 new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
-                new Rectangle(24, 0, frameWidth, frameHeight),  // Idle Frame 2
+                new Rectangle(22, 0, frameWidth, frameHeight),  // Idle Frame 2
                 new Rectangle(47, 0, frameWidth, frameHeight),  // Idle Frame 3
             };
 
@@ -60,19 +62,19 @@ namespace Kong_Engine.Objects
                 new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame 3
             };
 
-            AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
+            AddComponent(new PositionComponent { Position = new Vector2(100, 100) * scale }); // Start position set here
             AddComponent(new CollisionComponent
             {
-                BoundingBox = new Rectangle(0, 0, frameWidth, frameHeight)
+                BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
             });
             AddComponent(new LifeComponent { Lives = 10 });
             Knockback = Vector2.Zero;
 
-            playerBounds = new Rectangle((int)Position.X - 8, (int)Position.Y - 8, frameWidth, frameHeight);
+            playerBounds = new Rectangle((int)(Position.X - 8 * scale), (int)(Position.Y - 8 * scale), (int)(frameWidth * scale), (int)(frameHeight * scale));
 
             currentFrame = 0;
             frameTime = 0.1; // Change frame every 0.1 seconds for walking animation
-            idleFrameTime = 0.5; // Change frame every 0.5 seconds for idle animation
+            idleFrameTime = 1; // Change frame every 0.5 seconds for idle animation
             jumpFrameTime = 0.05; // Change frame every 0.05 seconds for jump animation
             timeSinceLastFrame = 0;
         }
@@ -86,12 +88,12 @@ namespace Kong_Engine.Objects
             {
                 verticalSpeed -= gravity;
                 var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition.Y -= verticalSpeed;
+                currentPosition.Y -= verticalSpeed * scale;
 
                 // Check if player has landed
-                if (currentPosition.Y >= 100) // Assuming ground level is y=100
+                if (currentPosition.Y >= 100 * scale) // Assuming ground level is y=100 * scale
                 {
-                    currentPosition.Y = 100;
+                    currentPosition.Y = 100 * scale;
                     isJumping = false;
                     verticalSpeed = 0f;
                 }
@@ -119,16 +121,16 @@ namespace Kong_Engine.Objects
             }
 
             var position = GetComponent<PositionComponent>().Position;
-            playerBounds.X = (int)position.X - 8;
-            playerBounds.Y = (int)position.Y - 8;
+            playerBounds.X = (int)(position.X - 8 * scale);
+            playerBounds.Y = (int)(position.Y - 8 * scale);
         }
 
-        private void ApplyKnockback()
+        public void ApplyKnockback()
         {
-            if (Knockback != Vector2.Zero && isMoving)
+            if (Knockback != Vector2.Zero)
             {
                 var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition += Knockback;
+                currentPosition += Knockback * 0.1f; // Apply a fraction of the knockback each frame
                 Knockback *= 0.9f; // Decay the knockback over time
 
                 if (Knockback.LengthSquared() < 0.01f)
@@ -149,14 +151,14 @@ namespace Kong_Engine.Objects
             Vector2 movement = Vector2.Zero;
             if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
-                movement.X -= moveSpeed;
+                movement.X -= moveSpeed * scale;
                 isIdle = false;
                 isMoving = true;
                 isFacingRight = false; // Update direction flag
             }
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
-                movement.X += moveSpeed;
+                movement.X += moveSpeed * scale;
                 isIdle = false;
                 isMoving = true;
                 isFacingRight = true; // Update direction flag
@@ -178,7 +180,7 @@ namespace Kong_Engine.Objects
         public void Move(Vector2 direction)
         {
             var currentPosition = GetComponent<PositionComponent>().Position;
-            currentPosition += direction;
+            currentPosition += direction * scale;
             GetComponent<PositionComponent>().Position = currentPosition;
         }
 
@@ -203,7 +205,7 @@ namespace Kong_Engine.Objects
             // Flip the sprite if facing left
             SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, 1f, spriteEffects, 0f);
+            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, scale, spriteEffects, 0f);
         }
     }
 }

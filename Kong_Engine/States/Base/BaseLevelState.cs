@@ -29,12 +29,15 @@ namespace Kong_Engine.States.Base
             SpriteBatch = new SpriteBatch(game.GraphicsDevice);
             AudioManager = new AudioManager(contentManager);
             SetInputManager();
+
+            // Initialize MovementSystem with screen width
+            int screenWidth = game.GraphicsDevice.Viewport.Width;
+            MovementSystem = new MovementSystem(screenWidth);
         }
 
         public override void LoadContent()
         {
             Entities = new List<BaseEntity>();
-            MovementSystem = new MovementSystem();
             CollisionSystem = new CollisionSystem(AudioManager);
 
             LoadLevelContent();
