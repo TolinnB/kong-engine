@@ -1,6 +1,5 @@
-﻿using System;
-using Kong_Engine.Objects.Base;
-using Kong_Engine.States.Base;
+﻿using Kong_Engine.States.Base;
+using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -22,7 +21,7 @@ namespace Kong_Engine.States
 
             if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
             {
-                ((MainGame)Game).InitializeGameplay(); // Ensure this cast to MainGame
+                SwitchState(new Level1State());
             }
 
             PreviousKeyboardState = currentKeyboardState;

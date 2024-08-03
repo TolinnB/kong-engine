@@ -3,21 +3,20 @@ using Kong_Engine.ECS.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Kong_Engine.Objects;
-using Kong_Engine.States;
 
 namespace Kong_Engine.ECS.System
 {
     public class CollisionSystem
     {
         private readonly AudioManager _audioManager;
-        private readonly MainGame _game;
 
-        public CollisionSystem(AudioManager audioManager, MainGame game)
+        public CollisionSystem(AudioManager audioManager)
         {
             _audioManager = audioManager;
-            _game = game;
         }
 
         public void Update(IEnumerable<BaseEntity> entities)
@@ -60,12 +59,12 @@ namespace Kong_Engine.ECS.System
                 if (playerLife.Lives <= 0)
                 {
                     Console.WriteLine("Player is dead!");
-                    _game.SwitchState(new GameOverState()); // Switch to GameOverState
+                    // Handle game over logic
                 }
                 else
                 {
                     Console.WriteLine("Player hit! Lives remaining: " + playerLife.Lives);
-                    _audioManager.PlaySound("donkeyKongHurt");
+                    _audioManager.PlaySound("hurtSound");
 
                     // Apply knockback
                     var playerPosition = player.GetComponent<PositionComponent>();

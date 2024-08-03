@@ -23,9 +23,16 @@ namespace Kong_Engine.Objects
             // Define the source rectangles for each frame
             walkFrames = new Rectangle[]
             {
-                new Rectangle(-5, 45, frameWidth, frameHeight),   // Walk Frame 1
-                new Rectangle(42, 45, frameWidth, frameHeight),  // Walk Frame 2
-                new Rectangle(89, 45, frameWidth, frameHeight), // Walk Frame 3
+                new Rectangle(0, 0, frameWidth, frameHeight),   // Walk Frame 1
+                new Rectangle(135, 0, frameWidth, frameHeight),  // Walk Frame 2
+                new Rectangle(270, 0, frameWidth, frameHeight), // Walk Frame 3
+                new Rectangle(405, 0, frameWidth, frameHeight), // Walk Frame 4
+                new Rectangle(530, 0, frameWidth, frameHeight), // Walk Frame 5
+                //new Rectangle(675, 0, frameWidth, frameHeight), // Walk Frame 6
+                //new Rectangle(810, 0, frameWidth, frameHeight), // Walk Frame 7
+                //new Rectangle(945, 0, frameWidth, frameHeight), // Walk Frame 8
+                //new Rectangle(1080, 0, frameWidth, frameHeight), // Walk Frame 9
+                //new Rectangle(1215, 0, frameWidth, frameHeight), // Walk Frame 10
             };
 
             AddComponent(new PositionComponent { Position = new Vector2(1000, 100) });
@@ -80,8 +87,6 @@ namespace Kong_Engine.Objects
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
-            spriteBatch.Begin(SpriteSortMode.Deferred, samplerState: SamplerState.PointClamp, transformMatrix: matrix);
-
             Rectangle currentFrameRect = walkFrames[currentFrame];
             var position = GetComponent<PositionComponent>().Position;
 
@@ -89,8 +94,6 @@ namespace Kong_Engine.Objects
             SpriteEffects spriteEffects = GetComponent<MovementComponent>().MovingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
             spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, 1f, spriteEffects, 0f);
-
-            spriteBatch.End();
         }
     }
 }
