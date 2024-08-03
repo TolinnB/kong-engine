@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<<<<<<< HEAD:Kong_Engine/Content/obj/DesktopGL/net6.0-windows/Content/sonic.mgcontent
-  <SourceFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/sonic.png</SourceFile>
-  <SourceTime>2024-08-02T12:35:35.9901846+01:00</SourceTime>
-  <DestFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/bin/DesktopGL/Content/sonic.xnb</DestFile>
-  <DestTime>2024-08-02T15:34:49.0891581+01:00</DestTime>
-=======
-  <SourceFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/slime.png</SourceFile>
-  <SourceTime>2024-08-03T17:11:53.330081+01:00</SourceTime>
-  <DestFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/slime.xnb</DestFile>
-  <DestTime>2024-08-03T17:12:25.5369084+01:00</DestTime>
->>>>>>> main:Kong_Engine/Content/obj/Windows/net6.0-windows/Content/slime.mgcontent
+  <SourceFile>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/slime.png</SourceFile>
+  <SourceTime>2024-08-03T23:17:38.09802+01:00</SourceTime>
+  <DestFile>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/slime.xnb</DestFile>
+  <DestTime>2024-08-03T23:21:09.3527152+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

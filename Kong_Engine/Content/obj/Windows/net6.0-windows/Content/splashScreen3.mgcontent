@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<<<<<<< HEAD:Kong_Engine/Content/obj/DesktopGL/net6.0-windows/Content/Background2.mgcontent
-  <SourceFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/Background2.png</SourceFile>
-  <SourceTime>2024-08-02T12:35:35.5139127+01:00</SourceTime>
-  <DestFile>C:/Users/breto/Source/Repos/kong-engine/Kong_Engine/Content/bin/DesktopGL/Content/Background2.xnb</DestFile>
-  <DestTime>2024-08-02T15:34:44.3587546+01:00</DestTime>
-=======
-  <SourceFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen3.png</SourceFile>
-  <SourceTime>2024-08-03T17:11:53.345927+01:00</SourceTime>
-  <DestFile>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/splashScreen3.xnb</DestFile>
-  <DestTime>2024-08-03T17:12:26.0742937+01:00</DestTime>
->>>>>>> main:Kong_Engine/Content/obj/Windows/net6.0-windows/Content/splashScreen3.mgcontent
+  <SourceFile>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/splashScreen3.png</SourceFile>
+  <SourceTime>2024-08-03T23:17:38.1035248+01:00</SourceTime>
+  <DestFile>C:/Users/breto/source/repos/kong-engine/Kong_Engine/Content/bin/Windows/Content/splashScreen3.xnb</DestFile>
+  <DestTime>2024-08-03T23:21:09.5325107+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
