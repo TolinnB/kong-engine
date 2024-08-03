@@ -2,6 +2,42 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
+      "Aether.Physics2D.Diagnostics.MG/2.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Aether.Physics2D.MG": "2.1.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Aether.Physics2D.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Aether.Physics2D.Diagnostics.dll": {
+            "related": ".xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/netstandard2.0/Content/DiagnosticsFont.xnb": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "Aether.Physics2D.MG/2.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Aether.Physics2D.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Aether.Physics2D.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Libuv/1.9.1": {
         "type": "package",
         "dependencies": {
@@ -2498,6 +2534,38 @@
     }
   },
   "libraries": {
+    "Aether.Physics2D.Diagnostics.MG/2.1.1": {
+      "sha512": "+5HGu979DbamRbxdzHjJ/iR9zttXbobXJ0xAarHNpumiJA/euH2BcQzBZQ2JM2Q7AFVZcFk/Z2/57Mxhudm8fg==",
+      "type": "package",
+      "path": "aether.physics2d.diagnostics.mg/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "aether.physics2d.diagnostics.mg.2.1.1.nupkg.sha512",
+        "aether.physics2d.diagnostics.mg.nuspec",
+        "content/Content/DiagnosticsFont.xnb",
+        "contentFiles/any/netstandard2.0/Content/DiagnosticsFont.xnb",
+        "icon.png",
+        "lib/netstandard2.0/Aether.Physics2D.Diagnostics.dll",
+        "lib/netstandard2.0/Aether.Physics2D.Diagnostics.xml"
+      ]
+    },
+    "Aether.Physics2D.MG/2.1.1": {
+      "sha512": "6qJjI27B7gQ4BMoF+uL+cxH9GRhZKVAlI5A0vC0kwUKQ40quvMl5WAZVFH0lNK7ZCMeu4RrcJ48aq4oY9cK3XA==",
+      "type": "package",
+      "path": "aether.physics2d.mg/2.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "aether.physics2d.mg.2.1.1.nupkg.sha512",
+        "aether.physics2d.mg.nuspec",
+        "icon.png",
+        "lib/netstandard2.0/Aether.Physics2D.dll",
+        "lib/netstandard2.0/Aether.Physics2D.xml"
+      ]
+    },
     "Libuv/1.9.1": {
       "sha512": "uqX2Frwf9PW8MaY7PRNY6HM5BpW1D8oj1EdqzrmbEFD5nH63Yat3aEjN/tws6Tw6Fk7LwmLBvtUh32tTeTaHiA==",
       "type": "package",
@@ -7540,6 +7608,8 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "Aether.Physics2D.Diagnostics.MG >= 2.1.1",
+      "Aether.Physics2D.MG >= 2.1.1",
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
       "MonoGame.Framework.WindowsDX >= 3.8.1.303",
       "TiledSharp >= 1.0.1"
@@ -7552,11 +7622,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+      "projectUniqueName": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
       "projectName": "Kong_Engine",
-      "projectPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+      "projectPath": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
       "packagesPath": "C:\\Users\\breto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\obj\\",
+      "outputPath": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -7595,6 +7665,14 @@
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
         "dependencies": {
+          "Aether.Physics2D.Diagnostics.MG": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
+          "Aether.Physics2D.MG": {
+            "target": "Package",
+            "version": "[2.1.1, )"
+          },
           "MonoGame.Content.Builder.Task": {
             "target": "Package",
             "version": "[3.8.1.303, )"
@@ -7630,13 +7708,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

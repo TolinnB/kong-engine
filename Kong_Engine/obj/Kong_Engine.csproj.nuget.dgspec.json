@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
+    "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
+    "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "projectUniqueName": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "projectName": "Kong_Engine",
-        "projectPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "projectPath": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "packagesPath": "C:\\Users\\breto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\obj\\",
+        "outputPath": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,14 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "Aether.Physics2D.Diagnostics.MG": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Aether.Physics2D.MG": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
               "version": "[3.8.1.303, )"
