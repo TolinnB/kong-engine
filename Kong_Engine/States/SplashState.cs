@@ -12,7 +12,7 @@ namespace Kong_Engine.States
     {
         public override void LoadContent()
         {
-            AddGameObject(new SplashImage(LoadTexture("splashScreen")));
+            AddGameObject(new SplashImage(LoadTexture("splashScreen3")));
         }
 
         public override void HandleInput()

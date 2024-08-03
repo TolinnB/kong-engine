@@ -21,7 +21,7 @@ namespace Kong_Engine.States.Base
         protected ContentManager Content => _contentManager;
         protected MainGame Game { get; private set; }
 
-        public void Initialize(ContentManager contentManager, MainGame game)
+        public virtual void Initialize(ContentManager contentManager, MainGame game)
         {
             _contentManager = contentManager;
             Game = game;

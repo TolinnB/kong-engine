@@ -1,36 +1,21 @@
-using System;
-using System.Collections.Generic;
-using Kong_Engine.ECS.Component;
-using Kong_Engine.ECS.Entity;
-using Kong_Engine.ECS.System;
 using Kong_Engine.Enum;
-using Kong_Engine.Input;
-using Kong_Engine.Objects;
-using Kong_Engine.Objects.Base;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
+using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+<<<<<<< HEAD
 using TiledSharp;
 using nkast.Aether.Physics2D.Common;
 using nkast.Aether.Physics2D.Dynamics;
+=======
+>>>>>>> main
 
 namespace Kong_Engine
 {
-    public enum GameState
-    {
-        SplashScreen,
-        MainMenu,
-        Gameplay,
-        EndLevelSummary,
-        GameOver,
-        PhysicsBalls // Add PhysicsBalls to the GameState enum
-    }
-
     public class MainGame : Game
     {
-        private GameState _currentGameState;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private RenderTarget2D _renderTarget;
@@ -38,14 +23,9 @@ namespace Kong_Engine
         private const int DesignedResolutionWidth = 1280;
         private const int DesignedResolutionHeight = 720;
         private const float DesignedResolutionAspectRatio = DesignedResolutionWidth / (float)DesignedResolutionHeight;
-
-        // Gameplay variables
-        private List<BaseEntity> _entities;
-        private MovementSystem _movementSystem;
-        private CollisionSystem _collisionSystem;
-        private PlayerSprite _playerEntity;
-        private EnemySprite _enemyEntity;
+        private BaseGameState _currentState;
         private AudioManager _audioManager;
+<<<<<<< HEAD
         private KeyboardState _previousKeyboardState;
         private InputManager _inputManager;
         private Texture2D _mainMenuBackground;
@@ -64,6 +44,9 @@ namespace Kong_Engine
 
         // PhysicsBallState variables
         private PhysicsBallState _physicsBallState;
+=======
+        private float _scaleFactor = 1f;
+>>>>>>> main
 
         // New Physics Systems
         private GravitySystem _gravitySystem;
@@ -75,7 +58,6 @@ namespace Kong_Engine
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            _currentGameState = GameState.SplashScreen;
         }
 
         protected override void Initialize()
@@ -89,8 +71,10 @@ namespace Kong_Engine
                 SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
             _renderScaleRectangle = GetScaleRectangle();
+            _scaleFactor = (float)Window.ClientBounds.Width / DesignedResolutionWidth;
 
             base.Initialize();
+<<<<<<< HEAD
 
             // Create a new physics world
             physicsWorld = new World(new Vector2(0, 9.8f)); // Gravity pointing down
@@ -100,7 +84,13 @@ namespace Kong_Engine
             _jumpingSystem = new JumpingSystem(10f, 9.8f);
             _buoyancySystem = new BuoyancySystem(200, 1f); // Example values
             _frictionAndDragSystem = new FrictionAndDragSystem(0.1f, 0.02f); // Example values
+=======
+            _audioManager = new AudioManager(Content);
+            SwitchState(new SplashState());
+>>>>>>> main
         }
+
+        public float ScaleFactor => _scaleFactor;
 
         private Rectangle GetScaleRectangle()
         {
@@ -127,6 +117,7 @@ namespace Kong_Engine
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+<<<<<<< HEAD
             _mainMenuBackground = Content.Load<Texture2D>("mainMenu");
             _splashScreen = Content.Load<Texture2D>("splashScreen2");
             _endLevelSummaryBackground = Content.Load<Texture2D>("endLevelSummary");
@@ -193,60 +184,15 @@ namespace Kong_Engine
                     body.UserData = "collisionObject"; // Set user data for collision handling
                 }
             }
+=======
+            // Load common content if necessary
+>>>>>>> main
         }
 
         protected override void Update(GameTime gameTime)
         {
-            var currentKeyboardState = Keyboard.GetState();
-
-            switch (_currentGameState)
-            {
-                case GameState.SplashScreen:
-                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
-                    {
-                        _currentGameState = GameState.MainMenu;
-                    }
-                    break;
-
-                case GameState.MainMenu:
-                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
-                    {
-                        InitializeGameplay();
-                        _currentGameState = GameState.Gameplay;
-                    }
-                    break;
-
-                case GameState.Gameplay:
-                    HandleGameplayInput(currentKeyboardState);
-                    UpdateGameplay(gameTime);
-                    if (IsLevelCompleted())
-                    {
-                        _currentGameState = GameState.EndLevelSummary;
-                    }
-                    break;
-
-                case GameState.EndLevelSummary:
-                    HandleEndLevelSummaryInput(currentKeyboardState);
-                    break;
-
-                case GameState.GameOver:
-                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
-                    {
-                        _currentGameState = GameState.PhysicsBalls;
-                    }
-                    break;
-
-                case GameState.PhysicsBalls:
-                    _physicsBallState.Update(gameTime);
-                    if (currentKeyboardState.IsKeyDown(Keys.Enter) && _previousKeyboardState.IsKeyUp(Keys.Enter))
-                    {
-                        _currentGameState = GameState.MainMenu;
-                    }
-                    break;
-            }
-
-            _previousKeyboardState = currentKeyboardState;
-
+            _currentState?.Update(gameTime);
+            _currentState?.HandleInput();
             base.Update(gameTime);
         }
 
@@ -256,51 +202,7 @@ namespace Kong_Engine
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-
-            switch (_currentGameState)
-            {
-                case GameState.SplashScreen:
-                    _spriteBatch.Draw(_splashScreen, new Vector2(0, 0), Color.White);
-                    break;
-
-                case GameState.MainMenu:
-                    _spriteBatch.Draw(_mainMenuBackground, new Vector2(0, 0), Color.White);
-                    break;
-
-                case GameState.Gameplay:
-                    // Existing drawing code for gameplay...
-
-                    // Drawing tile map
-                    var transformMatrix = Matrix.CreateScale(1); // No additional scaling here
-                    _spriteBatch.End(); // End current Begin
-                    _tileMapManager.Draw(transformMatrix); // Draw the tile map with its own Begin and End
-
-                    // Draw player and enemy entities with the same scaling factor
-                    _playerEntity.Draw(_spriteBatch, transformMatrix);
-                    _enemyEntity.Draw(_spriteBatch, transformMatrix);
-
-                    _spriteBatch.Begin(); // Begin again for subsequent drawings
-
-                    // Add any additional drawing calls here
-
-                    break;
-
-                case GameState.EndLevelSummary:
-                    _spriteBatch.Draw(_endLevelSummaryBackground, new Vector2(0, 0), Color.White);
-                    break;
-
-                case GameState.GameOver:
-                    var gameOverText = "Game Over";
-                    var textSize = _gameOverFont.MeasureString(gameOverText);
-                    var position = new Vector2((DesignedResolutionWidth - textSize.X) / 2, (DesignedResolutionHeight - textSize.Y) / 2);
-                    _spriteBatch.DrawString(_gameOverFont, gameOverText, position, Color.Red);
-                    break;
-
-                case GameState.PhysicsBalls:
-                    _physicsBallState.Render(gameTime, _spriteBatch);
-                    break;
-            }
-
+            _currentState?.Render(_spriteBatch);
             _spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);
@@ -313,6 +215,7 @@ namespace Kong_Engine
             base.Draw(gameTime);
         }
 
+<<<<<<< HEAD
         private void HandleGameplayInput(KeyboardState currentKeyboardState)
         {
             if (_inputManager == null)
@@ -389,21 +292,24 @@ namespace Kong_Engine
             return _playerEntity.GetComponent<PositionComponent>().Position.X > 1000;
         }
 
+=======
+>>>>>>> main
         public void SwitchState(BaseGameState newState)
         {
-            newState.Initialize(Content, this);
-            newState.OnStateSwitched += OnStateSwitchedHandler;
-            newState.OnEventNotification += OnEventNotificationHandler;
-            newState.LoadContent();
-            _currentGameState = GameState.GameOver;
+            _currentState?.UnloadContent();
+            _currentState = newState;
+            _currentState.Initialize(Content, this);
+            _currentState.LoadContent();
+            _currentState.OnStateSwitched += HandleStateSwitched;
+            _currentState.OnEventNotification += HandleEventNotification;
         }
 
-        private void OnStateSwitchedHandler(object sender, BaseGameState newState)
+        private void HandleStateSwitched(object sender, BaseGameState newState)
         {
             SwitchState(newState);
         }
 
-        private void OnEventNotificationHandler(object sender, Events e)
+        private void HandleEventNotification(object sender, Events e)
         {
             if (e == Events.GAME_QUIT)
             {

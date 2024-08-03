@@ -50,19 +50,11 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
-            "Aether.Physics2D.Diagnostics.MG": {
-              "target": "Package",
-              "version": "[2.1.1, )"
-            },
-            "Aether.Physics2D.MG": {
-              "target": "Package",
-              "version": "[2.1.1, )"
-            },
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
-            "MonoGame.Framework.DesktopGL": {
+            "MonoGame.Framework.WindowsDX": {
               "target": "Package",
               "version": "[3.8.1.303, )"
             },

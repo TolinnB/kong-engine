@@ -49,18 +49,6 @@
 /processorParam:TextureFormat=Color
 /build:Background3.png
 
-#begin CircleSprite.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:CircleSprite.png
-
 #begin DKJunglejpg.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -139,13 +127,6 @@
 /processorParam:TextureFormat=Color
 /build:fallbackTexture.png
 
-#begin GameOverFont.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:GameOverFont.spritefont
-
 #begin gorillaScreen.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -157,6 +138,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:gorillaScreen.jpg
+
+#begin hurtSound.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:hurtSound.mp3
 
 #begin JumpLand.tmx
 /copy:JumpLand.tmx
@@ -206,7 +193,13 @@
 /processorParam:TextureFormat=Color
 /build:mario.png
 
-#begin RectangleSprite.png
+#begin music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music.mp3
+
+#begin player.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -216,7 +209,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:RectangleSprite.png
+/build:player.png
 
 #begin SimpleTileset2_Kong_Engine.tsx
 /copy:SimpleTileset2_Kong_Engine.tsx
@@ -232,6 +225,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:SimpleTileset2.png
+
+#begin slime.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:slime.png
 
 #begin sonic.png
 /importer:TextureImporter
@@ -268,4 +273,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:splashScreen2.png
+
+#begin splashScreen3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:splashScreen3.png
 
