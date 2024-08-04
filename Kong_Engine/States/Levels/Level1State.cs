@@ -30,7 +30,7 @@ namespace Kong_Engine.States.Levels
             var enemySpriteSheet = Content.Load<Texture2D>("slime");
             float scale = 3.0f;
 
-            PlayerEntity = new PlayerSprite(playerSpriteSheet, scale);
+            PlayerEntity = new PlayerSprite(playerSpriteSheet, ParticleSystem); // Pass ParticleSystem to PlayerSprite
             EnemyEntity = new EnemySprite(enemySpriteSheet, scale);
 
             Entities.Add(PlayerEntity);
@@ -70,6 +70,8 @@ namespace Kong_Engine.States.Levels
             CollisionSystem.Update(Entities);
             PlayerEntity?.Update(gameTime);
             EnemyEntity?.Update(gameTime);
+
+            ParticleSystem.Update(gameTime); // Update particle system
 
             if (IsLevelCompleted())
             {

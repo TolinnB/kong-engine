@@ -21,6 +21,7 @@
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/mario.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/music.mp3</File>
+    <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/particle.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/player.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/SimpleTileset2.png</File>
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/slime.png</File>
@@ -30,6 +31,7 @@
     <File>C:/Users/Sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

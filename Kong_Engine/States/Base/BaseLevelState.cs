@@ -23,6 +23,8 @@ namespace Kong_Engine.States.Base
         protected AudioManager AudioManager;
         protected InputManager InputManager;
 
+        protected ParticleSystem ParticleSystem;  // Add particle system
+
         public override void Initialize(ContentManager contentManager, MainGame game)
         {
             base.Initialize(contentManager, game);
@@ -33,6 +35,9 @@ namespace Kong_Engine.States.Base
             // Initialize MovementSystem with screen width
             int screenWidth = game.GraphicsDevice.Viewport.Width;
             MovementSystem = new MovementSystem(screenWidth);
+
+            var particleTexture = contentManager.Load<Texture2D>("particle");
+            ParticleSystem = new ParticleSystem(particleTexture); // Initialize particle system
         }
 
         public override void LoadContent()
@@ -70,6 +75,8 @@ namespace Kong_Engine.States.Base
             PlayerEntity?.Update(gameTime);
             EnemyEntity?.Update(gameTime);
 
+            ParticleSystem.Update(gameTime); // Update particle system
+
             if (IsLevelCompleted())
             {
                 SwitchState(new EndLevelSummaryState());
@@ -86,6 +93,9 @@ namespace Kong_Engine.States.Base
             TileMapManager?.Draw(transformMatrix);
             PlayerEntity?.Draw(spriteBatch, transformMatrix);
             EnemyEntity?.Draw(spriteBatch, transformMatrix);
+
+            ParticleSystem.Draw(spriteBatch); // Draw particle system
+
             base.Render(spriteBatch);
         }
     }

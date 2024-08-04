@@ -1,7 +1,7 @@
+using Kong_Engine.ECS.System;
 using Kong_Engine.Enum;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
-using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -20,6 +20,9 @@ namespace Kong_Engine
         private BaseGameState _currentState;
         private AudioManager _audioManager;
         private float _scaleFactor = 1f;
+
+        private ParticleSystem _particleSystem;  // Add particle system
+        private Texture2D _particleTexture;
 
         public MainGame()
         {
@@ -72,6 +75,8 @@ namespace Kong_Engine
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _particleTexture = Content.Load<Texture2D>("particle"); // Make sure you have a particle texture in your Content folder
+            _particleSystem = new ParticleSystem(_particleTexture);
             // Load common content if necessary
         }
 
@@ -79,6 +84,7 @@ namespace Kong_Engine
         {
             _currentState?.Update(gameTime);
             _currentState?.HandleInput();
+            _particleSystem.Update(gameTime); // Update particles
             base.Update(gameTime);
         }
 
@@ -89,6 +95,7 @@ namespace Kong_Engine
 
             _spriteBatch.Begin();
             _currentState?.Render(_spriteBatch);
+            _particleSystem.Draw(_spriteBatch); // Draw particles
             _spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);

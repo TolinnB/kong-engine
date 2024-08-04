@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
+    "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
+    "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "projectUniqueName": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "projectName": "Kong_Engine",
-        "projectPath": "C:\\Users\\breto\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
-        "packagesPath": "C:\\Users\\breto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
+        "projectPath": "C:\\Users\\Sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "packagesPath": "C:\\Users\\Sheps\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\breto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sheps\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -82,6 +82,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -90,7 +108,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

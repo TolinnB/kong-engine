@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
+using Kong_Engine.ECS.System;
+using System;
 
 namespace Kong_Engine.Objects
 {
@@ -30,10 +32,12 @@ namespace Kong_Engine.Objects
         private int frameWidth = 30; // Width of each frame
         private int frameHeight = 37; // Height of each frame
         private float verticalSpeed = 0f; // Speed for jumping
+        private ParticleSystem particleSystem; // Add particle system
 
-        public PlayerSprite(Texture2D spriteSheet)
+        public PlayerSprite(Texture2D spriteSheet, ParticleSystem particleSystem)
         {
             this.spriteSheet = spriteSheet;
+            this.particleSystem = particleSystem; // Initialize particle system
 
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
@@ -175,6 +179,10 @@ namespace Kong_Engine.Objects
                 currentPosition += movement;
                 var positionComponent = GetComponent<PositionComponent>();
                 positionComponent.Position = currentPosition;
+
+                // Add particles when the player moves
+                particleSystem.AddParticle(currentPosition);
+                Console.WriteLine("Particle added at position: " + currentPosition); // Debug log
             }
         }
 

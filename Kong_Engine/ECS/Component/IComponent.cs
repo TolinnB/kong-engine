@@ -49,4 +49,36 @@ namespace Kong_Engine.ECS.Component
         public float Mass { get; set; }
         public bool IsGrounded { get; set; }
     }
+
+    public class ParticleComponent : IComponent
+    {
+        public Vector2 Position;
+        public Vector2 Velocity;
+        public Color Color;
+        public float Size;
+        public float LifeTime;
+
+        public ParticleComponent(Vector2 position, Vector2 velocity, Color color, float size, float lifeTime)
+        {
+            Position = position;
+            Velocity = velocity;
+            Color = color;
+            Size = size;
+            LifeTime = lifeTime;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            LifeTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Position += Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Texture2D texture)
+        {
+            if (LifeTime > 0)
+            {
+                spriteBatch.Draw(texture, Position, null, Color, 0f, Vector2.Zero, Size, SpriteEffects.None, 0f);
+            }
+        }
+    }
 }
