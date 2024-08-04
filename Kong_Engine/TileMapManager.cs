@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using TiledSharp;
 
 namespace Kong_Engine
@@ -14,6 +15,7 @@ namespace Kong_Engine
         private int tileWidth;
         private int tileHeight;
         private float scale;
+        public List<Rectangle> CollisionRectangles { get; private set; }
 
         public TileMapManager(SpriteBatch _spriteBatch, TmxMap _map, Texture2D _tileset, int _tilesetTilesWide, int _tileWidth, int _tileHeight, float _scale = 1.0f)
         {
@@ -24,6 +26,17 @@ namespace Kong_Engine
             tileWidth = _tileWidth;
             tileHeight = _tileHeight;
             scale = _scale;
+            CollisionRectangles = new List<Rectangle>();
+            LoadCollisionRectangles();
+        }
+
+        private void LoadCollisionRectangles()
+        {
+            foreach (var obj in map.ObjectGroups["Object Layer 1"].Objects)
+            {
+                var rectangle = new Rectangle((int)obj.X, (int)obj.Y, (int)obj.Width, (int)obj.Height);
+                CollisionRectangles.Add(rectangle);
+            }
         }
 
         public void Draw(Matrix matrix)

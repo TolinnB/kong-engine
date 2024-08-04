@@ -38,10 +38,12 @@ namespace Kong_Engine.States.Base
         public override void LoadContent()
         {
             Entities = new List<BaseEntity>();
-            CollisionSystem = new CollisionSystem(AudioManager);
 
             LoadLevelContent();
             InitializeEntities();
+
+            // Initialize CollisionSystem after TileMapManager and Entities are loaded
+            CollisionSystem = new CollisionSystem(AudioManager, Game, TileMapManager);
         }
 
         protected abstract void LoadLevelContent();

@@ -30,7 +30,7 @@ namespace Kong_Engine.States.Levels
             var enemySpriteSheet = Content.Load<Texture2D>("slime");
             float scale = 3.0f;
 
-            PlayerEntity = new PlayerSprite(playerSpriteSheet, scale);
+            PlayerEntity = new PlayerSprite(playerSpriteSheet, TileMapManager, scale);
             EnemyEntity = new EnemySprite(enemySpriteSheet, scale);
 
             Entities.Add(PlayerEntity);
