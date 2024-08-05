@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
+    "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
+    "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "projectUniqueName": "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "projectName": "Kong_Engine",
-        "projectPath": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
-        "packagesPath": "C:\\Users\\breto\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\breto\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
+        "projectPath": "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
+        "packagesPath": "C:\\Users\\sheps\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\breto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sheps\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

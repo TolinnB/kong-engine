@@ -232,3 +232,5 @@ C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\run
 C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Eng.78DDB8C4.Up2Date
 C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.genruntimeconfig.cache
 C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref\Kong_Engine.dll
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Aether.Physics2D.Diagnostics.dll
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Aether.Physics2D.dll

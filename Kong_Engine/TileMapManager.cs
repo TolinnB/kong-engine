@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TiledSharp;
 
 namespace Kong_Engine
@@ -32,10 +33,29 @@ namespace Kong_Engine
 
         private void LoadCollisionRectangles()
         {
-            foreach (var obj in map.ObjectGroups["Object Layer 1"].Objects)
+            Console.WriteLine("Available Object Layers:");
+            foreach (var layer in map.ObjectGroups)
             {
-                var rectangle = new Rectangle((int)obj.X, (int)obj.Y, (int)obj.Width, (int)obj.Height);
-                CollisionRectangles.Add(rectangle);
+                Console.WriteLine($"- {layer.Name}");
+            }
+
+            TmxObjectGroup objectGroup = map.ObjectGroups.FirstOrDefault(og => og.Name == "Object Layer 1") ??
+                                         map.ObjectGroups.FirstOrDefault(og => og.Name == "Collisions") ??
+                                         map.ObjectGroups.FirstOrDefault();
+
+            if (objectGroup != null)
+            {
+                Console.WriteLine($"Using object layer: {objectGroup.Name}");
+                foreach (var obj in objectGroup.Objects)
+                {
+                    var rectangle = new Rectangle((int)obj.X, (int)obj.Y, (int)obj.Width, (int)obj.Height);
+                    CollisionRectangles.Add(rectangle);
+                }
+            }
+            else
+            {
+                var availableLayers = string.Join(", ", map.ObjectGroups.Select(og => og.Name));
+                throw new KeyNotFoundException($"No suitable object layer found. Available layers: {availableLayers}");
             }
         }
 
@@ -46,16 +66,12 @@ namespace Kong_Engine
                 samplerState: SamplerState.PointClamp,
                 transformMatrix: matrix);
 
-            for (var i = 0; i < map.Layers.Count; i++)
+            foreach (var layer in map.Layers)
             {
-                for (var j = 0; j < map.Layers[i].Tiles.Count; j++)
+                for (var j = 0; j < layer.Tiles.Count; j++)
                 {
-                    int gid = map.Layers[i].Tiles[j].Gid;
-                    if (gid == 0)
-                    {
-                        // do nothing
-                    }
-                    else
+                    int gid = layer.Tiles[j].Gid;
+                    if (gid != 0)
                     {
                         int tileFrame = gid - 1;
                         int column = tileFrame % tilesetTilesWide;
