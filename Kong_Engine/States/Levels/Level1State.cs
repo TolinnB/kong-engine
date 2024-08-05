@@ -19,7 +19,7 @@ namespace Kong_Engine.States.Levels
             int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
-            float scale = 4.0f;
+            float scale = 1.0f; // Adjust the scale factor as needed
 
             TileMapManager = new TileMapManager(SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
         }
@@ -28,10 +28,11 @@ namespace Kong_Engine.States.Levels
         {
             var playerSpriteSheet = Content.Load<Texture2D>("player");
             var enemySpriteSheet = Content.Load<Texture2D>("slime");
-            float scale = 3.0f;
+            float playerScale = 1.0f; // Adjust player scale as needed
+            float enemyScale = 1.0f;  // Adjust enemy scale as needed
 
-            PlayerEntity = new PlayerSprite(playerSpriteSheet, TileMapManager, scale);
-            EnemyEntity = new EnemySprite(enemySpriteSheet, scale);
+            PlayerEntity = new PlayerSprite(playerSpriteSheet, TileMapManager, playerScale);
+            EnemyEntity = new EnemySprite(enemySpriteSheet, enemyScale);
 
             Entities.Add(PlayerEntity);
             Entities.Add(EnemyEntity);

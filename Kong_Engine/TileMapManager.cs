@@ -45,9 +45,14 @@ namespace Kong_Engine
                 {
                     if (collisionData[x, y] != -1)
                     {
-                        var rectangle = new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+                        var rectangle = new Rectangle(
+                            (int)(x * tileWidth * scale),
+                            (int)(y * tileHeight * scale),
+                            (int)(tileWidth * scale),
+                            (int)(tileHeight * scale)
+                        );
                         CollisionRectangles.Add(rectangle);
-                        Console.WriteLine($"Collision rectangle added at ({x * tileWidth}, {y * tileHeight}, {tileWidth}, {tileHeight})");
+                        Console.WriteLine($"Collision rectangle added at ({rectangle.X}, {rectangle.Y}, {rectangle.Width}, {rectangle.Height})");
                     }
                 }
             }

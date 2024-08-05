@@ -234,9 +234,6 @@ C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kon
 C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref\Kong_Engine.dll
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Aether.Physics2D.Diagnostics.dll
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Aether.Physics2D.dll
-C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand._Collisions.csv
-C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand._Floor.csv
-C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand._Tile Layer 2.csv
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand_Collisions.csv
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand_Floor.csv
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand_Tile Layer 2.csv
