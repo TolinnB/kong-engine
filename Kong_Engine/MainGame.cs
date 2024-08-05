@@ -1,11 +1,10 @@
+using Kong_Engine.ECS.Entity;
 using Kong_Engine.Enum;
 using Kong_Engine.Objects;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
-using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using TiledSharp;
 
 namespace Kong_Engine
@@ -22,10 +21,6 @@ namespace Kong_Engine
         private BaseGameState _currentState;
         private AudioManager _audioManager;
         private float _scaleFactor = 1f;
-
-        // Add fields for TileMapManager and PlayerSprite
-        private TileMapManager _tileMapManager;
-        private PlayerSprite _playerSprite;
 
         public MainGame()
         {
@@ -78,33 +73,12 @@ namespace Kong_Engine
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // Load Tiled map and texture for the TileMapManager
-            TmxMap map = new TmxMap("Content/map.tmx");
-            Texture2D tileset = Content.Load<Texture2D>("SimpleTileset2");
-
-            // Calculate the number of tiles wide the tileset image is
-            int tilesetTilesWide = (map.Tilesets[0].Image.Width / map.TileWidth).GetValueOrDefault();
-
-            // Initialize TileMapManager
-            _tileMapManager = new TileMapManager(_spriteBatch, map, tileset, tilesetTilesWide, map.TileWidth, map.TileHeight);
-
-            // Load player texture and initialize PlayerSprite with scale
-            Texture2D playerTexture = Content.Load<Texture2D>("player");
-            float playerScale = 3.0f; // Set your desired scale factor here
-            _playerSprite = new PlayerSprite(playerTexture, _tileMapManager, playerScale);
-
-            // Load common content if necessary
         }
 
         protected override void Update(GameTime gameTime)
         {
             _currentState?.Update(gameTime);
             _currentState?.HandleInput();
-
-            // Update the PlayerSprite
-            _playerSprite.Update(gameTime);
-
             base.Update(gameTime);
         }
 
@@ -115,11 +89,6 @@ namespace Kong_Engine
 
             _spriteBatch.Begin();
             _currentState?.Render(_spriteBatch);
-            _spriteBatch.End();
-
-            // Draw the PlayerSprite
-            _spriteBatch.Begin();
-            _playerSprite.Draw(_spriteBatch, Matrix.Identity);
             _spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);

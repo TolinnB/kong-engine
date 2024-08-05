@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Kong_Engine.Objects
 {
@@ -93,11 +94,12 @@ namespace Kong_Engine.Objects
                 currentPosition.Y -= verticalSpeed;
 
                 // Check if player has landed
-                if (currentPosition.Y >= 100) // Assuming ground level is y=100
+                if (CheckCollisions(currentPosition))
                 {
-                    currentPosition.Y = 100;
-                    isJumping = false;
+                    // If collision, adjust player's position to just above the floor
+                    currentPosition.Y += verticalSpeed;
                     verticalSpeed = 0f;
+                    isJumping = false;
                 }
 
                 var positionComponent = GetComponent<PositionComponent>();
@@ -180,6 +182,18 @@ namespace Kong_Engine.Objects
                 isMoving = true;
                 isFacingRight = true; // Update direction flag
             }
+            if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
+            {
+                movement.Y -= moveSpeed;
+                isIdle = false;
+                isMoving = true;
+            }
+            if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
+            {
+                movement.Y += moveSpeed;
+                isIdle = false;
+                isMoving = true;
+            }
             if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
             {
                 isJumping = true;
@@ -208,6 +222,7 @@ namespace Kong_Engine.Objects
             {
                 if (newBounds.Intersects(rect))
                 {
+                    Console.WriteLine($"Collision detected at ({rect.X}, {rect.Y})");
                     return true; // Collision detected
                 }
             }
@@ -248,3 +263,4 @@ namespace Kong_Engine.Objects
         }
     }
 }
+

@@ -145,6 +145,15 @@
 /processorParam:Quality=Best
 /build:hurtSound.mp3
 
+#begin JumpLand_Collisions.csv
+/copy:JumpLand_Collisions.csv
+
+#begin JumpLand_Floor.csv
+/copy:JumpLand_Floor.csv
+
+#begin JumpLand_Tile Layer 2.csv
+/copy:JumpLand_Tile Layer 2.csv
+
 #begin JumpLand.tmx
 /copy:JumpLand.tmx
 

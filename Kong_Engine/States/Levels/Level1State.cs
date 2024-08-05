@@ -52,16 +52,15 @@ namespace Kong_Engine.States.Levels
 
         protected override bool IsLevelCompleted()
         {
-            // Add your level completion logic here
-            // For example, return true if player reaches a certain position
             return PlayerEntity.GetComponent<PositionComponent>().Position.X > 1000;
         }
 
         public override void Initialize(ContentManager contentManager, MainGame game)
         {
             base.Initialize(contentManager, game);
-            int screenWidth = game.GraphicsDevice.Viewport.Width; // Get the screen width
-            MovementSystem = new MovementSystem(screenWidth); // Initialize with screen width
+            int screenWidth = game.GraphicsDevice.Viewport.Width;
+            MovementSystem = new MovementSystem(screenWidth);
+            CollisionSystem = new CollisionSystem(AudioManager, game, TileMapManager); // Initialize CollisionSystem
         }
 
         public override void Update(GameTime gameTime)

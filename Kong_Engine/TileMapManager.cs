@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using TiledSharp;
 
 namespace Kong_Engine
@@ -28,34 +27,29 @@ namespace Kong_Engine
             tileHeight = _tileHeight;
             scale = _scale;
             CollisionRectangles = new List<Rectangle>();
-            LoadCollisionRectangles();
+            LoadCollisionRectanglesFromCsv("Content/JumpLand_Collisions.csv");
         }
 
-        private void LoadCollisionRectangles()
+        private void LoadCollisionRectanglesFromCsv(string filePath)
         {
-            Console.WriteLine("Available Object Layers:");
-            foreach (var layer in map.ObjectGroups)
-            {
-                Console.WriteLine($"- {layer.Name}");
-            }
+            var collisionData = CsvHelper.LoadCsv(filePath);
+            var width = collisionData.GetLength(0);
+            var height = collisionData.GetLength(1);
 
-            TmxObjectGroup objectGroup = map.ObjectGroups.FirstOrDefault(og => og.Name == "Object Layer 1") ??
-                                         map.ObjectGroups.FirstOrDefault(og => og.Name == "Collisions") ??
-                                         map.ObjectGroups.FirstOrDefault();
+            Console.WriteLine($"Loading collision data from {filePath}");
+            Console.WriteLine($"CSV Width: {width}, Height: {height}");
 
-            if (objectGroup != null)
+            for (int y = 0; y < height; y++)
             {
-                Console.WriteLine($"Using object layer: {objectGroup.Name}");
-                foreach (var obj in objectGroup.Objects)
+                for (int x = 0; x < width; x++)
                 {
-                    var rectangle = new Rectangle((int)obj.X, (int)obj.Y, (int)obj.Width, (int)obj.Height);
-                    CollisionRectangles.Add(rectangle);
+                    if (collisionData[x, y] != -1)
+                    {
+                        var rectangle = new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+                        CollisionRectangles.Add(rectangle);
+                        Console.WriteLine($"Collision rectangle added at ({x * tileWidth}, {y * tileHeight}, {tileWidth}, {tileHeight})");
+                    }
                 }
-            }
-            else
-            {
-                var availableLayers = string.Join(", ", map.ObjectGroups.Select(og => og.Name));
-                throw new KeyNotFoundException($"No suitable object layer found. Available layers: {availableLayers}");
             }
         }
 
