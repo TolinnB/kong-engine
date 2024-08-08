@@ -14,12 +14,17 @@ namespace Kong_Engine.Objects
         private Rectangle defaultFrame;
         private Rectangle leftTurnFrame;
         private Rectangle rightTurnFrame;
+        private Rectangle defaultTurboFrame; // Turbo frames
+        private Rectangle leftTurnTurboFrame;
+        private Rectangle rightTurnTurboFrame;
         private float moveSpeed = 1.5f;
+        private float turboMultiplier = 2.0f; // Multiplier for turbo speed
         private Rectangle playerBounds; // For collisions
         private bool isFacingRight = true; // Flag to check direction
+        private bool isTurboActive = false; // Flag to check turbo state
         private float scale;
         private int frameWidth = 42; // Width of each frame
-        private int frameHeight = 42; // Height of each frame
+        private int frameHeight = 43; // Height of each frame
 
         public PlayerSprite2(Texture2D spriteSheet, float scale)
         {
@@ -29,7 +34,12 @@ namespace Kong_Engine.Objects
             // Define the source rectangles for each frame
             defaultFrame = new Rectangle(40, 0, frameWidth, frameHeight);   // Default flying frame
             leftTurnFrame = new Rectangle(0, 0, frameWidth, frameHeight);  // Turning left frame
-            rightTurnFrame = new Rectangle(48, 0, frameWidth, frameHeight); // Turning right frame
+            rightTurnFrame = new Rectangle(82, 0, frameWidth, frameHeight); // Turning right frame
+
+            // Define turbo frames
+            defaultTurboFrame = new Rectangle(40, 44, frameWidth, frameHeight);    // Turbo default frame
+            leftTurnTurboFrame = new Rectangle(0, 44, frameWidth, frameHeight);  // Turbo turning left frame
+            rightTurnTurboFrame = new Rectangle(82, 44, frameWidth, frameHeight); // Turbo turning right frame
 
             AddComponent(new PositionComponent { Position = new Vector2(200, 100) }); // Start position set here
             AddComponent(new CollisionComponent
@@ -107,8 +117,19 @@ namespace Kong_Engine.Objects
                 movement.Y += moveSpeed;
             }
 
+            // Check for turbo activation
+            if (keyboardState.IsKeyDown(Keys.Space)) // Assuming Space is the turbo key
+            {
+                isTurboActive = true;
+            }
+            else
+            {
+                isTurboActive = false;
+            }
+
             var currentPosition = GetComponent<PositionComponent>().Position;
-            currentPosition += movement;
+            float currentMoveSpeed = isTurboActive ? moveSpeed * turboMultiplier : moveSpeed;
+            currentPosition += movement * currentMoveSpeed;
 
             var positionComponent = GetComponent<PositionComponent>();
             positionComponent.Position = currentPosition;
@@ -129,15 +150,15 @@ namespace Kong_Engine.Objects
 
             if (keyboardState.IsKeyDown(Keys.J))
             {
-                currentFrameRect = leftTurnFrame;
+                currentFrameRect = isTurboActive ? leftTurnTurboFrame : leftTurnFrame;
             }
             else if (keyboardState.IsKeyDown(Keys.L))
             {
-                currentFrameRect = rightTurnFrame;
+                currentFrameRect = isTurboActive ? rightTurnTurboFrame : rightTurnFrame;
             }
             else
             {
-                currentFrameRect = defaultFrame;
+                currentFrameRect = isTurboActive ? defaultTurboFrame : defaultFrame;
             }
 
             var position = GetComponent<PositionComponent>().Position;
