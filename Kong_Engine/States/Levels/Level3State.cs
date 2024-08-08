@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using Kong_Engine.ECS.Component;
 using Kong_Engine.Input;
 using Kong_Engine.Objects;
@@ -13,26 +13,32 @@ namespace Kong_Engine.States.Levels
     {
         protected override void LoadLevelContent()
         {
-            var tilesetTexture = Content.Load<Texture2D>("SimpleTileset2"); // Update the texture name if necessary
-            var map = new TmxMap("Content/JumpLand3.tmx"); // Assuming the third level's Tiled map file
-            int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
+            var tilesetBase = Content.Load<Texture2D>("QwestQuest/Grass"); // Update the texture name if necessary
+            var tilesetDirt = Content.Load<Texture2D>("QwestQuest/Tilled_Dirt");
+            var tilesetWater = Content.Load<Texture2D>("QwestQuest/Water");
+            var tilesetBridges= Content.Load<Texture2D>("QwestQuest/Wooden_House_Walls_Tilset");
+
+            var tilesetCollision = Content.Load<Texture2D>("QwestQuest/collisions");
+            
+            var map = new TmxMap("Content/QwestQuest/QuestQuestMap.tmx"); // Assuming the third level's Tiled map file
+            int tilesetTilesWide = tilesetBase.Width / map.Tilesets[0].TileWidth;
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
             float scale = 2.0f;
 
-            TileMapManager = new TileMapManager(SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
+            TileMapManager = new TileMapManager(SpriteBatch, map, tilesetBase, tilesetTilesWide, tileWidth, tileHeight, scale);
         }
 
         protected override void InitializeEntities()
         {
-            var playerSpriteSheet = Content.Load<Texture2D>("sonic");
-            var enemySpriteSheet = Content.Load<Texture2D>("dr-robotnik");
+            var playerSpriteSheet = Content.Load<Texture2D>("RACCOONSPRITESHEET");
+            
 
             PlayerEntity = new PlayerSprite(playerSpriteSheet);
-            EnemyEntity = new EnemySprite(enemySpriteSheet);
+            
 
             Entities.Add(PlayerEntity);
-            Entities.Add(EnemyEntity);
+            
         }
 
         protected override void SetInputManager()
@@ -56,4 +62,3 @@ namespace Kong_Engine.States.Levels
         }
     }
 }
-*/
