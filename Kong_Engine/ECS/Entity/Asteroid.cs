@@ -32,10 +32,10 @@ namespace Kong_Engine.ECS.Entity
             // Define the source rectangles for each frame
             defaultFrame = new Rectangle(0, 248, frameWidth, frameHeight);    // Default frame
             explosionFrames = new Rectangle[4];
-            explosionFrames[0] = new Rectangle(130, 250, frameWidth, frameHeight);
-            //explosionFrames[1] = new Rectangle(50, 298, frameWidth, frameHeight);
-            //explosionFrames[2] = new Rectangle(100, 298, frameWidth, frameHeight);
-            //explosionFrames[3] = new Rectangle(150, 298, frameWidth, frameHeight);
+            explosionFrames[0] = new Rectangle(40, 155, 28, 30);
+            explosionFrames[1] = new Rectangle(122, 260, 28, 30);
+            explosionFrames[2] = new Rectangle(159, 260, 28, 30);
+            explosionFrames[3] = new Rectangle(195, 260, 28, 30);
 
             AddComponent(new PositionComponent { Position = position });
             AddComponent(new CollisionComponent
@@ -46,7 +46,7 @@ namespace Kong_Engine.ECS.Entity
             asteroidBounds = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * scale), (int)(frameHeight * scale));
 
             // Log initial position and texture status
-            Debug.WriteLine($"Asteroid initialized at position {position}, texture loaded: {_texture != null}");
+            //Debug.WriteLine($"Asteroid initialized at position {position}, texture loaded: {_texture != null}");
         }
 
         public void Update(GameTime gameTime)

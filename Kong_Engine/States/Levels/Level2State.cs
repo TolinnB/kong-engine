@@ -54,7 +54,7 @@ namespace Kong_Engine.States.Levels
                 Entities.Add(asteroid);
 
                 // Log asteroid initialization
-                Debug.WriteLine($"Asteroid {i} added to entities at position {asteroidPosition}");
+                //Debug.WriteLine($"Asteroid {i} added to entities at position {asteroidPosition}");
             }
         }
 
@@ -101,7 +101,7 @@ namespace Kong_Engine.States.Levels
                     // Check for collisions
                     if (_asteroids[i].GetBoundingBox().Intersects(_player2.GetBoundingBox()))
                     {
-                        Debug.WriteLine("Collision detected!");
+                        //Debug.WriteLine("Collision detected!");
                         _player2.HandleCollision(new Vector2(0, 10)); // Apply downward knockback
                         // Handle other asteroid-specific collision logic if needed
                     }

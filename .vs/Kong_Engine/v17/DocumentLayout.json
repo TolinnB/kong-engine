@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\sheps\\source\\repos\\kong-engine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\playersprite2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\playersprite2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\states\\levels\\level2state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\states\\levels\\level2state.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\ecs\\entity\\playersprite2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|solutionrelative:kong_engine\\ecs\\entity\\playersprite2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}|Kong_Engine\\Kong_Engine.csproj|c:\\users\\sheps\\source\\repos\\kong-engine\\kong_engine\\content\\scorefont.spritefont||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -126,7 +126,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -158,8 +158,7 @@
               "RelativeToolTip": "Kong_Engine\\Content\\ScoreFont.spritefont",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-08-08T17:31:06.131Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T17:31:06.131Z"
             },
             {
               "$type": "Document",
@@ -171,8 +170,7 @@
               "RelativeToolTip": "Kong_Engine\\Objects\\TerrainBackground.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T16:14:21.006Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T16:14:21.006Z"
             },
             {
               "$type": "Document",
@@ -184,8 +182,7 @@
               "RelativeToolTip": "Kong_Engine\\Input\\InputManager.cs",
               "ViewState": "AQIAAAgAAAAAAAAAAAA6wCUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:39:16.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:39:16.387Z"
             },
             {
               "$type": "Document",
@@ -197,31 +194,30 @@
               "RelativeToolTip": "Kong_Engine\\Input\\Base\\BaseInputMapper.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:39:28.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:39:28.324Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Level2State.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Levels\\Level2State.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\States\\Levels\\Level2State.cs",
               "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\States\\Levels\\Level2State.cs",
               "RelativeToolTip": "Kong_Engine\\States\\Levels\\Level2State.cs",
-              "ViewState": "AQIAAE8AAAAAnGZmZmb2v4IAAAAAAAAA",
+              "ViewState": "AQIAACcAAAAAAAAAAAASwC8AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T09:24:04.332Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Asteroid.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\Asteroid.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\Asteroid.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\Asteroid.cs*",
-              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\Asteroid.cs*",
-              "ViewState": "AQIAABkAAAAAzczMzMw+wCIAAABGAAAA",
+              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\Asteroid.cs",
+              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\Asteroid.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAASwCsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T11:07:35.263Z",
               "EditorCaption": ""
@@ -236,18 +232,17 @@
               "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\BaseEntity.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T11:11:45.636Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T11:11:45.636Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "PlayerSprite2.cs",
               "DocumentMoniker": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite2.cs",
               "RelativeDocumentMoniker": "Kong_Engine\\ECS\\Entity\\PlayerSprite2.cs",
-              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite2.cs",
-              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\PlayerSprite2.cs",
-              "ViewState": "AQIAACcAAAAAWmZmZmYYwAoBAAAAAAAA",
+              "ToolTip": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\ECS\\Entity\\PlayerSprite2.cs*",
+              "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\PlayerSprite2.cs*",
+              "ViewState": "AQIAAGEAAAAAAAAAAAASwHIAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-08T10:23:29.079Z",
               "EditorCaption": ""
@@ -262,8 +257,7 @@
               "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\Missile.cs",
               "ViewState": "AQIAACcAAAAAAAAAAAAxwEkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T16:46:20.643Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T16:46:20.643Z"
             },
             {
               "$type": "Document",
@@ -275,8 +269,7 @@
               "RelativeToolTip": "Kong_Engine\\MainGame.cs",
               "ViewState": "AQIAAEEAAABAmZmZmZkgwFkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-29T20:31:03.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-29T20:31:03.958Z"
             },
             {
               "$type": "Document",
@@ -288,8 +281,7 @@
               "RelativeToolTip": "Kong_Engine\\ECS\\Component\\IComponent.cs",
               "ViewState": "AQIAAB4AAAAAAAAAAAAqwDQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T13:30:40.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T13:30:40.997Z"
             },
             {
               "$type": "Document",
@@ -301,8 +293,7 @@
               "RelativeToolTip": "Kong_Engine\\ECS\\System\\CollisionSystem.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAAmwDAAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-03T22:24:08.186Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-03T22:24:08.186Z"
             },
             {
               "$type": "Document",
@@ -314,8 +305,7 @@
               "RelativeToolTip": "Kong_Engine\\Input\\GameplayInputMapper.cs",
               "ViewState": "AQIAACQAAAAAAAAAAAAuwEIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:39:12.365Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:39:12.365Z"
             },
             {
               "$type": "Document",
@@ -327,8 +317,7 @@
               "RelativeToolTip": "Kong_Engine\\Input\\GameplayInputCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:39:06.693Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:39:06.693Z"
             },
             {
               "$type": "Document",
@@ -340,8 +329,7 @@
               "RelativeToolTip": "Kong_Engine\\ECS\\System\\MovementSystem.cs",
               "ViewState": "AQIAACEAAAAAzszMzMwWwDcAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T11:16:22.088Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T11:16:22.088Z"
             },
             {
               "$type": "Document",
@@ -353,8 +341,7 @@
               "RelativeToolTip": "Kong_Engine\\ECS\\Entity\\PlayerSprite.cs",
               "ViewState": "AQIAAAQAAAAAyMzMzMwmwB4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T10:23:23.036Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T10:23:23.036Z"
             },
             {
               "$type": "Document",
@@ -366,8 +353,7 @@
               "RelativeToolTip": "Kong_Engine\\TileMapManager.cs",
               "ViewState": "AQIAAEAAAAAAAAAAAAAwwF4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:58:44.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:58:44.033Z"
             },
             {
               "$type": "Document",
@@ -379,8 +365,7 @@
               "RelativeToolTip": "Kong_Engine\\States\\Base\\BaseLevelState.cs",
               "ViewState": "AQIAAFgAAADAZWZmZmYuwFsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:22:28.139Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:22:28.139Z"
             },
             {
               "$type": "Document",
@@ -392,8 +377,7 @@
               "RelativeToolTip": "Kong_Engine\\Objects\\EntityGameObjectAdapter.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAIwCcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:59:06.083Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:59:06.083Z"
             },
             {
               "$type": "Document",
@@ -405,8 +389,7 @@
               "RelativeToolTip": "Kong_Engine\\Objects\\MainMenuImage.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:59:10.397Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:59:10.397Z"
             },
             {
               "$type": "Document",
@@ -418,8 +401,7 @@
               "RelativeToolTip": "Kong_Engine\\States\\Base\\BaseGameState.cs",
               "ViewState": "AQIAACwAAAAAAAAAAAAAAEoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:22:43.144Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:22:43.144Z"
             },
             {
               "$type": "Document",
@@ -431,8 +413,7 @@
               "RelativeToolTip": "Kong_Engine\\States\\Levels\\Level1State.cs",
               "ViewState": "AQIAACQAAAAAAAAAAAD4vzwAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:21:40.729Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:21:40.729Z"
             },
             {
               "$type": "Document",
@@ -444,8 +425,7 @@
               "RelativeToolTip": "Kong_Engine\\Objects\\SplashImage.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:59:34.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:59:34.208Z"
             },
             {
               "$type": "Document",
@@ -457,8 +437,7 @@
               "RelativeToolTip": "Kong_Engine\\Objects\\Base\\BaseGameObject.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAA9wCAAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:58:55.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:58:55.372Z"
             },
             {
               "$type": "Document",
@@ -470,8 +449,7 @@
               "RelativeToolTip": "Kong_Engine\\States\\MainMenuState.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAIwCcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:35:11.923Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:35:11.923Z"
             },
             {
               "$type": "Document",
@@ -483,8 +461,7 @@
               "RelativeToolTip": "Kong_Engine\\States\\SplashState.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAIwB4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:35:15.116Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:35:15.116Z"
             },
             {
               "$type": "Document",
@@ -496,8 +473,7 @@
               "RelativeToolTip": "Kong_Engine\\Input\\Base\\BaseInputCommand.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:39:26.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:39:26.497Z"
             },
             {
               "$type": "Document",
@@ -509,8 +485,7 @@
               "RelativeToolTip": "Kong_Engine\\States\\EndLevelSummary.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-08T09:22:48.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-08T09:22:48.84Z"
             },
             {
               "$type": "Document",

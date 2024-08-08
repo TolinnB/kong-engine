@@ -113,7 +113,7 @@ namespace Kong_Engine.Objects
             }
 
             // Log bounding box position for debugging
-            Debug.WriteLine($"Player bounding box: {playerBounds}");
+            //Debug.WriteLine($"Player bounding box: {playerBounds}");
 
             // Handle hit flashing
             if (isHit)
