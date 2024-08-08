@@ -56,6 +56,9 @@ namespace Kong_Engine.ECS.Entity
             {
                 collisionComponent.BoundingBox = asteroidBounds;
             }
+
+            // Log bounding box position for debugging
+            Debug.WriteLine($"Asteroid bounding box: {asteroidBounds}");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -70,6 +73,12 @@ namespace Kong_Engine.ECS.Entity
             Debug.WriteLine($"Drawing asteroid at position {position}");
 
             spriteBatch.Draw(_texture, position, currentFrame, Color.White, 0f, Vector2.Zero, _scale, SpriteEffects.None, 0f);
+        }
+
+        public Rectangle GetBoundingBox()
+        {
+            var collisionComponent = GetComponent<CollisionComponent>();
+            return collisionComponent?.BoundingBox ?? Rectangle.Empty;
         }
     }
 }

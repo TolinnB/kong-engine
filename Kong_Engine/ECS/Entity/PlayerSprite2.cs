@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace Kong_Engine.Objects
 {
@@ -26,6 +27,9 @@ namespace Kong_Engine.Objects
         private int frameWidth = 42; // Width of each frame
         private int frameHeight = 43; // Height of each frame
 
+        private bool isHit = false;
+        private double hitTimer = 0;
+
         public PlayerSprite2(Texture2D spriteSheet, float scale)
         {
             this.spriteSheet = spriteSheet;
@@ -41,7 +45,7 @@ namespace Kong_Engine.Objects
             leftTurnTurboFrame = new Rectangle(0, 44, frameWidth, frameHeight);  // Turbo turning left frame
             rightTurnTurboFrame = new Rectangle(82, 44, frameWidth, frameHeight); // Turbo turning right frame
 
-            AddComponent(new PositionComponent { Position = new Vector2(624, 650) }); // Start position set here
+            AddComponent(new PositionComponent { Position = new Vector2(650, 624) }); // Start position set here
             AddComponent(new CollisionComponent
             {
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
@@ -67,6 +71,33 @@ namespace Kong_Engine.Objects
             {
                 collisionComponent.BoundingBox = playerBounds;
             }
+
+            // Log bounding box position for debugging
+            Debug.WriteLine($"Player bounding box: {playerBounds}");
+
+            // Handle hit flashing
+            if (isHit)
+            {
+                hitTimer += gameTime.ElapsedGameTime.TotalSeconds;
+                if (hitTimer > 0.5)
+                {
+                    isHit = false;
+                    hitTimer = 0;
+                }
+            }
+        }
+
+        public void HandleCollision(Vector2 knockbackForce)
+        {
+            var lifeComponent = GetComponent<LifeComponent>();
+            if (lifeComponent != null)
+            {
+                lifeComponent.Lives--;
+                Debug.WriteLine($"Player hit! Lives left: {lifeComponent.Lives}");
+            }
+            isHit = true;
+            hitTimer = 0;
+            Knockback = knockbackForce;
         }
 
         public Rectangle GetBoundingBox()
@@ -166,7 +197,10 @@ namespace Kong_Engine.Objects
             // Flip the sprite if facing left
             SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, scale, spriteEffects, 0f);
+            // Flash white when hit
+            Color drawColor = isHit ? Color.Red : Color.White;
+
+            spriteBatch.Draw(spriteSheet, position, currentFrameRect, drawColor, 0f, Vector2.Zero, scale, spriteEffects, 0f);
         }
     }
 }

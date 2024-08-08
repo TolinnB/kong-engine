@@ -77,11 +77,21 @@ namespace Kong_Engine.States.Levels
         {
             // Update PlayerSprite2
             _player2.Update(gameTime);
+
             // Update Asteroids
             foreach (var asteroid in _asteroids)
             {
                 asteroid.Update(gameTime);
+
+                // Check for collisions
+                if (asteroid.GetBoundingBox().Intersects(_player2.GetBoundingBox()))
+                {
+                    Debug.WriteLine("Collision detected!");
+                    _player2.HandleCollision(new Vector2(0, -10)); // Apply upward knockback
+                    // Handle other asteroid-specific collision logic if needed
+                }
             }
+
             base.Update(gameTime);
         }
 
