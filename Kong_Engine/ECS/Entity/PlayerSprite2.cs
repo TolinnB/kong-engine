@@ -41,7 +41,7 @@ namespace Kong_Engine.Objects
             leftTurnTurboFrame = new Rectangle(0, 44, frameWidth, frameHeight);  // Turbo turning left frame
             rightTurnTurboFrame = new Rectangle(82, 44, frameWidth, frameHeight); // Turbo turning right frame
 
-            AddComponent(new PositionComponent { Position = new Vector2(200, 100) }); // Start position set here
+            AddComponent(new PositionComponent { Position = new Vector2(624, 650) }); // Start position set here
             AddComponent(new CollisionComponent
             {
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
