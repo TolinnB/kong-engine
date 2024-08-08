@@ -19,7 +19,8 @@ namespace Kong_Engine.Objects
         private Rectangle defaultTurboFrame; // Turbo frames
         private Rectangle leftTurnTurboFrame;
         private Rectangle rightTurnTurboFrame;
-        private Rectangle missileFrame;
+        private Rectangle missileFrame1;
+        private Rectangle missileFrame2;
         private float moveSpeed = 1.5f;
         private float turboMultiplier = 2.0f; // Multiplier for turbo speed
         private Rectangle playerBounds; // For collisions
@@ -34,6 +35,9 @@ namespace Kong_Engine.Objects
 
         private List<Missile> missiles;
         private float missileSpeed = 300f;
+        private float missileAnimationTime = 0.1f; // Time between frame changes for the missile
+        private float missileCooldown = 0.5f; // Cooldown time in seconds
+        private double lastMissileFireTime = 0; // Last time a missile was fired
 
         public PlayerSprite2(Texture2D spriteSheet, float scale)
         {
@@ -52,15 +56,16 @@ namespace Kong_Engine.Objects
             leftTurnTurboFrame = new Rectangle(0, 44, frameWidth, frameHeight);  // Turbo turning left frame
             rightTurnTurboFrame = new Rectangle(82, 44, frameWidth, frameHeight); // Turbo turning right frame
 
-            // Define missile frame
-            missileFrame = new Rectangle(0, 88, 10, 20); // Example frame for the missile
+            // Define missile frames
+            missileFrame1 = new Rectangle(56, 130, 10, 20); // Example frame 1 for the missile
+            missileFrame2 = new Rectangle(64, 130, 10, 20); // Example frame 2 for the missile
 
-            AddComponent(new PositionComponent { Position = new Vector2(200, 100) }); // Start position set here
+            AddComponent(new PositionComponent { Position = new Vector2(650, 625) }); // Start position set here
             AddComponent(new CollisionComponent
             {
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
             });
-            AddComponent(new LifeComponent { Lives = 10 });
+            AddComponent(new LifeComponent { Lives = 3 });
             Knockback = Vector2.Zero;
 
             playerBounds = new Rectangle((int)GetComponent<PositionComponent>().Position.X - 8, (int)GetComponent<PositionComponent>().Position.Y - 8, (int)(frameWidth * scale), (int)(frameHeight * scale));
@@ -169,7 +174,7 @@ namespace Kong_Engine.Objects
             }
 
             // Check for turbo activation
-            if (keyboardState.IsKeyDown(Keys.Space)) // Assuming Space is the turbo key
+            if (keyboardState.IsKeyDown(Keys.Space))
             {
                 isTurboActive = true;
             }
@@ -179,9 +184,10 @@ namespace Kong_Engine.Objects
             }
 
             // Fire missile
-            if (keyboardState.IsKeyDown(Keys.Z))
+            if (keyboardState.IsKeyDown(Keys.Z) && gameTime.TotalGameTime.TotalSeconds > lastMissileFireTime + missileCooldown)
             {
                 FireMissile();
+                lastMissileFireTime = gameTime.TotalGameTime.TotalSeconds;
             }
 
             var currentPosition = GetComponent<PositionComponent>().Position;
@@ -203,8 +209,8 @@ namespace Kong_Engine.Objects
         private void FireMissile()
         {
             var positionComponent = GetComponent<PositionComponent>();
-            Vector2 missilePosition = new Vector2(positionComponent.Position.X + (frameWidth * scale) / 2 - missileFrame.Width / 2, positionComponent.Position.Y);
-            missiles.Add(new Missile(spriteSheet, missileFrame, missilePosition, missileSpeed));
+            Vector2 missilePosition = new Vector2(positionComponent.Position.X + (frameWidth * scale) / 2 - missileFrame1.Width / 2, positionComponent.Position.Y);
+            missiles.Add(new Missile(spriteSheet, missileFrame1, missileFrame2, missilePosition, missileSpeed, missileAnimationTime));
         }
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)

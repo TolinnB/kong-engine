@@ -94,7 +94,7 @@ namespace Kong_Engine.States.Levels
                 if (asteroid.GetBoundingBox().Intersects(_player2.GetBoundingBox()))
                 {
                     Debug.WriteLine("Collision detected!");
-                    _player2.HandleCollision(new Vector2(0, -10)); // Apply upward knockback
+                    _player2.HandleCollision(new Vector2(0, 10)); // Apply downward knockback
                     // Handle other asteroid-specific collision logic if needed
                 }
             }
