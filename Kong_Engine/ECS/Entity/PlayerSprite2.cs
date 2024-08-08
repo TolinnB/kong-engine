@@ -262,5 +262,12 @@ namespace Kong_Engine.Objects
                 missile.Draw(spriteBatch);
             }
         }
+
+        public bool IsDead()
+        {
+            var lifeComponent = GetComponent<LifeComponent>();
+            return lifeComponent != null && lifeComponent.Lives <= 0;
+        }
+
     }
 }

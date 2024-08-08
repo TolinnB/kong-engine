@@ -23,6 +23,8 @@ namespace Kong_Engine.States.Levels
         private List<Asteroid> _asteroids;
         private TerrainBackground _terrainBackground;
         private Random _random;
+        private bool isGameOver = false;
+        private bool isLevelPassed = false;
 
         protected override void LoadLevelContent()
         {
@@ -54,7 +56,7 @@ namespace Kong_Engine.States.Levels
                 Entities.Add(asteroid);
 
                 // Log asteroid initialization
-                //Debug.WriteLine($"Asteroid {i} added to entities at position {asteroidPosition}");
+                Debug.WriteLine($"Asteroid {i} added to entities at position {asteroidPosition}");
             }
         }
 
@@ -71,7 +73,8 @@ namespace Kong_Engine.States.Levels
 
         protected override bool IsLevelCompleted()
         {
-            return false; // For now, the level doesn't complete
+            // Level is passed if there are no more asteroids
+            return _asteroids.Count == 0;
         }
 
         public override void Initialize(ContentManager contentManager, MainGame game)
@@ -81,8 +84,25 @@ namespace Kong_Engine.States.Levels
 
         public override void Update(GameTime gameTime)
         {
+            if (isGameOver || isLevelPassed)
+                return;
+
             // Update PlayerSprite2
             _player2.Update(gameTime, _asteroids);
+
+            // Check if the player is dead
+            if (_player2.IsDead())
+            {
+                isGameOver = true;
+                return;
+            }
+
+            // Check if the level is passed
+            if (IsLevelCompleted())
+            {
+                isLevelPassed = true;
+                return;
+            }
 
             // Update TerrainBackground based on player's position
             _terrainBackground.UpdateBackgroundPosition(_player2.GetComponent<PositionComponent>().Position);
@@ -101,7 +121,7 @@ namespace Kong_Engine.States.Levels
                     // Check for collisions
                     if (_asteroids[i].GetBoundingBox().Intersects(_player2.GetBoundingBox()))
                     {
-                        //Debug.WriteLine("Collision detected!");
+                        Debug.WriteLine("Collision detected!");
                         _player2.HandleCollision(new Vector2(0, 10)); // Apply downward knockback
                         // Handle other asteroid-specific collision logic if needed
                     }
@@ -125,6 +145,26 @@ namespace Kong_Engine.States.Levels
 
             // Draw the score
             spriteBatch.DrawString(_font, $"Score: {_player2.Score}", new Vector2(10, 10), Color.White);
+
+            if (isGameOver)
+            {
+                var gameOverText = "Game Over";
+                var gameOverPosition = new Vector2(
+                    (spriteBatch.GraphicsDevice.Viewport.Width - _font.MeasureString(gameOverText).X) / 2,
+                    (spriteBatch.GraphicsDevice.Viewport.Height - _font.MeasureString(gameOverText).Y) / 2
+                );
+                spriteBatch.DrawString(_font, gameOverText, gameOverPosition, Color.Red);
+            }
+
+            if (isLevelPassed)
+            {
+                var levelPassedText = $"Level Passed! Score: {_player2.Score}";
+                var levelPassedPosition = new Vector2(
+                    (spriteBatch.GraphicsDevice.Viewport.Width - _font.MeasureString(levelPassedText).X) / 2,
+                    (spriteBatch.GraphicsDevice.Viewport.Height - _font.MeasureString(levelPassedText).Y) / 2
+                );
+                spriteBatch.DrawString(_font, levelPassedText, levelPassedPosition, Color.Green);
+            }
         }
     }
 }
