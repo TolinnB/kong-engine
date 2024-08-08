@@ -1,10 +1,14 @@
-﻿using Kong_Engine.Input;
-using Kong_Engine.Objects;
-using Kong_Engine.States.Base;
+﻿using Kong_Engine.Objects.Base;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Kong_Engine.ECS.Entity;
+using Kong_Engine.ECS.Component;
+using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using Kong_Engine.Input;
+using Kong_Engine.Objects;
+using Kong_Engine.States.Base;
 
 namespace Kong_Engine.States.Levels
 {
@@ -13,6 +17,7 @@ namespace Kong_Engine.States.Levels
         private Texture2D _backgroundTexture;
         private Texture2D _spriteSheet;
         private PlayerSprite2 _player2;
+        private Asteroid _asteroid;
 
         protected override void LoadLevelContent()
         {
@@ -25,6 +30,14 @@ namespace Kong_Engine.States.Levels
             // Initialize PlayerSprite2
             _player2 = new PlayerSprite2(_spriteSheet, 1f);
             Entities.Add(_player2);
+
+            // Initialize Asteroid
+            var asteroidPosition = new Vector2(300, 200);
+            _asteroid = new Asteroid(_spriteSheet, asteroidPosition, 1f, new Vector2(50, 0)); // Example velocity
+            Entities.Add(_asteroid);
+
+            // Log asteroid initialization
+            Debug.WriteLine("Asteroid added to entities");
         }
 
         protected override void SetInputManager()
@@ -52,6 +65,8 @@ namespace Kong_Engine.States.Levels
         {
             // Update PlayerSprite2
             _player2.Update(gameTime);
+            // Update Asteroid
+            _asteroid.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -61,6 +76,8 @@ namespace Kong_Engine.States.Levels
 
             // Draw PlayerSprite2
             _player2.Draw(spriteBatch, Matrix.Identity);
+            // Draw Asteroid
+            _asteroid.Draw(spriteBatch);
         }
     }
 }

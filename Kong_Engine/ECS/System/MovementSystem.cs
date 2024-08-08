@@ -18,6 +18,11 @@ namespace Kong_Engine.ECS.System
         {
             foreach (var entity in entities)
             {
+                if (entity == null)
+                {
+                    continue; // Skip null entities
+                }
+
                 if (entity.HasComponent<PositionComponent>() && entity.HasComponent<MovementComponent>())
                 {
                     var positionComponent = entity.GetComponent<PositionComponent>();
