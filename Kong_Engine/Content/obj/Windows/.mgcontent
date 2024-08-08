@@ -25,11 +25,15 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/SimpleTileset2.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/slime.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/sonic.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/space-sprites.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/space.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen2.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

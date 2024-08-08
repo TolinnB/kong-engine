@@ -1,11 +1,12 @@
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.Enum;
 using Kong_Engine.Objects;
-using Kong_Engine.States;
 using Kong_Engine.States.Base;
+using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using TiledSharp;
+using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace Kong_Engine
 {
@@ -43,7 +44,7 @@ namespace Kong_Engine
 
             base.Initialize();
             _audioManager = new AudioManager(Content);
-            SwitchState(new SplashState());
+            SwitchState(new Level2State()); // Start with Level2State directly
         }
 
         public float ScaleFactor => _scaleFactor;
@@ -87,16 +88,20 @@ namespace Kong_Engine
             GraphicsDevice.SetRenderTarget(_renderTarget);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            Debug.WriteLine("MainGame Draw: _spriteBatch.Begin() 1");
             _spriteBatch.Begin();
             _currentState?.Render(_spriteBatch);
             _spriteBatch.End();
+            Debug.WriteLine("MainGame Draw: _spriteBatch.End() 1");
 
             GraphicsDevice.SetRenderTarget(null);
             GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 1.0f, 0);
 
+            Debug.WriteLine("MainGame Draw: _spriteBatch.Begin() 2");
             _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             _spriteBatch.Draw(_renderTarget, _renderScaleRectangle, Color.White);
             _spriteBatch.End();
+            Debug.WriteLine("MainGame Draw: _spriteBatch.End() 2");
 
             base.Draw(gameTime);
         }

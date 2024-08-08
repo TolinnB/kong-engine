@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Kong_Engine.States.Base
 {
@@ -58,10 +59,13 @@ namespace Kong_Engine.States.Base
 
         protected virtual void HandleCommand(BaseInputCommand command)
         {
-            if (command is GameplayInputCommand.PlayerMoveLeft) PlayerEntity.Move(new Vector2(-5, 0));
-            if (command is GameplayInputCommand.PlayerMoveRight) PlayerEntity.Move(new Vector2(5, 0));
-            if (command is GameplayInputCommand.PlayerMoveDown) PlayerEntity.Move(new Vector2(0, 5));
-            if (command is GameplayInputCommand.PlayerMoveUp) PlayerEntity.Move(new Vector2(0, -5));
+            if (PlayerEntity != null)
+            {
+                if (command is GameplayInputCommand.PlayerMoveLeft) PlayerEntity.Move(new Vector2(-5, 0));
+                if (command is GameplayInputCommand.PlayerMoveRight) PlayerEntity.Move(new Vector2(5, 0));
+                if (command is GameplayInputCommand.PlayerMoveDown) PlayerEntity.Move(new Vector2(0, 5));
+                if (command is GameplayInputCommand.PlayerMoveUp) PlayerEntity.Move(new Vector2(0, -5));
+            }
             if (command is GameplayInputCommand.GameExit) Game.Exit();
         }
 
@@ -72,11 +76,6 @@ namespace Kong_Engine.States.Base
             PlayerEntity?.Update(gameTime);
             EnemyEntity?.Update(gameTime);
 
-            if (IsLevelCompleted())
-            {
-                SwitchState(new EndLevelSummaryState());
-            }
-
             base.Update(gameTime);
         }
 
@@ -84,11 +83,9 @@ namespace Kong_Engine.States.Base
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            var transformMatrix = Matrix.CreateScale(Game.ScaleFactor); // Scale according to the actual screen size
-            TileMapManager?.Draw(transformMatrix);
-            PlayerEntity?.Draw(spriteBatch, transformMatrix);
-            EnemyEntity?.Draw(spriteBatch, transformMatrix);
-            base.Render(spriteBatch);
+            TileMapManager?.Draw(Matrix.CreateScale(Game.ScaleFactor));
+            PlayerEntity?.Draw(spriteBatch, Matrix.CreateScale(Game.ScaleFactor));
+            EnemyEntity?.Draw(spriteBatch, Matrix.CreateScale(Game.ScaleFactor));
         }
     }
 }
