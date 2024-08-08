@@ -88,16 +88,23 @@ namespace Kong_Engine.States.Levels
             _terrainBackground.UpdateBackgroundPosition(_player2.GetComponent<PositionComponent>().Position);
 
             // Update Asteroids
-            foreach (var asteroid in _asteroids)
+            for (int i = _asteroids.Count - 1; i >= 0; i--)
             {
-                asteroid.Update(gameTime);
+                _asteroids[i].Update(gameTime);
 
-                // Check for collisions
-                if (asteroid.GetBoundingBox().Intersects(_player2.GetBoundingBox()))
+                if (_asteroids[i].MarkedForRemoval)
                 {
-                    Debug.WriteLine("Collision detected!");
-                    _player2.HandleCollision(new Vector2(0, 10)); // Apply downward knockback
-                    // Handle other asteroid-specific collision logic if needed
+                    _asteroids.RemoveAt(i);
+                }
+                else
+                {
+                    // Check for collisions
+                    if (_asteroids[i].GetBoundingBox().Intersects(_player2.GetBoundingBox()))
+                    {
+                        Debug.WriteLine("Collision detected!");
+                        _player2.HandleCollision(new Vector2(0, 10)); // Apply downward knockback
+                        // Handle other asteroid-specific collision logic if needed
+                    }
                 }
             }
 

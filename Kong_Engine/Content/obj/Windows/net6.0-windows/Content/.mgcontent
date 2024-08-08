@@ -13,6 +13,7 @@
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/dr-robotnik.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/endLevelSummary.jpg</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/env.png</File>
+    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/explosion.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/hurtSound.mp3</File>
@@ -33,6 +34,7 @@
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

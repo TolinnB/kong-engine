@@ -104,7 +104,7 @@ namespace Kong_Engine.Objects
                         if (missiles[i].GetBoundingBox().Intersects(asteroid.GetBoundingBox()))
                         {
                             missiles.RemoveAt(i);
-                            asteroids.Remove(asteroid);
+                            asteroid.StartExplosion();
                             Score += 10; // Increase score by 10 for each asteroid destroyed
                             break;
                         }
