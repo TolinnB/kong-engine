@@ -88,20 +88,16 @@ namespace Kong_Engine
             GraphicsDevice.SetRenderTarget(_renderTarget);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Debug.WriteLine("MainGame Draw: _spriteBatch.Begin() 1");
             _spriteBatch.Begin();
             _currentState?.Render(_spriteBatch);
             _spriteBatch.End();
-            Debug.WriteLine("MainGame Draw: _spriteBatch.End() 1");
 
             GraphicsDevice.SetRenderTarget(null);
             GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 1.0f, 0);
 
-            Debug.WriteLine("MainGame Draw: _spriteBatch.Begin() 2");
             _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
             _spriteBatch.Draw(_renderTarget, _renderScaleRectangle, Color.White);
             _spriteBatch.End();
-            Debug.WriteLine("MainGame Draw: _spriteBatch.End() 2");
 
             base.Draw(gameTime);
         }

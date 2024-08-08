@@ -38,7 +38,7 @@ namespace Kong_Engine.ECS.Entity
             asteroidBounds = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * scale), (int)(frameHeight * scale));
 
             // Log initial position and texture status
-            Debug.WriteLine($"Asteroid initialized at position {position}, texture loaded: {_texture != null}");
+            //Debug.WriteLine($"Asteroid initialized at position {position}, texture loaded: {_texture != null}");
         }
 
         public void Update(GameTime gameTime)
@@ -58,7 +58,7 @@ namespace Kong_Engine.ECS.Entity
             }
 
             // Log bounding box position for debugging
-            Debug.WriteLine($"Asteroid bounding box: {asteroidBounds}");
+            //Debug.WriteLine($"Asteroid bounding box: {asteroidBounds}");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -70,7 +70,7 @@ namespace Kong_Engine.ECS.Entity
             Rectangle currentFrame = defaultFrame; // You can change this logic to choose between frames
 
             // Log draw call
-            Debug.WriteLine($"Drawing asteroid at position {position}");
+            //Debug.WriteLine($"Drawing asteroid at position {position}");
 
             spriteBatch.Draw(_texture, position, currentFrame, Color.White, 0f, Vector2.Zero, _scale, SpriteEffects.None, 0f);
         }

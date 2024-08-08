@@ -6,10 +6,13 @@ namespace Kong_Engine.Objects
 {
     public class TerrainBackground : BaseGameObject
     {
-        public TerrainBackground(Texture2D texture)
+        private Vector2 _scrollSpeed;
+
+        public TerrainBackground(Texture2D texture, Vector2 scrollSpeed)
         {
             _texture = texture;
             _position = Vector2.Zero;
+            _scrollSpeed = scrollSpeed;
         }
 
         public override void Render(SpriteBatch spriteBatch)
@@ -26,7 +29,7 @@ namespace Kong_Engine.Objects
                 {
                     var destinationRectangle = new Rectangle(
                         (int)_position.X + x * _texture.Width,
-                        y * _texture.Height,
+                        (int)_position.Y + y * _texture.Height,
                         _texture.Width,
                         _texture.Height);
 
@@ -37,13 +40,19 @@ namespace Kong_Engine.Objects
 
         public void UpdateBackgroundPosition(Vector2 playerPosition)
         {
-            _position.X = -playerPosition.X % _texture.Width;
+            // Move the background based on the player's position and the scroll speed
+            _position.X = -playerPosition.X * _scrollSpeed.X % _texture.Width;
+            _position.Y = -playerPosition.Y * _scrollSpeed.Y % _texture.Height;
 
             if (_position.X > 0)
             {
                 _position.X -= _texture.Width;
             }
+
+            if (_position.Y > 0)
+            {
+                _position.Y -= _texture.Height;
+            }
         }
     }
-
 }

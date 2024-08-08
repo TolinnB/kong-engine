@@ -4,11 +4,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
+using Kong_Engine.Objects;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using System.Collections.Generic;
 using Kong_Engine.Input;
-using Kong_Engine.Objects;
 using Kong_Engine.States.Base;
 using System;
 
@@ -20,6 +20,7 @@ namespace Kong_Engine.States.Levels
         private Texture2D _spriteSheet;
         private PlayerSprite2 _player2;
         private List<Asteroid> _asteroids;
+        private TerrainBackground _terrainBackground;
         private Random _random;
 
         protected override void LoadLevelContent()
@@ -35,6 +36,9 @@ namespace Kong_Engine.States.Levels
             // Initialize PlayerSprite2
             _player2 = new PlayerSprite2(_spriteSheet, 1f);
             Entities.Add(_player2);
+
+            // Initialize TerrainBackground with a scroll speed (e.g., 0.5 for half the speed of the player)
+            _terrainBackground = new TerrainBackground(_backgroundTexture, new Vector2(0.5f, 0.5f));
 
             // Initialize multiple asteroids
             _asteroids = new List<Asteroid>();
@@ -78,6 +82,9 @@ namespace Kong_Engine.States.Levels
             // Update PlayerSprite2
             _player2.Update(gameTime);
 
+            // Update TerrainBackground based on player's position
+            _terrainBackground.UpdateBackgroundPosition(_player2.GetComponent<PositionComponent>().Position);
+
             // Update Asteroids
             foreach (var asteroid in _asteroids)
             {
@@ -97,7 +104,7 @@ namespace Kong_Engine.States.Levels
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_backgroundTexture, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height), Color.White);
+            _terrainBackground.Render(spriteBatch);
 
             // Draw PlayerSprite2
             _player2.Draw(spriteBatch, Matrix.Identity);
