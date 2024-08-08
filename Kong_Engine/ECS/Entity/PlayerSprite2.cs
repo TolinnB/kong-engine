@@ -38,6 +38,7 @@ namespace Kong_Engine.Objects
         private float missileAnimationTime = 0.1f; // Time between frame changes for the missile
         private float missileCooldown = 0.5f; // Cooldown time in seconds
         private double lastMissileFireTime = 0; // Last time a missile was fired
+        public int Score { get; private set; } // Score property
 
         public PlayerSprite2(Texture2D spriteSheet, float scale)
         {
@@ -71,7 +72,7 @@ namespace Kong_Engine.Objects
             playerBounds = new Rectangle((int)GetComponent<PositionComponent>().Position.X - 8, (int)GetComponent<PositionComponent>().Position.Y - 8, (int)(frameWidth * scale), (int)(frameHeight * scale));
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, List<Asteroid> asteroids)
         {
             ApplyKnockback();
             HandleInput(gameTime);
@@ -94,6 +95,20 @@ namespace Kong_Engine.Objects
                 if (missiles[i].GetComponent<PositionComponent>().Position.Y < 0)
                 {
                     missiles.RemoveAt(i);
+                }
+                else
+                {
+                    // Check for collisions with asteroids
+                    foreach (var asteroid in asteroids)
+                    {
+                        if (missiles[i].GetBoundingBox().Intersects(asteroid.GetBoundingBox()))
+                        {
+                            missiles.RemoveAt(i);
+                            asteroids.Remove(asteroid);
+                            Score += 10; // Increase score by 10 for each asteroid destroyed
+                            break;
+                        }
+                    }
                 }
             }
 

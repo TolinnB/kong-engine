@@ -220,6 +220,13 @@
 /processorParam:TextureFormat=Color
 /build:player.png
 
+#begin ScoreFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:ScoreFont.spritefont
+
 #begin SimpleTileset2_Kong_Engine.tsx
 /copy:SimpleTileset2_Kong_Engine.tsx
 

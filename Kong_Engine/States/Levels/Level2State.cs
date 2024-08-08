@@ -18,6 +18,7 @@ namespace Kong_Engine.States.Levels
     {
         private Texture2D _backgroundTexture;
         private Texture2D _spriteSheet;
+        private SpriteFont _font; // Font for displaying the score
         private PlayerSprite2 _player2;
         private List<Asteroid> _asteroids;
         private TerrainBackground _terrainBackground;
@@ -27,6 +28,7 @@ namespace Kong_Engine.States.Levels
         {
             _backgroundTexture = Content.Load<Texture2D>("space");
             _spriteSheet = Content.Load<Texture2D>("space-sprites"); // Load the provided sprite sheet without the extension
+            _font = Content.Load<SpriteFont>("ScoreFont"); // Load the font for displaying the score
         }
 
         protected override void InitializeEntities()
@@ -80,7 +82,7 @@ namespace Kong_Engine.States.Levels
         public override void Update(GameTime gameTime)
         {
             // Update PlayerSprite2
-            _player2.Update(gameTime);
+            _player2.Update(gameTime, _asteroids);
 
             // Update TerrainBackground based on player's position
             _terrainBackground.UpdateBackgroundPosition(_player2.GetComponent<PositionComponent>().Position);
@@ -113,6 +115,9 @@ namespace Kong_Engine.States.Levels
             {
                 asteroid.Draw(spriteBatch);
             }
+
+            // Draw the score
+            spriteBatch.DrawString(_font, $"Score: {_player2.Score}", new Vector2(10, 10), Color.White);
         }
     }
 }
