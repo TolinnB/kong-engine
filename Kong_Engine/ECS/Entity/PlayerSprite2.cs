@@ -5,6 +5,7 @@ using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Kong_Engine.Objects
 {
@@ -18,6 +19,7 @@ namespace Kong_Engine.Objects
         private Rectangle defaultTurboFrame; // Turbo frames
         private Rectangle leftTurnTurboFrame;
         private Rectangle rightTurnTurboFrame;
+        private Rectangle missileFrame;
         private float moveSpeed = 1.5f;
         private float turboMultiplier = 2.0f; // Multiplier for turbo speed
         private Rectangle playerBounds; // For collisions
@@ -30,10 +32,15 @@ namespace Kong_Engine.Objects
         private bool isHit = false;
         private double hitTimer = 0;
 
+        private List<Missile> missiles;
+        private float missileSpeed = 300f;
+
         public PlayerSprite2(Texture2D spriteSheet, float scale)
         {
             this.spriteSheet = spriteSheet;
             this.scale = scale;
+
+            missiles = new List<Missile>();
 
             // Define the source rectangles for each frame
             defaultFrame = new Rectangle(40, 0, frameWidth, frameHeight);   // Default flying frame
@@ -45,7 +52,10 @@ namespace Kong_Engine.Objects
             leftTurnTurboFrame = new Rectangle(0, 44, frameWidth, frameHeight);  // Turbo turning left frame
             rightTurnTurboFrame = new Rectangle(82, 44, frameWidth, frameHeight); // Turbo turning right frame
 
-            AddComponent(new PositionComponent { Position = new Vector2(650, 624) }); // Start position set here
+            // Define missile frame
+            missileFrame = new Rectangle(0, 88, 10, 20); // Example frame for the missile
+
+            AddComponent(new PositionComponent { Position = new Vector2(200, 100) }); // Start position set here
             AddComponent(new CollisionComponent
             {
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
@@ -70,6 +80,16 @@ namespace Kong_Engine.Objects
             if (collisionComponent != null)
             {
                 collisionComponent.BoundingBox = playerBounds;
+            }
+
+            // Update missiles
+            for (int i = missiles.Count - 1; i >= 0; i--)
+            {
+                missiles[i].Update(gameTime);
+                if (missiles[i].GetComponent<PositionComponent>().Position.Y < 0)
+                {
+                    missiles.RemoveAt(i);
+                }
             }
 
             // Log bounding box position for debugging
@@ -158,6 +178,12 @@ namespace Kong_Engine.Objects
                 isTurboActive = false;
             }
 
+            // Fire missile
+            if (keyboardState.IsKeyDown(Keys.Z))
+            {
+                FireMissile();
+            }
+
             var currentPosition = GetComponent<PositionComponent>().Position;
             float currentMoveSpeed = isTurboActive ? moveSpeed * turboMultiplier : moveSpeed;
             currentPosition += movement * currentMoveSpeed;
@@ -172,6 +198,13 @@ namespace Kong_Engine.Objects
             currentPosition += direction;
             var positionComponent = GetComponent<PositionComponent>();
             positionComponent.Position = currentPosition;
+        }
+
+        private void FireMissile()
+        {
+            var positionComponent = GetComponent<PositionComponent>();
+            Vector2 missilePosition = new Vector2(positionComponent.Position.X + (frameWidth * scale) / 2 - missileFrame.Width / 2, positionComponent.Position.Y);
+            missiles.Add(new Missile(spriteSheet, missileFrame, missilePosition, missileSpeed));
         }
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
@@ -201,6 +234,12 @@ namespace Kong_Engine.Objects
             Color drawColor = isHit ? Color.Red : Color.White;
 
             spriteBatch.Draw(spriteSheet, position, currentFrameRect, drawColor, 0f, Vector2.Zero, scale, spriteEffects, 0f);
+
+            // Draw missiles
+            foreach (var missile in missiles)
+            {
+                missile.Draw(spriteBatch);
+            }
         }
     }
 }
