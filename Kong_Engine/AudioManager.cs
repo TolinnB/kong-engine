@@ -10,12 +10,14 @@ namespace Kong_Engine
         private ContentManager _contentManager;
         private Dictionary<string, SoundEffect> _soundEffects;
         private Dictionary<string, Song> _songs;
+        private Dictionary<string, SoundEffectInstance> _loopingSounds;
 
         public AudioManager(ContentManager contentManager)
         {
             _contentManager = contentManager;
             _soundEffects = new Dictionary<string, SoundEffect>();
             _songs = new Dictionary<string, Song>();
+            _loopingSounds = new Dictionary<string, SoundEffectInstance>();
         }
 
         public void LoadSound(string name, string filePath)
@@ -29,6 +31,29 @@ namespace Kong_Engine
             if (_soundEffects.TryGetValue(name, out var soundEffect))
             {
                 soundEffect.Play();
+            }
+        }
+
+        public void PlayLoopingSound(string name)
+        {
+            if (_soundEffects.TryGetValue(name, out var soundEffect))
+            {
+                if (!_loopingSounds.ContainsKey(name))
+                {
+                    var instance = soundEffect.CreateInstance();
+                    instance.IsLooped = true;
+                    _loopingSounds[name] = instance;
+                    instance.Play();
+                }
+            }
+        }
+
+        public void StopSound(string name)
+        {
+            if (_loopingSounds.TryGetValue(name, out var instance))
+            {
+                instance.Stop();
+                _loopingSounds.Remove(name);
             }
         }
 

@@ -115,6 +115,24 @@
 /processorParam:TextureFormat=Color
 /build:env.png
 
+#begin explosion.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:explosion.png
+
+#begin explosion.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:explosion.wav
+
 #begin fallbackTexture.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -144,6 +162,15 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:hurtSound.mp3
+
+#begin JumpLand_Collisions.csv
+/copy:JumpLand_Collisions.csv
+
+#begin JumpLand_Floor.csv
+/copy:JumpLand_Floor.csv
+
+#begin JumpLand_Tile Layer 2.csv
+/copy:JumpLand_Tile Layer 2.csv
 
 #begin JumpLand.tmx
 /copy:JumpLand.tmx
@@ -193,6 +220,12 @@
 /processorParam:TextureFormat=Color
 /build:mario.png
 
+#begin missile-sound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:missile-sound.wav
+
 #begin music.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -210,6 +243,13 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:player.png
+
+#begin ScoreFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:ScoreFont.spritefont
 
 #begin SimpleTileset2_Kong_Engine.tsx
 /copy:SimpleTileset2_Kong_Engine.tsx
@@ -250,6 +290,36 @@
 /processorParam:TextureFormat=Color
 /build:sonic.png
 
+#begin space-music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:space-music.mp3
+
+#begin space-sprites.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:space-sprites.png
+
+#begin space.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:space.png
+
 #begin splashScreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -285,4 +355,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:splashScreen3.png
+
+#begin turbo.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:turbo.wav
+
+#begin turbo.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:turbo.wav
 

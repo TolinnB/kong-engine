@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Kong_Engine.Objects
 {
@@ -30,10 +31,14 @@ namespace Kong_Engine.Objects
         private int frameWidth = 30; // Width of each frame
         private int frameHeight = 37; // Height of each frame
         private float verticalSpeed = 0f; // Speed for jumping
+        private TileMapManager tileMapManager;
+        private float scale;
 
-        public PlayerSprite(Texture2D spriteSheet)
+        public PlayerSprite(Texture2D spriteSheet, TileMapManager tileMapManager, float scale)
         {
             this.spriteSheet = spriteSheet;
+            this.tileMapManager = tileMapManager;
+            this.scale = scale;
 
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
@@ -63,12 +68,12 @@ namespace Kong_Engine.Objects
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
             AddComponent(new CollisionComponent
             {
-                BoundingBox = new Rectangle(0, 0, frameWidth, frameHeight)
+                BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
             });
             AddComponent(new LifeComponent { Lives = 10 });
             Knockback = Vector2.Zero;
 
-            playerBounds = new Rectangle((int)GetComponent<PositionComponent>().Position.X - 8, (int)GetComponent<PositionComponent>().Position.Y - 8, frameWidth, frameHeight);
+            playerBounds = new Rectangle((int)GetComponent<PositionComponent>().Position.X - 8, (int)GetComponent<PositionComponent>().Position.Y - 8, (int)(frameWidth * scale), (int)(frameHeight * scale));
 
             currentFrame = 0;
             frameTime = 0.1; // Change frame every 0.1 seconds for walking animation
@@ -89,11 +94,12 @@ namespace Kong_Engine.Objects
                 currentPosition.Y -= verticalSpeed;
 
                 // Check if player has landed
-                if (currentPosition.Y >= 100) // Assuming ground level is y=100
+                if (CheckCollisions(currentPosition))
                 {
-                    currentPosition.Y = 100;
-                    isJumping = false;
+                    // If collision, adjust player's position to just above the floor
+                    currentPosition.Y += verticalSpeed;
                     verticalSpeed = 0f;
+                    isJumping = false;
                 }
 
                 var positionComponent = GetComponent<PositionComponent>();
@@ -122,6 +128,19 @@ namespace Kong_Engine.Objects
             var position = GetComponent<PositionComponent>().Position;
             playerBounds.X = (int)position.X - 8;
             playerBounds.Y = (int)position.Y - 8;
+
+            // Update collision component bounding box
+            var collisionComponent = GetComponent<CollisionComponent>();
+            if (collisionComponent != null)
+            {
+                collisionComponent.BoundingBox = playerBounds;
+            }
+        }
+
+        public Rectangle GetBoundingBox()
+        {
+            var collisionComponent = GetComponent<CollisionComponent>();
+            return collisionComponent?.BoundingBox ?? Rectangle.Empty;
         }
 
         private void ApplyKnockback()
@@ -163,6 +182,18 @@ namespace Kong_Engine.Objects
                 isMoving = true;
                 isFacingRight = true; // Update direction flag
             }
+            if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
+            {
+                movement.Y -= moveSpeed;
+                isIdle = false;
+                isMoving = true;
+            }
+            if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
+            {
+                movement.Y += moveSpeed;
+                isIdle = false;
+                isMoving = true;
+            }
             if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
             {
                 isJumping = true;
@@ -173,9 +204,30 @@ namespace Kong_Engine.Objects
             {
                 var currentPosition = GetComponent<PositionComponent>().Position;
                 currentPosition += movement;
-                var positionComponent = GetComponent<PositionComponent>();
-                positionComponent.Position = currentPosition;
+
+                // Check for collisions with the tilemap
+                if (!CheckCollisions(currentPosition))
+                {
+                    var positionComponent = GetComponent<PositionComponent>();
+                    positionComponent.Position = currentPosition;
+                }
             }
+        }
+
+        private bool CheckCollisions(Vector2 newPosition)
+        {
+            var newBounds = new Rectangle((int)newPosition.X - 8, (int)newPosition.Y - 8, playerBounds.Width, playerBounds.Height);
+
+            foreach (var rect in tileMapManager.CollisionRectangles)
+            {
+                if (newBounds.Intersects(rect))
+                {
+                    Console.WriteLine($"Collision detected at ({rect.X}, {rect.Y})");
+                    return true; // Collision detected
+                }
+            }
+
+            return false; // No collision
         }
 
         public void Move(Vector2 direction)
@@ -207,7 +259,8 @@ namespace Kong_Engine.Objects
             // Flip the sprite if facing left
             SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, 1f, spriteEffects, 0f);
+            spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, scale, spriteEffects, 0f);
         }
     }
 }
+

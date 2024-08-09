@@ -1,10 +1,13 @@
+using Kong_Engine.ECS.Entity;
 using Kong_Engine.Enum;
+using Kong_Engine.Objects;
 using Kong_Engine.States;
 using Kong_Engine.States.Base;
 using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace Kong_Engine
 {
@@ -42,8 +45,11 @@ namespace Kong_Engine
 
             base.Initialize();
             _audioManager = new AudioManager(Content);
+
+            // Start with the Splash Screen
             SwitchState(new SplashState());
         }
+
 
         public float ScaleFactor => _scaleFactor;
 
@@ -72,7 +78,6 @@ namespace Kong_Engine
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            // Load common content if necessary
         }
 
         protected override void Update(GameTime gameTime)

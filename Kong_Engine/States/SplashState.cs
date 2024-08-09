@@ -1,9 +1,5 @@
 ﻿using Kong_Engine.Objects;
 using Kong_Engine.States.Base;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.States
@@ -31,5 +27,4 @@ namespace Kong_Engine.States
         {
         }
     }
-
 }

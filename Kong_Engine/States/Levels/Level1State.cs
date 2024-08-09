@@ -19,7 +19,7 @@ namespace Kong_Engine.States.Levels
             int tilesetTilesWide = tilesetTexture.Width / map.Tilesets[0].TileWidth;
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
-            float scale = 4.0f;
+            float scale = 1.0f; // Adjust the scale factor as needed
 
             TileMapManager = new TileMapManager(SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
         }
@@ -28,10 +28,11 @@ namespace Kong_Engine.States.Levels
         {
             var playerSpriteSheet = Content.Load<Texture2D>("player");
             var enemySpriteSheet = Content.Load<Texture2D>("slime");
-            float scale = 3.0f;
+            float playerScale = 1.0f; // Adjust player scale as needed
+            float enemyScale = 1.0f;  // Adjust enemy scale as needed
 
-            PlayerEntity = new PlayerSprite(playerSpriteSheet, scale);
-            EnemyEntity = new EnemySprite(enemySpriteSheet, scale);
+            PlayerEntity = new PlayerSprite(playerSpriteSheet, TileMapManager, playerScale);
+            EnemyEntity = new EnemySprite(enemySpriteSheet, enemyScale);
 
             Entities.Add(PlayerEntity);
             Entities.Add(EnemyEntity);
@@ -52,16 +53,15 @@ namespace Kong_Engine.States.Levels
 
         protected override bool IsLevelCompleted()
         {
-            // Add your level completion logic here
-            // For example, return true if player reaches a certain position
             return PlayerEntity.GetComponent<PositionComponent>().Position.X > 1000;
         }
 
         public override void Initialize(ContentManager contentManager, MainGame game)
         {
             base.Initialize(contentManager, game);
-            int screenWidth = game.GraphicsDevice.Viewport.Width; // Get the screen width
-            MovementSystem = new MovementSystem(screenWidth); // Initialize with screen width
+            int screenWidth = game.GraphicsDevice.Viewport.Width;
+            MovementSystem = new MovementSystem(screenWidth);
+            CollisionSystem = new CollisionSystem(AudioManager, game, TileMapManager); // Initialize CollisionSystem
         }
 
         public override void Update(GameTime gameTime)
@@ -73,7 +73,7 @@ namespace Kong_Engine.States.Levels
 
             if (IsLevelCompleted())
             {
-                SwitchState(new EndLevelSummaryState());
+                SwitchState(new Level2State());
             }
 
             base.Update(gameTime);

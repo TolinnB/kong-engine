@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.States
 {
-    public class EndLevelSummaryState : BaseGameState
+    public class EndLevelSummary : BaseGameState
     {
         private Texture2D _endLevelSummaryBackground;
 

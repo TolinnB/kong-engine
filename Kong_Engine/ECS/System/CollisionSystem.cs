@@ -1,8 +1,8 @@
 ﻿using Kong_Engine.ECS.Entity;
 using Kong_Engine.Objects;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using System;
-using Kong_Engine.ECS.Component;
 
 namespace Kong_Engine.ECS.System
 {
@@ -10,11 +10,13 @@ namespace Kong_Engine.ECS.System
     {
         private readonly AudioManager _audioManager;
         private readonly MainGame _game;
+        private readonly TileMapManager _tileMapManager;
 
-        public CollisionSystem(AudioManager audioManager, MainGame game)
+        public CollisionSystem(AudioManager audioManager, MainGame game, TileMapManager tileMapManager)
         {
             _audioManager = audioManager;
             _game = game;
+            _tileMapManager = tileMapManager;
         }
 
         public void Update(IEnumerable<BaseEntity> entities)
@@ -30,22 +32,14 @@ namespace Kong_Engine.ECS.System
 
         private void CheckPlayerCollisions(PlayerSprite player)
         {
-            var collisionComponent = player.GetComponent<CollisionComponent>();
-            if (collisionComponent != null)
+            var playerBoundingBox = player.GetBoundingBox();
+
+            foreach (var rectangle in _tileMapManager.CollisionRectangles)
             {
-                foreach (var contactEdge in collisionComponent.ContactList)
+                if (playerBoundingBox.Intersects(rectangle))
                 {
-                    if (contactEdge.Contact.IsTouching)
-                    {
-                        var otherBody = contactEdge.Other;
-                        if (otherBody.UserData != null && otherBody.UserData is string userData)
-                        {
-                            if (userData == "collisionObject")
-                            {
-                                HandleCollisionWithEnvironment(player);
-                            }
-                        }
-                    }
+                    HandleCollisionWithEnvironment(player);
+                    break;
                 }
             }
         }
@@ -55,6 +49,7 @@ namespace Kong_Engine.ECS.System
             // Handle the collision with the environment
             Console.WriteLine("Player collided with the environment!");
             // Add your collision handling logic here, such as stopping the player's movement
+            player.Move(new Vector2(0, -1)); // Example: stop the player's movement
         }
     }
 }
