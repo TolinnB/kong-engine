@@ -1,6 +1,7 @@
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.Enum;
 using Kong_Engine.Objects;
+using Kong_Engine.States;
 using Kong_Engine.States.Base;
 using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
@@ -44,8 +45,11 @@ namespace Kong_Engine
 
             base.Initialize();
             _audioManager = new AudioManager(Content);
-            SwitchState(new Level2State()); // Start with Level2State directly
+
+            // Start with the Splash Screen
+            SwitchState(new SplashState());
         }
+
 
         public float ScaleFactor => _scaleFactor;
 
