@@ -182,21 +182,21 @@ namespace Kong_Engine.Objects
             var keyboardState = Keyboard.GetState();
 
             Vector2 movement = Vector2.Zero;
-            if (keyboardState.IsKeyDown(Keys.J))
+            if (keyboardState.IsKeyDown(Keys.Left))
             {
                 movement.X -= moveSpeed;
                 isFacingRight = false; // Update direction flag
             }
-            if (keyboardState.IsKeyDown(Keys.L))
+            if (keyboardState.IsKeyDown(Keys.Right))
             {
                 movement.X += moveSpeed;
                 isFacingRight = true; // Update direction flag
             }
-            if (keyboardState.IsKeyDown(Keys.I))
+            if (keyboardState.IsKeyDown(Keys.Up))
             {
                 movement.Y -= moveSpeed;
             }
-            if (keyboardState.IsKeyDown(Keys.K))
+            if (keyboardState.IsKeyDown(Keys.Down))
             {
                 movement.Y += moveSpeed;
             }
@@ -219,6 +219,7 @@ namespace Kong_Engine.Objects
             positionComponent.Position = currentPosition;
         }
 
+
         public void Move(Vector2 direction)
         {
             var currentPosition = GetComponent<PositionComponent>().Position;
@@ -240,11 +241,11 @@ namespace Kong_Engine.Objects
             Rectangle currentFrameRect;
             var keyboardState = Keyboard.GetState();
 
-            if (keyboardState.IsKeyDown(Keys.J))
+            if (keyboardState.IsKeyDown(Keys.Left))
             {
                 currentFrameRect = isTurboActive ? leftTurnTurboFrame : leftTurnFrame;
             }
-            else if (keyboardState.IsKeyDown(Keys.L))
+            else if (keyboardState.IsKeyDown(Keys.Right))
             {
                 currentFrameRect = isTurboActive ? rightTurnTurboFrame : rightTurnFrame;
             }

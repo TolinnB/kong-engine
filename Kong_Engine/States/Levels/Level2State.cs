@@ -137,6 +137,10 @@ namespace Kong_Engine.States.Levels
             // Draw the score
             spriteBatch.DrawString(_font, $"Score: {_player2.Score}", new Vector2(10, 10), Color.White);
 
+            // Draw the control instructions
+            string instructions = "Space = Turbo\nArrow Keys = Movement\nZ = Fire";
+            spriteBatch.DrawString(_font, instructions, new Vector2(10, 30), Color.White);
+
             if (isGameOver)
             {
                 var gameOverText = "Game Over";
