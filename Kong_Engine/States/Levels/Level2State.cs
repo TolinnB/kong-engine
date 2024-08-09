@@ -31,8 +31,11 @@ namespace Kong_Engine.States.Levels
             _backgroundTexture = Content.Load<Texture2D>("space");
             _spriteSheet = Content.Load<Texture2D>("space-sprites"); // Load the provided sprite sheet without the extension
             _font = Content.Load<SpriteFont>("ScoreFont"); // Load the font for displaying the score
-        }
 
+            // Load the space-music song
+            AudioManager.LoadSong("space-music", "space-music");
+            AudioManager.PlaySong("space-music", true);
+        }
         protected override void InitializeEntities()
         {
             _random = new Random();
@@ -80,7 +83,11 @@ namespace Kong_Engine.States.Levels
         public override void Initialize(ContentManager contentManager, MainGame game)
         {
             base.Initialize(contentManager, game);
+
+            // Play the space-music song
+            AudioManager.PlaySong("space-music", true); // Play with repeating enabled
         }
+
 
         public override void Update(GameTime gameTime)
         {

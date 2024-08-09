@@ -278,6 +278,12 @@
 /processorParam:TextureFormat=Color
 /build:sonic.png
 
+#begin space-music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:space-music.mp3
+
 #begin space-sprites.png
 /importer:TextureImporter
 /processor:TextureProcessor

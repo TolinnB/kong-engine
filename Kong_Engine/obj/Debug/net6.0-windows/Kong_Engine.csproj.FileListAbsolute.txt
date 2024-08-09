@@ -241,3 +241,5 @@ C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\ScoreFont.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\explosion.xnb
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-music.wma
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-music.xnb
