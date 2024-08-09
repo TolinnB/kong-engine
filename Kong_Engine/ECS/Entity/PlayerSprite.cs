@@ -65,7 +65,8 @@ namespace Kong_Engine.Objects
                 new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame 3
             };
 
-            AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
+            // Initialize components with position and bounding box scaled correctly
+            AddComponent(new PositionComponent { Position = new Vector2(100, 100) * scale });
             AddComponent(new CollisionComponent
             {
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
@@ -73,7 +74,8 @@ namespace Kong_Engine.Objects
             AddComponent(new LifeComponent { Lives = 10 });
             Knockback = Vector2.Zero;
 
-            playerBounds = new Rectangle((int)GetComponent<PositionComponent>().Position.X - 8, (int)GetComponent<PositionComponent>().Position.Y - 8, (int)(frameWidth * scale), (int)(frameHeight * scale));
+            // Initialize player bounds with the correct scale
+            UpdatePlayerBounds();
 
             currentFrame = 0;
             frameTime = 0.1; // Change frame every 0.1 seconds for walking animation
@@ -89,23 +91,37 @@ namespace Kong_Engine.Objects
 
             if (isJumping)
             {
-                verticalSpeed -= gravity;
-                var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition.Y -= verticalSpeed;
-
-                // Check if player has landed
-                if (CheckCollisions(currentPosition))
-                {
-                    // If collision, adjust player's position to just above the floor
-                    currentPosition.Y += verticalSpeed;
-                    verticalSpeed = 0f;
-                    isJumping = false;
-                }
-
-                var positionComponent = GetComponent<PositionComponent>();
-                positionComponent.Position = currentPosition;
+                HandleJumping();
             }
 
+            UpdateAnimationFrame(gameTime);
+            UpdatePlayerBounds();
+
+            // Update collision component bounding box
+            var collisionComponent = GetComponent<CollisionComponent>();
+            collisionComponent.BoundingBox = playerBounds;
+        }
+
+        private void HandleJumping()
+        {
+            verticalSpeed -= gravity;
+            var currentPosition = GetComponent<PositionComponent>().Position;
+            currentPosition.Y -= verticalSpeed * scale;
+
+            // Check if player has landed
+            if (CheckCollisions(currentPosition))
+            {
+                // If collision, adjust player's position to just above the floor
+                currentPosition.Y += verticalSpeed * scale;
+                verticalSpeed = 0f;
+                isJumping = false;
+            }
+
+            GetComponent<PositionComponent>().Position = currentPosition;
+        }
+
+        private void UpdateAnimationFrame(GameTime gameTime)
+        {
             timeSinceLastFrame += gameTime.ElapsedGameTime.TotalSeconds;
 
             if (timeSinceLastFrame >= (isJumping ? jumpFrameTime : isMoving ? frameTime : idleFrameTime))
@@ -124,17 +140,17 @@ namespace Kong_Engine.Objects
                 }
                 timeSinceLastFrame = 0;
             }
+        }
 
+        private void UpdatePlayerBounds()
+        {
             var position = GetComponent<PositionComponent>().Position;
-            playerBounds.X = (int)position.X - 8;
-            playerBounds.Y = (int)position.Y - 8;
-
-            // Update collision component bounding box
-            var collisionComponent = GetComponent<CollisionComponent>();
-            if (collisionComponent != null)
-            {
-                collisionComponent.BoundingBox = playerBounds;
-            }
+            playerBounds = new Rectangle(
+                (int)(position.X - 8 * scale),
+                (int)(position.Y - 8 * scale),
+                (int)(frameWidth * scale),
+                (int)(frameHeight * scale)
+            );
         }
 
         public Rectangle GetBoundingBox()
@@ -148,7 +164,7 @@ namespace Kong_Engine.Objects
             if (Knockback != Vector2.Zero && isMoving)
             {
                 var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition += Knockback;
+                currentPosition += Knockback * scale;
                 Knockback *= 0.9f; // Decay the knockback over time
 
                 if (Knockback.LengthSquared() < 0.01f)
@@ -156,8 +172,7 @@ namespace Kong_Engine.Objects
                     Knockback = Vector2.Zero;
                 }
 
-                var positionComponent = GetComponent<PositionComponent>();
-                positionComponent.Position = currentPosition;
+                GetComponent<PositionComponent>().Position = currentPosition;
             }
         }
 
@@ -168,6 +183,7 @@ namespace Kong_Engine.Objects
             isMoving = false;
 
             Vector2 movement = Vector2.Zero;
+
             if (keyboardState.IsKeyDown(Keys.A) || keyboardState.IsKeyDown(Keys.Left))
             {
                 movement.X -= moveSpeed;
@@ -182,18 +198,6 @@ namespace Kong_Engine.Objects
                 isMoving = true;
                 isFacingRight = true; // Update direction flag
             }
-            if (keyboardState.IsKeyDown(Keys.W) || keyboardState.IsKeyDown(Keys.Up))
-            {
-                movement.Y -= moveSpeed;
-                isIdle = false;
-                isMoving = true;
-            }
-            if (keyboardState.IsKeyDown(Keys.S) || keyboardState.IsKeyDown(Keys.Down))
-            {
-                movement.Y += moveSpeed;
-                isIdle = false;
-                isMoving = true;
-            }
             if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
             {
                 isJumping = true;
@@ -203,20 +207,24 @@ namespace Kong_Engine.Objects
             if (isMoving && !isJumping)
             {
                 var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition += movement;
+                currentPosition += movement * scale;
 
                 // Check for collisions with the tilemap
                 if (!CheckCollisions(currentPosition))
                 {
-                    var positionComponent = GetComponent<PositionComponent>();
-                    positionComponent.Position = currentPosition;
+                    GetComponent<PositionComponent>().Position = currentPosition;
                 }
             }
         }
 
         private bool CheckCollisions(Vector2 newPosition)
         {
-            var newBounds = new Rectangle((int)newPosition.X - 8, (int)newPosition.Y - 8, playerBounds.Width, playerBounds.Height);
+            var newBounds = new Rectangle(
+                (int)(newPosition.X - 8 * scale),
+                (int)(newPosition.Y - 8 * scale),
+                playerBounds.Width,
+                playerBounds.Height
+            );
 
             foreach (var rect in tileMapManager.CollisionRectangles)
             {
@@ -233,9 +241,8 @@ namespace Kong_Engine.Objects
         public void Move(Vector2 direction)
         {
             var currentPosition = GetComponent<PositionComponent>().Position;
-            currentPosition += direction;
-            var positionComponent = GetComponent<PositionComponent>();
-            positionComponent.Position = currentPosition;
+            currentPosition += direction * scale;
+            GetComponent<PositionComponent>().Position = currentPosition;
         }
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
@@ -263,4 +270,3 @@ namespace Kong_Engine.Objects
         }
     }
 }
-

@@ -89,6 +89,9 @@ namespace Kong_Engine
         public void SetScale(float newScale)
         {
             scale = newScale;
+            // If necessary, reload or recalculate collision rectangles to apply the new scale
+            CollisionRectangles.Clear();
+            LoadCollisionRectanglesFromCsv("Content/JumpLand_Collisions.csv");
         }
     }
 }

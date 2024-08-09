@@ -22,7 +22,10 @@ namespace Kong_Engine
         private const float DesignedResolutionAspectRatio = DesignedResolutionWidth / (float)DesignedResolutionHeight;
         private BaseGameState _currentState;
         private AudioManager _audioManager;
-        private float _scaleFactor = 1f;
+        private float _scaleFactor;
+
+        // Updated ScaleFactor property
+        public float ScaleFactor => _scaleFactor;
 
         public MainGame()
         {
@@ -49,9 +52,6 @@ namespace Kong_Engine
             // Start with the Splash Screen
             SwitchState(new SplashState());
         }
-
-
-        public float ScaleFactor => _scaleFactor;
 
         private Rectangle GetScaleRectangle()
         {

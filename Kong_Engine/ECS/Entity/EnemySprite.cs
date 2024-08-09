@@ -12,7 +12,6 @@ namespace Kong_Engine.Objects
         private int currentFrame;
         private double frameTime;
         private double timeSinceLastFrame;
-        private bool isMovingRight = true;
         private int frameWidth = 49; // Width of each frame
         private int frameHeight = 50; // Height of each frame
         private float scale; // Scale factor
@@ -22,7 +21,6 @@ namespace Kong_Engine.Objects
             this.spriteSheet = spriteSheet;
             this.scale = scale;
 
-            // Define the source rectangles for each frame
             walkFrames = new Rectangle[]
             {
                 new Rectangle(0, 0, frameWidth, frameHeight),   // Walk Frame 1
@@ -60,7 +58,6 @@ namespace Kong_Engine.Objects
                 timeSinceLastFrame = 0;
             }
 
-            // Update bounding box position
             var positionComponent = GetComponent<PositionComponent>();
             var collisionComponent = GetComponent<CollisionComponent>();
             collisionComponent.BoundingBox = new Rectangle(
@@ -76,7 +73,6 @@ namespace Kong_Engine.Objects
             Rectangle currentFrameRect = walkFrames[currentFrame];
             var position = GetComponent<PositionComponent>().Position;
 
-            // Flip the sprite if moving left
             SpriteEffects spriteEffects = GetComponent<MovementComponent>().MovingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
             spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, scale, spriteEffects, 0f);
