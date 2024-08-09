@@ -5,8 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Kong_Engine.Objects;
-using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
 using System.Collections.Generic;
 using Kong_Engine.Input;
 using Kong_Engine.States.Base;
@@ -29,19 +27,24 @@ namespace Kong_Engine.States.Levels
         protected override void LoadLevelContent()
         {
             _backgroundTexture = Content.Load<Texture2D>("space");
-            _spriteSheet = Content.Load<Texture2D>("space-sprites"); // Load the provided sprite sheet without the extension
-            _font = Content.Load<SpriteFont>("ScoreFont"); // Load the font for displaying the score
+            _spriteSheet = Content.Load<Texture2D>("space-sprites");
+            _font = Content.Load<SpriteFont>("ScoreFont");
 
-            // Load the space-music song
+            // Load music and sound effects
             AudioManager.LoadSong("space-music", "space-music");
-            AudioManager.PlaySong("space-music", true);
+            AudioManager.LoadSound("turbo", "turbo");
+            AudioManager.LoadSound("missile-sound", "missile-sound");
+            AudioManager.LoadSound("explosion", "explosion");
+
+            AudioManager.PlaySong("space-music", true); // Play background music
         }
+
         protected override void InitializeEntities()
         {
             _random = new Random();
 
             // Initialize PlayerSprite2
-            _player2 = new PlayerSprite2(_spriteSheet, 1f);
+            _player2 = new PlayerSprite2(_spriteSheet, 1f, AudioManager);
             Entities.Add(_player2);
 
             // Initialize TerrainBackground with a scroll speed (e.g., 0.5 for half the speed of the player)
@@ -52,14 +55,11 @@ namespace Kong_Engine.States.Levels
             int numberOfAsteroids = 5;
             for (int i = 0; i < numberOfAsteroids; i++)
             {
-                var asteroidPosition = new Vector2(_random.Next(0, 1280), _random.Next(0, 50)); // Random X position, slight variance in Y position
-                var asteroidVelocity = new Vector2(0, 50); // Move downward
-                var asteroid = new Asteroid(_spriteSheet, asteroidPosition, 1f, asteroidVelocity);
+                var asteroidPosition = new Vector2(_random.Next(0, 1280), _random.Next(0, 50));
+                var asteroidVelocity = new Vector2(0, 50);
+                var asteroid = new Asteroid(_spriteSheet, asteroidPosition, 1f, asteroidVelocity, AudioManager);
                 _asteroids.Add(asteroid);
                 Entities.Add(asteroid);
-
-                // Log asteroid initialization
-                Debug.WriteLine($"Asteroid {i} added to entities at position {asteroidPosition}");
             }
         }
 
@@ -67,27 +67,6 @@ namespace Kong_Engine.States.Levels
         {
             InputManager = new InputManager(new GameplayInputMapper());
         }
-
-        public override void LoadContent()
-        {
-            base.LoadContent();
-            // No additional content for now
-        }
-
-        protected override bool IsLevelCompleted()
-        {
-            // Level is passed if there are no more asteroids
-            return _asteroids.Count == 0;
-        }
-
-        public override void Initialize(ContentManager contentManager, MainGame game)
-        {
-            base.Initialize(contentManager, game);
-
-            // Play the space-music song
-            AudioManager.PlaySong("space-music", true); // Play with repeating enabled
-        }
-
 
         public override void Update(GameTime gameTime)
         {
@@ -128,14 +107,18 @@ namespace Kong_Engine.States.Levels
                     // Check for collisions
                     if (_asteroids[i].GetBoundingBox().Intersects(_player2.GetBoundingBox()))
                     {
-                        Debug.WriteLine("Collision detected!");
                         _player2.HandleCollision(new Vector2(0, 10)); // Apply downward knockback
-                        // Handle other asteroid-specific collision logic if needed
                     }
                 }
             }
 
             base.Update(gameTime);
+        }
+
+        protected override bool IsLevelCompleted()
+        {
+            // Level is considered completed when all asteroids are destroyed
+            return _asteroids.Count == 0;
         }
 
         public override void Render(SpriteBatch spriteBatch)
@@ -144,6 +127,7 @@ namespace Kong_Engine.States.Levels
 
             // Draw PlayerSprite2
             _player2.Draw(spriteBatch, Matrix.Identity);
+
             // Draw Asteroids
             foreach (var asteroid in _asteroids)
             {

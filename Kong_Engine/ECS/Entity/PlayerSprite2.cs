@@ -39,11 +39,14 @@ namespace Kong_Engine.Objects
         private float missileCooldown = 0.5f; // Cooldown time in seconds
         private double lastMissileFireTime = 0; // Last time a missile was fired
         public int Score { get; private set; } // Score property
+        private readonly AudioManager _audioManager;
+        private bool wasTurboActive = false;
 
-        public PlayerSprite2(Texture2D spriteSheet, float scale)
+        public PlayerSprite2(Texture2D spriteSheet, float scale, AudioManager audioManager)
         {
             this.spriteSheet = spriteSheet;
             this.scale = scale;
+            this._audioManager = audioManager;
 
             missiles = new List<Missile>();
 
@@ -106,14 +109,12 @@ namespace Kong_Engine.Objects
                             missiles.RemoveAt(i);
                             asteroid.StartExplosion();
                             Score += 10; // Increase score by 10 for each asteroid destroyed
+                            _audioManager.PlaySound("explosion"); // Play explosion sound
                             break;
                         }
                     }
                 }
             }
-
-            // Log bounding box position for debugging
-            //Debug.WriteLine($"Player bounding box: {playerBounds}");
 
             // Handle hit flashing
             if (isHit)
@@ -125,6 +126,18 @@ namespace Kong_Engine.Objects
                     hitTimer = 0;
                 }
             }
+
+            // Handle turbo sound
+            if (isTurboActive && !wasTurboActive)
+            {
+                _audioManager.PlayLoopingSound("turbo");
+            }
+            else if (!isTurboActive && wasTurboActive)
+            {
+                _audioManager.StopSound("turbo");
+            }
+
+            wasTurboActive = isTurboActive; // Update the previous state
         }
 
         public void HandleCollision(Vector2 knockbackForce)
@@ -189,14 +202,7 @@ namespace Kong_Engine.Objects
             }
 
             // Check for turbo activation
-            if (keyboardState.IsKeyDown(Keys.Space))
-            {
-                isTurboActive = true;
-            }
-            else
-            {
-                isTurboActive = false;
-            }
+            isTurboActive = keyboardState.IsKeyDown(Keys.Space);
 
             // Fire missile
             if (keyboardState.IsKeyDown(Keys.Z) && gameTime.TotalGameTime.TotalSeconds > lastMissileFireTime + missileCooldown)
@@ -226,6 +232,7 @@ namespace Kong_Engine.Objects
             var positionComponent = GetComponent<PositionComponent>();
             Vector2 missilePosition = new Vector2(positionComponent.Position.X + (frameWidth * scale) / 2 - missileFrame1.Width / 2, positionComponent.Position.Y);
             missiles.Add(new Missile(spriteSheet, missileFrame1, missileFrame2, missilePosition, missileSpeed, missileAnimationTime));
+            _audioManager.PlaySound("missile-sound"); // Play missile sound
         }
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
@@ -268,6 +275,5 @@ namespace Kong_Engine.Objects
             var lifeComponent = GetComponent<LifeComponent>();
             return lifeComponent != null && lifeComponent.Lives <= 0;
         }
-
     }
 }

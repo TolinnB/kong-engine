@@ -23,14 +23,17 @@ namespace Kong_Engine.ECS.Entity
 
         public bool MarkedForRemoval { get; private set; } = false;
 
-        public Asteroid(Texture2D texture, Vector2 position, float scale, Vector2 velocity)
+        private AudioManager _audioManager;
+
+        public Asteroid(Texture2D texture, Vector2 position, float scale, Vector2 velocity, AudioManager audioManager)
         {
             _texture = texture;
             _scale = scale;
             _velocity = velocity;
+            _audioManager = audioManager;
 
             // Define the source rectangles for each frame
-            defaultFrame = new Rectangle(0, 248, frameWidth, frameHeight);    // Default frame
+            defaultFrame = new Rectangle(0, 248, frameWidth, frameHeight);
             explosionFrames = new Rectangle[4];
             explosionFrames[0] = new Rectangle(40, 155, 28, 30);
             explosionFrames[1] = new Rectangle(122, 260, 28, 30);
@@ -44,10 +47,8 @@ namespace Kong_Engine.ECS.Entity
             });
 
             asteroidBounds = new Rectangle((int)position.X, (int)position.Y, (int)(frameWidth * scale), (int)(frameHeight * scale));
-
-            // Log initial position and texture status
-            //Debug.WriteLine($"Asteroid initialized at position {position}, texture loaded: {_texture != null}");
         }
+
 
         public void Update(GameTime gameTime)
         {
@@ -102,7 +103,11 @@ namespace Kong_Engine.ECS.Entity
             isExploding = true;
             currentExplosionFrame = 0;
             explosionElapsedTime = 0;
+
+            // Play explosion sound
+            _audioManager.PlaySound("explosion");
         }
+
 
         private void MarkForRemoval()
         {
