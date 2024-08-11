@@ -23,8 +23,8 @@ namespace Kong_Engine
         private BaseGameState _currentState;
         private AudioManager _audioManager;
         private float _scaleFactor;
+        private Camera _camera;
 
-        // Updated ScaleFactor property
         public float ScaleFactor => _scaleFactor;
 
         public MainGame()
@@ -40,6 +40,9 @@ namespace Kong_Engine
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _camera = new Camera(DesignedResolutionWidth, DesignedResolutionHeight, 2000, 2000); // Adjust world size as needed
+
             _renderTarget = new RenderTarget2D(_graphics.GraphicsDevice, DesignedResolutionWidth, DesignedResolutionHeight, false,
                 SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
@@ -49,7 +52,6 @@ namespace Kong_Engine
             base.Initialize();
             _audioManager = new AudioManager(Content);
 
-            // Start with the Splash Screen
             SwitchState(new SplashState());
         }
 
@@ -82,8 +84,23 @@ namespace Kong_Engine
 
         protected override void Update(GameTime gameTime)
         {
+            Vector2 moveDirection = Vector2.Zero;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.J))
+                moveDirection.X -= 5f; // Move left
+            if (Keyboard.GetState().IsKeyDown(Keys.L))
+                moveDirection.X += 5f; // Move right
+            if (Keyboard.GetState().IsKeyDown(Keys.I))
+                moveDirection.Y -= 5f; // Move up
+            if (Keyboard.GetState().IsKeyDown(Keys.K))
+                moveDirection.Y += 5f; // Move down
+
+            _camera.Move(moveDirection);
+            _camera.Update();
+
             _currentState?.Update(gameTime);
             _currentState?.HandleInput();
+
             base.Update(gameTime);
         }
 
@@ -92,7 +109,7 @@ namespace Kong_Engine
             GraphicsDevice.SetRenderTarget(_renderTarget);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin();
+            _spriteBatch.Begin(transformMatrix: _camera.Transform);
             _currentState?.Render(_spriteBatch);
             _spriteBatch.End();
 
