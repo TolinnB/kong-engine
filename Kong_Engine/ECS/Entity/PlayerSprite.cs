@@ -5,6 +5,7 @@ using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
 using System;
+using Kong_Engine.ECS.System;
 
 namespace Kong_Engine.Objects
 {
@@ -16,8 +17,12 @@ namespace Kong_Engine.Objects
         private Rectangle[] idleFrames;
         private Rectangle[] jumpFrames;
         private float moveSpeed = 1.5f;
-        private float jumpSpeed = 100f;
+        private float jumpSpeed = 200f;
         private float gravity = 40f;
+        private float fallMultiplier = 2.5f;  // Multiplier for gravity during descent
+        private float horizontalAcceleration = 10f; // Acceleration rate for horizontal movement
+        private float maxHorizontalSpeed = 150f; // Max speed for horizontal movement
+        private float verticalAcceleration = 5f;  // Acceleration rate for gravity
         private Rectangle playerBounds; // For collisions
         private bool isIdle = true;
         private bool isMoving = false;
@@ -103,6 +108,7 @@ namespace Kong_Engine.Objects
             var velocity = physicsComponent.Velocity;
             velocity.Y += gravity * deltaTime;
             physicsComponent.Velocity = velocity;
+            AccelerationSystem.ApplyAcceleration(physicsComponent, deltaTime, gravity, fallMultiplier, verticalAcceleration, horizontalAcceleration, maxHorizontalSpeed, isMoving, isFacingRight);
 
             // Update position based on the current velocity
             var currentPosition = GetComponent<PositionComponent>().Position;
