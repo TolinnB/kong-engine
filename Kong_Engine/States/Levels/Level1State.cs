@@ -23,7 +23,8 @@ namespace Kong_Engine.States.Levels
             int tileWidth = map.Tilesets[0].TileWidth;
             int tileHeight = map.Tilesets[0].TileHeight;
 
-            TileMapManager = new TileMapManager(SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, globalScale);
+            // Pass ContentManager when creating TileMapManager
+            TileMapManager = new TileMapManager(Content, SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, globalScale);
         }
 
         protected override void InitializeEntities()
