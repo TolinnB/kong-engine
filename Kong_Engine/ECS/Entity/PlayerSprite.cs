@@ -176,6 +176,22 @@ namespace Kong_Engine.Objects
             }
         }
 
+        public void HandleMovement(Vector2 movement)
+        {
+            var currentPosition = GetComponent<PositionComponent>().Position;
+            currentPosition += movement * scale;
+
+            // Check for collisions with the tilemap
+            if (!CheckCollisions(currentPosition))
+            {
+                GetComponent<PositionComponent>().Position = currentPosition;
+            }
+            else
+            {
+                // Optional: Handle the collision response here
+            }
+        }
+
         private void HandleInput(GameTime gameTime)
         {
             var keyboardState = Keyboard.GetState();
@@ -204,18 +220,12 @@ namespace Kong_Engine.Objects
                 verticalSpeed = jumpSpeed; // Initiate jump
             }
 
-            if (isMoving && !isJumping)
+            if (movement != Vector2.Zero && !isJumping)
             {
-                var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition += movement * scale;
-
-                // Check for collisions with the tilemap
-                if (!CheckCollisions(currentPosition))
-                {
-                    GetComponent<PositionComponent>().Position = currentPosition;
-                }
+                HandleMovement(movement);
             }
         }
+
 
         private bool CheckCollisions(Vector2 newPosition)
         {

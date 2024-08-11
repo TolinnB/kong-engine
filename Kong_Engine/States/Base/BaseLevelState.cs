@@ -57,15 +57,21 @@ namespace Kong_Engine.States.Base
 
         protected virtual void HandleCommand(BaseInputCommand command)
         {
-            if (PlayerEntity != null)
+            Vector2 movement = Vector2.Zero;
+
+            if (command is GameplayInputCommand.PlayerMoveLeft) movement = new Vector2(-1, 0);
+            if (command is GameplayInputCommand.PlayerMoveRight) movement = new Vector2(1, 0);
+            if (command is GameplayInputCommand.PlayerMoveDown) movement = new Vector2(0, 1);
+            if (command is GameplayInputCommand.PlayerMoveUp) movement = new Vector2(0, -1);
+
+            if (movement != Vector2.Zero && PlayerEntity != null)
             {
-                if (command is GameplayInputCommand.PlayerMoveLeft) PlayerEntity.Move(new Vector2(-5, 0));
-                if (command is GameplayInputCommand.PlayerMoveRight) PlayerEntity.Move(new Vector2(5, 0));
-                if (command is GameplayInputCommand.PlayerMoveDown) PlayerEntity.Move(new Vector2(0, 5));
-                if (command is GameplayInputCommand.PlayerMoveUp) PlayerEntity.Move(new Vector2(0, -5));
+                PlayerEntity.HandleMovement(movement);
             }
+
             if (command is GameplayInputCommand.GameExit) Game.Exit();
         }
+
 
         public override void Update(GameTime gameTime)
         {
