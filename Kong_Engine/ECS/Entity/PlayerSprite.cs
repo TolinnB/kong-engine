@@ -72,6 +72,12 @@ namespace Kong_Engine.Objects
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
             });
             AddComponent(new LifeComponent { Lives = 10 });
+            AddComponent(new PhysicsComponent
+            {
+                Velocity = Vector2.Zero,
+                Mass = 1f,
+                IsGrounded = false
+            });
             Knockback = Vector2.Zero;
 
             // Initialize player bounds with the correct scale
@@ -89,9 +95,35 @@ namespace Kong_Engine.Objects
             ApplyKnockback();
             HandleInput(gameTime);
 
+            var physicsComponent = GetComponent<PhysicsComponent>();
+
             if (isJumping)
             {
                 HandleJumping();
+            }
+
+            // Apply gravity and update the player's position
+            var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (!physicsComponent.IsGrounded)
+            {
+                var velocity = physicsComponent.Velocity;
+                velocity.Y += gravity * deltaTime;
+                physicsComponent.Velocity = velocity;
+
+                var currentPosition = GetComponent<PositionComponent>().Position;
+                currentPosition.Y += physicsComponent.Velocity.Y * scale * deltaTime;
+                GetComponent<PositionComponent>().Position = currentPosition;
+
+                // Check for collisions with the tilemap after applying gravity
+                if (CheckCollisions(currentPosition))
+                {
+                    physicsComponent.IsGrounded = true;
+                    velocity.Y = 0f;
+                    physicsComponent.Velocity = velocity;
+                    // Adjust position to align with the ground
+                    currentPosition.Y -= physicsComponent.Velocity.Y * scale * deltaTime;
+                    GetComponent<PositionComponent>().Position = currentPosition;
+                }
             }
 
             UpdateAnimationFrame(gameTime);
@@ -102,23 +134,21 @@ namespace Kong_Engine.Objects
             collisionComponent.BoundingBox = playerBounds;
         }
 
+
         private void HandleJumping()
         {
-            verticalSpeed -= gravity;
-            var currentPosition = GetComponent<PositionComponent>().Position;
-            currentPosition.Y -= verticalSpeed * scale;
-
-            // Check if player has landed
-            if (CheckCollisions(currentPosition))
+            var physicsComponent = GetComponent<PhysicsComponent>();
+            if (physicsComponent.IsGrounded)
             {
-                // If collision, adjust player's position to just above the floor
-                currentPosition.Y += verticalSpeed * scale;
-                verticalSpeed = 0f;
-                isJumping = false;
-            }
+                // Retrieve the velocity, modify it, and assign it back
+                var velocity = physicsComponent.Velocity;
+                velocity.Y = -jumpSpeed; // Jumping applies an upward velocity
+                physicsComponent.Velocity = velocity;
 
-            GetComponent<PositionComponent>().Position = currentPosition;
+                physicsComponent.IsGrounded = false;
+            }
         }
+
 
         private void UpdateAnimationFrame(GameTime gameTime)
         {
@@ -241,12 +271,20 @@ namespace Kong_Engine.Objects
                 if (newBounds.Intersects(rect))
                 {
                     Console.WriteLine($"Collision detected at ({rect.X}, {rect.Y})");
+
+                    // If the collision is below the player, consider them grounded
+                    var physicsComponent = GetComponent<PhysicsComponent>();
+                    if (newBounds.Bottom >= rect.Top && newBounds.Top < rect.Top)
+                    {
+                        physicsComponent.IsGrounded = true;
+                    }
                     return true; // Collision detected
                 }
             }
 
             return false; // No collision
         }
+
 
         public void Move(Vector2 direction)
         {

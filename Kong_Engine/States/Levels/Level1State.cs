@@ -13,6 +13,7 @@ namespace Kong_Engine.States.Levels
     public class Level1State : BaseLevelState
     {
         private float globalScale = 2.0f; // Example scale factor
+        private GravitySystem gravitySystem;
 
         protected override void LoadLevelContent()
         {
@@ -61,6 +62,7 @@ namespace Kong_Engine.States.Levels
             int screenWidth = game.GraphicsDevice.Viewport.Width;
             MovementSystem = new MovementSystem(screenWidth);
             CollisionSystem = new CollisionSystem(AudioManager, game, TileMapManager); // Initialize CollisionSystem
+            gravitySystem = new GravitySystem(new Vector2(0, 9.8f));
         }
 
         public override void Update(GameTime gameTime)
@@ -69,6 +71,7 @@ namespace Kong_Engine.States.Levels
             CollisionSystem.Update(Entities);
             PlayerEntity?.Update(gameTime);
             EnemyEntity?.Update(gameTime);
+            gravitySystem.Update(Entities, (float)gameTime.ElapsedGameTime.TotalSeconds);
 
             if (IsLevelCompleted())
             {
