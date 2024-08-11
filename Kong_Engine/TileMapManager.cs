@@ -42,20 +42,21 @@ namespace Kong_Engine
         private void LoadBackgrounds()
         {
             // Load the background textures using the ContentManager instance passed to the constructor
-            var background1 = contentManager.Load<Texture2D>("Background1");
-            var background2 = contentManager.Load<Texture2D>("Background2");
-            var background3 = contentManager.Load<Texture2D>("Background3");
+            var background3 = contentManager.Load<Texture2D>("Background3"); // Furthest back
+            var background2 = contentManager.Load<Texture2D>("Background2"); // Middle
+            var background1 = contentManager.Load<Texture2D>("Background1"); // Frontmost
 
             // Add them to the list of backgrounds
-            backgroundTextures.Add(background1);
-            backgroundTextures.Add(background2);
             backgroundTextures.Add(background3);
+            backgroundTextures.Add(background2);
+            backgroundTextures.Add(background1);
 
             // You can position them manually if needed
             backgroundPositions.Add(Vector2.Zero); // Position for Background1
             backgroundPositions.Add(Vector2.Zero); // Position for Background2
             backgroundPositions.Add(Vector2.Zero); // Position for Background3
         }
+
 
         private void LoadCollisionRectanglesFromCsv(string filePath)
         {
@@ -93,7 +94,7 @@ namespace Kong_Engine
                 samplerState: SamplerState.PointClamp,
                 transformMatrix: matrix);
 
-            // Draw backgrounds, applying the scale factor
+            // Draw each background, tiling it across the screen
             for (int i = 0; i < backgroundTextures.Count; i++)
             {
                 var backgroundTexture = backgroundTextures[i];
@@ -101,11 +102,18 @@ namespace Kong_Engine
                 var scaledWidth = backgroundTexture.Width * scale;
                 var scaledHeight = backgroundTexture.Height * scale;
 
-                spriteBatch.Draw(
-                    backgroundTexture,
-                    new Rectangle((int)position.X, (int)position.Y, (int)scaledWidth, (int)scaledHeight),
-                    Color.White
-                );
+                // Tiling the background across the screen
+                for (float x = 0; x < map.Width * map.TileWidth * scale; x += scaledWidth)
+                {
+                    for (float y = 0; y < map.Height * map.TileHeight * scale; y += scaledHeight)
+                    {
+                        spriteBatch.Draw(
+                            backgroundTexture,
+                            new Rectangle((int)(position.X + x), (int)(position.Y + y), (int)scaledWidth, (int)scaledHeight),
+                            Color.White
+                        );
+                    }
+                }
             }
 
             // Draw tile layers
@@ -129,6 +137,8 @@ namespace Kong_Engine
 
             spriteBatch.End();
         }
+
+
 
         public void SetScale(float newScale)
         {
