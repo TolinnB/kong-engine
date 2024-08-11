@@ -39,6 +39,9 @@ namespace Kong_Engine.Objects
         private TileMapManager tileMapManager;
         private float scale;
 
+        private const int mapWidth = 1280; // Screen width
+        private const int mapHeight = 720; // Screen height
+
         public PlayerSprite(Texture2D spriteSheet, TileMapManager tileMapManager, float scale)
         {
             this.spriteSheet = spriteSheet;
@@ -65,8 +68,7 @@ namespace Kong_Engine.Objects
 
             jumpFrames = new Rectangle[]
             {
-
-                new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame 3
+                new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame
             };
 
             // Initialize components with position and bounding box scaled correctly
@@ -111,7 +113,13 @@ namespace Kong_Engine.Objects
 
             // Update position based on the current velocity
             var currentPosition = GetComponent<PositionComponent>().Position;
+            currentPosition.X += physicsComponent.Velocity.X * scale * deltaTime;
             currentPosition.Y += physicsComponent.Velocity.Y * scale * deltaTime;
+
+            // Clamp the player's X position within the screen boundaries
+            currentPosition.X = MathHelper.Clamp(currentPosition.X, 0, mapWidth - playerBounds.Width);
+
+            // Update the position with the clamped X value
             GetComponent<PositionComponent>().Position = currentPosition;
 
             // Check for collision with the ground
@@ -137,11 +145,6 @@ namespace Kong_Engine.Objects
             collisionComponent.BoundingBox = playerBounds;
         }
 
-
-
-
-
-
         private void HandleJumping()
         {
             var physicsComponent = GetComponent<PhysicsComponent>();
@@ -158,9 +161,6 @@ namespace Kong_Engine.Objects
                 isJumping = true;  // Set the flag to indicate jumping
             }
         }
-
-
-
 
         private void UpdateAnimationFrame(GameTime gameTime)
         {
@@ -183,7 +183,6 @@ namespace Kong_Engine.Objects
                 timeSinceLastFrame = 0;
             }
         }
-
 
         private void UpdatePlayerBounds()
         {
@@ -268,7 +267,6 @@ namespace Kong_Engine.Objects
             }
         }
 
-
         private bool CheckCollisions(Vector2 newPosition)
         {
             var newBounds = new Rectangle(
@@ -302,8 +300,6 @@ namespace Kong_Engine.Objects
 
             return false; // No collision
         }
-
-
 
         public void Move(Vector2 direction)
         {
