@@ -9,6 +9,12 @@ namespace Kong_Engine.States
     public class MainMenuState : BaseGameState
     {
         private Texture2D _mainMenuBackground;
+        private Camera _camera;
+
+        public MainMenuState(Camera camera)
+        {
+            _camera = camera;
+        }
 
         public override void LoadContent()
         {
@@ -21,7 +27,7 @@ namespace Kong_Engine.States
 
             if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
             {
-                SwitchState(new Level1State());
+                SwitchState(new Level1State(_camera));
             }
 
             PreviousKeyboardState = currentKeyboardState;

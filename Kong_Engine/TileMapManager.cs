@@ -61,7 +61,7 @@ public class TileMapManager
         spriteBatch.Begin(
             SpriteSortMode.Deferred,
             samplerState: SamplerState.PointClamp,
-            transformMatrix: matrix);
+            transformMatrix: matrix); // Use the camera's transformation matrix
 
         foreach (var layer in map.Layers)
         {
@@ -73,9 +73,14 @@ public class TileMapManager
                     int tileFrame = gid - 1;
                     int column = tileFrame % tilesetTilesWide;
                     int row = tileFrame / tilesetTilesWide;
+
+                    // Calculate the tile's position with scaling and take into account the camera position
                     float x = (j % map.Width) * map.TileWidth * scale;
                     float y = (float)Math.Floor(j / (double)map.Width) * map.TileHeight * scale;
+
                     Rectangle tilesetRec = new Rectangle(tileWidth * column, tileHeight * row, tileWidth, tileHeight);
+
+                    // Draw the tile at the calculated position
                     spriteBatch.Draw(tileset, new Rectangle((int)x, (int)y, (int)(tileWidth * scale), (int)(tileHeight * scale)), tilesetRec, Color.White);
                 }
             }
@@ -83,6 +88,7 @@ public class TileMapManager
 
         spriteBatch.End();
     }
+
 
 
     public void SetScale(float newScale)

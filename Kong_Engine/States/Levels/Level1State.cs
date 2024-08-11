@@ -12,8 +12,14 @@ namespace Kong_Engine.States.Levels
 {
     public class Level1State : BaseLevelState
     {
-        private float globalScale = 2.0f; // Example scale factor
+        private float globalScale = 2.0f; // Adjust scale factor
         private GravitySystem gravitySystem;
+        private Camera _camera;
+
+        public Level1State(Camera camera)
+        {
+            _camera = camera;
+        }
 
         protected override void LoadLevelContent()
         {
@@ -61,7 +67,7 @@ namespace Kong_Engine.States.Levels
             base.Initialize(contentManager, game);
             int screenWidth = game.GraphicsDevice.Viewport.Width;
             MovementSystem = new MovementSystem(screenWidth);
-            CollisionSystem = new CollisionSystem(AudioManager, game, TileMapManager); // Initialize CollisionSystem
+            CollisionSystem = new CollisionSystem(AudioManager, game, TileMapManager);
             gravitySystem = new GravitySystem(new Vector2(0, 9.8f));
         }
 
@@ -75,7 +81,7 @@ namespace Kong_Engine.States.Levels
 
             if (IsLevelCompleted())
             {
-                SwitchState(new Level2State());
+                SwitchState(new Level2State(_camera));
             }
 
             base.Update(gameTime);
@@ -83,7 +89,7 @@ namespace Kong_Engine.States.Levels
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            Matrix scaleMatrix = Matrix.CreateScale(globalScale);
+            Matrix scaleMatrix = _camera.Transform;
             TileMapManager?.Draw(scaleMatrix);
             PlayerEntity?.Draw(spriteBatch, scaleMatrix);
             EnemyEntity?.Draw(spriteBatch, scaleMatrix);

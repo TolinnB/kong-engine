@@ -42,6 +42,8 @@ namespace Kong_Engine
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
+            _camera = new Camera(GraphicsDevice.Viewport); // Initialize the camera
+
             _renderTarget = new RenderTarget2D(_graphics.GraphicsDevice, DesignedResolutionWidth, DesignedResolutionHeight, false,
                 SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
@@ -51,12 +53,11 @@ namespace Kong_Engine
             base.Initialize();
             _audioManager = new AudioManager(Content);
 
-            // Initialize the camera here
-            _camera = new Camera(GraphicsDevice.Viewport);
-
-            // Start with the Splash Screen
-            SwitchState(new SplashState());
+            // Start with the SplashState, passing the camera
+            SwitchState(new SplashState(_camera));
         }
+
+
 
         private Rectangle GetScaleRectangle()
         {

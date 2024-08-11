@@ -23,6 +23,11 @@ namespace Kong_Engine.States.Levels
         private Random _random;
         private bool isGameOver = false;
         private bool isLevelPassed = false;
+        private Camera _camera;
+        public Level2State(Camera camera)
+        {
+            _camera = camera;
+        }
 
         protected override void LoadLevelContent()
         {

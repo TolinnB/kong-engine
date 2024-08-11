@@ -6,6 +6,13 @@ namespace Kong_Engine.States
 {
     public class SplashState : BaseGameState
     {
+        private Camera _camera;
+
+        public SplashState(Camera camera)
+        {
+            _camera = camera;
+        }
+
         public override void LoadContent()
         {
             AddGameObject(new SplashImage(LoadTexture("splashScreen3")));
@@ -17,7 +24,7 @@ namespace Kong_Engine.States
 
             if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
             {
-                SwitchState(new MainMenuState());
+                SwitchState(new MainMenuState(_camera));
             }
 
             PreviousKeyboardState = currentKeyboardState;
