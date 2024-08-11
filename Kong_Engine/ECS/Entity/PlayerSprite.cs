@@ -19,23 +19,23 @@ namespace Kong_Engine.Objects
         private float moveSpeed = 1.5f;
         private float jumpSpeed = 200f;
         private float gravity = 40f;
-        private float fallMultiplier = 2.5f;  // Multiplier for gravity during descent
-        private float horizontalAcceleration = 50f; // Acceleration rate for horizontal movement
-        private float maxHorizontalSpeed = 150f; // Max speed for horizontal movement
-        private float verticalAcceleration = 5f;  // Acceleration rate for gravity
-        private Rectangle playerBounds; // For collisions
+        private float fallMultiplier = 2.5f;
+        private float horizontalAcceleration = 50f;
+        private float maxHorizontalSpeed = 150f;
+        private float verticalAcceleration = 5f;
+        private Rectangle playerBounds;
         private bool isIdle = true;
         private bool isMoving = false;
         private bool isJumping = false;
-        private bool isFacingRight = true; // Flag to check direction
+        private bool isFacingRight = true;
         private int currentFrame;
         private double frameTime;
-        private double idleFrameTime; // Frame time for idle animation
-        private double jumpFrameTime; // Frame time for jump animation
+        private double idleFrameTime;
+        private double jumpFrameTime;
         private double timeSinceLastFrame;
-        private int frameWidth = 28; // Width of each frame
-        private int frameHeight = 30; // Height of each frame
-        private float verticalSpeed = 0f; // Speed for jumping
+        private int frameWidth = 28;
+        private int frameHeight = 30;
+        private float verticalSpeed = 0f;
         private TileMapManager tileMapManager;
         private float scale;
 
@@ -48,30 +48,28 @@ namespace Kong_Engine.Objects
             this.tileMapManager = tileMapManager;
             this.scale = scale;
 
-            // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
-                new Rectangle(0, 0, frameWidth, frameHeight),   // Idle Frame 1
-                new Rectangle(24, 0, frameWidth, frameHeight),  // Idle Frame 2
-                new Rectangle(47, 0, frameWidth, frameHeight),  // Idle Frame 3
+                new Rectangle(0, 0, frameWidth, frameHeight),
+                new Rectangle(24, 0, frameWidth, frameHeight),
+                new Rectangle(47, 0, frameWidth, frameHeight),
             };
 
             walkFrames = new Rectangle[]
             {
-                new Rectangle(71, 0, frameWidth, frameHeight),   // Walk Frame 1
-                new Rectangle(94, 0, frameWidth, frameHeight),  // Walk Frame 2
-                new Rectangle(119, 0, frameWidth, frameHeight),  // Walk Frame 3
-                new Rectangle(143, 0, frameWidth, frameHeight),  // Walk Frame 4
-                new Rectangle(166, 0, frameWidth, frameHeight), // Walk Frame 5
-                new Rectangle(191, 0, frameWidth, frameHeight)  // Walk Frame 6
+                new Rectangle(71, 0, frameWidth, frameHeight),
+                new Rectangle(94, 0, frameWidth, frameHeight),
+                new Rectangle(119, 0, frameWidth, frameHeight),
+                new Rectangle(143, 0, frameWidth, frameHeight),
+                new Rectangle(166, 0, frameWidth, frameHeight),
+                new Rectangle(191, 0, frameWidth, frameHeight)
             };
 
             jumpFrames = new Rectangle[]
             {
-                new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame
+                new Rectangle(288, 0, frameWidth, frameHeight),
             };
 
-            // Initialize components with position and bounding box scaled correctly
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) * scale });
             AddComponent(new CollisionComponent
             {
@@ -86,13 +84,12 @@ namespace Kong_Engine.Objects
             });
             Knockback = Vector2.Zero;
 
-            // Initialize player bounds with the correct scale
             UpdatePlayerBounds();
 
             currentFrame = 0;
-            frameTime = 0.1; // Change frame every 0.1 seconds for walking animation
-            idleFrameTime = 0.5; // Change frame every 0.5 seconds for idle animation
-            jumpFrameTime = 0.05; // Change frame every 0.05 seconds for jump animation
+            frameTime = 0.1;
+            idleFrameTime = 0.5;
+            jumpFrameTime = 0.05;
             timeSinceLastFrame = 0;
         }
 
@@ -105,42 +102,33 @@ namespace Kong_Engine.Objects
 
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            // Apply gravity continuously
             var velocity = physicsComponent.Velocity;
             velocity.Y += gravity * deltaTime;
             physicsComponent.Velocity = velocity;
             AccelerationSystem.ApplyAcceleration(physicsComponent, deltaTime, gravity, fallMultiplier, verticalAcceleration, horizontalAcceleration, maxHorizontalSpeed, isMoving, isFacingRight);
 
-            // Update position based on the current velocity
             var currentPosition = GetComponent<PositionComponent>().Position;
             currentPosition.X += physicsComponent.Velocity.X * scale * deltaTime;
             currentPosition.Y += physicsComponent.Velocity.Y * scale * deltaTime;
 
-            // Clamp the player's X position within the screen boundaries
             currentPosition.X = MathHelper.Clamp(currentPosition.X, 0, mapWidth - playerBounds.Width);
 
-            // Update the position with the clamped X value
             GetComponent<PositionComponent>().Position = currentPosition;
 
-            // Check for collision with the ground
             if (CheckCollisions(currentPosition))
             {
-                // If the player hits the ground, stop vertical movement and reset jump state
                 physicsComponent.IsGrounded = true;
-                physicsComponent.Velocity = Vector2.Zero;  // Stop the bounce by setting velocity to zero
-
-                isJumping = false;  // Stop the jump animation
+                physicsComponent.Velocity = Vector2.Zero;
+                isJumping = false;
             }
             else
             {
-                // If no collision, the player is in the air
                 physicsComponent.IsGrounded = false;
             }
 
             UpdateAnimationFrame(gameTime);
             UpdatePlayerBounds();
 
-            // Update collision component bounding box
             var collisionComponent = GetComponent<CollisionComponent>();
             collisionComponent.BoundingBox = playerBounds;
         }
@@ -151,14 +139,12 @@ namespace Kong_Engine.Objects
 
             if (physicsComponent.IsGrounded)
             {
-                Console.WriteLine("Player is jumping!"); // Debugging line
-                                                         // Apply upward velocity for the jump
                 var velocity = physicsComponent.Velocity;
-                velocity.Y = -jumpSpeed;  // Negative because Y increases downwards
+                velocity.Y = -jumpSpeed;
                 physicsComponent.Velocity = velocity;
 
-                physicsComponent.IsGrounded = false;  // The player is now airborne
-                isJumping = true;  // Set the flag to indicate jumping
+                physicsComponent.IsGrounded = false;
+                isJumping = true;
             }
         }
 
@@ -178,7 +164,7 @@ namespace Kong_Engine.Objects
                 }
                 else
                 {
-                    currentFrame = (currentFrame + 1) % idleFrames.Length; // Cycle through idle frames
+                    currentFrame = (currentFrame + 1) % idleFrames.Length;
                 }
                 timeSinceLastFrame = 0;
             }
@@ -207,7 +193,7 @@ namespace Kong_Engine.Objects
             {
                 var currentPosition = GetComponent<PositionComponent>().Position;
                 currentPosition += Knockback * scale;
-                Knockback *= 0.9f; // Decay the knockback over time
+                Knockback *= 0.9f;
 
                 if (Knockback.LengthSquared() < 0.01f)
                 {
@@ -223,14 +209,9 @@ namespace Kong_Engine.Objects
             var currentPosition = GetComponent<PositionComponent>().Position;
             currentPosition += movement * scale;
 
-            // Check for collisions with the tilemap
             if (!CheckCollisions(currentPosition))
             {
                 GetComponent<PositionComponent>().Position = currentPosition;
-            }
-            else
-            {
-                // Optional: Handle the collision response here
             }
         }
 
@@ -247,18 +228,18 @@ namespace Kong_Engine.Objects
                 movement.X -= moveSpeed;
                 isIdle = false;
                 isMoving = true;
-                isFacingRight = false; // Update direction flag
+                isFacingRight = false;
             }
             if (keyboardState.IsKeyDown(Keys.D) || keyboardState.IsKeyDown(Keys.Right))
             {
                 movement.X += moveSpeed;
                 isIdle = false;
                 isMoving = true;
-                isFacingRight = true; // Update direction flag
+                isFacingRight = true;
             }
             if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
             {
-                HandleJumping();  // Call the jumping method
+                HandleJumping();
             }
 
             if (isMoving && !isJumping)
@@ -280,25 +261,19 @@ namespace Kong_Engine.Objects
             {
                 if (newBounds.Intersects(rect))
                 {
-                    Console.WriteLine($"Collision detected at ({rect.X}, {rect.Y})");
-
-                    // If the collision is below the player, consider them grounded
                     var physicsComponent = GetComponent<PhysicsComponent>();
                     if (newBounds.Bottom >= rect.Top && newBounds.Top < rect.Top)
                     {
                         physicsComponent.IsGrounded = true;
-                        Console.WriteLine("Player is grounded!"); // Debugging line
                     }
-                    return true; // Collision detected
+                    return true;
                 }
             }
 
-            // If no collision, player is in the air
             var pc = GetComponent<PhysicsComponent>();
             pc.IsGrounded = false;
-            Console.WriteLine("Player is in the air!"); // Debugging line
 
-            return false; // No collision
+            return false;
         }
 
         public void Move(Vector2 direction)
@@ -326,7 +301,6 @@ namespace Kong_Engine.Objects
 
             var position = GetComponent<PositionComponent>().Position;
 
-            // Flip the sprite if facing left
             SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
             spriteBatch.Draw(spriteSheet, position, currentFrameRect, Color.White, 0f, Vector2.Zero, scale, spriteEffects, 0f);

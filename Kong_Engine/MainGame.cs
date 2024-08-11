@@ -23,6 +23,8 @@ namespace Kong_Engine
         private BaseGameState _currentState;
         private AudioManager _audioManager;
         private float _scaleFactor;
+
+        // Declare the _camera variable here
         private Camera _camera;
 
         public float ScaleFactor => _scaleFactor;
@@ -40,9 +42,6 @@ namespace Kong_Engine
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _camera = new Camera(DesignedResolutionWidth, DesignedResolutionHeight, 2000, 2000); // Adjust world size as needed
-
             _renderTarget = new RenderTarget2D(_graphics.GraphicsDevice, DesignedResolutionWidth, DesignedResolutionHeight, false,
                 SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
@@ -52,6 +51,10 @@ namespace Kong_Engine
             base.Initialize();
             _audioManager = new AudioManager(Content);
 
+            // Initialize the camera here
+            _camera = new Camera(GraphicsDevice.Viewport);
+
+            // Start with the Splash Screen
             SwitchState(new SplashState());
         }
 
@@ -84,6 +87,7 @@ namespace Kong_Engine
 
         protected override void Update(GameTime gameTime)
         {
+            // Move the camera based on input
             Vector2 moveDirection = Vector2.Zero;
 
             if (Keyboard.GetState().IsKeyDown(Keys.J))
@@ -96,10 +100,10 @@ namespace Kong_Engine
                 moveDirection.Y += 5f; // Move down
 
             _camera.Move(moveDirection);
-            _camera.Update();
 
             _currentState?.Update(gameTime);
             _currentState?.HandleInput();
+            _camera.Update();
 
             base.Update(gameTime);
         }
@@ -109,8 +113,10 @@ namespace Kong_Engine
             GraphicsDevice.SetRenderTarget(_renderTarget);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin(transformMatrix: _camera.Transform);
-            _currentState?.Render(_spriteBatch);
+            _spriteBatch.Begin(transformMatrix: _camera.Transform); // Apply camera transformation
+            {
+                _currentState?.Render(_spriteBatch);
+            }
             _spriteBatch.End();
 
             GraphicsDevice.SetRenderTarget(null);

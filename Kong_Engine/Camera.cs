@@ -1,41 +1,48 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 public class Camera
 {
-    public Matrix Transform { get; private set; }
-    public Vector2 Position { get; set; }
-    public float Zoom { get; set; } = 1.0f;
-    public float Rotation { get; set; } = 0.0f;
+    private Matrix transform;
+    private Vector2 position;
+    private Viewport viewport;
+    private float zoom;
 
-    private int viewportWidth;
-    private int viewportHeight;
-    private int worldWidth;
-    private int worldHeight;
-
-    public Camera(int viewportWidth, int viewportHeight, int worldWidth, int worldHeight)
+    public Camera(Viewport newViewport)
     {
-        this.viewportWidth = viewportWidth;
-        this.viewportHeight = viewportHeight;
-        this.worldWidth = worldWidth;
-        this.worldHeight = worldHeight;
-        Position = Vector2.Zero;
+        viewport = newViewport;
+        position = Vector2.Zero;
+        zoom = 1.0f;
+        transform = Matrix.Identity;
+    }
+
+    public Matrix Transform
+    {
+        get { return transform; }
+    }
+
+    public void Move(Vector2 direction)
+    {
+        position += direction;
+        Update();
     }
 
     public void Update()
     {
-        Transform =
-            Matrix.CreateTranslation(new Vector3(-Position.X, -Position.Y, 0)) *
-            Matrix.CreateRotationZ(Rotation) *
-            Matrix.CreateScale(Zoom) *
-            Matrix.CreateTranslation(new Vector3(viewportWidth * 0.5f, viewportHeight * 0.5f, 0));
-
-        // Clamp the camera position to the world bounds
-        Position = Vector2.Clamp(Position, new Vector2(viewportWidth * 0.5f / Zoom, viewportHeight * 0.5f / Zoom),
-                                 new Vector2(worldWidth - (viewportWidth * 0.5f / Zoom), worldHeight - (viewportHeight * 0.5f / Zoom)));
+        transform = Matrix.CreateTranslation(new Vector3(-position.X, -position.Y, 0)) *
+                    Matrix.CreateScale(new Vector3(zoom, zoom, 1)) *
+                    Matrix.CreateTranslation(new Vector3(viewport.Width * 0.5f, viewport.Height * 0.5f, 0));
     }
 
-    public void Move(Vector2 amount)
+    public void SetPosition(Vector2 newPosition)
     {
-        Position += amount;
+        position = newPosition;
+        Update();
+    }
+
+    public void SetZoom(float newZoom)
+    {
+        zoom = newZoom;
+        Update();
     }
 }
