@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kong_Engine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2afcfd07ddd57108a82954027ae16a7b68139d27")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf7dba6659ea0082d370cf20367862d5e0da1a98")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kong_Engine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kong_Engine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

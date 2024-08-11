@@ -16,8 +16,8 @@ namespace Kong_Engine.Objects
         private Rectangle[] idleFrames;
         private Rectangle[] jumpFrames;
         private float moveSpeed = 1.5f;
-        private float jumpSpeed = 10f;
-        private float gravity = 0.5f;
+        private float jumpSpeed = 100f;
+        private float gravity = 40f;
         private Rectangle playerBounds; // For collisions
         private bool isIdle = true;
         private bool isMoving = false;
@@ -97,33 +97,31 @@ namespace Kong_Engine.Objects
 
             var physicsComponent = GetComponent<PhysicsComponent>();
 
-            if (isJumping)
-            {
-                HandleJumping();
-            }
-
-            // Apply gravity and update the player's position
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (!physicsComponent.IsGrounded)
+
+            // Apply gravity continuously
+            var velocity = physicsComponent.Velocity;
+            velocity.Y += gravity * deltaTime;
+            physicsComponent.Velocity = velocity;
+
+            // Update position based on the current velocity
+            var currentPosition = GetComponent<PositionComponent>().Position;
+            currentPosition.Y += physicsComponent.Velocity.Y * scale * deltaTime;
+            GetComponent<PositionComponent>().Position = currentPosition;
+
+            // Check for collision with the ground
+            if (CheckCollisions(currentPosition))
             {
-                var velocity = physicsComponent.Velocity;
-                velocity.Y += gravity * deltaTime;
-                physicsComponent.Velocity = velocity;
+                // If the player hits the ground, stop vertical movement and reset jump state
+                physicsComponent.IsGrounded = true;
+                physicsComponent.Velocity = Vector2.Zero;  // Stop the bounce by setting velocity to zero
 
-                var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition.Y += physicsComponent.Velocity.Y * scale * deltaTime;
-                GetComponent<PositionComponent>().Position = currentPosition;
-
-                // Check for collisions with the tilemap after applying gravity
-                if (CheckCollisions(currentPosition))
-                {
-                    physicsComponent.IsGrounded = true;
-                    velocity.Y = 0f;
-                    physicsComponent.Velocity = velocity;
-                    // Adjust position to align with the ground
-                    currentPosition.Y -= physicsComponent.Velocity.Y * scale * deltaTime;
-                    GetComponent<PositionComponent>().Position = currentPosition;
-                }
+                isJumping = false;  // Stop the jump animation
+            }
+            else
+            {
+                // If no collision, the player is in the air
+                physicsComponent.IsGrounded = false;
             }
 
             UpdateAnimationFrame(gameTime);
@@ -135,19 +133,28 @@ namespace Kong_Engine.Objects
         }
 
 
+
+
+
+
         private void HandleJumping()
         {
             var physicsComponent = GetComponent<PhysicsComponent>();
+
             if (physicsComponent.IsGrounded)
             {
-                // Retrieve the velocity, modify it, and assign it back
+                Console.WriteLine("Player is jumping!"); // Debugging line
+                                                         // Apply upward velocity for the jump
                 var velocity = physicsComponent.Velocity;
-                velocity.Y = -jumpSpeed; // Jumping applies an upward velocity
+                velocity.Y = -jumpSpeed;  // Negative because Y increases downwards
                 physicsComponent.Velocity = velocity;
 
-                physicsComponent.IsGrounded = false;
+                physicsComponent.IsGrounded = false;  // The player is now airborne
+                isJumping = true;  // Set the flag to indicate jumping
             }
         }
+
+
 
 
         private void UpdateAnimationFrame(GameTime gameTime)
@@ -171,6 +178,7 @@ namespace Kong_Engine.Objects
                 timeSinceLastFrame = 0;
             }
         }
+
 
         private void UpdatePlayerBounds()
         {
@@ -246,11 +254,10 @@ namespace Kong_Engine.Objects
             }
             if (keyboardState.IsKeyDown(Keys.Space) && !isJumping)
             {
-                isJumping = true;
-                verticalSpeed = jumpSpeed; // Initiate jump
+                HandleJumping();  // Call the jumping method
             }
 
-            if (movement != Vector2.Zero && !isJumping)
+            if (isMoving && !isJumping)
             {
                 HandleMovement(movement);
             }
@@ -277,13 +284,20 @@ namespace Kong_Engine.Objects
                     if (newBounds.Bottom >= rect.Top && newBounds.Top < rect.Top)
                     {
                         physicsComponent.IsGrounded = true;
+                        Console.WriteLine("Player is grounded!"); // Debugging line
                     }
                     return true; // Collision detected
                 }
             }
 
+            // If no collision, player is in the air
+            var pc = GetComponent<PhysicsComponent>();
+            pc.IsGrounded = false;
+            Console.WriteLine("Player is in the air!"); // Debugging line
+
             return false; // No collision
         }
+
 
 
         public void Move(Vector2 direction)
