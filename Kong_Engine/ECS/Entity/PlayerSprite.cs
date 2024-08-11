@@ -20,7 +20,7 @@ namespace Kong_Engine.Objects
         private float jumpSpeed = 200f;
         private float gravity = 40f;
         private float fallMultiplier = 2.5f;  // Multiplier for gravity during descent
-        private float horizontalAcceleration = 10f; // Acceleration rate for horizontal movement
+        private float horizontalAcceleration = 50f; // Acceleration rate for horizontal movement
         private float maxHorizontalSpeed = 150f; // Max speed for horizontal movement
         private float verticalAcceleration = 5f;  // Acceleration rate for gravity
         private Rectangle playerBounds; // For collisions
@@ -33,8 +33,8 @@ namespace Kong_Engine.Objects
         private double idleFrameTime; // Frame time for idle animation
         private double jumpFrameTime; // Frame time for jump animation
         private double timeSinceLastFrame;
-        private int frameWidth = 30; // Width of each frame
-        private int frameHeight = 37; // Height of each frame
+        private int frameWidth = 28; // Width of each frame
+        private int frameHeight = 30; // Height of each frame
         private float verticalSpeed = 0f; // Speed for jumping
         private TileMapManager tileMapManager;
         private float scale;
@@ -65,8 +65,7 @@ namespace Kong_Engine.Objects
 
             jumpFrames = new Rectangle[]
             {
-                new Rectangle(0, 0, frameWidth, frameHeight),  // Jump Frame 1
-                new Rectangle(263, 0, frameWidth, frameHeight), // Jump Frame 2
+
                 new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame 3
             };
 
