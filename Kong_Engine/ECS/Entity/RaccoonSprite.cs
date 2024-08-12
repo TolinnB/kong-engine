@@ -28,6 +28,7 @@ namespace Kong_Engine.Objects
         private int frameHeight = 20; // Height of each frame
         private int currentFrame;
         private double frameTimer;
+        private bool isMoving; // New variable to track movement state
 
         // Parameters for fine-tuning each idle animation
         private double downFrameInterval = 0.2;
@@ -54,17 +55,25 @@ namespace Kong_Engine.Objects
             this.scale = scale * 20f;  // Increase the scale factor to make the sprite larger
             this._audioManager = audioManager;
 
-            // Define the source rectangles for each frame
+            // Define the source rectangles for each idle frame
             downIdleFrames = new Rectangle[]
             {
-                new Rectangle(6, 6, frameWidth, 22),
-                new Rectangle(38, 6, frameWidth, 22),
-                new Rectangle(70, 6, frameWidth, 22),
-                new Rectangle(102, 6, frameWidth, 22)
+                new Rectangle(6, 9, frameWidth, frameHeight),
+                new Rectangle(38, 8, frameWidth, frameHeight),
+                new Rectangle(70, 8, frameWidth, frameHeight),
+                new Rectangle(102, 7, frameWidth, frameHeight),
+                new Rectangle(6, 9, frameWidth, frameHeight),
+                new Rectangle(38, 8, frameWidth, frameHeight),
+                new Rectangle(70, 8, frameWidth, frameHeight),
+                new Rectangle(102, 7, frameWidth, frameHeight)
             };
 
             leftIdleFrames = new Rectangle[]
             {
+                new Rectangle(6, 70, frameWidth, frameHeight),
+                new Rectangle(38, 70, frameWidth, frameHeight),
+                new Rectangle(70, 70, frameWidth, frameHeight),
+                new Rectangle(102, 70, frameWidth, frameHeight),
                 new Rectangle(6, 70, frameWidth, frameHeight),
                 new Rectangle(38, 70, frameWidth, frameHeight),
                 new Rectangle(70, 70, frameWidth, frameHeight),
@@ -76,6 +85,10 @@ namespace Kong_Engine.Objects
                 new Rectangle(4, 37, frameWidth, frameHeight),
                 new Rectangle(36, 37, frameWidth, frameHeight),
                 new Rectangle(68, 37, frameWidth, frameHeight),
+                new Rectangle(100, 37, frameWidth, frameHeight),
+                new Rectangle(4, 37, frameWidth, frameHeight),
+                new Rectangle(36, 37, frameWidth, frameHeight),
+                new Rectangle(68, 37, frameWidth, frameHeight),
                 new Rectangle(100, 37, frameWidth, frameHeight)
             };
 
@@ -84,14 +97,67 @@ namespace Kong_Engine.Objects
                 new Rectangle(6, 102, frameWidth, frameHeight),
                 new Rectangle(38, 102, frameWidth, frameHeight),
                 new Rectangle(70, 102, frameWidth, frameHeight),
-                new Rectangle(102, 102, frameWidth, frameHeight)
+                new Rectangle(100, 102, frameWidth, frameHeight),
+                new Rectangle(6, 102, frameWidth, frameHeight),
+                new Rectangle(38, 102, frameWidth, frameHeight),
+                new Rectangle(70, 102, frameWidth, frameHeight),
+                new Rectangle(100, 102, frameWidth, frameHeight)
+
+            };  
+
+            // Define the source rectangles for each movement frame
+            downMoveFrames = new Rectangle[]
+            {
+                new Rectangle(6, 163, frameWidth, frameHeight),
+                new Rectangle(38, 163, frameWidth, frameHeight),
+                new Rectangle(70, 163, frameWidth, frameHeight),
+                new Rectangle(102, 163, frameWidth, frameHeight),
+                new Rectangle(4, 194, frameWidth, frameHeight),
+                new Rectangle(38, 194, frameWidth, frameHeight),
+                new Rectangle(70, 194, frameWidth, frameHeight),
+                new Rectangle(103, 194, frameWidth, frameHeight)
             };
 
+            leftMoveFrames = new Rectangle[]
+            {
+                new Rectangle(8, 227, frameWidth, frameHeight),
+                new Rectangle(40, 227, frameWidth, frameHeight),
+                new Rectangle(72, 227, frameWidth, frameHeight),
+                new Rectangle(104, 227, frameWidth, frameHeight),
+                new Rectangle(8, 262, frameWidth, frameHeight),
+                new Rectangle(40, 262, frameWidth, frameHeight),
+                new Rectangle(72, 262, frameWidth, frameHeight),
+                new Rectangle(104, 262, frameWidth, frameHeight)
+            };
 
+            rightMoveFrames = new Rectangle[]
+            {
+                new Rectangle(6, 294, frameWidth, frameHeight),
+                new Rectangle(38, 294, frameWidth, frameHeight),
+                new Rectangle(70, 294, frameWidth, frameHeight),
+                new Rectangle(102, 294, frameWidth, frameHeight),
+                new Rectangle(6, 326, frameWidth, frameHeight),
+                new Rectangle(38, 326, frameWidth, frameHeight),
+                new Rectangle(70, 326, frameWidth, frameHeight),
+                new Rectangle(103, 326, frameWidth, frameHeight)
+            };
+
+            upMoveFrames = new Rectangle[]
+            {
+                new Rectangle(7, 357, frameWidth, frameHeight),
+                new Rectangle(39, 357, frameWidth, frameHeight),
+                new Rectangle(71, 357, frameWidth, frameHeight),
+                new Rectangle(103, 357, frameWidth, frameHeight),
+                new Rectangle(7, 389, frameWidth, frameHeight),
+                new Rectangle(39, 389, frameWidth, frameHeight),
+                new Rectangle(71, 389, frameWidth, frameHeight),
+                new Rectangle(103, 389, frameWidth, frameHeight)
+            };
 
             currentFrame = 0;
             frameTimer = 0;
             currentDirection = Direction.Down; // Default starting direction
+            isMoving = false;
 
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
             AddComponent(new CollisionComponent
@@ -120,15 +186,14 @@ namespace Kong_Engine.Objects
                 collisionComponent.BoundingBox = playerBounds;
             }
 
-            // Update the animation frame based on the current direction
-            double frameInterval = GetFrameIntervalForCurrentDirection();
-            int frameCount = GetCurrentFrameCount();
-
-            frameTimer += gameTime.ElapsedGameTime.TotalSeconds;
-            if (frameTimer > frameInterval)
+            // Update the animation frame based on the current direction and movement state
+            if (isMoving)
             {
-                frameTimer = 0;
-                currentFrame = (currentFrame + 1) % frameCount; // Cycle through the available frames
+                UpdateMovementFrames(gameTime);
+            }
+            else
+            {
+                UpdateIdleFrames(gameTime);
             }
 
             // Handle hit flashing
@@ -143,7 +208,45 @@ namespace Kong_Engine.Objects
             }
         }
 
-        private int GetCurrentFrameCount()
+        private void UpdateMovementFrames(GameTime gameTime)
+        {
+            double frameInterval = GetFrameIntervalForCurrentDirection(); // Use the same intervals
+            int frameCount = GetCurrentFrameCountMovement(); // Get movement frame count
+
+            frameTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (frameTimer > frameInterval)
+            {
+                frameTimer = 0;
+                currentFrame = (currentFrame + 1) % frameCount; // Cycle through movement frames
+            }
+        }
+
+        private void UpdateIdleFrames(GameTime gameTime)
+        {
+            double frameInterval = GetFrameIntervalForCurrentDirection();
+            int frameCount = GetCurrentFrameCountIdle(); // Get idle frame count
+
+            frameTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (frameTimer > frameInterval)
+            {
+                frameTimer = 0;
+                currentFrame = (currentFrame + 1) % frameCount; // Cycle through idle frames
+            }
+        }
+
+        private int GetCurrentFrameCountMovement()
+        {
+            return currentDirection switch
+            {
+                Direction.Down => downMoveFrames.Length,
+                Direction.Left => leftMoveFrames.Length,
+                Direction.Right => rightMoveFrames.Length,
+                Direction.Up => upMoveFrames.Length,
+                _ => downMoveFrames.Length,
+            };
+        }
+
+        private int GetCurrentFrameCountIdle()
         {
             return currentDirection switch
             {
@@ -208,25 +311,31 @@ namespace Kong_Engine.Objects
             var keyboardState = Keyboard.GetState();
 
             Vector2 movement = Vector2.Zero;
+            isMoving = false;
+
             if (keyboardState.IsKeyDown(Keys.Left))
             {
                 movement.X -= moveSpeed;
                 currentDirection = Direction.Left;
+                isMoving = true;
             }
             if (keyboardState.IsKeyDown(Keys.Right))
             {
                 movement.X += moveSpeed;
                 currentDirection = Direction.Right;
+                isMoving = true;
             }
             if (keyboardState.IsKeyDown(Keys.Up))
             {
                 movement.Y -= moveSpeed;
                 currentDirection = Direction.Up;
+                isMoving = true;
             }
             if (keyboardState.IsKeyDown(Keys.Down))
             {
                 movement.Y += moveSpeed;
                 currentDirection = Direction.Down;
+                isMoving = true;
             }
 
             var currentPosition = GetComponent<PositionComponent>().Position;
@@ -248,10 +357,10 @@ namespace Kong_Engine.Objects
         {
             Rectangle currentFrameRect = currentDirection switch
             {
-                Direction.Left => leftIdleFrames[currentFrame],
-                Direction.Right => rightIdleFrames[currentFrame],
-                Direction.Up => upIdleFrames[currentFrame],
-                Direction.Down => downIdleFrames[currentFrame],
+                Direction.Left => isMoving ? leftMoveFrames[currentFrame] : leftIdleFrames[currentFrame],
+                Direction.Right => isMoving ? rightMoveFrames[currentFrame] : rightIdleFrames[currentFrame],
+                Direction.Up => isMoving ? upMoveFrames[currentFrame] : upIdleFrames[currentFrame],
+                Direction.Down => isMoving ? downMoveFrames[currentFrame] : downIdleFrames[currentFrame],
                 _ => downIdleFrames[currentFrame],
             };
 
