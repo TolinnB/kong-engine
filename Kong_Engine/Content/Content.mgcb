@@ -244,6 +244,21 @@
 /processorParam:TextureFormat=Color
 /build:player.png
 
+#begin qwest-quest/all/QuestQuestMap..tmx
+/copy:qwest-quest/all/QuestQuestMap..tmx
+
+#begin qwest-quest/all/QuestQuestMap.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/all/QuestQuestMap.png
+
 #begin qwest-quest/collisions.png
 /importer:TextureImporter
 /processor:TextureProcessor

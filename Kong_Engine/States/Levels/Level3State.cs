@@ -25,7 +25,7 @@ namespace Kong_Engine.States.Levels
 
         protected override void LoadLevelContent()
         {
-            _backgroundTexture = Content.Load<Texture2D>("space"); // Load the overworld texture for the background
+            _backgroundTexture = Content.Load<Texture2D>("qwest-quest/all/QuestQuestMap"); // Load the overworld texture for the background
             _spriteSheet = Content.Load<Texture2D>("qwest-quest/RACCOONSPRITESHEET"); // Load the sprite sheet for the player or other entities
             _font = Content.Load<SpriteFont>("ScoreFont"); // Load font for displaying messages
         }
@@ -38,14 +38,15 @@ namespace Kong_Engine.States.Levels
             _player3 = new RaccoonSprite(_spriteSheet, 1f, AudioManager);
             Entities.Add(_player3);
 
-            // Initialize TerrainBackground with a static or scrolling background
-            _terrainBackground = new TerrainBackground(_backgroundTexture, new Vector2(1f, 1f));
+            // Initialize TerrainBackground with a static background (no scrolling)
+            _terrainBackground = new TerrainBackground(_backgroundTexture, Vector2.Zero, isScrollingEnabled: false);
 
             // Initialize any additional entities like enemies, NPCs, or objects
             // For example:
             // var enemy = new EnemySprite(_spriteSheet, new Vector2(100, 100), 1f, AudioManager);
             // Entities.Add(enemy);
         }
+
 
         protected override void SetInputManager()
         {
@@ -74,13 +75,17 @@ namespace Kong_Engine.States.Levels
                 return;
             }
 
-            // Update TerrainBackground based on player's position, if necessary
-            _terrainBackground.UpdateBackgroundPosition(_player3.GetComponent<PositionComponent>().Position);
+            // If scrolling is enabled, update TerrainBackground based on player's position
+            if (_terrainBackground.IsScrollingEnabled)
+            {
+                _terrainBackground.UpdateBackgroundPosition(_player3.GetComponent<PositionComponent>().Position);
+            }
 
             // Update other entities as necessary
 
             base.Update(gameTime);
         }
+
 
         protected override bool IsLevelCompleted()
         {

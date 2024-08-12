@@ -171,9 +171,6 @@ C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-music.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\missile-sound.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\turbo.xnb
-C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\automap-tiles.tsx
-C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Background4.xnb
-C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand2.tmx
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\collisions.tsx
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\collisions.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\Fences.tsx
@@ -303,3 +300,5 @@ C:\Users\breto\source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref
 C:\Users\breto\source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.pdb
 C:\Users\breto\source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.genruntimeconfig.cache
 C:\Users\breto\source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref\Kong_Engine.dll
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap..tmx
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap.xnb

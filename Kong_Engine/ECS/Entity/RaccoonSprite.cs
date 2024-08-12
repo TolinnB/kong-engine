@@ -51,7 +51,7 @@ namespace Kong_Engine.Objects
         public RaccoonSprite(Texture2D spriteSheet, float scale, AudioManager audioManager)
         {
             this.spriteSheet = spriteSheet;
-            this.scale = scale * 20f;  // Increase the scale factor to make the sprite larger
+            this.scale = scale;  // Increase the scale factor to make the sprite larger
             this._audioManager = audioManager;
 
             // Define the source rectangles for each frame
