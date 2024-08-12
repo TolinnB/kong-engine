@@ -245,3 +245,14 @@ C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-music.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\missile-sound.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\turbo.xnb
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand_Collisions.csv
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand_Floor.csv
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\JumpLand_Tile Layer 2.csv
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\explosion.xnb
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\missile-sound.xnb
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\ScoreFont.xnb
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-music.wma
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-music.xnb
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-sprites.xnb
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space.xnb
+C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\turbo.xnb
