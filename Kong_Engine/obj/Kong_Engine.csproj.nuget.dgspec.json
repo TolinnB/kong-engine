@@ -11,7 +11,7 @@
         "projectName": "Kong_Engine",
         "projectPath": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\Kong_Engine.csproj",
         "packagesPath": "C:\\Users\\sheps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sheps\\Source\\Repos\\kong-engine\\Kong_Engine\\obj\\",
+        "outputPath": "C:\\Users\\sheps\\source\\repos\\kong-engine\\Kong_Engine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -16,6 +16,10 @@ namespace Kong_Engine
         private int tileWidth;
         private int tileHeight;
         private float scale;
+        public int TileWidth => tileWidth;
+        public TmxMap Map => map;
+
+
         public List<Rectangle> CollisionRectangles { get; private set; }
         private List<Texture2D> backgroundTextures;
         private List<Vector2> backgroundPositions;

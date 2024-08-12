@@ -54,7 +54,11 @@ namespace Kong_Engine.States.Levels
 
         protected override bool IsLevelCompleted()
         {
-            return PlayerEntity.GetComponent<PositionComponent>().Position.X > 1000 * globalScale;
+            // Set the level completion point to 500 units on the X-axis
+            float levelCompletionPoint = 610 * globalScale;
+
+            // Check if the player's X position exceeds the level completion point
+            return PlayerEntity.GetComponent<PositionComponent>().Position.X > levelCompletionPoint;
         }
 
         public override void Initialize(ContentManager contentManager, MainGame game)
