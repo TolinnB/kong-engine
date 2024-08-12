@@ -73,7 +73,7 @@ namespace Kong_Engine.States.Levels
 
             if (IsLevelCompleted())
             {
-                SwitchState(new Level2State());
+                SwitchState(new Level3State());
             }
 
             base.Update(gameTime);
