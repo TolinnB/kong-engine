@@ -47,7 +47,7 @@ namespace Kong_Engine
             _audioManager = new AudioManager(Content);
 
             // Start with the Splash Screen
-            SwitchState(new SplashState());
+            SwitchState(new Level3State());
         }
 
 

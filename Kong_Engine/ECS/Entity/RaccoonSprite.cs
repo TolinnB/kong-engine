@@ -12,20 +12,37 @@ namespace Kong_Engine.Objects
     {
         public Vector2 Knockback { get; set; }
         private Texture2D spriteSheet;
-        private Rectangle defaultFrame;
-        private Rectangle leftTurnFrame;
-        private Rectangle rightTurnFrame;
+        private Rectangle[] downIdleFrames;
+        private Rectangle[] leftIdleFrames;
+        private Rectangle[] rightIdleFrames;
+        private Rectangle[] upIdleFrames;
         private float moveSpeed = 1.5f;
         private Rectangle playerBounds; // For collisions
-        private bool isFacingRight = true; // Flag to check direction
+        private Direction currentDirection;
         private float scale;
-        private int frameWidth = 42; // Width of each frame
-        private int frameHeight = 43; // Height of each frame
+        private int frameWidth = 20; // Width of each frame
+        private int frameHeight = 20; // Height of each frame
+        private int currentFrame;
+        private double frameTimer;
+
+        // Parameters for fine-tuning each idle animation
+        private double downFrameInterval = 0.2;
+        private double leftFrameInterval = 0.2;
+        private double rightFrameInterval = 0.2;
+        private double upFrameInterval = 0.2;
 
         private bool isHit = false;
         private double hitTimer = 0;
         public int Score { get; private set; } // Score property
         private readonly AudioManager _audioManager;
+
+        public enum Direction
+        {
+            Down,
+            Left,
+            Right,
+            Up
+        }
 
         public RaccoonSprite(Texture2D spriteSheet, float scale, AudioManager audioManager)
         {
@@ -34,9 +51,45 @@ namespace Kong_Engine.Objects
             this._audioManager = audioManager;
 
             // Define the source rectangles for each frame
-            defaultFrame = new Rectangle(40, 0, frameWidth, frameHeight);   // Default standing frame
-            leftTurnFrame = new Rectangle(0, 0, frameWidth, frameHeight);  // Turning left frame
-            rightTurnFrame = new Rectangle(82, 0, frameWidth, frameHeight); // Turning right frame
+            downIdleFrames = new Rectangle[]
+            {
+                new Rectangle(10, 0, frameWidth, frameHeight),
+                // Uncomment these to enable more frames for down direction
+                //new Rectangle(20, 0, frameWidth, frameHeight),
+                //new Rectangle(30, 0, frameWidth, frameHeight),
+                //new Rectangle(40, 0, frameWidth, frameHeight)
+            };
+
+            leftIdleFrames = new Rectangle[]
+            {
+                new Rectangle(20, 0, frameWidth, frameHeight),
+                // Uncomment these to enable more frames for left direction
+                //new Rectangle(20, 20, frameWidth, frameHeight),
+                //new Rectangle(20, 40, frameWidth, frameHeight),
+                //new Rectangle(20, 60, frameWidth, frameHeight)
+            };
+
+            rightIdleFrames = new Rectangle[]
+            {
+                new Rectangle(40, 0, frameWidth, frameHeight),
+                // Uncomment these to enable more frames for right direction
+                //new Rectangle(40, 20, frameWidth, frameHeight),
+                //new Rectangle(40, 40, frameWidth, frameHeight),
+                //new Rectangle(40, 60, frameWidth, frameHeight)
+            };
+
+            upIdleFrames = new Rectangle[]
+            {
+                new Rectangle(60, 0, frameWidth, frameHeight),
+                // Uncomment these to enable more frames for up direction
+                //new Rectangle(60, 20, frameWidth, frameHeight),
+                //new Rectangle(60, 40, frameWidth, frameHeight),
+                //new Rectangle(60, 60, frameWidth, frameHeight)
+            };
+
+            currentFrame = 0;
+            frameTimer = 0;
+            currentDirection = Direction.Down; // Default starting direction
 
             AddComponent(new PositionComponent { Position = new Vector2(650, 625) }); // Start position set here
             AddComponent(new CollisionComponent
@@ -65,6 +118,17 @@ namespace Kong_Engine.Objects
                 collisionComponent.BoundingBox = playerBounds;
             }
 
+            // Update the animation frame based on the current direction
+            double frameInterval = GetFrameIntervalForCurrentDirection();
+            int frameCount = GetCurrentFrameCount();
+
+            frameTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            if (frameTimer > frameInterval)
+            {
+                frameTimer = 0;
+                currentFrame = (currentFrame + 1) % frameCount; // Cycle through the available frames
+            }
+
             // Handle hit flashing
             if (isHit)
             {
@@ -75,6 +139,30 @@ namespace Kong_Engine.Objects
                     hitTimer = 0;
                 }
             }
+        }
+
+        private int GetCurrentFrameCount()
+        {
+            return currentDirection switch
+            {
+                Direction.Down => downIdleFrames.Length,
+                Direction.Left => leftIdleFrames.Length,
+                Direction.Right => rightIdleFrames.Length,
+                Direction.Up => upIdleFrames.Length,
+                _ => downIdleFrames.Length,
+            };
+        }
+
+        private double GetFrameIntervalForCurrentDirection()
+        {
+            return currentDirection switch
+            {
+                Direction.Down => downFrameInterval,
+                Direction.Left => leftFrameInterval,
+                Direction.Right => rightFrameInterval,
+                Direction.Up => upFrameInterval,
+                _ => 0.2,
+            };
         }
 
         public void HandleCollision(Vector2 knockbackForce)
@@ -121,20 +209,22 @@ namespace Kong_Engine.Objects
             if (keyboardState.IsKeyDown(Keys.Left))
             {
                 movement.X -= moveSpeed;
-                isFacingRight = false; // Update direction flag
+                currentDirection = Direction.Left;
             }
             if (keyboardState.IsKeyDown(Keys.Right))
             {
                 movement.X += moveSpeed;
-                isFacingRight = true; // Update direction flag
+                currentDirection = Direction.Right;
             }
             if (keyboardState.IsKeyDown(Keys.Up))
             {
                 movement.Y -= moveSpeed;
+                currentDirection = Direction.Up;
             }
             if (keyboardState.IsKeyDown(Keys.Down))
             {
                 movement.Y += moveSpeed;
+                currentDirection = Direction.Down;
             }
 
             var currentPosition = GetComponent<PositionComponent>().Position;
@@ -154,26 +244,19 @@ namespace Kong_Engine.Objects
 
         public void Draw(SpriteBatch spriteBatch, Matrix matrix)
         {
-            Rectangle currentFrameRect;
-            var keyboardState = Keyboard.GetState();
-
-            if (keyboardState.IsKeyDown(Keys.Left))
+            Rectangle currentFrameRect = currentDirection switch
             {
-                currentFrameRect = leftTurnFrame;
-            }
-            else if (keyboardState.IsKeyDown(Keys.Right))
-            {
-                currentFrameRect = rightTurnFrame;
-            }
-            else
-            {
-                currentFrameRect = defaultFrame;
-            }
+                Direction.Left => leftIdleFrames[currentFrame],
+                Direction.Right => rightIdleFrames[currentFrame],
+                Direction.Up => upIdleFrames[currentFrame],
+                Direction.Down => downIdleFrames[currentFrame],
+                _ => downIdleFrames[currentFrame],
+            };
 
             var position = GetComponent<PositionComponent>().Position;
 
             // Flip the sprite if facing left
-            SpriteEffects spriteEffects = isFacingRight ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            SpriteEffects spriteEffects = currentDirection == Direction.Left ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             // Flash red when hit
             Color drawColor = isHit ? Color.Red : Color.White;
@@ -186,5 +269,11 @@ namespace Kong_Engine.Objects
             var lifeComponent = GetComponent<LifeComponent>();
             return lifeComponent != null && lifeComponent.Lives <= 0;
         }
+
+        // Methods to set fine-tuning parameters
+        public void SetDownFrameInterval(double interval) => downFrameInterval = interval;
+        public void SetLeftFrameInterval(double interval) => leftFrameInterval = interval;
+        public void SetRightFrameInterval(double interval) => rightFrameInterval = interval;
+        public void SetUpFrameInterval(double interval) => upFrameInterval = interval;
     }
 }
