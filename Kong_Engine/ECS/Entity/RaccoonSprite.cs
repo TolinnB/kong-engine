@@ -16,10 +16,14 @@ namespace Kong_Engine.Objects
         private Rectangle[] leftIdleFrames;
         private Rectangle[] rightIdleFrames;
         private Rectangle[] upIdleFrames;
+        private Rectangle[] downMoveFrames;
+        private Rectangle[] leftMoveFrames;
+        private Rectangle[] rightMoveFrames;
+        private Rectangle[] upMoveFrames;
         private float moveSpeed = 1.5f;
         private Rectangle playerBounds; // For collisions
         private Direction currentDirection;
-        private float scale;
+        private float scale;  // Increased scale factor
         private int frameWidth = 20; // Width of each frame
         private int frameHeight = 20; // Height of each frame
         private int currentFrame;
@@ -47,51 +51,49 @@ namespace Kong_Engine.Objects
         public RaccoonSprite(Texture2D spriteSheet, float scale, AudioManager audioManager)
         {
             this.spriteSheet = spriteSheet;
-            this.scale = scale;
+            this.scale = scale * 20f;  // Increase the scale factor to make the sprite larger
             this._audioManager = audioManager;
 
             // Define the source rectangles for each frame
             downIdleFrames = new Rectangle[]
             {
-                new Rectangle(10, 0, frameWidth, frameHeight),
-                // Uncomment these to enable more frames for down direction
-                //new Rectangle(20, 0, frameWidth, frameHeight),
-                //new Rectangle(30, 0, frameWidth, frameHeight),
-                //new Rectangle(40, 0, frameWidth, frameHeight)
+                new Rectangle(6, 6, frameWidth, 22),
+                new Rectangle(38, 6, frameWidth, 22),
+                new Rectangle(70, 6, frameWidth, 22),
+                new Rectangle(102, 6, frameWidth, 22)
             };
 
             leftIdleFrames = new Rectangle[]
             {
-                new Rectangle(20, 0, frameWidth, frameHeight),
-                // Uncomment these to enable more frames for left direction
-                //new Rectangle(20, 20, frameWidth, frameHeight),
-                //new Rectangle(20, 40, frameWidth, frameHeight),
-                //new Rectangle(20, 60, frameWidth, frameHeight)
+                new Rectangle(6, 70, frameWidth, frameHeight),
+                new Rectangle(38, 70, frameWidth, frameHeight),
+                new Rectangle(70, 70, frameWidth, frameHeight),
+                new Rectangle(102, 70, frameWidth, frameHeight)
             };
 
             rightIdleFrames = new Rectangle[]
             {
-                new Rectangle(40, 0, frameWidth, frameHeight),
-                // Uncomment these to enable more frames for right direction
-                //new Rectangle(40, 20, frameWidth, frameHeight),
-                //new Rectangle(40, 40, frameWidth, frameHeight),
-                //new Rectangle(40, 60, frameWidth, frameHeight)
+                new Rectangle(4, 37, frameWidth, frameHeight),
+                new Rectangle(36, 37, frameWidth, frameHeight),
+                new Rectangle(68, 37, frameWidth, frameHeight),
+                new Rectangle(100, 37, frameWidth, frameHeight)
             };
 
             upIdleFrames = new Rectangle[]
             {
-                new Rectangle(60, 0, frameWidth, frameHeight),
-                // Uncomment these to enable more frames for up direction
-                //new Rectangle(60, 20, frameWidth, frameHeight),
-                //new Rectangle(60, 40, frameWidth, frameHeight),
-                //new Rectangle(60, 60, frameWidth, frameHeight)
+                new Rectangle(6, 102, frameWidth, frameHeight),
+                new Rectangle(38, 102, frameWidth, frameHeight),
+                new Rectangle(70, 102, frameWidth, frameHeight),
+                new Rectangle(102, 102, frameWidth, frameHeight)
             };
+
+
 
             currentFrame = 0;
             frameTimer = 0;
             currentDirection = Direction.Down; // Default starting direction
 
-            AddComponent(new PositionComponent { Position = new Vector2(650, 625) }); // Start position set here
+            AddComponent(new PositionComponent { Position = new Vector2(100, 100) }); // Start position set here
             AddComponent(new CollisionComponent
             {
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
@@ -256,7 +258,7 @@ namespace Kong_Engine.Objects
             var position = GetComponent<PositionComponent>().Position;
 
             // Flip the sprite if facing left
-            SpriteEffects spriteEffects = currentDirection == Direction.Left ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            SpriteEffects spriteEffects = currentDirection == Direction.Left ? SpriteEffects.None : SpriteEffects.None;
 
             // Flash red when hit
             Color drawColor = isHit ? Color.Red : Color.White;
