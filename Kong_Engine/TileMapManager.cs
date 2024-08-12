@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,18 @@ namespace Kong_Engine
         private int tileWidth;
         private int tileHeight;
         private float scale;
-        public List<Rectangle> CollisionRectangles { get; private set; }
+        public int TileWidth => tileWidth;
+        public TmxMap Map => map;
 
-        public TileMapManager(SpriteBatch _spriteBatch, TmxMap _map, Texture2D _tileset, int _tilesetTilesWide, int _tileWidth, int _tileHeight, float _scale = 1.0f)
+
+        public List<Rectangle> CollisionRectangles { get; private set; }
+        private List<Texture2D> backgroundTextures;
+        private List<Vector2> backgroundPositions;
+        private ContentManager contentManager;
+
+        public TileMapManager(ContentManager _contentManager, SpriteBatch _spriteBatch, TmxMap _map, Texture2D _tileset, int _tilesetTilesWide, int _tileWidth, int _tileHeight, float _scale = 1.0f)
         {
+            contentManager = _contentManager;
             spriteBatch = _spriteBatch;
             map = _map;
             tileset = _tileset;
@@ -27,11 +36,35 @@ namespace Kong_Engine
             tileHeight = _tileHeight;
             scale = _scale;
             CollisionRectangles = new List<Rectangle>();
+            backgroundTextures = new List<Texture2D>();
+            backgroundPositions = new List<Vector2>();
+
+            LoadBackgrounds();
             LoadCollisionRectanglesFromCsv("Content/JumpLand_Collisions.csv");
         }
 
+        private void LoadBackgrounds()
+        {
+            // Load the background textures using the ContentManager instance passed to the constructor
+            var background3 = contentManager.Load<Texture2D>("Background3"); // Furthest back
+            var background2 = contentManager.Load<Texture2D>("Background2"); // Middle
+            var background1 = contentManager.Load<Texture2D>("Background1"); // Frontmost
+
+            // Add them to the list of backgrounds
+            backgroundTextures.Add(background3);
+            backgroundTextures.Add(background2);
+            backgroundTextures.Add(background1);
+
+            // You can position them manually if needed
+            backgroundPositions.Add(Vector2.Zero); // Position for Background1
+            backgroundPositions.Add(Vector2.Zero); // Position for Background2
+            backgroundPositions.Add(Vector2.Zero); // Position for Background3
+        }
+
+
         private void LoadCollisionRectanglesFromCsv(string filePath)
         {
+            // Assume CsvHelper is a utility class to load CSV data into a 2D array
             var collisionData = CsvHelper.LoadCsv(filePath);
             var width = collisionData.GetLength(0);
             var height = collisionData.GetLength(1);
@@ -65,6 +98,29 @@ namespace Kong_Engine
                 samplerState: SamplerState.PointClamp,
                 transformMatrix: matrix);
 
+            // Draw each background, tiling it across the screen
+            for (int i = 0; i < backgroundTextures.Count; i++)
+            {
+                var backgroundTexture = backgroundTextures[i];
+                var position = backgroundPositions[i];
+                var scaledWidth = backgroundTexture.Width * scale;
+                var scaledHeight = backgroundTexture.Height * scale;
+
+                // Tiling the background across the screen
+                for (float x = 0; x < map.Width * map.TileWidth * scale; x += scaledWidth)
+                {
+                    for (float y = 0; y < map.Height * map.TileHeight * scale; y += scaledHeight)
+                    {
+                        spriteBatch.Draw(
+                            backgroundTexture,
+                            new Rectangle((int)(position.X + x), (int)(position.Y + y), (int)scaledWidth, (int)scaledHeight),
+                            Color.White
+                        );
+                    }
+                }
+            }
+
+            // Draw tile layers
             foreach (var layer in map.Layers)
             {
                 for (var j = 0; j < layer.Tiles.Count; j++)
@@ -86,9 +142,14 @@ namespace Kong_Engine
             spriteBatch.End();
         }
 
+
+
         public void SetScale(float newScale)
         {
             scale = newScale;
+            // If necessary, reload or recalculate collision rectangles to apply the new scale
+            CollisionRectangles.Clear();
+            LoadCollisionRectanglesFromCsv("Content/JumpLand_Collisions.csv");
         }
     }
 }

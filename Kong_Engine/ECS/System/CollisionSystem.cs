@@ -46,9 +46,7 @@ namespace Kong_Engine.ECS.System
 
         private void HandleCollisionWithEnvironment(PlayerSprite player)
         {
-            // Handle the collision with the environment
             Console.WriteLine("Player collided with the environment!");
-            // Add your collision handling logic here, such as stopping the player's movement
             player.Move(new Vector2(0, -1)); // Example: stop the player's movement
         }
     }

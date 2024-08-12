@@ -31,7 +31,6 @@ namespace Kong_Engine.States.Base
             AudioManager = new AudioManager(contentManager);
             SetInputManager();
 
-            // Initialize MovementSystem with screen width
             int screenWidth = game.GraphicsDevice.Viewport.Width;
             MovementSystem = new MovementSystem(screenWidth);
         }
@@ -43,7 +42,6 @@ namespace Kong_Engine.States.Base
             LoadLevelContent();
             InitializeEntities();
 
-            // Initialize CollisionSystem after TileMapManager and Entities are loaded
             CollisionSystem = new CollisionSystem(AudioManager, Game, TileMapManager);
         }
 
@@ -83,9 +81,10 @@ namespace Kong_Engine.States.Base
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            TileMapManager?.Draw(Matrix.CreateScale(Game.ScaleFactor));
-            PlayerEntity?.Draw(spriteBatch, Matrix.CreateScale(Game.ScaleFactor));
-            EnemyEntity?.Draw(spriteBatch, Matrix.CreateScale(Game.ScaleFactor));
+            Matrix scaleMatrix = Matrix.CreateScale(Game.ScaleFactor);
+            TileMapManager?.Draw(scaleMatrix);
+            PlayerEntity?.Draw(spriteBatch, scaleMatrix);
+            EnemyEntity?.Draw(spriteBatch, scaleMatrix);
         }
     }
 }
