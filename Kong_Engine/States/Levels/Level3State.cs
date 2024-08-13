@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Kong_Engine.Input;
 using Kong_Engine.States.Base;
 using System;
+using System.IO;
 using TiledSharp;
 
 namespace Kong_Engine.States.Levels
@@ -23,31 +24,6 @@ namespace Kong_Engine.States.Levels
         private Random _random;
         private bool isGameOver = false;
         private bool isLevelPassed = false;
-
-        private int[,] collisionGrid = new int[,]
-{
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,68,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,68,68,68,68,68,68,68,68,68,-1,-1,-1,-1,-1,-1,68,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,68,68,68,68,68,68,-1,-1,68,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,68,-1,-1,68,68,68},
-    {-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,68,-1,-1},
-    {-1,-1,-1,68,68,68,68,68,68,68,68,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,68,68,68,68,68,68,68,68,68,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,68,68,68,68,68,-1,-1,68,68,-1,-1,-1},
-    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
-};
-
 
         protected override void LoadLevelContent()
         {
@@ -67,8 +43,8 @@ namespace Kong_Engine.States.Levels
             // Initialize TerrainBackground with a static background (no scrolling)
             _terrainBackground = new TerrainBackground(_backgroundTexture, Vector2.Zero, isScrollingEnabled: false);
 
-            // Generate collision rectangles from the grid
-            var collisionRectangles = GenerateCollisionRectangles();
+            // Generate collision rectangles from the CSV file
+            var collisionRectangles = GenerateCollisionRectanglesFromCsv("Content/qwest-quest/QwestQuest_Collision.csv");
 
             // Debug: Print collision rectangles
             Console.WriteLine("Collision Rectangles:");
@@ -89,23 +65,37 @@ namespace Kong_Engine.States.Levels
             );
         }
 
-        private List<Rectangle> GenerateCollisionRectangles()
+        private List<Rectangle> GenerateCollisionRectanglesFromCsv(string csvFilePath)
         {
-            var tileWidth = 20; // Assuming each grid cell corresponds to a 20x20 pixel area
-            var tileHeight = 20;
-
             var collisionRectangles = new List<Rectangle>();
+            var tileWidth = 16; // Adjust based on your actual tile size
+            var tileHeight = 16;
 
-            for (int y = 0; y < collisionGrid.GetLength(0); y++)
+            try
             {
-                for (int x = 0; x < collisionGrid.GetLength(1); x++)
+                using (var reader = new StreamReader(csvFilePath))
                 {
-                    if (collisionGrid[y, x] == 68)
+                    string line;
+                    int y = 0;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        var rect = new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
-                        collisionRectangles.Add(rect);
+                        var values = line.Split(',');
+
+                        for (int x = 0; x < values.Length; x++)
+                        {
+                            if (int.TryParse(values[x], out int tileValue) && tileValue == 68)
+                            {
+                                var rect = new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+                                collisionRectangles.Add(rect);
+                            }
+                        }
+                        y++;
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading collision CSV file: {ex.Message}");
             }
 
             return collisionRectangles;
