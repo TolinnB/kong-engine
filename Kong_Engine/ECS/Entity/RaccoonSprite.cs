@@ -82,14 +82,14 @@ namespace Kong_Engine.Objects
 
             rightIdleFrames = new Rectangle[]
             {
-                new Rectangle(4, 37, frameWidth, frameHeight),
-                new Rectangle(36, 37, frameWidth, frameHeight),
-                new Rectangle(68, 37, frameWidth, frameHeight),
-                new Rectangle(100, 37, frameWidth, frameHeight),
-                new Rectangle(4, 37, frameWidth, frameHeight),
-                new Rectangle(36, 37, frameWidth, frameHeight),
-                new Rectangle(68, 37, frameWidth, frameHeight),
-                new Rectangle(100, 37, frameWidth, frameHeight)
+                new Rectangle(4, 39, frameWidth, frameHeight),
+                new Rectangle(36, 39, frameWidth, frameHeight),
+                new Rectangle(68, 39, frameWidth, frameHeight),
+                new Rectangle(100, 39, frameWidth, frameHeight),
+                new Rectangle(4, 39, frameWidth, frameHeight),
+                new Rectangle(36, 39, frameWidth, frameHeight),
+                new Rectangle(68, 39, frameWidth, frameHeight),
+                new Rectangle(100, 39, frameWidth, frameHeight)
             };
 
             upIdleFrames = new Rectangle[]
@@ -97,33 +97,33 @@ namespace Kong_Engine.Objects
                 new Rectangle(6, 102, frameWidth, frameHeight),
                 new Rectangle(38, 102, frameWidth, frameHeight),
                 new Rectangle(70, 102, frameWidth, frameHeight),
-                new Rectangle(100, 102, frameWidth, frameHeight),
+                new Rectangle(102, 102, frameWidth, frameHeight),
                 new Rectangle(6, 102, frameWidth, frameHeight),
                 new Rectangle(38, 102, frameWidth, frameHeight),
                 new Rectangle(70, 102, frameWidth, frameHeight),
-                new Rectangle(100, 102, frameWidth, frameHeight)
+                new Rectangle(102, 102, frameWidth, frameHeight)
 
             };  
 
             // Define the source rectangles for each movement frame
             downMoveFrames = new Rectangle[]
             {
-                new Rectangle(6, 163, frameWidth, frameHeight),
-                new Rectangle(38, 163, frameWidth, frameHeight),
-                new Rectangle(70, 163, frameWidth, frameHeight),
-                new Rectangle(102, 163, frameWidth, frameHeight),
-                new Rectangle(4, 194, frameWidth, frameHeight),
-                new Rectangle(38, 194, frameWidth, frameHeight),
-                new Rectangle(70, 194, frameWidth, frameHeight),
-                new Rectangle(103, 194, frameWidth, frameHeight)
+                new Rectangle(6, 167, frameWidth, 22),
+                new Rectangle(38, 167, frameWidth, 22),
+                new Rectangle(70, 167, frameWidth, 22),
+                new Rectangle(102, 167, frameWidth, 22),
+                new Rectangle(4, 198, frameWidth, 22),
+                new Rectangle(38, 198, frameWidth, 22),
+                new Rectangle(70, 198, frameWidth, 22),
+                new Rectangle(103, 198, frameWidth, 22)
             };
 
             leftMoveFrames = new Rectangle[]
             {
-                new Rectangle(8, 227, frameWidth, frameHeight),
-                new Rectangle(40, 227, frameWidth, frameHeight),
-                new Rectangle(72, 227, frameWidth, frameHeight),
-                new Rectangle(104, 227, frameWidth, frameHeight),
+                new Rectangle(8, 230, frameWidth, frameHeight),
+                new Rectangle(40, 230, frameWidth, frameHeight),
+                new Rectangle(72, 230, frameWidth, frameHeight),
+                new Rectangle(104, 230, frameWidth, frameHeight),
                 new Rectangle(8, 262, frameWidth, frameHeight),
                 new Rectangle(40, 262, frameWidth, frameHeight),
                 new Rectangle(72, 262, frameWidth, frameHeight),

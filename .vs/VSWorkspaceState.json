@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Kong_Engine",
+    "\\Kong_Engine\\ECS",
+    "\\Kong_Engine\\ECS\\Entity"
   ],
-  "SelectedNode": "\\Kong_Engine.sln",
   "PreviewInSolutionExplorer": false
 }
