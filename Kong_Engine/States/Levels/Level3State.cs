@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Kong_Engine.Input;
 using Kong_Engine.States.Base;
 using System;
+using TiledSharp;
 
 namespace Kong_Engine.States.Levels
 {
@@ -22,6 +23,31 @@ namespace Kong_Engine.States.Levels
         private Random _random;
         private bool isGameOver = false;
         private bool isLevelPassed = false;
+
+        private int[,] collisionGrid = new int[,]
+{
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,68,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,68,68,68,68,68,68,68,68,68,-1,-1,-1,-1,-1,-1,68,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,68,68,68,68,68,68,-1,-1,68,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,68,-1,-1,68,68,68},
+    {-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,68,-1,-1},
+    {-1,-1,-1,68,68,68,68,68,68,68,68,68,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,68,68,68,68,68,68,68,68,68,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1,-1,-1,-1,-1,-1,68,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,68,68,68,68,68,68,-1,-1,68,68,-1,-1,-1},
+    {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
+};
+
 
         protected override void LoadLevelContent()
         {
@@ -41,12 +67,49 @@ namespace Kong_Engine.States.Levels
             // Initialize TerrainBackground with a static background (no scrolling)
             _terrainBackground = new TerrainBackground(_backgroundTexture, Vector2.Zero, isScrollingEnabled: false);
 
-            // Initialize any additional entities like enemies, NPCs, or objects
-            // For example:
-            // var enemy = new EnemySprite(_spriteSheet, new Vector2(100, 100), 1f, AudioManager);
-            // Entities.Add(enemy);
+            // Generate collision rectangles from the grid
+            var collisionRectangles = GenerateCollisionRectangles();
+
+            // Debug: Print collision rectangles
+            Console.WriteLine("Collision Rectangles:");
+            foreach (var rect in collisionRectangles)
+            {
+                Console.WriteLine($"Rectangle: X={rect.X}, Y={rect.Y}, Width={rect.Width}, Height={rect.Height}");
+            }
+
+            // Initialize TileMapManager with the correct path to your map
+            TileMapManager = new TileMapManager(
+                SpriteBatch,
+                new TmxMap("Content/qwest-quest/QuestQuestMap.tmx"), // Corrected path to the .tmx file
+                Content.Load<Texture2D>("qwest-quest/collisions"), // Load your tileset texture
+                16,
+                20,
+                20,
+                collisionRectangles
+            );
         }
 
+        private List<Rectangle> GenerateCollisionRectangles()
+        {
+            var tileWidth = 20; // Assuming each grid cell corresponds to a 20x20 pixel area
+            var tileHeight = 20;
+
+            var collisionRectangles = new List<Rectangle>();
+
+            for (int y = 0; y < collisionGrid.GetLength(0); y++)
+            {
+                for (int x = 0; x < collisionGrid.GetLength(1); x++)
+                {
+                    if (collisionGrid[y, x] == 68)
+                    {
+                        var rect = new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+                        collisionRectangles.Add(rect);
+                    }
+                }
+            }
+
+            return collisionRectangles;
+        }
 
         protected override void SetInputManager()
         {
@@ -86,11 +149,9 @@ namespace Kong_Engine.States.Levels
             base.Update(gameTime);
         }
 
-
         protected override bool IsLevelCompleted()
         {
             // Implement logic for determining if the level is completed
-            // For example, if the player reaches a specific point or defeats all enemies
             return false; // Placeholder
         }
 
@@ -102,9 +163,6 @@ namespace Kong_Engine.States.Levels
             _player3.Draw(spriteBatch, Matrix.Identity);
 
             // Draw other entities like enemies, NPCs, etc.
-
-            // Draw any HUD elements or messages
-            //spriteBatch.DrawString(_font, "HP: " + _player3.Health, new Vector2(10, 10), Color.White);
 
             if (isGameOver)
             {

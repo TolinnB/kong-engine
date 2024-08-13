@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using TiledSharp;
+using System.Collections.Generic;
 
 namespace Kong_Engine.States.Levels
 {
@@ -21,7 +22,11 @@ namespace Kong_Engine.States.Levels
             int tileHeight = map.Tilesets[0].TileHeight;
             float scale = 1.0f; // Adjust the scale factor as needed
 
-            TileMapManager = new TileMapManager(SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, scale);
+            // Create an empty list of collision rectangles since you don't have them yet
+            List<Rectangle> collisionRectangles = new List<Rectangle>();
+
+            // Initialize TileMapManager with an empty list of collision rectangles
+            TileMapManager = new TileMapManager(SpriteBatch, map, tilesetTexture, tilesetTilesWide, tileWidth, tileHeight, collisionRectangles, scale);
         }
 
         protected override void InitializeEntities()

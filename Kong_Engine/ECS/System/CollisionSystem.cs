@@ -23,32 +23,32 @@ namespace Kong_Engine.ECS.System
         {
             foreach (var entity in entities)
             {
-                if (entity is PlayerSprite player)
+                if (entity is RaccoonSprite player)
                 {
                     CheckPlayerCollisions(player);
                 }
             }
         }
 
-        private void CheckPlayerCollisions(PlayerSprite player)
+        private void CheckPlayerCollisions(RaccoonSprite player)
         {
             var playerBoundingBox = player.GetBoundingBox();
+            Console.WriteLine($"Player BoundingBox: {playerBoundingBox}");
 
             foreach (var rectangle in _tileMapManager.CollisionRectangles)
             {
                 if (playerBoundingBox.Intersects(rectangle))
                 {
+                    Console.WriteLine($"Collision Detected with Rectangle: X={rectangle.X}, Y={rectangle.Y}");
                     HandleCollisionWithEnvironment(player);
                     break;
                 }
             }
         }
 
-        private void HandleCollisionWithEnvironment(PlayerSprite player)
+        private void HandleCollisionWithEnvironment(RaccoonSprite player)
         {
-            // Handle the collision with the environment
             Console.WriteLine("Player collided with the environment!");
-            // Add your collision handling logic here, such as stopping the player's movement
             player.Move(new Vector2(0, -1)); // Example: stop the player's movement
         }
     }

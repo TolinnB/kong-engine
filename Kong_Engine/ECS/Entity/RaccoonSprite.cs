@@ -16,10 +16,6 @@ namespace Kong_Engine.Objects
         private Rectangle[] leftIdleFrames;
         private Rectangle[] rightIdleFrames;
         private Rectangle[] upIdleFrames;
-        private Rectangle[] downMoveFrames;
-        private Rectangle[] leftMoveFrames;
-        private Rectangle[] rightMoveFrames;
-        private Rectangle[] upMoveFrames;
         private float moveSpeed = 1.5f;
         private Rectangle playerBounds; // For collisions
         private Direction currentDirection;
@@ -86,8 +82,6 @@ namespace Kong_Engine.Objects
                 new Rectangle(70, 102, frameWidth, frameHeight),
                 new Rectangle(102, 102, frameWidth, frameHeight)
             };
-
-
 
             currentFrame = 0;
             frameTimer = 0;
