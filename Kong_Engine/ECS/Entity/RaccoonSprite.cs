@@ -10,7 +10,6 @@ namespace Kong_Engine.Objects
 {
     public class RaccoonSprite : BaseEntity
     {
-        public Vector2 Knockback { get; set; }
         private Texture2D spriteSheet;
         private Rectangle[] downIdleFrames;
         private Rectangle[] leftIdleFrames;
@@ -93,14 +92,12 @@ namespace Kong_Engine.Objects
                 BoundingBox = new Rectangle(0, 0, (int)(frameWidth * scale), (int)(frameHeight * scale))
             });
             AddComponent(new LifeComponent { Lives = 3 });
-            Knockback = Vector2.Zero;
 
             playerBounds = new Rectangle((int)GetComponent<PositionComponent>().Position.X - 8, (int)GetComponent<PositionComponent>().Position.Y - 8, (int)(frameWidth * scale), (int)(frameHeight * scale));
         }
 
         public void Update(GameTime gameTime)
         {
-            ApplyKnockback();
             HandleInput(gameTime);
 
             var position = GetComponent<PositionComponent>().Position;
@@ -170,31 +167,12 @@ namespace Kong_Engine.Objects
             }
             isHit = true;
             hitTimer = 0;
-            Knockback = knockbackForce;
         }
 
         public Rectangle GetBoundingBox()
         {
             var collisionComponent = GetComponent<CollisionComponent>();
             return collisionComponent?.BoundingBox ?? Rectangle.Empty;
-        }
-
-        private void ApplyKnockback()
-        {
-            if (Knockback != Vector2.Zero)
-            {
-                var currentPosition = GetComponent<PositionComponent>().Position;
-                currentPosition += Knockback;
-                Knockback *= 0.9f; // Decay the knockback over time
-
-                if (Knockback.LengthSquared() < 0.01f)
-                {
-                    Knockback = Vector2.Zero;
-                }
-
-                var positionComponent = GetComponent<PositionComponent>();
-                positionComponent.Position = currentPosition;
-            }
         }
 
         private void HandleInput(GameTime gameTime)
@@ -271,5 +249,20 @@ namespace Kong_Engine.Objects
         public void SetLeftFrameInterval(double interval) => leftFrameInterval = interval;
         public void SetRightFrameInterval(double interval) => rightFrameInterval = interval;
         public void SetUpFrameInterval(double interval) => upFrameInterval = interval;
+
+        // Newly added methods to stop movement
+        public void StopHorizontalMovement()
+        {
+            // Stop horizontal movement by not allowing further movement along the X-axis
+            var positionComponent = GetComponent<PositionComponent>();
+            positionComponent.Position = new Vector2(positionComponent.Position.X, positionComponent.Position.Y);
+        }
+
+        public void StopVerticalMovement()
+        {
+            // Stop vertical movement by not allowing further movement along the Y-axis
+            var positionComponent = GetComponent<PositionComponent>();
+            positionComponent.Position = new Vector2(positionComponent.Position.X, positionComponent.Position.Y);
+        }
     }
 }

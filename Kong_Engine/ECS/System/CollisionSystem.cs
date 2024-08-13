@@ -3,6 +3,7 @@ using Kong_Engine.Objects;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System;
+using Kong_Engine.ECS.Component;
 
 namespace Kong_Engine.ECS.System
 {
@@ -40,16 +41,70 @@ namespace Kong_Engine.ECS.System
                 if (playerBoundingBox.Intersects(rectangle))
                 {
                     Console.WriteLine($"Collision Detected with Rectangle: X={rectangle.X}, Y={rectangle.Y}");
-                    HandleCollisionWithEnvironment(player);
+                    HandleCollisionWithEnvironment(player, rectangle); // Pass the rectangle here
                     break;
                 }
             }
         }
 
-        private void HandleCollisionWithEnvironment(RaccoonSprite player)
+        private void HandleCollisionWithEnvironment(RaccoonSprite player, Rectangle collisionRectangle)
         {
-            Console.WriteLine("Player collided with the environment!");
-            player.Move(new Vector2(0, -1)); // Example: stop the player's movement
+            // Get the player's bounding box and position
+            var playerBoundingBox = player.GetBoundingBox();
+            var playerPosition = player.GetComponent<PositionComponent>().Position;
+
+            // Calculate the intersection depth between the player and the collision rectangle
+            Vector2 depth = GetIntersectionDepth(playerBoundingBox, collisionRectangle);
+
+            // If there is a collision (depth values are not zero)
+            if (depth != Vector2.Zero)
+            {
+                // Move the player out of collision
+                playerPosition += depth;
+
+                // Update player's position component
+                player.GetComponent<PositionComponent>().Position = playerPosition;
+
+                // Stop the player's movement along the axis of collision
+                if (Math.Abs(depth.X) > Math.Abs(depth.Y))
+                {
+                    // More Y-axis overlap means we should stop vertical movement
+                    player.StopVerticalMovement();
+                }
+                else
+                {
+                    // More X-axis overlap means we should stop horizontal movement
+                    player.StopHorizontalMovement();
+                }
+            }
+        }
+
+        private Vector2 GetIntersectionDepth(Rectangle rectA, Rectangle rectB)
+        {
+            // Calculate half sizes
+            float halfWidthA = rectA.Width / 2.0f;
+            float halfHeightA = rectA.Height / 2.0f;
+            float halfWidthB = rectB.Width / 2.0f;
+            float halfHeightB = rectB.Height / 2.0f;
+
+            // Calculate centers
+            Vector2 centerA = new Vector2(rectA.Left + halfWidthA, rectA.Top + halfHeightA);
+            Vector2 centerB = new Vector2(rectB.Left + halfWidthB, rectB.Top + halfHeightB);
+
+            // Calculate current and minimum-non-intersecting distances between centers
+            float distanceX = centerA.X - centerB.X;
+            float distanceY = centerA.Y - centerB.Y;
+            float minDistanceX = halfWidthA + halfWidthB;
+            float minDistanceY = halfHeightA + halfHeightB;
+
+            // If we are not intersecting at all, return (0, 0)
+            if (Math.Abs(distanceX) >= minDistanceX || Math.Abs(distanceY) >= minDistanceY)
+                return Vector2.Zero;
+
+            // Calculate and return intersection depths
+            float depthX = distanceX > 0 ? minDistanceX - distanceX : -minDistanceX - distanceX;
+            float depthY = distanceY > 0 ? minDistanceY - distanceY : -minDistanceY - distanceY;
+            return new Vector2(depthX, depthY);
         }
     }
 }
