@@ -25,8 +25,8 @@ namespace Kong_Engine.States.Levels
         private bool isGameOver = false;
         private bool isLevelPassed = false;
 
-        public int MapWidth => _backgroundTexture.Width;
-        public int MapHeight => _backgroundTexture.Height;
+        public int MapWidth => 480;
+        public int MapHeight => 320;
 
         protected override void LoadLevelContent()
         {
@@ -37,6 +37,12 @@ namespace Kong_Engine.States.Levels
 
         protected override void InitializeEntities()
         {
+            // Set the window size specifically for this level
+            var game = (MainGame)Game;
+            game.Graphics.PreferredBackBufferWidth = MapWidth;
+            game.Graphics.PreferredBackBufferHeight = MapHeight;
+            game.Graphics.ApplyChanges();
+
             _random = new Random();
 
             // Initialize RaccoonSprite3 (assuming this is the player's class for Level 3)
@@ -48,13 +54,6 @@ namespace Kong_Engine.States.Levels
 
             // Generate collision rectangles from the CSV file
             var collisionRectangles = GenerateCollisionRectanglesFromCsv("Content/qwest-quest/QwestQuest_Collision.csv");
-
-            // Debug: Print collision rectangles
-            Console.WriteLine("Collision Rectangles:");
-            foreach (var rect in collisionRectangles)
-            {
-                Console.WriteLine($"Rectangle: X={rect.X}, Y={rect.Y}, Width={rect.Width}, Height={rect.Height}");
-            }
 
             // Initialize TileMapManager with the correct path to your map
             TileMapManager = new TileMapManager(
@@ -171,7 +170,6 @@ namespace Kong_Engine.States.Levels
             _player3.Draw(spriteBatch, Matrix.Identity);
 
             // Draw other entities like enemies, NPCs, etc.
-            // Make sure they're drawn without offsets or translations
 
             if (isGameOver)
             {

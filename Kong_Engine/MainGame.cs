@@ -17,6 +17,7 @@ namespace Kong_Engine
         private BaseGameState _currentState;
         private AudioManager _audioManager;
         public float ScaleFactor { get; set; } = 1.0f;  // Default scale factor
+        public GraphicsDeviceManager Graphics => _graphics;
 
         public MainGame()
         {
@@ -64,7 +65,8 @@ namespace Kong_Engine
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black); // Black background to avoid any borders
+            // Clear the screen with the color that matches the background color of your map
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
             _currentState?.Render(_spriteBatch);
