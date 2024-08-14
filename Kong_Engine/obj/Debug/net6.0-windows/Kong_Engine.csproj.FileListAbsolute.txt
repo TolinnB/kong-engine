@@ -283,3 +283,5 @@ C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\Wooden_House_Roof_Tilset.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\Wooden_House_Walls_Tilset.tsx
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\Wooden_House_Walls_Tilset.xnb
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mainMenu2.xnb
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\splashStart.xnb

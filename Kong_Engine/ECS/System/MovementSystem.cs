@@ -28,13 +28,16 @@ namespace Kong_Engine.ECS.System
                     var positionComponent = entity.GetComponent<PositionComponent>();
                     var movementComponent = entity.GetComponent<MovementComponent>();
 
+                    // Slow down the enemy by reducing the velocity
+                    var adjustedVelocity = movementComponent.Velocity * 0.5f;
+
                     // Check boundaries and reverse direction if necessary
                     if (movementComponent.MovingRight)
                     {
-                        positionComponent.Position += movementComponent.Velocity;
+                        positionComponent.Position += adjustedVelocity;
 
                         if (positionComponent.Position.X > movementComponent.RightBoundary ||
-                            positionComponent.Position.X + movementComponent.Velocity.X > screenWidth)
+                            positionComponent.Position.X + adjustedVelocity.X > screenWidth)
                         {
                             movementComponent.MovingRight = false;
                             positionComponent.Position = new Vector2(movementComponent.RightBoundary, positionComponent.Position.Y);
@@ -42,10 +45,10 @@ namespace Kong_Engine.ECS.System
                     }
                     else
                     {
-                        positionComponent.Position -= movementComponent.Velocity;
+                        positionComponent.Position -= adjustedVelocity;
 
                         if (positionComponent.Position.X < movementComponent.LeftBoundary ||
-                            positionComponent.Position.X - movementComponent.Velocity.X < 0)
+                            positionComponent.Position.X - adjustedVelocity.X < 0)
                         {
                             movementComponent.MovingRight = true;
                             positionComponent.Position = new Vector2(movementComponent.LeftBoundary, positionComponent.Position.Y);

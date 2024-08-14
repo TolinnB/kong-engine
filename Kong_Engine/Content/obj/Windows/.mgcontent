@@ -18,6 +18,7 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/fallbackTexture.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/gorillaScreen.jpg</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/hurtSound.mp3</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/hurtSound.wav</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/kingKRool.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
@@ -49,6 +50,7 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/turbo.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

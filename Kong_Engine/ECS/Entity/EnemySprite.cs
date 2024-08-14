@@ -23,30 +23,32 @@ namespace Kong_Engine.Objects
 
             walkFrames = new Rectangle[]
             {
-                new Rectangle(0, 0, frameWidth, frameHeight),   // Walk Frame 1
-                new Rectangle(135, 0, frameWidth, frameHeight),  // Walk Frame 2
-                new Rectangle(270, 0, frameWidth, frameHeight), // Walk Frame 3
-                new Rectangle(405, 0, frameWidth, frameHeight), // Walk Frame 4
-                new Rectangle(530, 0, frameWidth, frameHeight), // Walk Frame 5
+        new Rectangle(0, 0, frameWidth, frameHeight),   // Walk Frame 1
+        new Rectangle(135, 0, frameWidth, frameHeight),  // Walk Frame 2
+        new Rectangle(270, 0, frameWidth, frameHeight), // Walk Frame 3
+        new Rectangle(405, 0, frameWidth, frameHeight), // Walk Frame 4
+        new Rectangle(530, 0, frameWidth, frameHeight), // Walk Frame 5
             };
 
-            AddComponent(new PositionComponent { Position = new Vector2(200, 100) * scale });
+            AddComponent(new PositionComponent { Position = new Vector2(310, 213) * scale });
             AddComponent(new MovementComponent
             {
                 Velocity = new Vector2(2, 0) * scale,
-                LeftBoundary = 200 * scale,
-                RightBoundary = 300 * scale,
+                LeftBoundary = 310 * scale, // Adjusted boundaries
+                RightBoundary = 390 * scale, // Adjusted boundaries
                 MovingRight = true
             });
+
             AddComponent(new CollisionComponent
             {
-                BoundingBox = new Rectangle((int)(200 * scale), (int)(100 * scale), (int)(frameWidth * scale), (int)(frameHeight * scale))
+                BoundingBox = new Rectangle((int)(200 * scale), (int)(300 * scale), (int)(frameWidth * scale), (int)(frameHeight * scale))
             });
 
             currentFrame = 0;
             frameTime = 0.1; // Change frame every 0.1 seconds
             timeSinceLastFrame = 0;
         }
+
 
         public void Update(GameTime gameTime)
         {
