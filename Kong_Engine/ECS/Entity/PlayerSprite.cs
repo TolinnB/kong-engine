@@ -121,13 +121,13 @@ namespace Kong_Engine.Objects
             HandleInput(gameTime);
 
             var physicsComponent = GetComponent<PhysicsComponent>();
-
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Apply gravity continuously
             var velocity = physicsComponent.Velocity;
             velocity.Y += gravity * deltaTime;
             physicsComponent.Velocity = velocity;
+
             AccelerationSystem.ApplyAcceleration(physicsComponent, deltaTime, gravity, fallMultiplier, verticalAcceleration, horizontalAcceleration, maxHorizontalSpeed, isMoving, isFacingRight);
 
             // Update position based on the current velocity
@@ -159,10 +159,22 @@ namespace Kong_Engine.Objects
             UpdateAnimationFrame(gameTime);
             UpdatePlayerBounds();
 
+            // Always check for collisions, even when the player is idle
+            CheckCollisions(currentPosition);
+
             // Update collision component bounding box
             var collisionComponent = GetComponent<CollisionComponent>();
             collisionComponent.BoundingBox = playerBounds;
         }
+
+
+        private void HandleIdleCollisions()
+        {
+            // Perform any additional collision checks or updates when the player is idle
+            var currentPosition = GetComponent<PositionComponent>().Position;
+            CheckCollisions(currentPosition);
+        }
+
 
         private void HandleJumping()
         {

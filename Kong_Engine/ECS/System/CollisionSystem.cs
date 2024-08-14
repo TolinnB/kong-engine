@@ -61,6 +61,7 @@ namespace Kong_Engine.ECS.System
             }
         }
 
+
         private void HandleCollisionWithEnvironment(PlayerSprite player)
         {
             Console.WriteLine("Player collided with the environment!");
@@ -71,9 +72,9 @@ namespace Kong_Engine.ECS.System
         {
             Console.WriteLine("Player collided with an enemy!");
 
-            // Apply knockback based on the direction of the enemy
+            // Apply a smaller knockback based on the direction of the enemy
             var knockbackDirection = player.GetComponent<PositionComponent>().Position.X < enemy.GetComponent<PositionComponent>().Position.X ? -1 : 1;
-            player.Knockback = new Vector2(20f * knockbackDirection, -10f); // Smaller knockback force
+            player.Knockback = new Vector2(5f * knockbackDirection, -2f); // Much smaller knockback force
 
             // Play the hurt sound
             player.PlayHurtSound();
