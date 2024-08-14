@@ -19,6 +19,10 @@ namespace Kong_Engine
         public float ScaleFactor { get; set; } = 1.0f;  // Default scale factor
         public GraphicsDeviceManager Graphics => _graphics;
 
+        // Store the default window size
+        private readonly int _defaultWidth = 1280;
+        private readonly int _defaultHeight = 720;
+
         public MainGame()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -30,30 +34,15 @@ namespace Kong_Engine
             base.Initialize();
             _audioManager = new AudioManager(Content);
 
-            // Start with the initial state (Level3State in this case)
-            SwitchState(new Level3State());
+            // Start with the initial state (SplashState in this case)
+            SwitchState(new SplashState());
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // Set window size to match the size of the map
-            if (_currentState is Level3State levelState)
-            {
-                var mapWidth = levelState.MapWidth;
-                var mapHeight = levelState.MapHeight;
-
-                _graphics.PreferredBackBufferWidth = mapWidth;
-                _graphics.PreferredBackBufferHeight = mapHeight;
-                _graphics.ApplyChanges();
-
-                // Ensure the window size matches the content
-                Window.AllowUserResizing = false;
-                _graphics.HardwareModeSwitch = false;
-                _graphics.IsFullScreen = false;
-                _graphics.ApplyChanges();
-            }
+            AdjustWindowSizeForCurrentState();
         }
 
         protected override void Update(GameTime gameTime)
@@ -83,6 +72,9 @@ namespace Kong_Engine
             _currentState.LoadContent();
             _currentState.OnStateSwitched += HandleStateSwitched;
             _currentState.OnEventNotification += HandleEventNotification;
+
+            // Adjust the window size after switching the state
+            AdjustWindowSizeForCurrentState();
         }
 
         private void HandleStateSwitched(object sender, BaseGameState newState)
@@ -96,6 +88,27 @@ namespace Kong_Engine
             {
                 Exit();
             }
+        }
+
+        private void AdjustWindowSizeForCurrentState()
+        {
+            // Check if the current state is Level3State
+            if (_currentState is Level3State levelState)
+            {
+                var mapWidth = levelState.MapWidth;
+                var mapHeight = levelState.MapHeight;
+
+                _graphics.PreferredBackBufferWidth = mapWidth;
+                _graphics.PreferredBackBufferHeight = mapHeight;
+            }
+            else
+            {
+                // Set to default window size for other states
+                _graphics.PreferredBackBufferWidth = _defaultWidth;
+                _graphics.PreferredBackBufferHeight = _defaultHeight;
+            }
+
+            _graphics.ApplyChanges();
         }
     }
 }
