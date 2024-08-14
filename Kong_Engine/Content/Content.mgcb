@@ -539,6 +539,12 @@
 /processorParam:TextureFormat=Color
 /build:splashScreen3.png
 
+#begin splashStart.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:splashStart.wav
+
 #begin turbo.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

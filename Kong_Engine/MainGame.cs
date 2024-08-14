@@ -18,8 +18,7 @@ namespace Kong_Engine
         private AudioManager _audioManager;
 
         public GraphicsDeviceManager GraphicsManager => _graphics; // Expose GraphicsDeviceManager
-
-        public float ScaleFactor { get; set; } = 1.0f;  // Default scale factor
+        public AudioManager AudioManager => _audioManager;  // Expose AudioManager
 
         public MainGame()
         {
@@ -33,6 +32,9 @@ namespace Kong_Engine
 
             // Make the mouse visible
             IsMouseVisible = true;
+
+            // Initialize the AudioManager
+            _audioManager = new AudioManager(Content);
         }
 
         protected override void Initialize()

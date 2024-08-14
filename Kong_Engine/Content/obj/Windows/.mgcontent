@@ -47,9 +47,11 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen2.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashScreen3.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/splashStart.wav</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/turbo.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
