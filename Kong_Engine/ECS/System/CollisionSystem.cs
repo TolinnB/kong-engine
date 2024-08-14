@@ -59,25 +59,29 @@ namespace Kong_Engine.ECS.System
             // If there is a collision (depth values are not zero)
             if (depth != Vector2.Zero)
             {
-                // Move the player out of collision
-                playerPosition += depth;
+                // Calculate the absolute overlap distances
+                float absDepthX = Math.Abs(depth.X);
+                float absDepthY = Math.Abs(depth.Y);
 
-                // Update player's position component
-                player.GetComponent<PositionComponent>().Position = playerPosition;
-
-                // Stop the player's movement along the axis of collision
-                if (Math.Abs(depth.X) > Math.Abs(depth.Y))
+                // Determine which direction to move the player based on the smallest overlap
+                if (absDepthX < absDepthY)
                 {
-                    // More Y-axis overlap means we should stop vertical movement
-                    player.StopVerticalMovement();
+                    // Adjust horizontal position
+                    playerPosition.X += depth.X;
+                    player.StopHorizontalMovement();
                 }
                 else
                 {
-                    // More X-axis overlap means we should stop horizontal movement
-                    player.StopHorizontalMovement();
+                    // Adjust vertical position
+                    playerPosition.Y += depth.Y;
+                    player.StopVerticalMovement();
                 }
+
+                // Update player's position component
+                player.GetComponent<PositionComponent>().Position = playerPosition;
             }
         }
+
 
         private Vector2 GetIntersectionDepth(Rectangle rectA, Rectangle rectB)
         {
