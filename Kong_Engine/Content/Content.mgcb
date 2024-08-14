@@ -244,6 +244,177 @@
 /processorParam:TextureFormat=Color
 /build:player.png
 
+#begin qwest-quest/all/QuestQuestMap-scaled.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/all/QuestQuestMap-scaled.png
+
+#begin qwest-quest/all/QuestQuestMap..tmx
+/copy:qwest-quest/all/QuestQuestMap..tmx
+
+#begin qwest-quest/all/QuestQuestMap.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/all/QuestQuestMap.png
+
+#begin qwest-quest/collisions.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/collisions.png
+
+#begin qwest-quest/collisions.tsx
+/copy:qwest-quest/collisions.tsx
+
+#begin qwest-quest/Fences.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/Fences.png
+
+#begin qwest-quest/Fences.tsx
+/copy:qwest-quest/Fences.tsx
+
+#begin qwest-quest/Grass.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/Grass.png
+
+#begin qwest-quest/Grass.tsx
+/copy:qwest-quest/Grass.tsx
+
+#begin qwest-quest/pixel-plains.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:qwest-quest/pixel-plains.mp3
+
+#begin qwest-quest/QuestQuestMap.tmx
+/copy:qwest-quest/QuestQuestMap.tmx
+
+#begin qwest-quest/QwestQuest_Base.csv
+/copy:qwest-quest/QwestQuest_Base.csv
+
+#begin qwest-quest/QwestQuest_Bridges.csv
+/copy:qwest-quest/QwestQuest_Bridges.csv
+
+#begin qwest-quest/QwestQuest_Collision.csv
+/copy:qwest-quest/QwestQuest_Collision.csv
+
+#begin qwest-quest/QwestQuest_Details.csv
+/copy:qwest-quest/QwestQuest_Details.csv
+
+#begin qwest-quest/QwestQuest_Water.csv
+/copy:qwest-quest/QwestQuest_Water.csv
+
+#begin qwest-quest/RACCOONSPRITESHEET.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/RACCOONSPRITESHEET.png
+
+#begin qwest-quest/Tilled_Dirt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/Tilled_Dirt.png
+
+#begin qwest-quest/Tilled_Dirt.tsx
+/copy:qwest-quest/Tilled_Dirt.tsx
+
+#begin qwest-quest/TopDownLand.tiled-project
+/copy:qwest-quest/TopDownLand.tiled-project
+
+#begin qwest-quest/TopDownLand.tiled-session
+/copy:qwest-quest/TopDownLand.tiled-session
+
+#begin qwest-quest/Water.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/Water.png
+
+#begin qwest-quest/Water.tsx
+/copy:qwest-quest/Water.tsx
+
+#begin qwest-quest/Wooden_House_Roof_Tilset.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/Wooden_House_Roof_Tilset.png
+
+#begin qwest-quest/Wooden_House_Walls_Tilset.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:qwest-quest/Wooden_House_Walls_Tilset.png
+
+#begin qwest-quest/Wooden_House_Walls_Tilset.tsx
+/copy:qwest-quest/Wooden_House_Walls_Tilset.tsx
+
 #begin ScoreFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -355,12 +526,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:splashScreen3.png
-
-#begin turbo.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:turbo.wav
 
 #begin turbo.wav
 /importer:WavImporter

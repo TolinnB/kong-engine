@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Kong_Engine.Input;
 using Kong_Engine.States.Base;
 using System;
+using Microsoft.Xna.Framework.Input;
 
 namespace Kong_Engine.States.Levels
 {
@@ -70,8 +71,20 @@ namespace Kong_Engine.States.Levels
 
         public override void Update(GameTime gameTime)
         {
-            if (isGameOver || isLevelPassed)
+            if (isGameOver)
                 return;
+
+            if (isLevelPassed)
+            {
+                // Wait for the player to press Enter to move to the next level
+                var keyboardState = Keyboard.GetState();
+                if (keyboardState.IsKeyDown(Keys.Enter))
+                {
+                    var game = (MainGame)Game;
+                    game.SwitchState(new Level3State());
+                }
+                return;
+            }
 
             // Update PlayerSprite2
             _player2.Update(gameTime, _asteroids);
@@ -153,7 +166,7 @@ namespace Kong_Engine.States.Levels
 
             if (isLevelPassed)
             {
-                var levelPassedText = $"Level Passed! Score: {_player2.Score}";
+                var levelPassedText = $"Level Passed! Score: {_player2.Score}\nPress Enter to continue...";
                 var levelPassedPosition = new Vector2(
                     (spriteBatch.GraphicsDevice.Viewport.Width - _font.MeasureString(levelPassedText).X) / 2,
                     (spriteBatch.GraphicsDevice.Viewport.Height - _font.MeasureString(levelPassedText).Y) / 2

@@ -256,6 +256,7 @@ C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space-sprites.xnb
 C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\space.xnb
 C:\Users\breto\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\turbo.xnb
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap-scaled.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap..tmx
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\collisions.tsx
@@ -264,6 +265,8 @@ C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Con
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\Fences.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\Grass.tsx
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\Grass.xnb
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\pixel-plains.wma
+C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\pixel-plains.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\QuestQuestMap.tmx
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\QwestQuest_Base.csv
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\QwestQuest_Bridges.csv

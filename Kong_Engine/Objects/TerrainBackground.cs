@@ -7,12 +7,20 @@ namespace Kong_Engine.Objects
     public class TerrainBackground : BaseGameObject
     {
         private Vector2 _scrollSpeed;
+        private bool _isScrollingEnabled;
 
-        public TerrainBackground(Texture2D texture, Vector2 scrollSpeed)
+        public TerrainBackground(Texture2D texture, Vector2 scrollSpeed, bool isScrollingEnabled = true)
         {
             _texture = texture;
             _position = Vector2.Zero;
             _scrollSpeed = scrollSpeed;
+            _isScrollingEnabled = isScrollingEnabled;
+        }
+
+        public bool IsScrollingEnabled
+        {
+            get { return _isScrollingEnabled; }
+            set { _isScrollingEnabled = value; }
         }
 
         public override void Render(SpriteBatch spriteBatch)
@@ -20,8 +28,8 @@ namespace Kong_Engine.Objects
             var viewport = spriteBatch.GraphicsDevice.Viewport;
             var sourceRectangle = new Rectangle(0, 0, _texture.Width, _texture.Height);
 
-            int tilesX = viewport.Width / _texture.Width + 2;
-            int tilesY = viewport.Height / _texture.Height + 1;
+            int tilesX = _isScrollingEnabled ? (viewport.Width / _texture.Width + 2) : 1;
+            int tilesY = _isScrollingEnabled ? (viewport.Height / _texture.Height + 1) : 1;
 
             for (int y = 0; y < tilesY; y++)
             {
@@ -40,18 +48,20 @@ namespace Kong_Engine.Objects
 
         public void UpdateBackgroundPosition(Vector2 playerPosition)
         {
-            // Move the background based on the player's position and the scroll speed
-            _position.X = -playerPosition.X * _scrollSpeed.X % _texture.Width;
-            _position.Y = -playerPosition.Y * _scrollSpeed.Y % _texture.Height;
-
-            if (_position.X > 0)
+            if (_isScrollingEnabled)
             {
-                _position.X -= _texture.Width;
-            }
+                _position.X = -playerPosition.X * _scrollSpeed.X % _texture.Width;
+                _position.Y = -playerPosition.Y * _scrollSpeed.Y % _texture.Height;
 
-            if (_position.Y > 0)
-            {
-                _position.Y -= _texture.Height;
+                if (_position.X > 0)
+                {
+                    _position.X -= _texture.Width;
+                }
+
+                if (_position.Y > 0)
+                {
+                    _position.Y -= _texture.Height;
+                }
             }
         }
     }

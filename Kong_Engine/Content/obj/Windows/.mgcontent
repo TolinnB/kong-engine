@@ -25,6 +25,17 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/missile-sound.wav</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/music.mp3</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/player.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/all/QuestQuestMap-scaled.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/all/QuestQuestMap.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/collisions.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/Fences.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/Grass.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/pixel-plains.mp3</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/RACCOONSPRITESHEET.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/Tilled_Dirt.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/Water.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/Wooden_House_Roof_Tilset.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/Wooden_House_Walls_Tilset.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/ScoreFont.spritefont</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/SimpleTileset2.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/slime.png</File>
@@ -38,6 +49,17 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/turbo.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
