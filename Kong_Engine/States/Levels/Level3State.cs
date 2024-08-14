@@ -43,10 +43,10 @@ namespace Kong_Engine.States.Levels
 
         protected override void InitializeEntities()
         {
-            var game = (MainGame)Game;
-            game.Graphics.PreferredBackBufferWidth = MapWidth;
-            game.Graphics.PreferredBackBufferHeight = MapHeight;
-            game.Graphics.ApplyChanges();
+            var graphics = Game.GraphicsManager;  // Access the GraphicsDeviceManager through the public property
+            graphics.PreferredBackBufferWidth = MapWidth;
+            graphics.PreferredBackBufferHeight = MapHeight;
+            graphics.ApplyChanges();
 
             _random = new Random();
 
@@ -55,7 +55,6 @@ namespace Kong_Engine.States.Levels
 
             _terrainBackground = new TerrainBackground(_backgroundTexture, Vector2.Zero, isScrollingEnabled: false);
 
-            // Generate collision rectangles from the CSV file
             var collisionRectangles = GenerateCollisionRectanglesFromCsv("Content/qwest-quest/QwestQuest_Collision.csv");
 
             TileMapManager = new TileMapManager(
@@ -68,11 +67,13 @@ namespace Kong_Engine.States.Levels
                 20
             );
 
-            // Assign the generated collision rectangles to the TileMapManager
             TileMapManager.CollisionRectangles.AddRange(collisionRectangles);
 
-            _collisionSystem = new TopDownCollisionSystem(AudioManager, game, TileMapManager);
+            _collisionSystem = new TopDownCollisionSystem(AudioManager, Game, TileMapManager);
         }
+
+
+
 
 
         private List<Rectangle> GenerateCollisionRectanglesFromCsv(string csvFilePath)

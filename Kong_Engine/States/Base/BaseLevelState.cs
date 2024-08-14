@@ -81,10 +81,12 @@ namespace Kong_Engine.States.Base
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            Matrix scaleMatrix = Matrix.CreateScale(Game.ScaleFactor);
+            // Use a scale of 1.0 if you don't want to scale the render output
+            Matrix scaleMatrix = Matrix.CreateScale(1.0f);
             TileMapManager?.Draw(scaleMatrix);
             PlayerEntity?.Draw(spriteBatch, scaleMatrix);
             EnemyEntity?.Draw(spriteBatch, scaleMatrix);
         }
+
     }
 }

@@ -16,17 +16,23 @@ namespace Kong_Engine
         private SpriteBatch _spriteBatch;
         private BaseGameState _currentState;
         private AudioManager _audioManager;
-        public float ScaleFactor { get; set; } = 1.0f;  // Default scale factor
-        public GraphicsDeviceManager Graphics => _graphics;
 
-        // Store the default window size
-        private readonly int _defaultWidth = 1280;
-        private readonly int _defaultHeight = 720;
+        public GraphicsDeviceManager GraphicsManager => _graphics; // Expose GraphicsDeviceManager
+
+        public float ScaleFactor { get; set; } = 1.0f;  // Default scale factor
 
         public MainGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            // Set the preferred window size
+            _graphics.PreferredBackBufferWidth = 1280;
+            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.ApplyChanges();
+
+            // Make the mouse visible
+            IsMouseVisible = true;
         }
 
         protected override void Initialize()
@@ -34,15 +40,12 @@ namespace Kong_Engine
             base.Initialize();
             _audioManager = new AudioManager(Content);
 
-            // Start with the initial state (SplashState in this case)
             SwitchState(new SplashState());
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            AdjustWindowSizeForCurrentState();
         }
 
         protected override void Update(GameTime gameTime)
@@ -54,7 +57,6 @@ namespace Kong_Engine
 
         protected override void Draw(GameTime gameTime)
         {
-            // Clear the screen with the color that matches the background color of your map
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
@@ -72,9 +74,6 @@ namespace Kong_Engine
             _currentState.LoadContent();
             _currentState.OnStateSwitched += HandleStateSwitched;
             _currentState.OnEventNotification += HandleEventNotification;
-
-            // Adjust the window size after switching the state
-            AdjustWindowSizeForCurrentState();
         }
 
         private void HandleStateSwitched(object sender, BaseGameState newState)
@@ -89,26 +88,6 @@ namespace Kong_Engine
                 Exit();
             }
         }
-
-        private void AdjustWindowSizeForCurrentState()
-        {
-            // Check if the current state is Level3State
-            if (_currentState is Level3State levelState)
-            {
-                var mapWidth = levelState.MapWidth;
-                var mapHeight = levelState.MapHeight;
-
-                _graphics.PreferredBackBufferWidth = mapWidth;
-                _graphics.PreferredBackBufferHeight = mapHeight;
-            }
-            else
-            {
-                // Set to default window size for other states
-                _graphics.PreferredBackBufferWidth = _defaultWidth;
-                _graphics.PreferredBackBufferHeight = _defaultHeight;
-            }
-
-            _graphics.ApplyChanges();
-        }
     }
+
 }
