@@ -33,18 +33,16 @@ namespace Kong_Engine.States.Levels
 
         protected override void LoadLevelContent()
         {
-            _backgroundTexture = Content.Load<Texture2D>("qwest-quest/all/QuestQuestMap"); // Load the overworld texture for the background
-            _spriteSheet = Content.Load<Texture2D>("qwest-quest/RACCOONSPRITESHEET"); // Load the sprite sheet for the player or other entities
-            _font = Content.Load<SpriteFont>("ScoreFont"); // Load font for displaying messages
+            _backgroundTexture = Content.Load<Texture2D>("qwest-quest/all/QuestQuestMap");
+            _spriteSheet = Content.Load<Texture2D>("qwest-quest/RACCOONSPRITESHEET");
+            _font = Content.Load<SpriteFont>("ScoreFont");
 
-            // Load and play the background song for this level
             AudioManager.LoadSong("pixel-plains", "qwest-quest/pixel-plains");
             AudioManager.PlaySong("pixel-plains", isRepeating: true);
         }
 
         protected override void InitializeEntities()
         {
-            // Set the window size specifically for this level
             var game = (MainGame)Game;
             game.Graphics.PreferredBackBufferWidth = MapWidth;
             game.Graphics.PreferredBackBufferHeight = MapHeight;
@@ -52,44 +50,36 @@ namespace Kong_Engine.States.Levels
 
             _random = new Random();
 
-            // Initialize RaccoonSprite3 (assuming this is the player's class for Level 3)
             _player3 = new RaccoonSprite(_spriteSheet, 1f, AudioManager);
             Entities.Add(_player3);
 
-            // Initialize TerrainBackground with a static background (no scrolling)
             _terrainBackground = new TerrainBackground(_backgroundTexture, Vector2.Zero, isScrollingEnabled: false);
 
             // Generate collision rectangles from the CSV file
             var collisionRectangles = GenerateCollisionRectanglesFromCsv("Content/qwest-quest/QwestQuest_Collision.csv");
 
-            // Initialize TileMapManager with the correct path to your map
             TileMapManager = new TileMapManager(
                 Content,
                 SpriteBatch,
-                new TmxMap("Content/qwest-quest/QuestQuestMap.tmx"), // Corrected path to the .tmx file
-                Content.Load<Texture2D>("qwest-quest/collisions"), // Load your tileset texture
+                new TmxMap("Content/qwest-quest/QuestQuestMap.tmx"),
+                Content.Load<Texture2D>("qwest-quest/collisions"),
                 16,
                 20,
                 20
             );
 
-            // Initialize the TopDownCollisionSystem
+            // Assign the generated collision rectangles to the TileMapManager
+            TileMapManager.CollisionRectangles.AddRange(collisionRectangles);
+
             _collisionSystem = new TopDownCollisionSystem(AudioManager, game, TileMapManager);
         }
+
 
         private List<Rectangle> GenerateCollisionRectanglesFromCsv(string csvFilePath)
         {
             var collisionRectangles = new List<Rectangle>();
-            var tileWidth = 16; // Original tile size
-            var tileHeight = 16;
-
-            // New dimensions for the collision box
-            var collisionWidth = 12;   // Adjust as needed
-            var collisionHeight = 12;  // Adjust as needed
-
-            // Calculate the offset to center the collision rectangle
-            var offsetX = (tileWidth - collisionWidth) / 2;
-            var offsetY = (tileHeight - collisionHeight) / 2;
+            var tileWidth = 16; // Tile width in pixels
+            var tileHeight = 16; // Tile height in pixels
 
             try
             {
@@ -105,12 +95,12 @@ namespace Kong_Engine.States.Levels
                         {
                             if (int.TryParse(values[x], out int tileValue) && tileValue == 68)
                             {
-                                // Create a centered and smaller collision rectangle
+                                // Create a collision rectangle for each "68" tile value
                                 var rect = new Rectangle(
-                                    x * tileWidth + offsetX,  // Center horizontally
-                                    y * tileHeight + offsetY, // Center vertically
-                                    collisionWidth,
-                                    collisionHeight
+                                    x * tileWidth,  // X position in pixels
+                                    y * tileHeight, // Y position in pixels
+                                    tileWidth,      // Width of the rectangle
+                                    tileHeight      // Height of the rectangle
                                 );
                                 collisionRectangles.Add(rect);
                             }
@@ -127,6 +117,7 @@ namespace Kong_Engine.States.Levels
             return collisionRectangles;
         }
 
+
         protected override void SetInputManager()
         {
             InputManager = new InputManager(new GameplayInputMapper());
@@ -137,52 +128,39 @@ namespace Kong_Engine.States.Levels
             if (isGameOver || isLevelPassed)
                 return;
 
-            // Update RaccoonSprite3
             _player3.Update(gameTime);
 
-            // Update the collision system with the current entities
             _collisionSystem.Update(Entities);
 
-            // Check if the player is dead
             if (_player3.IsDead())
             {
                 isGameOver = true;
                 return;
             }
 
-            // Check if the level is passed (implement your own logic)
             if (IsLevelCompleted())
             {
                 isLevelPassed = true;
                 return;
             }
 
-            // If scrolling is enabled, update TerrainBackground based on player's position
             if (_terrainBackground.IsScrollingEnabled)
             {
                 _terrainBackground.UpdateBackgroundPosition(_player3.GetComponent<PositionComponent>().Position);
             }
-
-            // Update other entities as necessary
 
             base.Update(gameTime);
         }
 
         protected override bool IsLevelCompleted()
         {
-            // Implement logic for determining if the level is completed
-            return false; // Placeholder
+            return false;
         }
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            // Render the background without offsets
             _terrainBackground.Render(spriteBatch);
-
-            // Draw RaccoonSprite3 without translation
             _player3.Draw(spriteBatch, Matrix.Identity);
-
-            // Draw other entities like enemies, NPCs, etc.
 
             if (isGameOver)
             {
