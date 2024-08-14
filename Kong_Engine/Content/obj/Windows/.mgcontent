@@ -25,6 +25,7 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/missile-sound.wav</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/music.mp3</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/player.png</File>
+    <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/all/QuestQuestMap-scaled.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/all/QuestQuestMap.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/collisions.png</File>
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/qwest-quest/Fences.png</File>
@@ -47,6 +48,7 @@
     <File>C:/Users/sheps/source/repos/kong-engine/Kong_Engine/Content/turbo.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

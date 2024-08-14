@@ -302,3 +302,4 @@ C:\Users\breto\source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kon
 C:\Users\breto\source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref\Kong_Engine.dll
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap..tmx
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap.xnb
+C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\qwest-quest\all\QuestQuestMap-scaled.xnb

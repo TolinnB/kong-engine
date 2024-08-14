@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Kong_Engine.States.Base
 {
@@ -83,9 +82,13 @@ namespace Kong_Engine.States.Base
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            TileMapManager?.Draw(Matrix.CreateScale(Game.ScaleFactor));
-            PlayerEntity?.Draw(spriteBatch, Matrix.CreateScale(Game.ScaleFactor));
-            EnemyEntity?.Draw(spriteBatch, Matrix.CreateScale(Game.ScaleFactor));
+            // Apply scaling if necessary; default to 1.0f if no scaling is required
+            float scaleFactor = Game.ScaleFactor;
+            Matrix transformationMatrix = Matrix.CreateScale(scaleFactor);
+
+            TileMapManager?.Draw(transformationMatrix);
+            PlayerEntity?.Draw(spriteBatch, transformationMatrix);
+            EnemyEntity?.Draw(spriteBatch, transformationMatrix);
         }
     }
 }

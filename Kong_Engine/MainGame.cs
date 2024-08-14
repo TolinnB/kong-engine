@@ -7,7 +7,6 @@ using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Diagnostics;
 
 namespace Kong_Engine
 {
@@ -15,14 +14,9 @@ namespace Kong_Engine
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        private RenderTarget2D _renderTarget;
-        private Rectangle _renderScaleRectangle;
-        private const int DesignedResolutionWidth = 1280;
-        private const int DesignedResolutionHeight = 720;
-        private const float DesignedResolutionAspectRatio = DesignedResolutionWidth / (float)DesignedResolutionHeight;
         private BaseGameState _currentState;
         private AudioManager _audioManager;
-        private float _scaleFactor = 1f;
+        public float ScaleFactor { get; set; } = 1.0f;  // Default scale factor
 
         public MainGame()
         {
@@ -32,52 +26,33 @@ namespace Kong_Engine
 
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = DesignedResolutionWidth;
-            _graphics.PreferredBackBufferHeight = DesignedResolutionHeight;
-            _graphics.IsFullScreen = false;
-            _graphics.ApplyChanges();
-
-            _renderTarget = new RenderTarget2D(_graphics.GraphicsDevice, DesignedResolutionWidth, DesignedResolutionHeight, false,
-                SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
-
-            _renderScaleRectangle = GetScaleRectangle();
-            _scaleFactor = (float)Window.ClientBounds.Width / DesignedResolutionWidth;
-
             base.Initialize();
             _audioManager = new AudioManager(Content);
 
-            // Start with the Splash Screen
+            // Start with the initial state (Level3State in this case)
             SwitchState(new Level3State());
-        }
-
-
-        public float ScaleFactor => _scaleFactor;
-
-        private Rectangle GetScaleRectangle()
-        {
-            var variance = 0.5;
-            var actualAspectRatio = Window.ClientBounds.Width / (float)Window.ClientBounds.Height;
-            Rectangle scaleRectangle;
-
-            if (actualAspectRatio <= DesignedResolutionAspectRatio)
-            {
-                var presentHeight = (int)(Window.ClientBounds.Width / DesignedResolutionAspectRatio + variance);
-                var barHeight = (Window.ClientBounds.Height - presentHeight) / 2;
-                scaleRectangle = new Rectangle(0, barHeight, Window.ClientBounds.Width, presentHeight);
-            }
-            else
-            {
-                var presentWidth = (int)(Window.ClientBounds.Height * DesignedResolutionAspectRatio + variance);
-                var barWidth = (Window.ClientBounds.Width - presentWidth) / 2;
-                scaleRectangle = new Rectangle(barWidth, 0, presentWidth, Window.ClientBounds.Height);
-            }
-
-            return scaleRectangle;
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // Set window size to match the size of the map
+            if (_currentState is Level3State levelState)
+            {
+                var mapWidth = levelState.MapWidth;
+                var mapHeight = levelState.MapHeight;
+
+                _graphics.PreferredBackBufferWidth = mapWidth;
+                _graphics.PreferredBackBufferHeight = mapHeight;
+                _graphics.ApplyChanges();
+
+                // Ensure the window size matches the content
+                Window.AllowUserResizing = false;
+                _graphics.HardwareModeSwitch = false;
+                _graphics.IsFullScreen = false;
+                _graphics.ApplyChanges();
+            }
         }
 
         protected override void Update(GameTime gameTime)
@@ -89,18 +64,10 @@ namespace Kong_Engine
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.SetRenderTarget(_renderTarget);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black); // Black background to avoid any borders
 
             _spriteBatch.Begin();
             _currentState?.Render(_spriteBatch);
-            _spriteBatch.End();
-
-            GraphicsDevice.SetRenderTarget(null);
-            GraphicsDevice.Clear(ClearOptions.Target, Color.Black, 1.0f, 0);
-
-            _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque);
-            _spriteBatch.Draw(_renderTarget, _renderScaleRectangle, Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);

@@ -25,6 +25,9 @@ namespace Kong_Engine.States.Levels
         private bool isGameOver = false;
         private bool isLevelPassed = false;
 
+        public int MapWidth => _backgroundTexture.Width;
+        public int MapHeight => _backgroundTexture.Height;
+
         protected override void LoadLevelContent()
         {
             _backgroundTexture = Content.Load<Texture2D>("qwest-quest/all/QuestQuestMap"); // Load the overworld texture for the background
@@ -68,8 +71,16 @@ namespace Kong_Engine.States.Levels
         private List<Rectangle> GenerateCollisionRectanglesFromCsv(string csvFilePath)
         {
             var collisionRectangles = new List<Rectangle>();
-            var tileWidth = 16; // Adjust based on your actual tile size
+            var tileWidth = 16; // Original tile size
             var tileHeight = 16;
+
+            // New dimensions for the collision box
+            var collisionWidth = 12;   // Adjust as needed
+            var collisionHeight = 12;  // Adjust as needed
+
+            // Calculate the offset to center the collision rectangle
+            var offsetX = (tileWidth - collisionWidth) / 2;
+            var offsetY = (tileHeight - collisionHeight) / 2;
 
             try
             {
@@ -85,7 +96,13 @@ namespace Kong_Engine.States.Levels
                         {
                             if (int.TryParse(values[x], out int tileValue) && tileValue == 68)
                             {
-                                var rect = new Rectangle(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+                                // Create a centered and smaller collision rectangle
+                                var rect = new Rectangle(
+                                    x * tileWidth + offsetX,  // Center horizontally
+                                    y * tileHeight + offsetY, // Center vertically
+                                    collisionWidth,
+                                    collisionHeight
+                                );
                                 collisionRectangles.Add(rect);
                             }
                         }
@@ -147,12 +164,14 @@ namespace Kong_Engine.States.Levels
 
         public override void Render(SpriteBatch spriteBatch)
         {
+            // Render the background without offsets
             _terrainBackground.Render(spriteBatch);
 
-            // Draw RaccoonSprite3
+            // Draw RaccoonSprite3 without translation
             _player3.Draw(spriteBatch, Matrix.Identity);
 
             // Draw other entities like enemies, NPCs, etc.
+            // Make sure they're drawn without offsets or translations
 
             if (isGameOver)
             {
