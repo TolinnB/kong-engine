@@ -43,10 +43,10 @@ namespace Kong_Engine.States.Levels
 
         protected override void InitializeEntities()
         {
-            var game = (MainGame)Game;
-            game.Graphics.PreferredBackBufferWidth = MapWidth;
-            game.Graphics.PreferredBackBufferHeight = MapHeight;
-            game.Graphics.ApplyChanges();
+            var graphics = Game.GraphicsManager;
+            graphics.PreferredBackBufferWidth = MapWidth;
+            graphics.PreferredBackBufferHeight = MapHeight;
+            graphics.ApplyChanges();
 
             _random = new Random();
 
@@ -75,7 +75,7 @@ namespace Kong_Engine.States.Levels
             // Assign the generated collision rectangles to the TileMapManager
             TileMapManager.CollisionRectangles.AddRange(collisionRectangles);
 
-            _collisionSystem = new TopDownCollisionSystem(AudioManager, game, TileMapManager);
+            _collisionSystem = new TopDownCollisionSystem(AudioManager, Game, TileMapManager);
         }
 
 

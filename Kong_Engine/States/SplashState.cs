@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 /**/
 // Load in your Splash Screen here
 /**/
+
 namespace Kong_Engine.States
 {
     public class SplashState : BaseGameState
@@ -12,6 +13,9 @@ namespace Kong_Engine.States
         public override void LoadContent()
         {
             AddGameObject(new SplashImage(LoadTexture("splashScreen3")));
+
+            AudioManager.LoadSound("splashStart", "splashStart");
+            AudioManager.PlaySound("splashStart");
         }
 
         public override void HandleInput()

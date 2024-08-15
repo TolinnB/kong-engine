@@ -3,6 +3,8 @@ using Kong_Engine.States.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Kong_Engine.Objects;
+using System.Collections.Generic;
 
 /**/
 // Level Selection screen for your game
@@ -12,32 +14,67 @@ namespace Kong_Engine.States
 {
     public class MainMenuState : BaseGameState
     {
-        private Texture2D _mainMenuBackground;
+        private MainMenuImage _mainMenuBackground;
+        private List<Rectangle> _buttons;
+        private List<BaseGameState> _levels;
+        private MouseState _previousMouseState;
 
         public override void LoadContent()
         {
-            _mainMenuBackground = Content.Load<Texture2D>("mainMenu");
+            var backgroundTexture = Content.Load<Texture2D>("mainMenu2");
+            _mainMenuBackground = new MainMenuImage(backgroundTexture);
+            AddGameObject(_mainMenuBackground);
+
+            _buttons = new List<Rectangle>
+            {
+                new Rectangle(100, 300, 200, 50),  // Level 1 Button
+                new Rectangle(100, 400, 200, 50),  // Level 2 Button
+                new Rectangle(100, 500, 200, 50)   // Level 3 Button
+            };
+
+            _levels = new List<BaseGameState>
+            {
+                new Level1State(),
+                new Level2State(),
+                new Level3State()
+            };
         }
 
         public override void HandleInput()
         {
-            var currentKeyboardState = Keyboard.GetState();
+            var currentMouseState = Mouse.GetState();
 
-            if (currentKeyboardState.IsKeyDown(Keys.Enter) && PreviousKeyboardState.IsKeyUp(Keys.Enter))
+            // Detect mouse clicks
+            if (currentMouseState.LeftButton == ButtonState.Pressed && _previousMouseState.LeftButton == ButtonState.Released)
             {
-                SwitchState(new Level1State());
+                for (int i = 0; i < _buttons.Count; i++)
+                {
+                    if (_buttons[i].Contains(currentMouseState.Position))
+                    {
+                        // Switch to the corresponding level
+                        SwitchState(_levels[i]);
+                        break;
+                    }
+                }
             }
 
-            PreviousKeyboardState = currentKeyboardState;
+            _previousMouseState = currentMouseState;
         }
 
         protected override void SetInputManager()
         {
+            // No input manager needed for this
         }
 
         public override void Render(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_mainMenuBackground, new Vector2(0, 0), Color.White);
+
+            base.Render(spriteBatch);
+
+            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 1", new Vector2(100, 300), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 2", new Vector2(100, 400), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 3", new Vector2(100, 500), Color.White);
         }
+
     }
 }

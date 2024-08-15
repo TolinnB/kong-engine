@@ -18,8 +18,10 @@ namespace Kong_Engine
         private SpriteBatch _spriteBatch;
         private BaseGameState _currentState;
         private AudioManager _audioManager;
-        public float ScaleFactor { get; set; } = 1.0f;
-        public GraphicsDeviceManager Graphics => _graphics;
+        private float _scaleFactor = 1.0f;
+
+        public GraphicsDeviceManager GraphicsManager => _graphics;
+        public AudioManager AudioManager => _audioManager;
 
         // Default Window Size
         private readonly int _defaultWidth = 1280;
@@ -30,6 +32,15 @@ namespace Kong_Engine
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            // Set the preferred window size
+            _graphics.PreferredBackBufferWidth = 1280;
+            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.ApplyChanges();
+
+            IsMouseVisible = true;
+
+            _audioManager = new AudioManager(Content);
         }
 
         //Initialises the audio manager and shifts to Splash Screen
@@ -39,14 +50,12 @@ namespace Kong_Engine
             _audioManager = new AudioManager(Content);
 
             // Start with the initial state (SplashState in this case)
-            SwitchState(new Level3State());
+            SwitchState(new SplashState());
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            AdjustWindowSize();
         }
 
         //Update the game logic, sprites or inputs
@@ -57,7 +66,6 @@ namespace Kong_Engine
             base.Update(gameTime);
         }
 
-        
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -69,9 +77,7 @@ namespace Kong_Engine
             base.Draw(gameTime);
         }
 
-        /**/
         // Transitions between states and unloads content before setting up handlers for the new state
-        /**/
         public void SwitchState(BaseGameState newState)
         {
             _currentState?.UnloadContent();
@@ -80,9 +86,6 @@ namespace Kong_Engine
             _currentState.LoadContent();
             _currentState.OnStateSwitched += HandleStateSwitched;
             _currentState.OnEventNotification += HandleEventNotification;
-
-            // Adjust the window size after switching the state
-            AdjustWindowSize();
         }
 
         private void HandleStateSwitched(object sender, BaseGameState newState)
@@ -99,24 +102,11 @@ namespace Kong_Engine
             }
         }
 
-        private void AdjustWindowSize()
+        // Property to access ScaleFactor
+        public float ScaleFactor
         {
-            // Check if the current state is Level3State
-            if (_currentState is Level3State levelState)
-            {
-                var mapWidth = levelState.MapWidth;
-                var mapHeight = levelState.MapHeight;
-
-                _graphics.PreferredBackBufferWidth = mapWidth;
-                _graphics.PreferredBackBufferHeight = mapHeight;
-            }
-            else
-            {
-                _graphics.PreferredBackBufferWidth = _defaultWidth;
-                _graphics.PreferredBackBufferHeight = _defaultHeight;
-            }
-
-            _graphics.ApplyChanges();
+            get { return _scaleFactor; }
+            set { _scaleFactor = value; }
         }
     }
 }

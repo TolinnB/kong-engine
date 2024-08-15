@@ -160,10 +160,6 @@ namespace Kong_Engine
                 spriteBatch.Draw(rectTexture, rect, Color.Red * 0.5f);
             }
         }
-
-
-
-
         public void SetScale(float newScale)
         {
             scale = newScale;

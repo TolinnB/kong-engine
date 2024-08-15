@@ -21,6 +21,7 @@
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/jungle-hijynx.mp3</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/kingKRool.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/mainMenu.png</File>
+    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/mainMenu2.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/mario.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/missile-sound.wav</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/music.mp3</File>
@@ -46,9 +47,12 @@
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen2.png</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashScreen3.png</File>
+    <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/splashStart.wav</File>
     <File>C:/Users/sheps/Source/Repos/kong-engine/Kong_Engine/Content/turbo.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

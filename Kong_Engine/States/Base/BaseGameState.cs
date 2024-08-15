@@ -27,14 +27,18 @@ namespace Kong_Engine.States.Base
         protected InputManager InputManager { get; set; }
         protected ContentManager Content => _contentManager;
         protected MainGame Game { get; private set; }
+        protected GraphicsDeviceManager Graphics { get; private set; }
+        protected AudioManager AudioManager { get; private set; }
 
         //Sets up main game reference and input manager
         public virtual void Initialize(ContentManager contentManager, MainGame game)
         {
             _contentManager = contentManager;
             Game = game;
+            Graphics = game.GraphicsManager;
+            AudioManager = game.AudioManager;
             SetInputManager();
-            PreviousKeyboardState = Keyboard.GetState(); // Stops it from going through all menus in one input
+            PreviousKeyboardState = Keyboard.GetState();
         }
 
         public abstract void LoadContent();
