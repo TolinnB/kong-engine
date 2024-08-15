@@ -27,9 +27,9 @@ namespace Kong_Engine.States
 
             _buttons = new List<Rectangle>
             {
-                new Rectangle(100, 300, 200, 50),  // Level 1 Button
-                new Rectangle(100, 400, 200, 50),  // Level 2 Button
-                new Rectangle(100, 500, 200, 50)   // Level 3 Button
+                new Rectangle(378, 600, 200, 50),  // Level 1 Button
+                new Rectangle(500, 300, 200, 50),  // Level 2 Button
+                new Rectangle(900, 580, 200, 50)   // Level 3 Button
             };
 
             _levels = new List<BaseGameState>
