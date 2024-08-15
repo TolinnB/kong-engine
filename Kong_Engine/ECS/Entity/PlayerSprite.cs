@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.Entity;
 using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework.Input;
-using System;
 using Kong_Engine.ECS.System;
 
 namespace Kong_Engine.Objects
@@ -16,6 +15,8 @@ namespace Kong_Engine.Objects
         private Rectangle[] walkFrames;
         private Rectangle[] idleFrames;
         private Rectangle[] jumpFrames;
+        private AudioManager audioManager; // Field for the AudioManager
+        private string hurtSoundKey = "hurtSound";
         private float moveSpeed = 1.5f;
         private float jumpSpeed = 200f;
         private float gravity = 40f;
@@ -42,12 +43,21 @@ namespace Kong_Engine.Objects
         private const int mapWidth = 1280; // Screen width
         private const int mapHeight = 720; // Screen height
 
-        public PlayerSprite(Texture2D spriteSheet, TileMapManager tileMapManager, float scale)
+        // Constructor with AudioManager
+        public PlayerSprite(Texture2D spriteSheet, TileMapManager tileMapManager, float scale, AudioManager audioManager)
         {
             this.spriteSheet = spriteSheet;
             this.tileMapManager = tileMapManager;
             this.scale = scale;
+            this.audioManager = audioManager; // Initialize AudioManager
 
+            // Initialize frames and components
+            InitializeFrames();
+            InitializeComponents();
+        }
+
+        private void InitializeFrames()
+        {
             // Define the source rectangles for each frame
             idleFrames = new Rectangle[]
             {
@@ -70,7 +80,10 @@ namespace Kong_Engine.Objects
             {
                 new Rectangle(288, 0, frameWidth, frameHeight), // Jump Frame
             };
+        }
 
+        private void InitializeComponents()
+        {
             // Initialize components with position and bounding box scaled correctly
             AddComponent(new PositionComponent { Position = new Vector2(100, 100) * scale });
             AddComponent(new CollisionComponent
@@ -96,19 +109,25 @@ namespace Kong_Engine.Objects
             timeSinceLastFrame = 0;
         }
 
+        public void PlayHurtSound()
+        {
+            audioManager?.PlaySound(hurtSoundKey);
+        }
+
+
         public void Update(GameTime gameTime)
         {
             ApplyKnockback();
             HandleInput(gameTime);
 
             var physicsComponent = GetComponent<PhysicsComponent>();
-
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Apply gravity continuously
             var velocity = physicsComponent.Velocity;
             velocity.Y += gravity * deltaTime;
             physicsComponent.Velocity = velocity;
+
             AccelerationSystem.ApplyAcceleration(physicsComponent, deltaTime, gravity, fallMultiplier, verticalAcceleration, horizontalAcceleration, maxHorizontalSpeed, isMoving, isFacingRight);
 
             // Update position based on the current velocity
@@ -140,10 +159,22 @@ namespace Kong_Engine.Objects
             UpdateAnimationFrame(gameTime);
             UpdatePlayerBounds();
 
+            // Always check for collisions, even when the player is idle
+            CheckCollisions(currentPosition);
+
             // Update collision component bounding box
             var collisionComponent = GetComponent<CollisionComponent>();
             collisionComponent.BoundingBox = playerBounds;
         }
+
+
+        private void HandleIdleCollisions()
+        {
+            // Perform any additional collision checks or updates when the player is idle
+            var currentPosition = GetComponent<PositionComponent>().Position;
+            CheckCollisions(currentPosition);
+        }
+
 
         private void HandleJumping()
         {
@@ -151,8 +182,7 @@ namespace Kong_Engine.Objects
 
             if (physicsComponent.IsGrounded)
             {
-                Console.WriteLine("Player is jumping!"); // Debugging line
-                                                         // Apply upward velocity for the jump
+                // Apply upward velocity for the jump
                 var velocity = physicsComponent.Velocity;
                 velocity.Y = -jumpSpeed;  // Negative because Y increases downwards
                 physicsComponent.Velocity = velocity;
@@ -280,14 +310,12 @@ namespace Kong_Engine.Objects
             {
                 if (newBounds.Intersects(rect))
                 {
-                    Console.WriteLine($"Collision detected at ({rect.X}, {rect.Y})");
 
                     // If the collision is below the player, consider them grounded
                     var physicsComponent = GetComponent<PhysicsComponent>();
                     if (newBounds.Bottom >= rect.Top && newBounds.Top < rect.Top)
                     {
                         physicsComponent.IsGrounded = true;
-                        Console.WriteLine("Player is grounded!"); // Debugging line
                     }
                     return true; // Collision detected
                 }
@@ -296,7 +324,6 @@ namespace Kong_Engine.Objects
             // If no collision, player is in the air
             var pc = GetComponent<PhysicsComponent>();
             pc.IsGrounded = false;
-            Console.WriteLine("Player is in the air!"); // Debugging line
 
             return false; // No collision
         }

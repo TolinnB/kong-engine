@@ -4,6 +4,7 @@ using Kong_Engine.Input;
 using Kong_Engine.Objects;
 using Kong_Engine.States.Base;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using TiledSharp;
@@ -32,12 +33,15 @@ namespace Kong_Engine.States.Levels
             var playerSpriteSheet = Content.Load<Texture2D>("player");
             var enemySpriteSheet = Content.Load<Texture2D>("slime");
 
-            PlayerEntity = new PlayerSprite(playerSpriteSheet, TileMapManager, globalScale);
+            // Use the existing AudioManager instance
+            PlayerEntity = new PlayerSprite(playerSpriteSheet, TileMapManager, globalScale, AudioManager);
             EnemyEntity = new EnemySprite(enemySpriteSheet, globalScale);
 
             Entities.Add(PlayerEntity);
             Entities.Add(EnemyEntity);
         }
+
+
 
         protected override void SetInputManager()
         {
