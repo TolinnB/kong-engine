@@ -39,7 +39,7 @@ namespace Kong_Engine
             _audioManager = new AudioManager(Content);
 
             // Start with the initial state (SplashState in this case)
-            SwitchState(new SplashState());
+            SwitchState(new Level3State());
         }
 
         protected override void LoadContent()

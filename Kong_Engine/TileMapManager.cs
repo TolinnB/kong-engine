@@ -149,6 +149,19 @@ namespace Kong_Engine
             spriteBatch.End();
         }
 
+        public void DrawCollisionRectangles(SpriteBatch spriteBatch)
+        {
+            // Create a semi-transparent texture for the collision rectangles
+            Texture2D rectTexture = new Texture2D(spriteBatch.GraphicsDevice, 1, 1);
+            rectTexture.SetData(new[] { Color.Red * 0.5f }); // Red color with 50% transparency
+
+            foreach (var rect in CollisionRectangles)
+            {
+                spriteBatch.Draw(rectTexture, rect, Color.Red * 0.5f);
+            }
+        }
+
+
 
 
         public void SetScale(float newScale)

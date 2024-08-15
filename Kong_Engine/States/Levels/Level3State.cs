@@ -55,9 +55,7 @@ namespace Kong_Engine.States.Levels
 
             _terrainBackground = new TerrainBackground(_backgroundTexture, Vector2.Zero, isScrollingEnabled: false);
 
-            // Generate collision rectangles from the CSV file
-            var collisionRectangles = GenerateCollisionRectanglesFromCsv("Content/qwest-quest/QwestQuest_Collision.csv");
-
+            // Initialize TileMapManager
             TileMapManager = new TileMapManager(
                 Content,
                 SpriteBatch,
@@ -68,6 +66,12 @@ namespace Kong_Engine.States.Levels
                 20
             );
 
+            // Clear any existing collision rectangles before loading new ones
+            TileMapManager.CollisionRectangles.Clear();
+
+            // Generate collision rectangles from the CSV file
+            var collisionRectangles = GenerateCollisionRectanglesFromCsv("Content/qwest-quest/QwestQuest_Collision.csv");
+
             // Assign the generated collision rectangles to the TileMapManager
             TileMapManager.CollisionRectangles.AddRange(collisionRectangles);
 
@@ -75,11 +79,12 @@ namespace Kong_Engine.States.Levels
         }
 
 
+
         private List<Rectangle> GenerateCollisionRectanglesFromCsv(string csvFilePath)
         {
             var collisionRectangles = new List<Rectangle>();
-            var tileWidth = 16; // Tile width in pixels
-            var tileHeight = 16; // Tile height in pixels
+            var tileWidth = 16; // Assuming each tile is 16x16 pixels
+            var tileHeight = 16;
 
             try
             {
@@ -95,7 +100,7 @@ namespace Kong_Engine.States.Levels
                         {
                             if (int.TryParse(values[x], out int tileValue) && tileValue == 68)
                             {
-                                // Create a collision rectangle for each "68" tile value
+                                // Create a collision rectangle for each tile with the value 68
                                 var rect = new Rectangle(
                                     x * tileWidth,  // X position in pixels
                                     y * tileHeight, // Y position in pixels
@@ -116,6 +121,7 @@ namespace Kong_Engine.States.Levels
 
             return collisionRectangles;
         }
+
 
 
         protected override void SetInputManager()
@@ -161,6 +167,9 @@ namespace Kong_Engine.States.Levels
         {
             _terrainBackground.Render(spriteBatch);
             _player3.Draw(spriteBatch, Matrix.Identity);
+
+            // Draw collision rectangles for debugging
+            TileMapManager.DrawCollisionRectangles(spriteBatch);
 
             if (isGameOver)
             {
