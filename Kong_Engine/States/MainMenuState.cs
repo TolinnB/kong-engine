@@ -71,9 +71,9 @@ namespace Kong_Engine.States
 
             base.Render(spriteBatch);
 
-            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 1", new Vector2(100, 300), Color.White);
-            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 2", new Vector2(100, 400), Color.White);
-            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 3", new Vector2(100, 500), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 1", new Vector2(378, 600), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 2", new Vector2(500, 300), Color.White);
+            spriteBatch.DrawString(Content.Load<SpriteFont>("ScoreFont"), "Level 3", new Vector2(900, 580), Color.White);
         }
 
     }
