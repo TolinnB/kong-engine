@@ -2,6 +2,11 @@ using Kong_Engine.Enum;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+/**/
+// Base structure for game objects
+// You can change height, width, behaviour and rendering here from derived objects
+/**/
+
 namespace Kong_Engine.Objects.Base
 {
     public class BaseGameObject

@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Kong_Engine.ECS.Component;
 
+/**/
+// Simple Bouyancy physics
+// Entities in water will be pushed upwards dependant on their weight and depth
+/**/
+
 namespace Kong_Engine.ECS.System
 {
     public class BuoyancySystem

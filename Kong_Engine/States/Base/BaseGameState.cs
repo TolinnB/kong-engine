@@ -9,10 +9,17 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+/**/
+// Foundation state for managing states within your game.
+// Handles loading content, updating objects, rendering and transitioning to the next state
+/**/
+
 namespace Kong_Engine.States.Base
 {
     public abstract class BaseGameState
     {
+        //Variables and constructors
+
         private ContentManager _contentManager;
         private readonly List<BaseGameObject> _gameObjects = new List<BaseGameObject>();
 
@@ -21,6 +28,7 @@ namespace Kong_Engine.States.Base
         protected ContentManager Content => _contentManager;
         protected MainGame Game { get; private set; }
 
+        //Sets up main game reference and input manager
         public virtual void Initialize(ContentManager contentManager, MainGame game)
         {
             _contentManager = contentManager;

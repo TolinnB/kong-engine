@@ -2,6 +2,9 @@
 using Kong_Engine.States.Base;
 using Microsoft.Xna.Framework.Input;
 
+/**/
+// Load in your Splash Screen here
+/**/
 namespace Kong_Engine.States
 {
     public class SplashState : BaseGameState

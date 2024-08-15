@@ -7,6 +7,11 @@ using Kong_Engine.ECS.Component;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+/**/
+//  Base Entity to create player and enemy entities
+// Handles size, texture and systems such as movement and physics can be applied to them
+/**/
+
 namespace Kong_Engine.ECS.Entity
 {
     public class BaseEntity

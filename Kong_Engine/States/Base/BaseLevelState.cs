@@ -10,6 +10,11 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
 
+/**/ 
+// Extends BaseGameState
+// Template for creating game levels. Manages core gameplay functions.
+/**/
+
 namespace Kong_Engine.States.Base
 {
     public abstract class BaseLevelState : BaseGameState

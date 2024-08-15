@@ -8,11 +8,18 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Kong_Engine.ECS.System;
 
+/**/
+// Base component for ECS architecture
+// Represents different parts of an entity's behaviour, such as position, texture, movement
+// collision boundaries, lives, and physics.
+// This can be exended to create your own entities and physics components
+/**/
+
 namespace Kong_Engine.ECS.Component
 {
     public interface IComponent
     {
-        // Marker interface for components
+        // Marker interface
     }
 
     public class PositionComponent : IComponent

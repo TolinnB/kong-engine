@@ -3,6 +3,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
+/**/
+// Manages all sounds for a particular scene
+// Allows the inclusion of sound effects and background music
+/**/
+
 namespace Kong_Engine
 {
     public class AudioManager

@@ -9,7 +9,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
+/**/
+// Converts units between display units and simulation units
+// Can handle both scalar and vector conversions
+/**/
 namespace Kong_Engine
 {
     public static class ConvertUnits

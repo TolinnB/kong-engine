@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System;
 
+/**/
+// Simple collision for Side-scrolling Games
+// Checks the player bounding box against collision rectangles and enemy bounding boxes
+/**/
+
 namespace Kong_Engine.ECS.System
 {
     public class CollisionSystem

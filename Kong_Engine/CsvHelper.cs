@@ -1,5 +1,6 @@
 ﻿using System.IO;
 
+//If using the CSV split method to handle Tiled Maps, this will read the information line by line
 public static class CsvHelper
 {
     public static int[,] LoadCsv(string filePath)

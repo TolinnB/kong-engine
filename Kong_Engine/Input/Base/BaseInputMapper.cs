@@ -5,6 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/**/
+// Base class to initialise inputs for your game
+// Subclasses of BaseInputMapper can interpret how input is handled
+/**/
+
 namespace Kong_Engine.Input.Base
 {
     public abstract class BaseInputMapper

@@ -4,6 +4,11 @@ using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
+/**/
+// Simple Acceletation System to manage an entity's velocity while moving
+// Also handles gravity response and movement constraints
+/**/
+
 namespace Kong_Engine.ECS.System
 {
     public class AccelerationSystem

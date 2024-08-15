@@ -5,6 +5,11 @@ using Microsoft.Xna.Framework;
 using System;
 using Kong_Engine.ECS.Component;
 
+/**/
+// Unique collision for top-down games. This takes the collision layer from a TMX file
+// and creates collision
+/**/
+
 namespace Kong_Engine.ECS.System
 {
     public class TopDownCollisionSystem

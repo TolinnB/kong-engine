@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using Kong_Engine.Enum;
 
+/**/
+// Allows different parts of the game to subscribe or unsubscribe to events listed in the Events class
+/**/
 namespace Kong_Engine
 {
     public static class EventManager

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Kong_Engine.ECS.Component;
 
+/**/
+// Simple Friction System
+// Applies drag and friction. These can be manipulated to affect running and air resistance
+// with gradual slow down
+/**/
+
 namespace Kong_Engine.ECS.System
 {
     public class FrictionSystem

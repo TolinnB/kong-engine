@@ -3,6 +3,12 @@ using Kong_Engine.ECS.Entity;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
+/**/
+// Simple Movement System 
+// Handles Horizontal movement for entities
+// changes with directional input, velocity, and keeps them in the bounds of the screen
+/**/
+
 namespace Kong_Engine.ECS.System
 {
     public class MovementSystem

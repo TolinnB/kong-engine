@@ -5,6 +5,11 @@ using Microsoft.Xna.Framework.Input;
 using Kong_Engine.Objects;
 using Kong_Engine.ECS.Component;
 
+/**/
+// Simple Jumping physics
+// Handles both the initiation of the jump and the landing based on gravity effects
+/**/
+
 namespace Kong_Engine.ECS.System
 {
     public class JumpingSystem
