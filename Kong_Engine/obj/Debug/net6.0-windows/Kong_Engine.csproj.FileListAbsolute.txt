@@ -75,7 +75,6 @@ C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\refi
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.pdb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.genruntimeconfig.cache
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref\Kong_Engine.dll
-C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkeyKong.xnb
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Kong_Engine.exe
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Kong_Engine.deps.json
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Kong_Engine.runtimeconfig.json
@@ -114,9 +113,7 @@ C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.pdb
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\Kong_Engine.genruntimeconfig.cache
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\obj\Debug\net6.0-windows\ref\Kong_Engine.dll
-C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\DKJunglejpg.xnb
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\fallbackTexture.xnb
-C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\gorillaScreen.xnb
 C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\splashScreen.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\endLevelSummary.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mainMenu.xnb
@@ -127,24 +124,17 @@ C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Cont
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mainMenu.xnb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\splashScreen.xnb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\kingKRool.xnb
-C:\Users\Sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\kingKRool.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.wma
-C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.xnb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.wma
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\donkey-kong-hurt.xnb
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.wma
 C:\Users\user\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.xnb
-C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.wma
-C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\jungle-hijynx.xnb
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\env.png
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\map.tmx
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\TiledSharp.dll
 C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\env.xnb
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Tiny Adventure Pack\Character\Char_two\Idle\playerSheetIdle.sf
 C:\Users\sheps\source\repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Tiny Adventure Pack\Character\Char_two\Walk\playerSheetWalk.sf
-C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\mario.xnb
-C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\sonic.xnb
-C:\Users\Sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\dr-robotnik.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Background1.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Background2.xnb
 C:\Users\sheps\Source\Repos\kong-engine\Kong_Engine\bin\Debug\net6.0-windows\Content\Background3.xnb
