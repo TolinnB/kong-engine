@@ -20,6 +20,7 @@ namespace Kong_Engine
         private float scale;
         public int TileWidth => tileWidth;
         public TmxMap Map => map;
+        public float ScaleFactor => scale;
 
 
         public List<Rectangle> CollisionRectangles { get; private set; }

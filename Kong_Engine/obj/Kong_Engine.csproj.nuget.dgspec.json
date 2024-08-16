@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
             "TiledSharp": {
               "target": "Package",
               "version": "[1.0.1, )"
