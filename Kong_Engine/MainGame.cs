@@ -12,7 +12,7 @@ namespace Kong_Engine
 {
     public class MainGame : Game
     {
-        //Variables 
+        // Variables 
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -22,20 +22,21 @@ namespace Kong_Engine
 
         public GraphicsDeviceManager GraphicsManager => _graphics;
         public AudioManager AudioManager => _audioManager;
+        public BaseGameState CurrentState => _currentState; // Added property to expose _currentState
 
         // Default Window Size
         private readonly int _defaultWidth = 1280;
         private readonly int _defaultHeight = 720;
 
-        //Begins Game
+        // Begins Game
         public MainGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
             // Set the preferred window size
-            _graphics.PreferredBackBufferWidth = 1280;
-            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.PreferredBackBufferWidth = _defaultWidth;
+            _graphics.PreferredBackBufferHeight = _defaultHeight;
             _graphics.ApplyChanges();
 
             IsMouseVisible = true;
@@ -43,7 +44,7 @@ namespace Kong_Engine
             _audioManager = new AudioManager(Content);
         }
 
-        //Initialises the audio manager and shifts to Splash Screen
+        // Initialises the audio manager and shifts to Splash Screen
         protected override void Initialize()
         {
             base.Initialize();
@@ -53,12 +54,17 @@ namespace Kong_Engine
             SwitchState(new SplashState());
         }
 
+        public void InitializeGame()
+        {
+            base.Initialize();
+        }
+
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
-        //Update the game logic, sprites or inputs
+        // Update the game logic, sprites or inputs
         protected override void Update(GameTime gameTime)
         {
             _currentState?.Update(gameTime);
