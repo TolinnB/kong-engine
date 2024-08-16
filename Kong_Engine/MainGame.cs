@@ -19,6 +19,8 @@ namespace Kong_Engine
         private BaseGameState _currentState;
         private AudioManager _audioManager;
         private float _scaleFactor = 1.0f;
+        private Stereoscopic3DManager _stereoscopic3DManager;
+        private KeyboardState _previousKeyboardState;
 
         public GraphicsDeviceManager GraphicsManager => _graphics;
         public AudioManager AudioManager => _audioManager;
@@ -50,6 +52,8 @@ namespace Kong_Engine
             base.Initialize();
             _audioManager = new AudioManager(Content);
 
+            _stereoscopic3DManager = new Stereoscopic3DManager(GraphicsDevice, _spriteBatch);
+
             // Start with the initial state (SplashState in this case)
             SwitchState(new SplashState());
         }
@@ -69,6 +73,17 @@ namespace Kong_Engine
         {
             _currentState?.Update(gameTime);
             _currentState?.HandleInput();
+
+            KeyboardState currentKeyboardState = Keyboard.GetState();
+
+            // Toggle stereoscopic 3D mode on M key press (only on key down event)
+            if (currentKeyboardState.IsKeyDown(Keys.M) && !_previousKeyboardState.IsKeyDown(Keys.M))
+            {
+                _stereoscopic3DManager.Toggle3D();
+            }
+
+            _previousKeyboardState = currentKeyboardState;
+
             base.Update(gameTime);
         }
 
@@ -76,9 +91,16 @@ namespace Kong_Engine
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin();
-            _currentState?.Render(_spriteBatch);
-            _spriteBatch.End();
+            if (_stereoscopic3DManager.IsEnabled)
+            {
+                _stereoscopic3DManager.Render(_currentState);
+            }
+            else
+            {
+                _spriteBatch.Begin();
+                _currentState?.Render(_spriteBatch);
+                _spriteBatch.End();
+            }
 
             base.Draw(gameTime);
         }
