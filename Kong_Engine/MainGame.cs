@@ -23,6 +23,9 @@ namespace Kong_Engine
         public GraphicsDeviceManager GraphicsManager => _graphics;
         public AudioManager AudioManager => _audioManager;
 
+        // Expose the current state for unit testing or other external access
+        public BaseGameState CurrentState => _currentState;
+
         // Default Window Size
         private readonly int _defaultWidth = 1280;
         private readonly int _defaultHeight = 720;
@@ -43,7 +46,7 @@ namespace Kong_Engine
             _audioManager = new AudioManager(Content);
         }
 
-        //Initialises the audio manager and shifts to Splash Screen
+        // This is now protected, as required by the base class
         protected override void Initialize()
         {
             base.Initialize();
@@ -51,6 +54,12 @@ namespace Kong_Engine
 
             // Start with the initial state (SplashState in this case)
             SwitchState(new SplashState());
+        }
+
+        // Public method to call Initialize for testing
+        public void InitializeGame()
+        {
+            Initialize();
         }
 
         protected override void LoadContent()

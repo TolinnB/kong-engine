@@ -1,0 +1,7 @@
+C:\Users\sheps\source\repos\kong-engine\UnitTests\bin\Debug\net6.0-windows\CoverletSourceRootsMapping
+C:\Users\sheps\source\repos\kong-engine\UnitTests\obj\Debug\net6.0-windows\UnitTests.csproj.AssemblyReference.cache
+C:\Users\sheps\source\repos\kong-engine\UnitTests\obj\Debug\net6.0-windows\UnitTests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sheps\source\repos\kong-engine\UnitTests\obj\Debug\net6.0-windows\UnitTests.AssemblyInfoInputs.cache
+C:\Users\sheps\source\repos\kong-engine\UnitTests\obj\Debug\net6.0-windows\UnitTests.AssemblyInfo.cs
+C:\Users\sheps\source\repos\kong-engine\UnitTests\obj\Debug\net6.0-windows\UnitTests.csproj.CoreCompileInputs.cache
+C:\Users\sheps\source\repos\kong-engine\UnitTests\obj\Debug\net6.0-windows\UnitTests.sourcelink.json

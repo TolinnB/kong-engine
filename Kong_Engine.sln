@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kong_Engine", "Kong_Engine\Kong_Engine.csproj", "{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kong_Engine", "Kong_Engine\Kong_Engine.csproj", "{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{A049AB77-1896-4DA4-BEB9-CE83A9FE5FBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD3DB931-81B6-4FBD-9D1E-45D5FA98AE66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A049AB77-1896-4DA4-BEB9-CE83A9FE5FBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A049AB77-1896-4DA4-BEB9-CE83A9FE5FBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A049AB77-1896-4DA4-BEB9-CE83A9FE5FBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A049AB77-1896-4DA4-BEB9-CE83A9FE5FBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
