@@ -12,13 +12,13 @@ namespace Kong_Engine
 {
     public class MainGame : Game
     {
-        //Variables 
-
+        // Variables 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private BaseGameState _currentState;
         private AudioManager _audioManager;
         private float _scaleFactor = 1.0f;
+        public BaseGameState CurrentState => _currentState;
 
         public GraphicsDeviceManager GraphicsManager => _graphics;
         public AudioManager AudioManager => _audioManager;
@@ -27,7 +27,7 @@ namespace Kong_Engine
         private readonly int _defaultWidth = 1280;
         private readonly int _defaultHeight = 720;
 
-        //Begins Game
+        // Begins Game
         public MainGame()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -43,8 +43,8 @@ namespace Kong_Engine
             _audioManager = new AudioManager(Content);
         }
 
-        //Initialises the audio manager and shifts to Splash Screen
-        protected override void Initialize()
+        // Initializes the audio manager and shifts to Splash Screen
+        protected override void Initialize()  // Keep this as protected
         {
             base.Initialize();
             _audioManager = new AudioManager(Content);
@@ -58,7 +58,7 @@ namespace Kong_Engine
             _spriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
-        //Update the game logic, sprites or inputs
+        // Update the game logic, sprites or inputs
         protected override void Update(GameTime gameTime)
         {
             _currentState?.Update(gameTime);
@@ -107,6 +107,15 @@ namespace Kong_Engine
         {
             get { return _scaleFactor; }
             set { _scaleFactor = value; }
+        }
+
+        // Subclass for testing
+        public class TestableMainGame : MainGame
+        {
+            public new void Initialize()
+            {
+                base.Initialize();
+            }
         }
     }
 }

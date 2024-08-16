@@ -1,0 +1,135 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Sprout Lands - Sprites - Basic pack/Tilesets/Water.tsx",
+    "expandedProjectPaths": [
+        "Sprout Lands - Sprites - Basic pack/Tilesets",
+        ".",
+        "Sprout Lands - Sprites - Basic pack"
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        ":/automap-tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Grass.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "JumpLand/JumpLand.tmx": {
+            "scale": 2.8974999999999995,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 160.13805004314068,
+                "y": 95.94477998274377
+            }
+        },
+        "SimpleTileset2.tsx": {
+            "scaleInDock": 1
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Collisions.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Fences.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Grass.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 8
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/QuestQuestMap.tmx": {
+            "scale": 2.0425,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 239.90208078335374,
+                "y": 160.09791921664626
+            }
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Testmap.tmx": {
+            "expandedGroupLayers": [
+                7,
+                10
+            ],
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 214.5,
+                "y": 198
+            }
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Water.tsx": {
+            "scaleInDock": 5.5,
+            "scaleInEditor": 11
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Wooden_House_Roof_Tilset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Wooden_House_Walls_Tilset.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/collisions.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Sprout Lands - Sprites - Basic pack/Tilesets/untitled.tmx": {
+            "expandedGroupLayers": [
+                7,
+                10
+            ],
+            "scale": 2,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 217.5,
+                "y": 160.5
+            }
+        }
+    },
+    "frame.defaultDuration": 100,
+    "last.exportedFilePath": "C:/Users/breto/OneDrive/Desktop/Tiles/QwestQuest",
+    "last.externalTilesetPath": "C:/Users/breto/OneDrive/Desktop/Tiles/QwestQuest/Sprout Lands - Sprites - Basic pack/Tilesets",
+    "last.imagePath": "C:/Users/breto/OneDrive/Desktop/Tiles/QwestQuest/Sprout Lands - Sprites - Basic pack/Tilesets",
+    "map.lastUsedExportFilter": "CSV files (*.csv)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "Sprout Lands - Sprites - Basic pack/Tilesets/QuestQuestMap.tmx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Grass.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Wooden_House_Walls_Tilset.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Fences.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Water.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/collisions.tsx"
+    ],
+    "project": "TopDownLand.tiled-project",
+    "recentFiles": [
+        "Sprout Lands - Sprites - Basic pack/Tilesets/QuestQuestMap.tmx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Grass.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Wooden_House_Walls_Tilset.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Fences.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/collisions.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Water.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Collisions.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Testmap.tmx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/untitled.tmx",
+        "Grass.tsx",
+        "Sprout Lands - Sprites - Basic pack/Tilesets/Wooden_House_Roof_Tilset.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
